@@ -1,0 +1,36 @@
+---
+dashboard_parameters:
+    header_hide_selector: True
+    # Tab to display
+    importances: True
+    model_summary: True
+    contributions: True
+    whatif: False
+    shap_dependence: True
+    shap_interaction: True
+    decision_trees: False
+    # Items to hide
+    hide_precision: False
+    hide_classification: True
+    hide_prauc: False
+    hide_liftcurve: True
+    hide_rocauc: False
+    hide_cumprecision: True
+    hide_predsvsactual: True
+    hide_residuals: True
+    hide_regvscol: True
+    hide_predindexselector: True
+    hide_predictionsummary: True
+    hide_contributiongraph: False
+    hide_pdp: True
+    hide_interactionsummary: True
+    hide_interactiondependence: True
+    hide_treeindexselector: True
+    hide_treesgraph: True
+    hide_treepathgraph: True
+    no_permutations: True
+    # Extra args 
+    n_jobs: 2
+    bootstrap: https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cerulean/bootstrap.min.css
+explainer_parameters:
+    shap: guess

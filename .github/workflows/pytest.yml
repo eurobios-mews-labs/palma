@@ -29,6 +29,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        pip install 'package[extras]'
+        pip install pytest
         pip install .
         
     - name: Analysing the code with pytest

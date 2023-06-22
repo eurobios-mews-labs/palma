@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "ml-toolbox"
-version = "1.1.11"
+name = "palma"
+version = "2023.2.1"
 description = ""
-authors = ["vlaurent <vlaurent@eurobios.com>"]
+authors = ["Eurobios"]
 readme = "README.md"
 packages = [{ include = "palma" }]
 
@@ -32,8 +32,6 @@ pytest-cov = "^3.0.0"
 pre-commit = "^2"
 coverage = "^6.4"
 PyQt5 = "*"
-pypgsql = {git="https://gitlab.eurobios.com/main/pypgsql.git", branch="master"}
-coverage-badge = "*"
 pylint = "*"
 
 [build-system]

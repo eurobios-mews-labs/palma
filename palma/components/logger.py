@@ -30,23 +30,6 @@ logger.setLevel(logging.NOTSET)
 
 class FileSystemLogger(Logger):
     """
-    FileSystemLogger is a subclass of :class:`~autolm.components.base.Logger`.
-
-    It is a particular component since it is called at the end of both \
-    :class:`~autolm.project.Project`and :class:`~autolm.run.Run`.
-
-    When added to :class:`~autolm.project.Project`, this component \
-    automatically saves generated materials created during the \
-    :class:`autolm.base.project.Project` life-cycle. It is not a  \
-    mandatory component. 
-
-    Two levels of backup are handled by this object:
-        - During the call of :meth:`~autolm.project.Project.build()`
-        - During the call of :meth:`~autolm.project.Project.start_run()`
-
-    If no implementation of :class:`autolm.components.base.Logger` is \
-    specified as a component, the management of the generated materials \
-    is under the user responsibility.
 
     Parameters
     ----------

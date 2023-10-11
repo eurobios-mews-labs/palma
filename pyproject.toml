@@ -40,7 +40,7 @@ pylint = "*"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.poetry.extras]
+[project.optional-dependencies]
 components = ["deepchecks",
              "pandas-profiling",
              "plot-metric",

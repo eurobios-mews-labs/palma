@@ -25,7 +25,7 @@ It therefore contains the following elements
 ## Install notice
 
 ``` powershell
-python -m pip install git+https://gitlab.eurobios.com/vlaurent/ml-toolbox
+python -m pip install git+https://github.com/eurobios-scb/palma.git
 ```
 
 ## Basic usage

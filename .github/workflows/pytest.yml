@@ -30,7 +30,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pytest
-        pip install .
+        pip install 'palma[extra]'
         
     - name: Analysing the code with pytest
       run: |

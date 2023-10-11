@@ -8,22 +8,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and limitations under the License.
 
-import pytest
-from sklearn.ensemble import RandomForestClassifier
-
-from palma import ModelEvaluation
-from palma.components import dashboard
-
-
-@pytest.fixture
-def get_explainer_dashboard(classification_data, classification_project):
-    estimator = RandomForestClassifier()
-
-    model = ModelEvaluation(estimator)
-    model.add(dashboard.ExplainerDashboard())
-    model.fit(classification_project)
-    return model.components["ExplainerDashboard"]
-
 
 def test_component_return_api_with_run(get_explainer_dashboard):
     assert hasattr(get_explainer_dashboard,

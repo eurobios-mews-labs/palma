@@ -24,7 +24,10 @@ from palma import ModelEvaluation
 from palma import Project
 from palma.components import performance
 from palma.components import FileSystemLogger
-
+from palma import Project
+from palma.components import FileSystemLogger
+from sklearn.model_selection import ShuffleSplit
+from palma.components import dashboard
 
 @pytest.fixture(scope='module')
 def classification_data():
@@ -125,3 +128,29 @@ def get_regression_analyser(learning_data_regression):
 def test_get_name_using_pipeline(learning_data_regression):
     project, learn, X, y = learning_data_regression
     assert learn.estimator_name == "LinearRegression"
+
+
+@pytest.fixture(scope='module')
+def build_classification_project(unbuilt_classification_project,
+                                 classification_data):
+    project = Project(problem="classification", project_name="test")
+    X, y = classification_data
+    X = pd.DataFrame(X)
+    y = pd.Series(y)
+    project.add(FileSystemLogger(tempfile.gettempdir()))
+    project.start(
+        X,
+        y,
+        splitter=ShuffleSplit()
+    )
+    return project
+
+
+@pytest.fixture(scope='module')
+def get_explainer_dashboard(classification_project):
+    estimator = RandomForestClassifier()
+
+    model = ModelEvaluation(estimator)
+    model.add(dashboard.ExplainerDashboard())
+    model.fit(classification_project)
+    return model.components["ExplainerDashboard"]

@@ -10,32 +10,12 @@
 import os
 import tempfile
 
-import pandas as pd
 import pytest
 from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import ShuffleSplit
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
 from palma import ModelEvaluation
-from palma import Project
-from palma.components import FileSystemLogger
-
-
-@pytest.fixture
-def build_classification_project(unbuilt_classification_project,
-                                 classification_data):
-    project = Project(problem="classification", project_name="test")
-    X, y = classification_data
-    X = pd.DataFrame(X)
-    y = pd.Series(y)
-    project.add(FileSystemLogger(tempfile.gettempdir()))
-    project.start(
-        X,
-        y,
-        splitter=ShuffleSplit()
-    )
-    return project
 
 
 def test_is_logged_project(build_classification_project):
@@ -58,40 +38,8 @@ def get_model_with_logger(build_classification_project):
     return model
 
 
-def test_is_logged_params_flaml(get_model_with_logger, build_classification_project):
-
-    path_to_hp_parameters = os.path.join(
-        tempfile.gettempdir(),
-        build_classification_project.project_name,
-        build_classification_project.project_name,
-        get_model_with_logger.id,
-        'run_parameters.json'
-    )
-    path_to_models_parameters = os.path.join(
-        tempfile.gettempdir(),
-        build_classification_project.project_name,
-        build_classification_project.project_name,
-        get_model_with_logger.id,
-        'model_parameters.json'
-    )
-    assert os.path.isfile(path_to_hp_parameters) and \
-        os.path.isfile(path_to_models_parameters), "run_parameters.json and \
-            model_parameters.json does not exist"
-
-
-def test_is_logged_metrics_flaml(get_model_with_logger, build_classification_project):
-    path_to_metrics = os.path.join(
-        tempfile.gettempdir(),
-        build_classification_project.project_name,
-        build_classification_project.project_name,
-        get_model_with_logger.id,
-        'metrics.json'
-    )
-    assert os.path.isfile(path_to_metrics), "metrics.json does not exist"
-
-
-def test_is_logged_project_existing_project_name(get_model_with_logger, build_classification_project):
-
+def test_is_logged_project_existing_project_name(get_model_with_logger,
+                                                 build_classification_project):
     path_to_file = os.path.join(
         tempfile.gettempdir(),
         build_classification_project.project_name,

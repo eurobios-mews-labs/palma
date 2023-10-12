@@ -25,7 +25,7 @@ It therefore contains the following elements
 ## Install notice
 
 ``` powershell
-python -m pip install git+https://github.com/eurobios-scb/palma.git
+python -m pip install git+https://github.com/eurobios-mews-labs/palma.git
 ```
 
 ## Basic usage

@@ -245,7 +245,7 @@ class ScoringAnalysis(Analyser):
 
     def plot_roc_curve(
             self,
-            plot_method="beam",
+            plot_method="mean",
             plot_train: bool = False,
             c=colors[0],
             cmap: str = "inferno",
@@ -290,7 +290,8 @@ class ScoringAnalysis(Analyser):
 
         """
         if "roc_curve" not in self.metrics.keys():
-            self._compute_metric("roc_curve", metrics.roc_curve)
+            pass
+        self._compute_metric("roc_curve", metrics.roc_curve)
         self.label = label
         if cv_iter is not None:
             cv = list(np.array(self.indexes)[cv_iter])

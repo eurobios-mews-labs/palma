@@ -13,6 +13,7 @@ from typing import Union, Dict
 
 from palma.base import engine as eng
 from palma.utils.utils import get_hash
+import logging
 
 
 class ModelSelector:
@@ -39,12 +40,15 @@ class ModelSelector:
             engine_parameters=self.__parameters,
 
         )
+
+        logging.disable()
         self.engine_.optimize(
             project.X.iloc[project.validation_strategy.train_index],
             project.y.iloc[project.validation_strategy.train_index],
             splitter=project.validation_strategy.splitter
         )
         self.best_model_ = self.engine_.estimator_
+        logging.basicConfig(level=logging.DEBUG)
 
     @property
     def run_id(self) -> str:

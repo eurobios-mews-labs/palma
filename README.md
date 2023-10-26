@@ -105,5 +105,4 @@ See [here](doc/components.md) for a detailed documentation.
 
 ## Authors
 
-
-<img src="https://www.mews-partners.com/wp-content/uploads/2021/09/Eurobios-Mews-Labs-logo-768x274.png.webp" width="200"/>
+Eurobios Mews Labs

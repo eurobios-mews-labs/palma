@@ -27,7 +27,7 @@ It therefore contains the following elements
 ## Install notice
 
 ``` powershell
-python -m pip install git+https://github.com/eurobios-scb/palma.git
+python -m pip install git+https://github.com/eurobios-mews-labs/palma.git
 ```
 
 ## Basic usage
@@ -107,5 +107,6 @@ See [here](doc/components.md) for a detailed documentation.
 
 ## Authors
 
+Eurobios Mews Labs
 
 <img src="doc/logoEurobiosMewsLabs.png" width="200"/>

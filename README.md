@@ -1,7 +1,9 @@
-# PALMA : Project for Automated Learning MAchine 
+# PALMA 
+### _Project for Automated Learning MAchine_ 
 
-
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/eurobios-mews-labs/palma/graphs/commit-activity)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![pytest](https://github.com/eurobios-scb/palma/actions/workflows/pytest.yml/badge.svg?event=push)](https://docs.pytest.org)
 
 This library aims at providing tools for an automatic machine learning approach.
 As many tools already exist to establish one or the other component of an AutoML
@@ -106,4 +108,4 @@ See [here](doc/components.md) for a detailed documentation.
 ## Authors
 
 
-<img src="https://www.mews-partners.com/wp-content/uploads/2021/09/Eurobios-Mews-Labs-logo-768x274.png.webp" width="200"/>
+<img src="doc/logoEurobiosMewsLabs.png" width="200"/>

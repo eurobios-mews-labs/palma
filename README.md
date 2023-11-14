@@ -1,4 +1,5 @@
-# PALMA 
+<img src=".static/logo.svg" width="200"/>
+
 ### _Project for Automated Learning MAchine_ 
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/eurobios-mews-labs/palma/graphs/commit-activity)

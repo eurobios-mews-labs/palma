@@ -1,4 +1,4 @@
-<img src=".static/logo.svg" width="200"/>
+<img src=".static/logo.png" width="200"/>
 
 ### _Project for Automated Learning MAchine_ 
 
@@ -110,4 +110,4 @@ See [here](doc/components.md) for a detailed documentation.
 
 Eurobios Mews Labs
 
-<img src="doc/logoEurobiosMewsLabs.png" width="200"/>
+<img src=".static/logoEurobiosMewsLabs.png" width="200"/>

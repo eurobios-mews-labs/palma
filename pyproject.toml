@@ -16,7 +16,7 @@ memory-profiler = "^0.60.0"
 matplotlib = "^3.4"
 numpy = "^1"
 scikit-learn = "^1"
-pandas = "^1"
+pandas = ">1"
 shap = "*"
 deepchecks = {version = "^0.8", optional = true}
 pandas-profiling = {version="^3.2", optional=true}

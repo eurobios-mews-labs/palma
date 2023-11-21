@@ -5,6 +5,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/eurobios-mews-labs/palma/graphs/commit-activity)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![pytest](https://github.com/eurobios-scb/palma/actions/workflows/pytest.yml/badge.svg?event=push)](https://docs.pytest.org)
+[![PyPI version](https://badge.fury.io/py/palma.svg)](https://badge.fury.io/py/palma)
 
 This library aims at providing tools for an automatic machine learning approach.
 As many tools already exist to establish one or the other component of an AutoML

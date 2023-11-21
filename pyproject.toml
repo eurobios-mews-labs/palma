@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "palma"
-version = "2023.2.1"
+version = "2023.3.1"
 description = ""
 authors = ["Eurobios"]
 readme = "README.md"
 packages = [{ include = "palma" }]
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.11"
+python = ">=3.9"
 seaborn = "^0.12.0"
 tabulate = "^0.8.10"
 frozendict = "^2.3.4"

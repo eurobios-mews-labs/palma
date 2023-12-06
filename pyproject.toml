@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "palma"
-version = "2023.3.3"
+version = "2023.3.4"
 description = ""
 authors = [{ name = 'Vincent Laurent', email = 'vlaurent@eurobios.com' }]
 readme = "README.md"
@@ -26,8 +26,6 @@ dependencies = [
     "pyaml >12",
 ]
 
-[tool.setuptools.packages.find]
-include = ["palma"]
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.3"

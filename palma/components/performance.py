@@ -194,6 +194,10 @@ class ShapAnalysis(Analyser):
             i_loc += list(i_loc_)
             self.shap_expected_value /= len(self.indexes)
             self.shap_X = pd.concat((self.shap_X, x_processed))
+        self.__change_features_name_to_string()
+
+    def __change_features_name_to_string(self):
+        self.shap_X.columns = [str(c) for c in self.shap_X.columns]
 
     def plot_shap_summary_plot(self):
         import shap

@@ -1,5 +1,7 @@
 name: Pytest
-
+permissions:
+  contents: write
+  
 on:
   push:
     branches:
@@ -36,7 +38,7 @@ jobs:
       run: |
         coverage run -m pytest
         coverage json
-    - name: Coverage Bagdge
+    - name: Coverage Badge
       uses: tj-actions/coverage-badge-py@v1.8
       with:
         output: .static/coverage.svg

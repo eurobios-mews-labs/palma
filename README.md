@@ -111,4 +111,4 @@ See [here](doc/components.md) for a detailed documentation.
 
 Eurobios Mews Labs
 
-<img src=".static/logoEurobiosMewsLabs.png" width="200"/>
+<img src=".static/logoEurobiosMewsLabs.png" width="150"/>

@@ -24,9 +24,12 @@ class ModelEvaluation:
         self.estimator_name = get_estimator_name(estimator)
         self.metrics = {}
 
-    def add(self, component):
+    def add(self, component, name=None):
+        if name is None:
+            name = str(component)
+        # FIXME : raise error when component exists already
         if isinstance(component, Component):
-            self.__components.update({str(component): component})
+            self.__components.update({name: component})
         else:
             raise TypeError(
                 "The added component must be an instance of class Component"

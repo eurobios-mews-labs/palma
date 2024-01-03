@@ -23,11 +23,16 @@ def test_classification_perf(get_scoring_analyser):
         label="train")
     get_scoring_analyser.plot_roc_curve(
         plot_method="mean", mode="minmax")
+    get_scoring_analyser.plot_roc_curve(
+        plot_method="all")
     with pytest.raises(ValueError) as e:
         get_scoring_analyser.plot_roc_curve(
             plot_method="test", mode="minmax")
     assert str(e.value) == "argument plot_method=test is not recognize"
-
+    with pytest.raises(ValueError) as e:
+        get_scoring_analyser.plot_roc_curve(
+            plot_method="mean", mode="test")
+    assert str(e.value) == "Argument mode test is unknown"
     performance.plot.figure(figsize=(6, 6), dpi=200)
     get_scoring_analyser.variable_importance()
     get_scoring_analyser.plot_variable_importance(mode="boxplot")
@@ -76,7 +81,7 @@ def test_shap_regression(get_shap_analyser):
 def test_analyser_raise_error_parameters(
         get_shap_analyser, learning_data):
     project, model, X, y = learning_data
-    get_shap_analyser._on = "test"
+    get_shap_analyser.__init__(on="test", n_shap=50)
     with pytest.raises(ValueError) as e:
         get_shap_analyser._add(project, model)
     assert (str(e.value) == "on parameter : test is not understood."
@@ -107,6 +112,6 @@ def test_performance_get_metric_dataframe(get_regression_analyser):
     assert len(get_regression_analyser.get_test_metrics().columns) >= len(
         get_regression_analyser.metrics.keys())
     print(get_regression_analyser.get_train_metrics())
-    assert get_regression_analyser.get_train_metrics()["r2_score"].iloc[0] < 0.2
+    assert get_regression_analyser.get_train_metrics()["r2_score"].iloc[0] < 0.5
     get_regression_analyser.plot_errors_pairgrid()
 

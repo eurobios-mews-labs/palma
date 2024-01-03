@@ -9,7 +9,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from palma.components.data_checker import DeepCheck
 
-def test_component_return_api_with_run(get_explainer_dashboard):
-    assert hasattr(get_explainer_dashboard,
-                   "__call__"), "api has no attribute __call__"
+
+def test_date_property(classification_project):
+    print(classification_project.X)
+    dc = DeepCheck()
+    dc(classification_project)
+    dc.items_to_log()

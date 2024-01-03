@@ -23,26 +23,6 @@ from sklearn import clone
 from sklearn.pipeline import Pipeline
 
 
-def load(path: str) -> 'Project':
-    """
-    Load an instance of :class:`~base.project.Project`
-
-    Parameters
-    ----------
-    path: str
-        path to load the :class:`~base.project.Project`
-
-    Returns
-    -------
-    project: :class:`~base.project.Project`
-        instance of :class:`~base.project.Project`
-    """
-
-    with open(path, 'rb') as file:
-        project = pickle.load(file)
-    return project
-
-
 class AverageEstimator:
     def __init__(self, estimator_list: list):
         self.estimator_list = estimator_list
@@ -71,24 +51,6 @@ def _clone(estimator):
     except TypeError:
         pass
     return estimator
-
-
-def remove_na(proba: np.ndarray) -> np.ndarray:
-    lines = np.isnan(proba).sum(axis=1) > 0
-    lines = np.where(lines)[0]
-    errors = 0
-    for i in lines:
-        data = proba[i, :]
-        if (data[0, 0] is np.nan) and (data[0, 1] is np.nan):
-            proba[i, :] = [
-                np.nanmean(proba[:, 0]),
-                np.nanmean(proba[:, 1])]
-            errors += 1
-        elif data[0, 0] is np.nan:
-            proba[i, :] = data[0, 1] - 1
-        else:
-            proba[i, :] = data[0, 0] - 1
-    return proba
 
 
 def get_splitting_matrix(X: pd.DataFrame,
@@ -200,37 +162,6 @@ def check_started(message: str, need_build: bool = False) -> Callable:
         return wrapper
 
     return decorator
-
-
-def get_object_summary(project: 'Project') -> pd.DataFrame:
-    """
-    Builds and returns a dataframe containing characteristics of an instance of
-    :class:`~autolm.project.Project` and its potential
-    :class:`~autolm.components.base.Component`
-    """
-
-    characteristics = [
-        ('project_name', project.project_name),
-        ('project_name', project.project_name),
-        ('project_id', project.project_id),
-        ('creation date', project.date),
-        ('problem', project.problem),
-        ('X shape', project.X.shape),
-        ('metrics', str(project.metrics)),
-        ('splitting strategies', str(project.validation_strategy)),
-    ]
-
-    for component_type in project.components:
-        if len(project.components[component_type]):
-            for component in project.components[component_type]:
-                characteristics.append((
-                    component + ' component characteristics',
-                    str(
-                        project.components[component_type][component]
-                    )
-                ))
-
-    return pd.DataFrame(characteristics, columns=["characteristic", "value"])
 
 
 def interpolate_roc(roc_curve_metric: dict[dict[tuple[dict[np.array]]]],

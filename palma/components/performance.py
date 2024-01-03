@@ -13,7 +13,6 @@ import typing
 from abc import ABCMeta
 
 import matplotlib.pyplot as plot
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import shap
@@ -29,27 +28,29 @@ colors_rainbow = [plot.get_cmap("rainbow")(1 - i / 4) for i in range(5)] * 3
 
 
 class Analyser(ModelComponent, metaclass=ABCMeta):
-    _on = ""
     metrics = {}
     _metrics = {}
+
+    def __init__(self, on):
+        self.__on = on
 
     def __call__(self, project: "Project", model: "ModelEvaluation"):
         self._add(project, model)
 
     def _add(self, project, model):
-
-        if self._on == "indexes_train_test":
+        self.add_loger(project)
+        if self.__on == "indexes_train_test":
             self.indexes = project.validation_strategy.indexes_train_test
             self.estimators = model.all_estimators_
             self.predictions = model.predictions_
 
-        elif self._on == "indexes_val":
+        elif self.__on == "indexes_val":
             self.indexes = project.validation_strategy.indexes_val
             self.estimators = model.all_estimators_val_
             self.predictions = model.predictions_val_
         else:
             raise ValueError(
-                f"on parameter : {self._on} is not understood. "
+                f"on parameter : {self.__on} is not understood. "
                 f"The possible values are "
                 f"'indexes_train_test' or 'indexes_val'")
         self.X = project.X
@@ -70,6 +71,9 @@ class Analyser(ModelComponent, metaclass=ABCMeta):
     def compute_metrics(self, metric: dict):
         for name, fun in metric.items():
             self._compute_metric(name, fun)
+        self.logger._log_metrics(
+            {k: str(v) for k, v in self.get_test_metrics().to_dict().items()},
+            path="metrics")
 
     def _compute_metric(self, name: str, fun: typing.Callable):
         """Compute on specific metric and add it to 'metric' attribute"""
@@ -108,7 +112,7 @@ class Analyser(ModelComponent, metaclass=ABCMeta):
 class ShapAnalysis(Analyser):
 
     def __init__(self, on, n_shap, compute_interaction=False):
-        self._on = on
+        super().__init__(on)
         self.n_shap = n_shap
         self.compute_interaction = compute_interaction
 
@@ -206,9 +210,6 @@ class ShapAnalysis(Analyser):
 
 class ScoringAnalysis(Analyser):
     mean_fpr = np.linspace(0, 1, 100)
-
-    def __init__(self, on):
-        self._on = on
 
     def __call__(self, project: "Project", model: "ModelEvaluation"):
         self._add(project, model)
@@ -369,11 +370,9 @@ class ScoringAnalysis(Analyser):
 
 
 class RegressionAnalysis(Analyser):
-    def __init__(self, on):
-        self._on = on
-        self.errors = {}
 
     def compute_predictions_errors(self, fun=None):
+        self.errors = {}
         if fun is None:
             def fun(yt_, yp_):
                 return (yt_ - yp_) ** 2

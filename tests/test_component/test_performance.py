@@ -6,7 +6,8 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and limitations under the License.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 import matplotlib
 from sklearn import metrics
 
@@ -22,6 +23,10 @@ def test_classification_perf(get_scoring_analyser):
         label="train")
     get_scoring_analyser.plot_roc_curve(
         plot_method="mean", mode="minmax")
+    with pytest.raises(ValueError) as e:
+        get_scoring_analyser.plot_roc_curve(
+            plot_method="test", mode="minmax")
+    assert str(e.value) == "argument plot_method=test is not recognize"
 
     performance.plot.figure(figsize=(6, 6), dpi=200)
     get_scoring_analyser.variable_importance()
@@ -37,6 +42,7 @@ def test_raise_value_when_no_threshold(get_scoring_analyser):
 
 
 def test_compute_threshold(get_scoring_analyser):
+    get_scoring_analyser.metrics = {}
     get_scoring_analyser.compute_threshold("fpr", value=0.2)
     get_scoring_analyser.confusion_matrix(in_percentage=True)
 
@@ -45,6 +51,15 @@ def test_compute_threshold(get_scoring_analyser):
 
     get_scoring_analyser.compute_threshold("total_population",
                                            metric=metrics.f1_score)
+    get_scoring_analyser.plot_threshold()
+    with pytest.raises(ValueError) as e:
+        get_scoring_analyser.compute_threshold("test",
+                                               metric=metrics.f1_score)
+    assert str(e.value) == "method test is not recognized"
+
+    with pytest.raises(ValueError) as e:
+        get_scoring_analyser.compute_threshold("optimize_metric")
+    assert str(e.value) == "Argument metric must not be not None"
 
 
 def test_shap_scoring(get_shap_analyser):
@@ -56,6 +71,22 @@ def test_shap_scoring(get_shap_analyser):
 def test_shap_regression(get_shap_analyser):
     get_shap_analyser.plot_shap_summary_plot()
     get_shap_analyser.plot_shap_decision_plot()
+
+
+def test_analyser_raise_error_parameters(
+        get_shap_analyser, learning_data):
+    project, model, X, y = learning_data
+    get_shap_analyser._on = "test"
+    with pytest.raises(ValueError) as e:
+        get_shap_analyser._add(project, model)
+    assert (str(e.value) == "on parameter : test is not understood."
+                            " The possible values are 'indexes_train_test'"
+                            " or 'indexes_val'")
+
+
+def test_shap_regression_compute(get_shap_analyser):
+    get_shap_analyser._compute_shap_values(100, is_regression=True,
+                                           explainer_method="auto")
 
 
 def test_regression_perf(get_regression_analyser):
@@ -76,3 +107,6 @@ def test_performance_get_metric_dataframe(get_regression_analyser):
     assert len(get_regression_analyser.get_test_metrics().columns) >= len(
         get_regression_analyser.metrics.keys())
     print(get_regression_analyser.get_train_metrics())
+    assert get_regression_analyser.get_train_metrics()["r2_score"].iloc[0] < 0.2
+    get_regression_analyser.plot_errors_pairgrid()
+

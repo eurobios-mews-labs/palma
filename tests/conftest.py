@@ -151,6 +151,6 @@ def get_explainer_dashboard(classification_project):
     estimator = RandomForestClassifier()
 
     model = ModelEvaluation(estimator)
-    model.add(dashboard.ExplainerDashboard())
+    model.add(dashboard.ExplainerDashboard(n_sample=100))
     model.fit(classification_project)
     return model.components["ExplainerDashboard"]

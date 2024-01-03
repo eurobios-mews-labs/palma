@@ -105,3 +105,4 @@ def test_average_estimator(learning_data):
     project, learn, X, y = learning_data
     unique = np.unique(learn.avg_estimator_val_.predict(X))
     assert len(unique) <= 10
+    assert max(np.unique(learn.avg_estimator_val_.predict_proba(X)[:, 1])) <= 1

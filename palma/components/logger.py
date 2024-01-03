@@ -114,7 +114,6 @@ class MLFlowLogger(Logger):
     def __init__(self, uri: str) -> None:
         super().__init__(uri)
         mlflow.set_tracking_uri(uri)
-        mlflow.set_registry_uri(uri)
         self.tmp_logger = FileSystemLogger()
 
     def log_project(self, project: 'Project') -> None:
@@ -131,10 +130,12 @@ class MLFlowLogger(Logger):
 
     def _log_artifact(self, artifact: dict, path) -> None:
         self.tmp_logger._log_model(artifact, path)
+
         mlflow.log_artifacts(f"{self.tmp_logger.path_study}/{path}")
 
     def _log_params(self, params: dict) -> None:
         mlflow.log_params({k: str(v)[:100] for k, v in params.items()})
 
     def _log_model(self, model, path):
-        self._log_artifact(model, path)
+        self.tmp_logger._log_model(model, path)
+        mlflow.log_artifacts(f"{self.tmp_logger.path_study}")

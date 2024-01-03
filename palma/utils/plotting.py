@@ -81,8 +81,8 @@ def plot_variable_importance(
     m = np.array(variable_importance.mean(axis=1)).ravel()
     variable_importance["mean"] = m
 
-    variable_importance = variable_importance.sort_values(by="mean",
-                                                          ascending=False)
+    variable_importance = variable_importance.sort_values(
+        by="mean",  ascending=mode == "boxplot")
     variable_importance = variable_importance.drop(columns=["mean"])
 
     if mode == "minmax":
@@ -111,9 +111,7 @@ def plot_variable_importance(
 
     y_outer = np.where(np.abs(lower) > np.abs(upper), lower, upper)
     y_inner = np.where(np.abs(upper) > np.abs(lower), lower, upper)
-    index = variable_importance.index.to_numpy()[::-1]
-    y_outer = y_outer[::-1]
-    y_inner = y_inner[::-1]
+    index = variable_importance.index.to_numpy()
 
     args = dict(edgecolor='white', color=color)
     ax = plot.gca()

@@ -13,6 +13,7 @@ import typing
 from abc import ABCMeta
 
 import matplotlib.pyplot as plot
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import shap
@@ -133,7 +134,8 @@ class ShapAnalysis(Analyser):
         from sklearn import ensemble, linear_model
         from palma.base.model import get_estimator_name
         name = get_estimator_name(self.estimators[0])
-        if name in ensemble.__dict__["__all__"]:
+        if name in [*ensemble.__dict__["__all__"],
+                    "XGBClassifier", "XGBRegressor"]:
             explainer_method = shap.TreeExplainer
         elif name in linear_model.__dict__["__all__"]:
             explainer_method = shap.LinearExplainer
@@ -178,7 +180,7 @@ class ShapAnalysis(Analyser):
                         self.shap_interaction = np.concatenate(
                             (self.shap_interaction, shap_interaction))
 
-            if not is_regression:
+            if not is_regression and 'XGB' not in str(self.estimators[0]):
                 shap_values = shap_values[1]
                 shap_e_value = shap_e_value[1]
 
@@ -192,14 +194,18 @@ class ShapAnalysis(Analyser):
             i_loc += list(i_loc_)
             self.shap_expected_value /= len(self.indexes)
             self.shap_X = pd.concat((self.shap_X, x_processed))
+        self.__change_features_name_to_string()
+
+    def __change_features_name_to_string(self):
+        self.shap_X.columns = [str(c) for c in self.shap_X.columns]
 
     def plot_shap_summary_plot(self):
         import shap
         shap.summary_plot(self.shap_values, self.shap_X)
 
-    def plot_shap_decision_plot(self, features=None, **kwargs):
+    def plot_shap_decision_plot(self, **kwargs):
         shap.decision_plot(self.shap_expected_value, self.shap_values,
-                           features, **kwargs)
+                           self.shap_X, **kwargs)
 
     def plot_shap_interaction(self, feature_x, feature_y):
         shap.dependence_plot(
@@ -354,7 +360,7 @@ class ScoringAnalysis(Analyser):
                     temp[th_] = metric(
                         self.y.iloc[test],
                         self.predictions[i]["test"] > th_)
-                self._metrics[name][i] = dict(test=np.argmax(temp))
+                self._metrics[name][i] = dict(test=pd.Series(temp).idxmax())
                 th = [self._metrics[name][i]["test"] for i in
                       self._metrics[name].keys()]
         else:

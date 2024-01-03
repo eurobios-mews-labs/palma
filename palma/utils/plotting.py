@@ -6,7 +6,8 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and limitations under the License.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 import matplotlib.pyplot as plot
 import numpy as np
@@ -82,7 +83,7 @@ def plot_variable_importance(
     variable_importance["mean"] = m
 
     variable_importance = variable_importance.sort_values(
-        by="mean",  ascending=mode == "boxplot")
+        by="mean", ascending=mode == "boxplot")
     variable_importance = variable_importance.drop(columns=["mean"])
 
     if mode == "minmax":
@@ -127,16 +128,6 @@ def plot_variable_importance(
         plot.legend()
     plot.tight_layout()
     return variable_importance
-
-
-def plot_true_pred(y_true: iter, y_pred: iter, **kwargs):
-    min_t, min_p = np.nanmin(y_true), np.nanmin(y_pred)
-    max_t, max_p = np.nanmax(y_true), np.nanmax(y_pred)
-    plot.scatter(y_true, y_pred, **kwargs)
-    plot.plot(
-        [min(min_p, min_t), max(max_t, max_p)],
-        [min(min_p, min_t), max(max_t, max_p)], ls="--", alpha=0.5, c="k")
-    plot.grid()
 
 
 def roc_plot_bundle(list_fpr, list_tpr,

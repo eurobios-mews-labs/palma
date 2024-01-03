@@ -53,24 +53,6 @@ def _clone(estimator):
     return estimator
 
 
-def remove_na(proba: np.ndarray) -> np.ndarray:
-    lines = np.isnan(proba).sum(axis=1) > 0
-    lines = np.where(lines)[0]
-    errors = 0
-    for i in lines:
-        data = proba[i, :]
-        if (data[0, 0] is np.nan) and (data[0, 1] is np.nan):
-            proba[i, :] = [
-                np.nanmean(proba[:, 0]),
-                np.nanmean(proba[:, 1])]
-            errors += 1
-        elif data[0, 0] is np.nan:
-            proba[i, :] = data[0, 1] - 1
-        else:
-            proba[i, :] = data[0, 0] - 1
-    return proba
-
-
 def get_splitting_matrix(X: pd.DataFrame,
                          iter_cross_validation: iter,
                          expand=False) -> pd.DataFrame:

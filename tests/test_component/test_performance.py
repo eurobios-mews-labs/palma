@@ -23,11 +23,16 @@ def test_classification_perf(get_scoring_analyser):
         label="train")
     get_scoring_analyser.plot_roc_curve(
         plot_method="mean", mode="minmax")
+    get_scoring_analyser.plot_roc_curve(
+        plot_method="all")
     with pytest.raises(ValueError) as e:
         get_scoring_analyser.plot_roc_curve(
             plot_method="test", mode="minmax")
     assert str(e.value) == "argument plot_method=test is not recognize"
-
+    with pytest.raises(ValueError) as e:
+        get_scoring_analyser.plot_roc_curve(
+            plot_method="mean", mode="test")
+    assert str(e.value) == "Argument mode test is unknown"
     performance.plot.figure(figsize=(6, 6), dpi=200)
     get_scoring_analyser.variable_importance()
     get_scoring_analyser.plot_variable_importance(mode="boxplot")

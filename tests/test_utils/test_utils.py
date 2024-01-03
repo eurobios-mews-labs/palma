@@ -11,6 +11,7 @@
 from datetime import datetime
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import pytest
 
@@ -19,7 +20,7 @@ from palma.utils import plotting, utils
 from palma.utils.utils import get_hash, check_started
 
 
-def test_plotting_corr(classification_data):
+def test_plotting_correlation(classification_data):
     plt.ioff()
     plotting.plot_correlation(pd.DataFrame(classification_data[0]).sample(20))
 
@@ -57,7 +58,6 @@ def test_plot_splitting_strategy(learning_data):
                                      project.validation_strategy.indexes_val,
                                      sort_by=X.columns[0], cmap="rainbow")
     utils.check_splitting_strategy(X, project.validation_strategy.indexes_val)
-    utils.remove_na(learn.avg_estimator_val_.predict_proba(X))
 
 
 def test_get_splitting_matrix(learning_data):
@@ -99,3 +99,9 @@ def test_check_build_decorator():
         test_func(project_test)
     assert type(exc_info.value) == AttributeError, "AttributeError \
     should be raised"
+
+
+def test_average_estimator(learning_data):
+    project, learn, X, y = learning_data
+    unique = np.unique(learn.avg_estimator_val_.predict(X))
+    assert len(unique) <= 10

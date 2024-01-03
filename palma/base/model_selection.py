@@ -50,10 +50,9 @@ class ModelSelector:
         self.best_model_ = self.engine_.estimator_
         logging.basicConfig(level=logging.DEBUG)
 
-        if hasattr(project, "_logger"):
-            project._logger._log_model(
-                self.engine_.estimator_,
-                self.__run_id)
+        project._logger._log_model(
+            self.engine_.estimator_,
+            self.__run_id)
 
     @property
     def run_id(self) -> str:

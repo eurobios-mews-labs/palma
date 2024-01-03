@@ -79,7 +79,7 @@ def test_is_logged_project_existing_project_name(build_classification_project):
     assert os.path.isfile(path_to_file), "project.pkl does not exist"
 
 
-def test_log_run(build_classification_project):
+def test_log_model(build_classification_project):
     engine_parameters = dict(time_budget=5, task='regression')
     ms = ModelSelector(
         engine='FlamlOptimizer',
@@ -88,7 +88,8 @@ def test_log_run(build_classification_project):
     ms.start(build_classification_project)
 
 
-def test_is_logged_project_mlflow(classification_data):
+@pytest.fixture()
+def get_mlflow_logger(classification_data):
     project = Project(problem="classification", project_name="test")
     path = tempfile.gettempdir() + "/mlflow"
     X, y = classification_data
@@ -100,3 +101,9 @@ def test_is_logged_project_mlflow(classification_data):
         y,
         splitter=ShuffleSplit()
     )
+    return project._logger
+
+
+def test_is_logged_project_mlflow(get_mlflow_logger):
+    get_mlflow_logger._log_metrics({"a": 1})
+

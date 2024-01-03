@@ -59,17 +59,6 @@ class Analyser(ModelComponent, metaclass=ABCMeta):
         self.preproc_estimators, self.only_estimators = __tmp
         self._is_regression = project.problem == "regression"
 
-    def add(self, X, y, cv_indexes, estimators, predictions):
-        self.X = X
-        self.y = y
-        self.indexes = cv_indexes
-        self.estimators = estimators
-
-        if len(self.indexes) != len(estimators):
-            msg = "Arguments 'cv' and estimators must have the same length"
-            raise AssertionError(msg)
-        self.predictions = predictions
-
     def variable_importance(self):
         feature_importance = pd.DataFrame(columns=self.X.columns)
         for i, _ in enumerate(self.indexes):
@@ -222,8 +211,6 @@ class ScoringAnalysis(Analyser):
         self._on = on
 
     def __call__(self, project: "Project", model: "ModelEvaluation"):
-        if project.problem != "classification":
-            raise ValueError("Problem not recognise")
         self._add(project, model)
 
     def confusion_matrix(self, in_percentage=False):
@@ -296,8 +283,6 @@ class ScoringAnalysis(Analyser):
         -------
 
         """
-        if "roc_curve" not in self.metrics.keys():
-            pass
         self._compute_metric("roc_curve", metrics.roc_curve)
         self.label = label
         if cv_iter is not None:
@@ -351,7 +336,7 @@ class ScoringAnalysis(Analyser):
         elif method == "optimize_metric":
             name = "threshold_criterion"
             if metric is None:
-                raise ValueError("Argument metric must not be not")
+                raise ValueError("Argument metric must not be not None")
             self._metrics[name] = {}
             for i, (train, test) in enumerate(self.indexes):
                 ths = np.unique(self.predictions[i]["test"])

@@ -43,3 +43,5 @@ class ValidationStrategyChecker(ProjectComponent):
         for i, c in enumerate(df.columns):
             if i % 2 == 1:
                 assert sum(df.loc[:, c] & df.loc[:, df.columns[i - 1]]) == 0
+
+

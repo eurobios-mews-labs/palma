@@ -88,7 +88,7 @@ def test_log_project(classification_project):
     path_to_check = os.path.join(
         tempfile.gettempdir(),
         classification_project.project_name,
-        classification_project.project_name,
+        classification_project.study_name,
         "project.pkl"
     )
     assert os.path.exists(path_to_check), f"{path_to_check} doesn't exist"

@@ -10,22 +10,53 @@
 import os
 import tempfile
 
+import pandas as pd
 import pytest
 from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import ShuffleSplit
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
 from palma import ModelEvaluation
+from palma import ModelSelector
+from palma import Project
+from palma.components import FileSystemLogger
+from palma.components import MLFlowLogger
+from palma.components.logger import DummyLogger
+
+
+def test_dummy_logger(classification_data):
+    project = Project(problem="classification", project_name="test")
+    path = tempfile.gettempdir() + "/mlflow"
+    X, y = classification_data
+    X = pd.DataFrame(X)
+    y = pd.Series(y)
+    project.add(DummyLogger(uri=path))
+    project.start(
+        X,
+        y,
+        splitter=ShuffleSplit()
+    )
+    project._logger.log_project("p")
+    project._logger._log_params()
+    project._logger._log_metrics()
+    project._logger._log_model()
 
 
 def test_is_logged_project(build_classification_project):
+    p = build_classification_project
     path_to_file = os.path.join(
         tempfile.gettempdir(),
-        build_classification_project.project_name,
-        build_classification_project.project_name,
+        p.project_name,
+        p.study_name,
         'project.pkl'
     )
     assert os.path.isfile(path_to_file), "project.pkl does not exist"
+
+
+def test_uri_fs_logger():
+    fsl = FileSystemLogger(uri=tempfile.gettempdir())
+    assert fsl.uri == tempfile.gettempdir()
 
 
 @pytest.fixture
@@ -38,12 +69,34 @@ def get_model_with_logger(build_classification_project):
     return model
 
 
-def test_is_logged_project_existing_project_name(get_model_with_logger,
-                                                 build_classification_project):
+def test_is_logged_project_existing_project_name(build_classification_project):
     path_to_file = os.path.join(
         tempfile.gettempdir(),
         build_classification_project.project_name,
-        build_classification_project.project_name,
+        build_classification_project.study_name,
         'project.pkl'
     )
     assert os.path.isfile(path_to_file), "project.pkl does not exist"
+
+
+def test_log_run(build_classification_project):
+    engine_parameters = dict(time_budget=5, task='regression')
+    ms = ModelSelector(
+        engine='FlamlOptimizer',
+        engine_parameters=engine_parameters,
+    )
+    ms.start(build_classification_project)
+
+
+def test_is_logged_project_mlflow(classification_data):
+    project = Project(problem="classification", project_name="test")
+    path = tempfile.gettempdir() + "/mlflow"
+    X, y = classification_data
+    X = pd.DataFrame(X)
+    y = pd.Series(y)
+    project.add(MLFlowLogger(uri=path))
+    project.start(
+        X,
+        y,
+        splitter=ShuffleSplit()
+    )

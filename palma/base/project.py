@@ -27,13 +27,14 @@ class Project(object):
             problem: str
     ) -> None:
 
+        from palma.components.logger import DummyLogger
         self.__project_name = project_name
         self.__study_name = get_random_name()
         self.__date = datetime.now()
         self.__problem = problem
 
         self.__components = {}
-
+        self._logger = DummyLogger('.')
         self.__is_started = False
         self.__component_list = []
 
@@ -43,7 +44,7 @@ class Project(object):
 
         self.__component_list.append(str)
         if isinstance(component, ProjectComponent):
-            self.__components.update({str(component): component})
+            self.__components.update({str(component): component.add_loger(self)})
         elif isinstance(component, Logger) or hasattr(component, "log_project"):
             self._logger = component
 

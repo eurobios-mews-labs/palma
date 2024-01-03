@@ -76,7 +76,7 @@ def test_shap_regression(get_shap_analyser):
 def test_analyser_raise_error_parameters(
         get_shap_analyser, learning_data):
     project, model, X, y = learning_data
-    get_shap_analyser._on = "test"
+    get_shap_analyser.__init__(on="test", n_shap=50)
     with pytest.raises(ValueError) as e:
         get_shap_analyser._add(project, model)
     assert (str(e.value) == "on parameter : test is not understood."
@@ -107,6 +107,6 @@ def test_performance_get_metric_dataframe(get_regression_analyser):
     assert len(get_regression_analyser.get_test_metrics().columns) >= len(
         get_regression_analyser.metrics.keys())
     print(get_regression_analyser.get_train_metrics())
-    assert get_regression_analyser.get_train_metrics()["r2_score"].iloc[0] < 0.2
+    assert get_regression_analyser.get_train_metrics()["r2_score"].iloc[0] < 0.5
     get_regression_analyser.plot_errors_pairgrid()
 

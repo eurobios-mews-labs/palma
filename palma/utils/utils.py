@@ -23,26 +23,6 @@ from sklearn import clone
 from sklearn.pipeline import Pipeline
 
 
-def load(path: str) -> 'Project':
-    """
-    Load an instance of :class:`~base.project.Project`
-
-    Parameters
-    ----------
-    path: str
-        path to load the :class:`~base.project.Project`
-
-    Returns
-    -------
-    project: :class:`~base.project.Project`
-        instance of :class:`~base.project.Project`
-    """
-
-    with open(path, 'rb') as file:
-        project = pickle.load(file)
-    return project
-
-
 class AverageEstimator:
     def __init__(self, estimator_list: list):
         self.estimator_list = estimator_list
@@ -200,37 +180,6 @@ def check_started(message: str, need_build: bool = False) -> Callable:
         return wrapper
 
     return decorator
-
-
-def get_object_summary(project: 'Project') -> pd.DataFrame:
-    """
-    Builds and returns a dataframe containing characteristics of an instance of
-    :class:`~autolm.project.Project` and its potential
-    :class:`~autolm.components.base.Component`
-    """
-
-    characteristics = [
-        ('project_name', project.project_name),
-        ('project_name', project.project_name),
-        ('project_id', project.project_id),
-        ('creation date', project.date),
-        ('problem', project.problem),
-        ('X shape', project.X.shape),
-        ('metrics', str(project.metrics)),
-        ('splitting strategies', str(project.validation_strategy)),
-    ]
-
-    for component_type in project.components:
-        if len(project.components[component_type]):
-            for component in project.components[component_type]:
-                characteristics.append((
-                    component + ' component characteristics',
-                    str(
-                        project.components[component_type][component]
-                    )
-                ))
-
-    return pd.DataFrame(characteristics, columns=["characteristic", "value"])
 
 
 def interpolate_roc(roc_curve_metric: dict[dict[tuple[dict[np.array]]]],

@@ -37,13 +37,14 @@ jobs:
     - name: Analysing the code with pytest
       run: |
         coverage run -m pytest
+        coverage report
         coverage json
     - name: Coverage Badge
       uses: tj-actions/coverage-badge-py@v1.8
       with:
-        output: coverage.svg
+        output: .static/coverage.svg
     - name: Publish coverage report to coverage-badge branch
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         branch: coverage-badge
-        folder: .
+        folder: .static

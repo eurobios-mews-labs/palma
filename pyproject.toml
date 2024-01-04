@@ -32,4 +32,4 @@ dependencies = [
 components = ["deepchecks", "pandas-profiling", "plot-metric",
               "mlflow", "boto3", "explainerdashboard"]
 test = ["pylint", "coverage", "pytest", "pytest-cov", "pytest-cov",
-        "jupyer-notebook", "sphinx", "renku-sphinx-theme", "myst-parser"]
+        "jupyter","notebook", "sphinx", "renku-sphinx-theme", "myst-parser"]

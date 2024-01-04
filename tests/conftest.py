@@ -30,6 +30,7 @@ from palma.components import FileSystemLogger
 from sklearn.model_selection import ShuffleSplit
 from palma.components import dashboard
 
+
 @pytest.fixture(scope='module')
 def classification_data():
     X, y = make_classification()
@@ -70,6 +71,8 @@ def learning_data(classification_project, classification_data):
     learn = ModelEvaluation(estimator)
     learn.fit(classification_project)
     return classification_project, learn, X, y
+
+
 
 
 @pytest.fixture(scope='module')

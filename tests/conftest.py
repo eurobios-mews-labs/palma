@@ -16,19 +16,17 @@ import pytest
 from sklearn import metrics
 from sklearn import model_selection
 from sklearn.datasets import make_classification, make_regression
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import ShuffleSplit
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
 from palma import ModelEvaluation
 from palma import Project
-from palma.components import performance
 from palma.components import FileSystemLogger
-from palma import Project
-from palma.components import FileSystemLogger
-from sklearn.model_selection import ShuffleSplit
 from palma.components import dashboard
+from palma.components import performance
 
 
 @pytest.fixture(scope='module')
@@ -71,8 +69,6 @@ def learning_data(classification_project, classification_data):
     learn = ModelEvaluation(estimator)
     learn.fit(classification_project)
     return classification_project, learn, X, y
-
-
 
 
 @pytest.fixture(scope='module')

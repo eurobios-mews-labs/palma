@@ -63,7 +63,6 @@ class ValidationStrategy(object):
             n_train, n_test = len(X), len(X_test)
             X = pd.concat((X, X_test), axis=0)
             y = pd.concat((y, y_test), axis=0)
-
             self._train_index = np.array(range(n_train))
             self._test_index = np.array(range(n_train, n_train + n_test))
         else:

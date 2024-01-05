@@ -1,87 +1,153 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Components &mdash; palma  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-      <link rel="stylesheet" href="_static/fonts.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<html  lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link sizes="16x16" href="https://secure.example.com/favicon/favicon-16x16.png" rel="icon" type="image/png">
+    <link sizes="32x32" href="https://secure.example.com/favicon/favicon-32x32.png" rel="icon" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="_static/apple-touch-icon-180x180.png" type="image/png">
+      <title>Components</title>
+    
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
+          <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+          <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+      
+      <!-- sphinx script_files -->
         <script src="_static/documentation_options.js?v=5929fcd5"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
-</head>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/js/versionwarning.js?v=d4224a34"></script>
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="_static/theme-vendors.js"></script> -->
+      <script src="_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="next" title="API Reference" href="autoapi/index.html" />
+  <link rel="prev" title="Palma Library" href="index.html" /> 
+  </head>
 
-          
-          
-          <a href="index.html" class="icon icon-home">
-            palma
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Components</a><ul>
-<li><a class="reference internal" href="#adding-components">Adding Components</a></li>
-<li><a class="reference internal" href="#accessing-the-components">Accessing the Components</a></li>
-<li><a class="reference internal" href="#implemented-components">Implemented Components</a></li>
-<li><a class="reference internal" href="#creating-your-own-component">Creating Your Own Component</a></li>
-</ul>
-</li>
-</ul>
-</div>
-        </div>
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="index.html" class="home-link">
+    
+      <span class="site-name">PALMA : project for automated learning machine</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
       </div>
-    </nav>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">palma</a>
-      </nav>
 
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Components</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="_sources/components.rst.txt" rel="nofollow"> View page source</a>
-      </li>
-  </ul>
-  <hr/>
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#authors">Contents</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 current">
+            
+              <a href="#" class="reference internal current">Components</a>
+            
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#adding-components" class="reference internal">Adding Components</a></li>
+                
+                  <li class="toctree-l2"><a href="#accessing-the-components" class="reference internal">Accessing the Components</a></li>
+                
+                  <li class="toctree-l2"><a href="#implemented-components" class="reference internal">Implemented Components</a></li>
+                
+                  <li class="toctree-l2"><a href="#creating-your-own-component" class="reference internal">Creating Your Own Component</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="autoapi/index.html" class="reference internal ">API Reference</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
-  <section id="components">
-<h1>Components<a class="headerlink" href="#components" title="Link to this heading"></a></h1>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+    <li>Components</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="index.html"
+       title="previous chapter">← Palma Library</a>
+  </li>
+  <li class="next">
+    <a href="autoapi/index.html"
+       title="next chapter">API Reference →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <div class="toctree-wrapper compound">
+</div>
+<section id="components">
+<h1>Components<a class="headerlink" href="#components" title="Link to this heading">¶</a></h1>
 <p>In this library, adding components enables the user to enrich their project by adding (optional) analyses. The idea is to quickly incorporate an analysis using the proposed framework.</p>
 <section id="adding-components">
-<h2>Adding Components<a class="headerlink" href="#adding-components" title="Link to this heading"></a></h2>
+<h2>Adding Components<a class="headerlink" href="#adding-components" title="Link to this heading">¶</a></h2>
 <p>To add a component, simply use the method <cite>.add</cite> of <cite>project</cite> or <cite>model</cite>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">tempfile</span>
@@ -102,15 +168,16 @@
 </div>
 </section>
 <section id="accessing-the-components">
-<h2>Accessing the Components<a class="headerlink" href="#accessing-the-components" title="Link to this heading"></a></h2>
+<h2>Accessing the Components<a class="headerlink" href="#accessing-the-components" title="Link to this heading">¶</a></h2>
 <p>To access the components (for instance, those providing analysis methods and plots), do:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">component</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="s2">&quot;Component&quot;</span><span class="p">]</span>
 <span class="n">component</span>
 </pre></div>
 </div>
+<a class="reference internal image-reference" href="_images/component.png"><img alt="_images/component.png" src="_images/component.png" style="width: 500px;" /></a>
 </section>
 <section id="implemented-components">
-<h2>Implemented Components<a class="headerlink" href="#implemented-components" title="Link to this heading"></a></h2>
+<h2>Implemented Components<a class="headerlink" href="#implemented-components" title="Link to this heading">¶</a></h2>
 <p><strong>Associated to `Project`</strong></p>
 <ul class="simple">
 <li><p><cite>FileSystemLogger</cite>: log data in the file system in a location provided in parameters</p></li>
@@ -126,7 +193,7 @@
 </ul>
 </section>
 <section id="creating-your-own-component">
-<h2>Creating Your Own Component<a class="headerlink" href="#creating-your-own-component" title="Link to this heading"></a></h2>
+<h2>Creating Your Own Component<a class="headerlink" href="#creating-your-own-component" title="Link to this heading">¶</a></h2>
 <p>Assume you have a function <cite>fun(X, y, **parameters)</cite> that makes some analysis; then, you can instantiate a component as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">palma.components.base</span> <span class="kn">import</span> <span class="n">ProjectComponent</span>  <span class="c1"># import base class</span>
 
@@ -158,31 +225,27 @@
 </section>
 
 
-           </div>
           </div>
-          <footer>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2024, Eurobios-Mews-Labs.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
-        </div>
-      </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="index.html"
+       title="previous chapter">← Palma Library</a>
+  </li>
+  <li class="next">
+    <a href="autoapi/index.html"
+       title="next chapter">API Reference →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2024, Eurobios-Mews-Labs.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
 </html>

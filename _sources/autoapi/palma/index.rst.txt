@@ -1,0 +1,129 @@
+:py:mod:`palma`
+===============
+
+.. py:module:: palma
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   base/index.rst
+   components/index.rst
+   preprocessing/index.rst
+   utils/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   palma.ModelEvaluation
+   palma.ModelSelector
+   palma.Project
+
+
+
+
+.. py:class:: ModelEvaluation(estimator)
+
+
+   .. py:property:: id
+      :type: str
+
+
+   .. py:property:: logger
+
+
+   .. py:property:: components
+
+
+   .. py:method:: add(component, name=None)
+
+
+   .. py:method:: fit(project: palma.base.project.Project)
+
+
+   .. py:method:: __get_fit_estimators(X, y, indexes)
+
+
+   .. py:method:: __compute_predictions(project, indexes)
+
+
+
+.. py:class:: ModelSelector(engine: Union[str, palma.base.engine.BaseOptimizer], engine_parameters: Dict)
+
+
+   .. py:property:: run_id
+      :type: str
+
+
+   .. py:method:: start(project: Project)
+
+
+
+.. py:class:: Project(project_name: str, problem: str)
+
+
+   Bases: :py:obj:`object`
+
+   .. py:property:: base_index
+      :type: List[int]
+
+
+   .. py:property:: components
+      :type: dict
+
+
+   .. py:property:: date
+      :type: datetime.datetime
+
+
+   .. py:property:: project_id
+      :type: str
+
+
+   .. py:property:: is_started
+      :type: bool
+
+
+   .. py:property:: problem
+      :type: str
+
+
+   .. py:property:: validation_strategy
+      :type: palma.base.splitting_strategy.ValidationStrategy
+
+
+   .. py:property:: project_name
+      :type: str
+
+
+   .. py:property:: study_name
+      :type: str
+
+
+   .. py:property:: X
+      :type: pandas.DataFrame
+
+
+   .. py:property:: y
+      :type: pandas.Series
+
+
+   .. py:method:: add(component: Component) -> None
+
+
+   .. py:method:: start(X: pandas.DataFrame, y: pandas.Series, splitter, X_test=None, y_test=None, groups=None, **kwargs) -> None
+
+
+   .. py:method:: __call_components(object_: Project) -> None
+
+
+

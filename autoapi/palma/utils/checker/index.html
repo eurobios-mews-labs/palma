@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html  lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link sizes="16x16" href="https://secure.example.com/favicon/favicon-16x16.png" rel="icon" type="image/png">
+    <link sizes="32x32" href="https://secure.example.com/favicon/favicon-32x32.png" rel="icon" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../_static/apple-touch-icon-180x180.png" type="image/png">
+      <title>palma.utils.checker</title>
+    
+          <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="../../../../_static/theme.css " type="text/css" />
+          <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+          <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../../_static/js/versionwarning.js?v=d4224a34"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="../../../../_static/theme-vendors.js"></script> -->
+      <script src="../../../../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../../../../genindex.html" />
+  <link rel="search" title="Search" href="../../../../search.html" />
+  <link rel="next" title="palma.utils.names" href="../names/index.html" />
+  <link rel="prev" title="palma.utils" href="../index.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../../../../index.html" class="home-link">
+    
+      <span class="site-name">PALMA : project for automated learning machine</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../../../../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../../index.html#authors">Contents</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../components.html" class="reference internal ">Components</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../index.html" class="reference internal ">API Reference</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+    
+      <li><a href="../../../index.html">API Reference</a> &raquo;</li>
+    
+      <li><a href="../../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma</span></code></a> &raquo;</li>
+    
+      <li><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.utils</span></code></a> &raquo;</li>
+    
+    <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.utils.checker</span></code></li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="../index.html"
+       title="previous chapter">← <code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.utils</span></code></a>
+  </li>
+  <li class="next">
+    <a href="../names/index.html"
+       title="next chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.utils.names</span></code> →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <section id="module-palma.utils.checker">
+<span id="palma-utils-checker"></span><h1><a class="reference internal" href="../../../../palma.utils.html#module-palma.utils.checker" title="palma.utils.checker"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.utils.checker</span></code></a><a class="headerlink" href="#module-palma.utils.checker" title="Link to this heading">¶</a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../palma.utils.html#palma.utils.checker.ProjectPlanChecker" title="palma.utils.checker.ProjectPlanChecker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProjectPlanChecker</span></code></a></p></td>
+<td><p>ProjectPlanChecker is an object that checks the project plan.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#palma.utils.checker._CLASSIFICATION_METRICS" title="palma.utils.checker._CLASSIFICATION_METRICS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_CLASSIFICATION_METRICS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#palma.utils.checker._REGRESSION_METRICS" title="palma.utils.checker._REGRESSION_METRICS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_REGRESSION_METRICS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py data">
+<dt class="sig sig-object py" id="palma.utils.checker._CLASSIFICATION_METRICS">
+<span class="sig-prename descclassname"><span class="pre">palma.utils.checker.</span></span><span class="sig-name descname"><span class="pre">_CLASSIFICATION_METRICS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['accuracy',</span> <span class="pre">'balanced_accuracy',</span> <span class="pre">'top_k_accuracy',</span> <span class="pre">'average_precision',</span> <span class="pre">'neg_brier_score',...</span></em><a class="headerlink" href="#palma.utils.checker._CLASSIFICATION_METRICS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="palma.utils.checker._REGRESSION_METRICS">
+<span class="sig-prename descclassname"><span class="pre">palma.utils.checker.</span></span><span class="sig-name descname"><span class="pre">_REGRESSION_METRICS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['explained_variance',</span> <span class="pre">'r2',</span> <span class="pre">'max_error',</span> <span class="pre">'neg_median_absolute_error',...</span></em><a class="headerlink" href="#palma.utils.checker._REGRESSION_METRICS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="palma.utils.checker.ProjectPlanChecker">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.utils.checker.</span></span><span class="sig-name descname"><span class="pre">ProjectPlanChecker</span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ProjectPlanChecker is an object that checks the project plan.</p>
+<p>At the <code class="xref py py-meth docutils literal notranslate"><span class="pre">build()</span></code> moment, this object     run severals checks in order to see if the project plan is well designed.</p>
+<dl class="simple">
+<dt>Here is an overview of the checks performed by the object:</dt><dd><ul class="simple">
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">_check_arrays()</span></code>        : see whether X and y attribute are compliant with         sklearn standards.</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">_check_project_problem()</span></code>: see if the problem type is correctly         informed by the user.</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">_check_problem_metrics()</span></code>: see if the known metrics are consistent with         the project problem</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.utils.checker.ProjectPlanChecker._check_arrays">
+<span class="sig-name descname"><span class="pre">_check_arrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../palma.html#palma.Project" title="palma.Project"><span class="pre">palma.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker._check_arrays" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.utils.checker.ProjectPlanChecker._check_project_problem">
+<span class="sig-name descname"><span class="pre">_check_project_problem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../palma.html#palma.Project" title="palma.Project"><span class="pre">palma.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker._check_project_problem" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.utils.checker.ProjectPlanChecker.run_checks">
+<span class="sig-name descname"><span class="pre">run_checks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../palma.html#palma.Project" title="palma.Project"><span class="pre">palma.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker.run_checks" title="Link to this definition">¶</a></dt>
+<dd><p>Perform some tests on the project plan</p>
+<p>Several checks are performed in order to check if the
+project plan is consistent:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>checks the project problem</p></li>
+<li><p>checks the metrics provided by the user</p></li>
+<li><p>checks the data provided by the user (scikit learn wrapper)</p></li>
+</ul>
+</div></blockquote>
+<section id="parameters">
+<h4>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h4>
+<dl>
+<dt>project<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></span></dt><dd><p>an Project instance</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="../index.html"
+       title="previous chapter">← <code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.utils</span></code></a>
+  </li>
+  <li class="next">
+    <a href="../names/index.html"
+       title="next chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.utils.names</span></code> →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2024, Eurobios-Mews-Labs.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>

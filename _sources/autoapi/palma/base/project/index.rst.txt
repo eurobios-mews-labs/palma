@@ -1,0 +1,78 @@
+:py:mod:`palma.base.project`
+============================
+
+.. py:module:: palma.base.project
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   palma.base.project.Project
+
+
+
+
+.. py:class:: Project(project_name: str, problem: str)
+
+
+   Bases: :py:obj:`object`
+
+   .. py:property:: base_index
+      :type: List[int]
+
+
+   .. py:property:: components
+      :type: dict
+
+
+   .. py:property:: date
+      :type: datetime.datetime
+
+
+   .. py:property:: project_id
+      :type: str
+
+
+   .. py:property:: is_started
+      :type: bool
+
+
+   .. py:property:: problem
+      :type: str
+
+
+   .. py:property:: validation_strategy
+      :type: palma.base.splitting_strategy.ValidationStrategy
+
+
+   .. py:property:: project_name
+      :type: str
+
+
+   .. py:property:: study_name
+      :type: str
+
+
+   .. py:property:: X
+      :type: pandas.DataFrame
+
+
+   .. py:property:: y
+      :type: pandas.Series
+
+
+   .. py:method:: add(component: Component) -> None
+
+
+   .. py:method:: start(X: pandas.DataFrame, y: pandas.Series, splitter, X_test=None, y_test=None, groups=None, **kwargs) -> None
+
+
+   .. py:method:: __call_components(object_: Project) -> None
+
+
+

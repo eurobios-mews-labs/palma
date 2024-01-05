@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html  lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link sizes="16x16" href="https://secure.example.com/favicon/favicon-16x16.png" rel="icon" type="image/png">
+    <link sizes="32x32" href="https://secure.example.com/favicon/favicon-32x32.png" rel="icon" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../_static/apple-touch-icon-180x180.png" type="image/png">
+      <title>palma.components</title>
+    
+          <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="../../../_static/theme.css " type="text/css" />
+          <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+          <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../../_static/js/versionwarning.js?v=d4224a34"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="../../../_static/theme-vendors.js"></script> -->
+      <script src="../../../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../../../genindex.html" />
+  <link rel="search" title="Search" href="../../../search.html" />
+  <link rel="next" title="palma.components.base" href="base/index.html" />
+  <link rel="prev" title="palma.base.splitting_strategy" href="../base/splitting_strategy/index.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../../../index.html" class="home-link">
+    
+      <span class="site-name">PALMA : project for automated learning machine</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../../../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../index.html#authors">Contents</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../components.html" class="reference internal ">Components</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../index.html" class="reference internal ">API Reference</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+    
+      <li><a href="../../index.html">API Reference</a> &raquo;</li>
+    
+      <li><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma</span></code></a> &raquo;</li>
+    
+    <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.components</span></code></li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="../base/splitting_strategy/index.html"
+       title="previous chapter">← <code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.base.splitting_strategy</span></code></a>
+  </li>
+  <li class="next">
+    <a href="base/index.html"
+       title="next chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.components.base</span></code> →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <section id="module-palma.components">
+<span id="palma-components"></span><h1><a class="reference internal" href="../../../palma.components.html#module-palma.components" title="palma.components"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.components</span></code></a><a class="headerlink" href="#module-palma.components" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="base/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.components.base</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="checker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.components.checker</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.components.dashboard</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_checker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.components.data_checker</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_profiler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.components.data_profiler</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="logger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.components.logger</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="performance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.components.performance</span></code></a></li>
+</ul>
+</div>
+</section>
+<section id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading">¶</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../palma.components.html#palma.components.Component" title="palma.components.Component"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Component</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../palma.components.html#palma.components.FileSystemLogger" title="palma.components.FileSystemLogger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FileSystemLogger</span></code></a></p></td>
+<td><p>Parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../palma.components.html#palma.components.MLFlowLogger" title="palma.components.MLFlowLogger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLFlowLogger</span></code></a></p></td>
+<td><p>Logger is an abstract class that defines a common</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../palma.components.html#palma.components.ProfilerYData" title="palma.components.ProfilerYData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProfilerYData</span></code></a></p></td>
+<td><p>Base Project Component class</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../palma.components.html#palma.components.ExplainerDashboard" title="palma.components.ExplainerDashboard"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplainerDashboard</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../palma.components.html#palma.components.RegressionAnalysis" title="palma.components.RegressionAnalysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RegressionAnalysis</span></code></a></p></td>
+<td><p>Base Model Component class</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../palma.components.html#palma.components.ScoringAnalysis" title="palma.components.ScoringAnalysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScoringAnalysis</span></code></a></p></td>
+<td><p>Base Model Component class</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../palma.components.html#palma.components.ShapAnalysis" title="palma.components.ShapAnalysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShapAnalysis</span></code></a></p></td>
+<td><p>Base Model Component class</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="palma.components.Component">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.</span></span><span class="sig-name descname"><span class="pre">Component</span></span><a class="headerlink" href="#palma.components.Component" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.components.Component.logger">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#palma.components.Component.logger" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.Component.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.Component.__str__" title="Link to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.Component.add_loger">
+<span class="sig-name descname"><span class="pre">add_loger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.Component.add_loger" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="palma.components.FileSystemLogger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.</span></span><span class="sig-name descname"><span class="pre">FileSystemLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">tempfile.gettempdir()</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.FileSystemLogger" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../palma.components.html#palma.components.base.Logger" title="palma.components.base.Logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">palma.components.base.Logger</span></code></a></p>
+<section id="parameters">
+<h4>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>uri<span class="classifier">str</span></dt><dd><p>root path or directory, from which will be saved artifacts and metadata</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.FileSystemLogger.log_project">
+<span class="sig-name descname"><span class="pre">log_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">palma.base.project.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.FileSystemLogger.log_project" title="Link to this definition">¶</a></dt>
+<dd><p>log_project performs the first level of backup as described
+in the object description.</p>
+<p>This method creates the needed folders and saves an instance of         <a class="reference internal" href="../../../palma.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a>.</p>
+<section id="id1">
+<h5>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h5>
+<dl class="simple">
+<dt>project: <a class="reference internal" href="../../../palma.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a></dt><dd><p>an instance of Project</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.FileSystemLogger._log_metrics">
+<span class="sig-name descname"><span class="pre">_log_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.FileSystemLogger._log_metrics" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.FileSystemLogger._log_model">
+<span class="sig-name descname"><span class="pre">_log_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.FileSystemLogger._log_model" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.FileSystemLogger._log_params">
+<span class="sig-name descname"><span class="pre">_log_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.FileSystemLogger._log_params" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="palma.components.MLFlowLogger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.</span></span><span class="sig-name descname"><span class="pre">MLFlowLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.MLFlowLogger" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../palma.components.html#palma.components.base.Logger" title="palma.components.base.Logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">palma.components.base.Logger</span></code></a></p>
+<p>Logger is an abstract class that defines a common
+interface for a set of Logger-subclasses.</p>
+<p>It provides common methods for all possible subclasses, making it
+possible for a user to create a custom subclass compatible  with
+the rest of the components.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.MLFlowLogger.log_project">
+<span class="sig-name descname"><span class="pre">log_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">palma.base.project.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.MLFlowLogger.log_project" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.MLFlowLogger._log_metrics">
+<span class="sig-name descname"><span class="pre">_log_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.MLFlowLogger._log_metrics" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.MLFlowLogger._log_artifact">
+<span class="sig-name descname"><span class="pre">_log_artifact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">artifact</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.MLFlowLogger._log_artifact" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.MLFlowLogger._log_params">
+<span class="sig-name descname"><span class="pre">_log_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.MLFlowLogger._log_params" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.MLFlowLogger._log_model">
+<span class="sig-name descname"><span class="pre">_log_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.MLFlowLogger._log_model" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="palma.components.ProfilerYData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.</span></span><span class="sig-name descname"><span class="pre">ProfilerYData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ProfilerYData" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../palma.components.html#palma.components.base.ProjectComponent" title="palma.components.base.ProjectComponent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">palma.components.base.ProjectComponent</span></code></a></p>
+<p>Base Project Component class</p>
+<p>This object ensures that all subclasses Project component implements a</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ProfilerYData.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">Project</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ProfilerYData.__call__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="palma.components.ExplainerDashboard">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.</span></span><span class="sig-name descname"><span class="pre">ExplainerDashboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dashboard_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">default_config_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_sample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ExplainerDashboard" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../palma.components.html#palma.components.base.Component" title="palma.components.base.Component"><code class="xref py py-obj docutils literal notranslate"><span class="pre">palma.components.base.Component</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ExplainerDashboard.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">Project</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Model</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">explainerdashboard.ExplainerDashboard</span></span></span><a class="headerlink" href="#palma.components.ExplainerDashboard.__call__" title="Link to this definition">¶</a></dt>
+<dd><p>This function returns dashboard instance. This dashboard is to be run
+using its <cite>run</cite> method.</p>
+<section id="examples">
+<h4>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h4>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span> <span class="o">=</span> <span class="n">ExpDash</span><span class="p">(</span><span class="n">dashboard_config</span><span class="o">=</span><span class="s2">&quot;path_to_my_config&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">explainer_dashboard</span> <span class="o">=</span> <span class="n">db</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">explainer_dashboard</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="n">port</span><span class="o">=</span><span class="s2">&quot;8050&quot;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="n">use_waitress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h4>Parameters<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>project: Project</dt><dd><p>Instance of project used to compute explainer.</p>
+</dd>
+<dt>model: Run</dt><dd><p>Current run to use in explainer.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ExplainerDashboard.update_config">
+<span class="sig-name descname"><span class="pre">update_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ExplainerDashboard.update_config" title="Link to this definition">¶</a></dt>
+<dd><p>Update specific parameters from the actual configuration.</p>
+<section id="id3">
+<h4>Parameters<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>dict_value: dict</dt><dd><dl class="simple">
+<dt>explainer_parameters: dict</dt><dd><p>Parameters to be used in see <cite>explainerdashboard.RegressionExplainer</cite>
+or <cite>explainerdashboard.ClassifierExplainer</cite>.</p>
+</dd>
+<dt>dashboard_parameters: dict</dt><dd><p>Parameters use to compose dashboard tab, items or themes
+for <cite>explainerdashboard.ExplainerDashboard</cite>.
+Tabs and component of the dashboard can be hidden, see
+<a class="reference external" href="https://explainerdashboard.readthedocs.io/en/latest/custom.html">customize dashboard section</a>
+for more detail.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+<section id="example">
+<h4>Example<a class="headerlink" href="#example" title="Link to this heading">¶</a></h4>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">update_config</span><span class="p">({</span><span class="s2">&quot;explainer_parameters&quot;</span><span class="p">:{</span><span class="s2">&quot;shap&quot;</span><span class="p">:</span> <span class="s2">&quot;tree&quot;</span><span class="p">}})</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ExplainerDashboard._prepare_dataset">
+<span class="sig-name descname"><span class="pre">_prepare_dataset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.ExplainerDashboard._prepare_dataset" title="Link to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>This function performs the following processing steps :</dt><dd><ul class="simple">
+<li><p>Ensure that column name is str (bug encountered in dashboard)</p></li>
+<li><p>Get code from categories just in case of category data types</p></li>
+<li><p>Sample the data if specified by user</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ExplainerDashboard._get_explainer">
+<span class="sig-name descname"><span class="pre">_get_explainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">Project</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Model</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">explainerdashboard.explainers.BaseExplainer</span></span></span><a class="headerlink" href="#palma.components.ExplainerDashboard._get_explainer" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ExplainerDashboard._get_dashboard">
+<span class="sig-name descname"><span class="pre">_get_dashboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">explainer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">explainerdashboard.explainers.BaseExplainer</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../../palma.components.html#palma.components.ExplainerDashboard" title="palma.components.ExplainerDashboard"><span class="pre">ExplainerDashboard</span></a></span></span><a class="headerlink" href="#palma.components.ExplainerDashboard._get_dashboard" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="palma.components.RegressionAnalysis">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.</span></span><span class="sig-name descname"><span class="pre">RegressionAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.RegressionAnalysis" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Analyser</span></code></p>
+<p>Base Model Component class</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.RegressionAnalysis.compute_predictions_errors">
+<span class="sig-name descname"><span class="pre">compute_predictions_errors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fun</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.RegressionAnalysis.compute_predictions_errors" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.RegressionAnalysis.plot_prediction_versus_real">
+<span class="sig-name descname"><span class="pre">plot_prediction_versus_real</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">colormap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">plot.get_cmap('rainbow')</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.RegressionAnalysis.plot_prediction_versus_real" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.RegressionAnalysis.plot_errors_pairgrid">
+<span class="sig-name descname"><span class="pre">plot_errors_pairgrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fun</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_percentiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">palette</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rocket_r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.RegressionAnalysis.plot_errors_pairgrid" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="palma.components.ScoringAnalysis">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.</span></span><span class="sig-name descname"><span class="pre">ScoringAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ScoringAnalysis" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Analyser</span></code></p>
+<p>Base Model Component class</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.components.ScoringAnalysis.threshold">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">threshold</span></span><a class="headerlink" href="#palma.components.ScoringAnalysis.threshold" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="palma.components.ScoringAnalysis.mean_fpr">
+<span class="sig-name descname"><span class="pre">mean_fpr</span></span><a class="headerlink" href="#palma.components.ScoringAnalysis.mean_fpr" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ScoringAnalysis.confusion_matrix">
+<span class="sig-name descname"><span class="pre">confusion_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_percentage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ScoringAnalysis.confusion_matrix" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ScoringAnalysis.__interpolate_roc">
+<span class="sig-name descname"><span class="pre">__interpolate_roc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ScoringAnalysis.__interpolate_roc" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ScoringAnalysis.plot_roc_curve">
+<span class="sig-name descname"><span class="pre">plot_roc_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_train</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">colors[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'inferno'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'std'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_iter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">iter</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ScoringAnalysis.plot_roc_curve" title="Link to this definition">¶</a></dt>
+<dd><p>Plot the ROC curve.</p>
+<section id="id4">
+<h4>Parameters<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>plot_method<span class="classifier">str,</span></dt><dd><p>Select the type of plot for ROC curve</p>
+<ul class="simple">
+<li><p>“beam” (default) to plot all the curves using shades</p></li>
+<li><p>“all” to plot each ROC curve</p></li>
+<li><p>“mean” plot the mean ROC curve</p></li>
+</ul>
+</dd>
+<dt>plot_train: bool</dt><dd><p>If True the train ROC curves will be plot, default False.</p>
+</dd>
+<dt>c: str</dt><dd><p>Not used only with plot_method=”all”. Set the color of ROC curve</p>
+</dd>
+</dl>
+<p>cmap: str</p>
+<p>cv_iter
+label
+mode
+label_iter
+plot_base: bool,</p>
+<blockquote>
+<div><p>Plot basic ROC curve helper</p>
+</div></blockquote>
+<dl class="simple">
+<dt>kwargs:</dt><dd><p>Deprecated</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h4>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h4>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ScoringAnalysis.compute_threshold">
+<span class="sig-name descname"><span class="pre">compute_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'total_population'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ScoringAnalysis.compute_threshold" title="Link to this definition">¶</a></dt>
+<dd><p>Compute threshold using various heuristics</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ScoringAnalysis.plot_threshold">
+<span class="sig-name descname"><span class="pre">plot_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">plot_kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ScoringAnalysis.plot_threshold" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="palma.components.ShapAnalysis">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.</span></span><span class="sig-name descname"><span class="pre">ShapAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_shap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_interaction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ShapAnalysis" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Analyser</span></code></p>
+<p>Base Model Component class</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ShapAnalysis.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">Project</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../palma.base.html#palma.base.model.ModelEvaluation" title="palma.base.model.ModelEvaluation"><span class="pre">ModelEvaluation</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ShapAnalysis.__call__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ShapAnalysis.__select_explainer">
+<span class="sig-name descname"><span class="pre">__select_explainer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ShapAnalysis.__select_explainer" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ShapAnalysis._compute_shap_values">
+<span class="sig-name descname"><span class="pre">_compute_shap_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_regression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">explainer_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">shap.TreeExplainer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_interaction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ShapAnalysis._compute_shap_values" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ShapAnalysis.__change_features_name_to_string">
+<span class="sig-name descname"><span class="pre">__change_features_name_to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ShapAnalysis.__change_features_name_to_string" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ShapAnalysis.plot_shap_summary_plot">
+<span class="sig-name descname"><span class="pre">plot_shap_summary_plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ShapAnalysis.plot_shap_summary_plot" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ShapAnalysis.plot_shap_decision_plot">
+<span class="sig-name descname"><span class="pre">plot_shap_decision_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ShapAnalysis.plot_shap_decision_plot" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.ShapAnalysis.plot_shap_interaction">
+<span class="sig-name descname"><span class="pre">plot_shap_interaction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.ShapAnalysis.plot_shap_interaction" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="../base/splitting_strategy/index.html"
+       title="previous chapter">← <code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.base.splitting_strategy</span></code></a>
+  </li>
+  <li class="next">
+    <a href="base/index.html"
+       title="next chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.components.base</span></code> →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2024, Eurobios-Mews-Labs.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>

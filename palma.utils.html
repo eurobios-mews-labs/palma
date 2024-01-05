@@ -1,124 +1,134 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>palma.utils package &mdash; palma  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-      <link rel="stylesheet" href="_static/fonts.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+<html  lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link sizes="16x16" href="https://secure.example.com/favicon/favicon-16x16.png" rel="icon" type="image/png">
+    <link sizes="32x32" href="https://secure.example.com/favicon/favicon-32x32.png" rel="icon" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="_static/apple-touch-icon-180x180.png" type="image/png">
+      <title>palma.utils package</title>
+    
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
+          <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+          <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+      
+      <!-- sphinx script_files -->
         <script src="_static/documentation_options.js?v=5929fcd5"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
-</head>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/js/versionwarning.js?v=d4224a34"></script>
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="_static/theme-vendors.js"></script> -->
+      <script src="_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" /> 
+  </head>
 
-          
-          
-          <a href="index.html" class="icon icon-home">
-            palma
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">palma.utils package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-palma.utils.checker">palma.utils.checker module</a><ul>
-<li><a class="reference internal" href="#palma.utils.checker.ProjectPlanChecker"><code class="docutils literal notranslate"><span class="pre">ProjectPlanChecker</span></code></a><ul>
-<li><a class="reference internal" href="#palma.utils.checker.ProjectPlanChecker.run_checks"><code class="docutils literal notranslate"><span class="pre">ProjectPlanChecker.run_checks()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-palma.utils.names">palma.utils.names module</a><ul>
-<li><a class="reference internal" href="#palma.utils.names.get_random_name"><code class="docutils literal notranslate"><span class="pre">get_random_name()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-palma.utils.plotting">palma.utils.plotting module</a><ul>
-<li><a class="reference internal" href="#palma.utils.plotting.plot_correlation"><code class="docutils literal notranslate"><span class="pre">plot_correlation()</span></code></a></li>
-<li><a class="reference internal" href="#palma.utils.plotting.plot_splitting_strategy"><code class="docutils literal notranslate"><span class="pre">plot_splitting_strategy()</span></code></a></li>
-<li><a class="reference internal" href="#palma.utils.plotting.plot_variable_importance"><code class="docutils literal notranslate"><span class="pre">plot_variable_importance()</span></code></a></li>
-<li><a class="reference internal" href="#palma.utils.plotting.roc_plot_base"><code class="docutils literal notranslate"><span class="pre">roc_plot_base()</span></code></a></li>
-<li><a class="reference internal" href="#palma.utils.plotting.roc_plot_bundle"><code class="docutils literal notranslate"><span class="pre">roc_plot_bundle()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-palma.utils.utils">palma.utils.utils module</a><ul>
-<li><a class="reference internal" href="#palma.utils.utils.AverageEstimator"><code class="docutils literal notranslate"><span class="pre">AverageEstimator</span></code></a><ul>
-<li><a class="reference internal" href="#palma.utils.utils.AverageEstimator.predict"><code class="docutils literal notranslate"><span class="pre">AverageEstimator.predict()</span></code></a></li>
-<li><a class="reference internal" href="#palma.utils.utils.AverageEstimator.predict_proba"><code class="docutils literal notranslate"><span class="pre">AverageEstimator.predict_proba()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#palma.utils.utils.check_splitting_strategy"><code class="docutils literal notranslate"><span class="pre">check_splitting_strategy()</span></code></a></li>
-<li><a class="reference internal" href="#palma.utils.utils.check_started"><code class="docutils literal notranslate"><span class="pre">check_started()</span></code></a></li>
-<li><a class="reference internal" href="#palma.utils.utils.get_estimator_name"><code class="docutils literal notranslate"><span class="pre">get_estimator_name()</span></code></a></li>
-<li><a class="reference internal" href="#palma.utils.utils.get_hash"><code class="docutils literal notranslate"><span class="pre">get_hash()</span></code></a></li>
-<li><a class="reference internal" href="#palma.utils.utils.get_splitting_matrix"><code class="docutils literal notranslate"><span class="pre">get_splitting_matrix()</span></code></a></li>
-<li><a class="reference internal" href="#palma.utils.utils.hash_dataframe"><code class="docutils literal notranslate"><span class="pre">hash_dataframe()</span></code></a></li>
-<li><a class="reference internal" href="#palma.utils.utils.interpolate_roc"><code class="docutils literal notranslate"><span class="pre">interpolate_roc()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-palma.utils">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</div>
-        </div>
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="index.html" class="home-link">
+    
+      <span class="site-name">PALMA : project for automated learning machine</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
       </div>
-    </nav>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">palma</a>
-      </nav>
 
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">palma.utils package</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="_sources/palma.utils.rst.txt" rel="nofollow"> View page source</a>
-      </li>
-  </ul>
-  <hr/>
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#authors">Contents</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="components.html" class="reference internal ">Components</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="autoapi/index.html" class="reference internal ">API Reference</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+    <li>palma.utils package</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
   <section id="palma-utils-package">
-<h1>palma.utils package<a class="headerlink" href="#palma-utils-package" title="Link to this heading"></a></h1>
+<h1>palma.utils package<a class="headerlink" href="#palma-utils-package" title="Link to this heading">¶</a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
 <section id="module-palma.utils.checker">
-<span id="palma-utils-checker-module"></span><h2>palma.utils.checker module<a class="headerlink" href="#module-palma.utils.checker" title="Link to this heading"></a></h2>
+<span id="palma-utils-checker-module"></span><h2>palma.utils.checker module<a class="headerlink" href="#module-palma.utils.checker" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="palma.utils.checker.ProjectPlanChecker">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.utils.checker.</span></span><span class="sig-name descname"><span class="pre">ProjectPlanChecker</span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.utils.checker.</span></span><span class="sig-name descname"><span class="pre">ProjectPlanChecker</span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>ProjectPlanChecker is an object that checks the project plan.</p>
 <p>At the <code class="xref py py-meth docutils literal notranslate"><span class="pre">build()</span></code> moment, this object     run severals checks in order to see if the project plan is well designed.</p>
@@ -132,7 +142,7 @@
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.utils.checker.ProjectPlanChecker.run_checks">
-<span class="sig-name descname"><span class="pre">run_checks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker.run_checks" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">run_checks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker.run_checks" title="Link to this definition">¶</a></dt>
 <dd><p>Perform some tests on the project plan</p>
 <p>Several checks are performed in order to check if the
 project plan is consistent:</p>
@@ -144,7 +154,7 @@ project plan is consistent:</p>
 </ul>
 </div></blockquote>
 <section id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h3>
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
 <dl>
 <dt>project<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></span></dt><dd><p>an Project instance</p>
 </dd>
@@ -156,13 +166,13 @@ project plan is consistent:</p>
 
 </section>
 <section id="module-palma.utils.names">
-<span id="palma-utils-names-module"></span><h2>palma.utils.names module<a class="headerlink" href="#module-palma.utils.names" title="Link to this heading"></a></h2>
+<span id="palma-utils-names-module"></span><h2>palma.utils.names module<a class="headerlink" href="#module-palma.utils.names" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="palma.utils.names.get_random_name">
-<span class="sig-prename descclassname"><span class="pre">palma.utils.names.</span></span><span class="sig-name descname"><span class="pre">get_random_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#palma.utils.names.get_random_name" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">palma.utils.names.</span></span><span class="sig-name descname"><span class="pre">get_random_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#palma.utils.names.get_random_name" title="Link to this definition">¶</a></dt>
 <dd><p>get_random_name generates a random name</p>
 <section id="returns">
-<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h3>
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h3>
 <dl class="simple">
 <dt>str</dt><dd><p>random name</p>
 </dd>
@@ -172,63 +182,63 @@ project plan is consistent:</p>
 
 </section>
 <section id="module-palma.utils.plotting">
-<span id="palma-utils-plotting-module"></span><h2>palma.utils.plotting module<a class="headerlink" href="#module-palma.utils.plotting" title="Link to this heading"></a></h2>
+<span id="palma-utils-plotting-module"></span><h2>palma.utils.plotting module<a class="headerlink" href="#module-palma.utils.plotting" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="palma.utils.plotting.plot_correlation">
-<span class="sig-prename descclassname"><span class="pre">palma.utils.plotting.</span></span><span class="sig-name descname"><span class="pre">plot_correlation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'RdBu_r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'spearman'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewidths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.2f'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.plotting.plot_correlation" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">palma.utils.plotting.</span></span><span class="sig-name descname"><span class="pre">plot_correlation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'RdBu_r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'spearman'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewidths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.2f'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.plotting.plot_correlation" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="palma.utils.plotting.plot_splitting_strategy">
-<span class="sig-prename descclassname"><span class="pre">palma.utils.plotting.</span></span><span class="sig-name descname"><span class="pre">plot_splitting_strategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iter_cross_validation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">iter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modulus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.plotting.plot_splitting_strategy" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">palma.utils.plotting.</span></span><span class="sig-name descname"><span class="pre">plot_splitting_strategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iter_cross_validation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">iter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modulus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.plotting.plot_splitting_strategy" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="palma.utils.plotting.plot_variable_importance">
-<span class="sig-prename descclassname"><span class="pre">palma.utils.plotting.</span></span><span class="sig-name descname"><span class="pre">plot_variable_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variable_importance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'minmax'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'darkblue'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'flare'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.plotting.plot_variable_importance" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">palma.utils.plotting.</span></span><span class="sig-name descname"><span class="pre">plot_variable_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variable_importance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'minmax'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'darkblue'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'flare'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.plotting.plot_variable_importance" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="palma.utils.plotting.roc_plot_base">
-<span class="sig-prename descclassname"><span class="pre">palma.utils.plotting.</span></span><span class="sig-name descname"><span class="pre">roc_plot_base</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.plotting.roc_plot_base" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">palma.utils.plotting.</span></span><span class="sig-name descname"><span class="pre">roc_plot_base</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.plotting.roc_plot_base" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="palma.utils.plotting.roc_plot_bundle">
-<span class="sig-prename descclassname"><span class="pre">palma.utils.plotting.</span></span><span class="sig-name descname"><span class="pre">roc_plot_bundle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_fpr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_tpr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_fpr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([0.,</span> <span class="pre">0.01010101,</span> <span class="pre">0.02020202,</span> <span class="pre">0.03030303,</span> <span class="pre">0.04040404,</span> <span class="pre">0.05050505,</span> <span class="pre">0.06060606,</span> <span class="pre">0.07070707,</span> <span class="pre">0.08080808,</span> <span class="pre">0.09090909,</span> <span class="pre">0.1010101,</span> <span class="pre">0.11111111,</span> <span class="pre">0.12121212,</span> <span class="pre">0.13131313,</span> <span class="pre">0.14141414,</span> <span class="pre">0.15151515,</span> <span class="pre">0.16161616,</span> <span class="pre">0.17171717,</span> <span class="pre">0.18181818,</span> <span class="pre">0.19191919,</span> <span class="pre">0.2020202,</span> <span class="pre">0.21212121,</span> <span class="pre">0.22222222,</span> <span class="pre">0.23232323,</span> <span class="pre">0.24242424,</span> <span class="pre">0.25252525,</span> <span class="pre">0.26262626,</span> <span class="pre">0.27272727,</span> <span class="pre">0.28282828,</span> <span class="pre">0.29292929,</span> <span class="pre">0.3030303,</span> <span class="pre">0.31313131,</span> <span class="pre">0.32323232,</span> <span class="pre">0.33333333,</span> <span class="pre">0.34343434,</span> <span class="pre">0.35353535,</span> <span class="pre">0.36363636,</span> <span class="pre">0.37373737,</span> <span class="pre">0.38383838,</span> <span class="pre">0.39393939,</span> <span class="pre">0.4040404,</span> <span class="pre">0.41414141,</span> <span class="pre">0.42424242,</span> <span class="pre">0.43434343,</span> <span class="pre">0.44444444,</span> <span class="pre">0.45454545,</span> <span class="pre">0.46464646,</span> <span class="pre">0.47474747,</span> <span class="pre">0.48484848,</span> <span class="pre">0.49494949,</span> <span class="pre">0.50505051,</span> <span class="pre">0.51515152,</span> <span class="pre">0.52525253,</span> <span class="pre">0.53535354,</span> <span class="pre">0.54545455,</span> <span class="pre">0.55555556,</span> <span class="pre">0.56565657,</span> <span class="pre">0.57575758,</span> <span class="pre">0.58585859,</span> <span class="pre">0.5959596,</span> <span class="pre">0.60606061,</span> <span class="pre">0.61616162,</span> <span class="pre">0.62626263,</span> <span class="pre">0.63636364,</span> <span class="pre">0.64646465,</span> <span class="pre">0.65656566,</span> <span class="pre">0.66666667,</span> <span class="pre">0.67676768,</span> <span class="pre">0.68686869,</span> <span class="pre">0.6969697,</span> <span class="pre">0.70707071,</span> <span class="pre">0.71717172,</span> <span class="pre">0.72727273,</span> <span class="pre">0.73737374,</span> <span class="pre">0.74747475,</span> <span class="pre">0.75757576,</span> <span class="pre">0.76767677,</span> <span class="pre">0.77777778,</span> <span class="pre">0.78787879,</span> <span class="pre">0.7979798,</span> <span class="pre">0.80808081,</span> <span class="pre">0.81818182,</span> <span class="pre">0.82828283,</span> <span class="pre">0.83838384,</span> <span class="pre">0.84848485,</span> <span class="pre">0.85858586,</span> <span class="pre">0.86868687,</span> <span class="pre">0.87878788,</span> <span class="pre">0.88888889,</span> <span class="pre">0.8989899,</span> <span class="pre">0.90909091,</span> <span class="pre">0.91919192,</span> <span class="pre">0.92929293,</span> <span class="pre">0.93939394,</span> <span class="pre">0.94949495,</span> <span class="pre">0.95959596,</span> <span class="pre">0.96969697,</span> <span class="pre">0.97979798,</span> <span class="pre">0.98989899,</span> <span class="pre">1.])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_beam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'inferno'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_mean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'b'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'std'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.plotting.roc_plot_bundle" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">palma.utils.plotting.</span></span><span class="sig-name descname"><span class="pre">roc_plot_bundle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_fpr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_tpr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_fpr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([0.,</span> <span class="pre">0.01010101,</span> <span class="pre">0.02020202,</span> <span class="pre">0.03030303,</span> <span class="pre">0.04040404,</span> <span class="pre">0.05050505,</span> <span class="pre">0.06060606,</span> <span class="pre">0.07070707,</span> <span class="pre">0.08080808,</span> <span class="pre">0.09090909,</span> <span class="pre">0.1010101,</span> <span class="pre">0.11111111,</span> <span class="pre">0.12121212,</span> <span class="pre">0.13131313,</span> <span class="pre">0.14141414,</span> <span class="pre">0.15151515,</span> <span class="pre">0.16161616,</span> <span class="pre">0.17171717,</span> <span class="pre">0.18181818,</span> <span class="pre">0.19191919,</span> <span class="pre">0.2020202,</span> <span class="pre">0.21212121,</span> <span class="pre">0.22222222,</span> <span class="pre">0.23232323,</span> <span class="pre">0.24242424,</span> <span class="pre">0.25252525,</span> <span class="pre">0.26262626,</span> <span class="pre">0.27272727,</span> <span class="pre">0.28282828,</span> <span class="pre">0.29292929,</span> <span class="pre">0.3030303,</span> <span class="pre">0.31313131,</span> <span class="pre">0.32323232,</span> <span class="pre">0.33333333,</span> <span class="pre">0.34343434,</span> <span class="pre">0.35353535,</span> <span class="pre">0.36363636,</span> <span class="pre">0.37373737,</span> <span class="pre">0.38383838,</span> <span class="pre">0.39393939,</span> <span class="pre">0.4040404,</span> <span class="pre">0.41414141,</span> <span class="pre">0.42424242,</span> <span class="pre">0.43434343,</span> <span class="pre">0.44444444,</span> <span class="pre">0.45454545,</span> <span class="pre">0.46464646,</span> <span class="pre">0.47474747,</span> <span class="pre">0.48484848,</span> <span class="pre">0.49494949,</span> <span class="pre">0.50505051,</span> <span class="pre">0.51515152,</span> <span class="pre">0.52525253,</span> <span class="pre">0.53535354,</span> <span class="pre">0.54545455,</span> <span class="pre">0.55555556,</span> <span class="pre">0.56565657,</span> <span class="pre">0.57575758,</span> <span class="pre">0.58585859,</span> <span class="pre">0.5959596,</span> <span class="pre">0.60606061,</span> <span class="pre">0.61616162,</span> <span class="pre">0.62626263,</span> <span class="pre">0.63636364,</span> <span class="pre">0.64646465,</span> <span class="pre">0.65656566,</span> <span class="pre">0.66666667,</span> <span class="pre">0.67676768,</span> <span class="pre">0.68686869,</span> <span class="pre">0.6969697,</span> <span class="pre">0.70707071,</span> <span class="pre">0.71717172,</span> <span class="pre">0.72727273,</span> <span class="pre">0.73737374,</span> <span class="pre">0.74747475,</span> <span class="pre">0.75757576,</span> <span class="pre">0.76767677,</span> <span class="pre">0.77777778,</span> <span class="pre">0.78787879,</span> <span class="pre">0.7979798,</span> <span class="pre">0.80808081,</span> <span class="pre">0.81818182,</span> <span class="pre">0.82828283,</span> <span class="pre">0.83838384,</span> <span class="pre">0.84848485,</span> <span class="pre">0.85858586,</span> <span class="pre">0.86868687,</span> <span class="pre">0.87878788,</span> <span class="pre">0.88888889,</span> <span class="pre">0.8989899,</span> <span class="pre">0.90909091,</span> <span class="pre">0.91919192,</span> <span class="pre">0.92929293,</span> <span class="pre">0.93939394,</span> <span class="pre">0.94949495,</span> <span class="pre">0.95959596,</span> <span class="pre">0.96969697,</span> <span class="pre">0.97979798,</span> <span class="pre">0.98989899,</span> <span class="pre">1.])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_beam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'inferno'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_mean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'b'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'std'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.plotting.roc_plot_bundle" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
 <section id="module-palma.utils.utils">
-<span id="palma-utils-utils-module"></span><h2>palma.utils.utils module<a class="headerlink" href="#module-palma.utils.utils" title="Link to this heading"></a></h2>
+<span id="palma-utils-utils-module"></span><h2>palma.utils.utils module<a class="headerlink" href="#module-palma.utils.utils" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="palma.utils.utils.AverageEstimator">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">AverageEstimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.utils.AverageEstimator" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">AverageEstimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.utils.AverageEstimator" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.utils.utils.AverageEstimator.predict">
-<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">iter</span></span></span><a class="headerlink" href="#palma.utils.utils.AverageEstimator.predict" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">iter</span></span></span><a class="headerlink" href="#palma.utils.utils.AverageEstimator.predict" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.utils.utils.AverageEstimator.predict_proba">
-<span class="sig-name descname"><span class="pre">predict_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">iter</span></span></span><a class="headerlink" href="#palma.utils.utils.AverageEstimator.predict_proba" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">predict_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">iter</span></span></span><a class="headerlink" href="#palma.utils.utils.AverageEstimator.predict_proba" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="palma.utils.utils.check_splitting_strategy">
-<span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">check_splitting_strategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iter_cross_validation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">iter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.utils.check_splitting_strategy" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">check_splitting_strategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iter_cross_validation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">iter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.utils.check_splitting_strategy" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="palma.utils.utils.check_started">
-<span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">check_started</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">need_build</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="headerlink" href="#palma.utils.utils.check_started" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">check_started</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">need_build</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="headerlink" href="#palma.utils.utils.check_started" title="Link to this definition">¶</a></dt>
 <dd><p>check_built is a decorator used for methods that must be called on     built or unbuilt <code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code>.
 If the <code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code> is_built attribute has     not the correct value, an AttributeError is raised with the message passed     as argument.</p>
 <section id="id1">
-<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
 <dl class="simple">
 <dt>message: str</dt><dd><p>Error message</p>
 </dd>
@@ -237,69 +247,57 @@ If the <code class="xref py py-class docutils literal notranslate"><span class="
 </dl>
 </section>
 <section id="id2">
-<h3>Returns<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<h3>Returns<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
 <p>Callable</p>
 </section>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="palma.utils.utils.get_estimator_name">
-<span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">get_estimator_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#palma.utils.utils.get_estimator_name" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">get_estimator_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#palma.utils.utils.get_estimator_name" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="palma.utils.utils.get_hash">
-<span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">get_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#palma.utils.utils.get_hash" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">get_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#palma.utils.utils.get_hash" title="Link to this definition">¶</a></dt>
 <dd><p>Return a hash of parameters</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="palma.utils.utils.get_splitting_matrix">
-<span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">get_splitting_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iter_cross_validation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">iter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#palma.utils.utils.get_splitting_matrix" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">get_splitting_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iter_cross_validation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">iter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#palma.utils.utils.get_splitting_matrix" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="palma.utils.utils.hash_dataframe">
-<span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">hash_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">how</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'whole'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.utils.hash_dataframe" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">hash_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">how</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'whole'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.utils.hash_dataframe" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="palma.utils.utils.interpolate_roc">
-<span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">interpolate_roc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roc_curve_metric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">array</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_fpr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([0.,</span> <span class="pre">0.01010101,</span> <span class="pre">0.02020202,</span> <span class="pre">0.03030303,</span> <span class="pre">0.04040404,</span> <span class="pre">0.05050505,</span> <span class="pre">0.06060606,</span> <span class="pre">0.07070707,</span> <span class="pre">0.08080808,</span> <span class="pre">0.09090909,</span> <span class="pre">0.1010101,</span> <span class="pre">0.11111111,</span> <span class="pre">0.12121212,</span> <span class="pre">0.13131313,</span> <span class="pre">0.14141414,</span> <span class="pre">0.15151515,</span> <span class="pre">0.16161616,</span> <span class="pre">0.17171717,</span> <span class="pre">0.18181818,</span> <span class="pre">0.19191919,</span> <span class="pre">0.2020202,</span> <span class="pre">0.21212121,</span> <span class="pre">0.22222222,</span> <span class="pre">0.23232323,</span> <span class="pre">0.24242424,</span> <span class="pre">0.25252525,</span> <span class="pre">0.26262626,</span> <span class="pre">0.27272727,</span> <span class="pre">0.28282828,</span> <span class="pre">0.29292929,</span> <span class="pre">0.3030303,</span> <span class="pre">0.31313131,</span> <span class="pre">0.32323232,</span> <span class="pre">0.33333333,</span> <span class="pre">0.34343434,</span> <span class="pre">0.35353535,</span> <span class="pre">0.36363636,</span> <span class="pre">0.37373737,</span> <span class="pre">0.38383838,</span> <span class="pre">0.39393939,</span> <span class="pre">0.4040404,</span> <span class="pre">0.41414141,</span> <span class="pre">0.42424242,</span> <span class="pre">0.43434343,</span> <span class="pre">0.44444444,</span> <span class="pre">0.45454545,</span> <span class="pre">0.46464646,</span> <span class="pre">0.47474747,</span> <span class="pre">0.48484848,</span> <span class="pre">0.49494949,</span> <span class="pre">0.50505051,</span> <span class="pre">0.51515152,</span> <span class="pre">0.52525253,</span> <span class="pre">0.53535354,</span> <span class="pre">0.54545455,</span> <span class="pre">0.55555556,</span> <span class="pre">0.56565657,</span> <span class="pre">0.57575758,</span> <span class="pre">0.58585859,</span> <span class="pre">0.5959596,</span> <span class="pre">0.60606061,</span> <span class="pre">0.61616162,</span> <span class="pre">0.62626263,</span> <span class="pre">0.63636364,</span> <span class="pre">0.64646465,</span> <span class="pre">0.65656566,</span> <span class="pre">0.66666667,</span> <span class="pre">0.67676768,</span> <span class="pre">0.68686869,</span> <span class="pre">0.6969697,</span> <span class="pre">0.70707071,</span> <span class="pre">0.71717172,</span> <span class="pre">0.72727273,</span> <span class="pre">0.73737374,</span> <span class="pre">0.74747475,</span> <span class="pre">0.75757576,</span> <span class="pre">0.76767677,</span> <span class="pre">0.77777778,</span> <span class="pre">0.78787879,</span> <span class="pre">0.7979798,</span> <span class="pre">0.80808081,</span> <span class="pre">0.81818182,</span> <span class="pre">0.82828283,</span> <span class="pre">0.83838384,</span> <span class="pre">0.84848485,</span> <span class="pre">0.85858586,</span> <span class="pre">0.86868687,</span> <span class="pre">0.87878788,</span> <span class="pre">0.88888889,</span> <span class="pre">0.8989899,</span> <span class="pre">0.90909091,</span> <span class="pre">0.91919192,</span> <span class="pre">0.92929293,</span> <span class="pre">0.93939394,</span> <span class="pre">0.94949495,</span> <span class="pre">0.95959596,</span> <span class="pre">0.96969697,</span> <span class="pre">0.97979798,</span> <span class="pre">0.98989899,</span> <span class="pre">1.])</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.utils.interpolate_roc" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">interpolate_roc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roc_curve_metric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">array</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_fpr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([0.,</span> <span class="pre">0.01010101,</span> <span class="pre">0.02020202,</span> <span class="pre">0.03030303,</span> <span class="pre">0.04040404,</span> <span class="pre">0.05050505,</span> <span class="pre">0.06060606,</span> <span class="pre">0.07070707,</span> <span class="pre">0.08080808,</span> <span class="pre">0.09090909,</span> <span class="pre">0.1010101,</span> <span class="pre">0.11111111,</span> <span class="pre">0.12121212,</span> <span class="pre">0.13131313,</span> <span class="pre">0.14141414,</span> <span class="pre">0.15151515,</span> <span class="pre">0.16161616,</span> <span class="pre">0.17171717,</span> <span class="pre">0.18181818,</span> <span class="pre">0.19191919,</span> <span class="pre">0.2020202,</span> <span class="pre">0.21212121,</span> <span class="pre">0.22222222,</span> <span class="pre">0.23232323,</span> <span class="pre">0.24242424,</span> <span class="pre">0.25252525,</span> <span class="pre">0.26262626,</span> <span class="pre">0.27272727,</span> <span class="pre">0.28282828,</span> <span class="pre">0.29292929,</span> <span class="pre">0.3030303,</span> <span class="pre">0.31313131,</span> <span class="pre">0.32323232,</span> <span class="pre">0.33333333,</span> <span class="pre">0.34343434,</span> <span class="pre">0.35353535,</span> <span class="pre">0.36363636,</span> <span class="pre">0.37373737,</span> <span class="pre">0.38383838,</span> <span class="pre">0.39393939,</span> <span class="pre">0.4040404,</span> <span class="pre">0.41414141,</span> <span class="pre">0.42424242,</span> <span class="pre">0.43434343,</span> <span class="pre">0.44444444,</span> <span class="pre">0.45454545,</span> <span class="pre">0.46464646,</span> <span class="pre">0.47474747,</span> <span class="pre">0.48484848,</span> <span class="pre">0.49494949,</span> <span class="pre">0.50505051,</span> <span class="pre">0.51515152,</span> <span class="pre">0.52525253,</span> <span class="pre">0.53535354,</span> <span class="pre">0.54545455,</span> <span class="pre">0.55555556,</span> <span class="pre">0.56565657,</span> <span class="pre">0.57575758,</span> <span class="pre">0.58585859,</span> <span class="pre">0.5959596,</span> <span class="pre">0.60606061,</span> <span class="pre">0.61616162,</span> <span class="pre">0.62626263,</span> <span class="pre">0.63636364,</span> <span class="pre">0.64646465,</span> <span class="pre">0.65656566,</span> <span class="pre">0.66666667,</span> <span class="pre">0.67676768,</span> <span class="pre">0.68686869,</span> <span class="pre">0.6969697,</span> <span class="pre">0.70707071,</span> <span class="pre">0.71717172,</span> <span class="pre">0.72727273,</span> <span class="pre">0.73737374,</span> <span class="pre">0.74747475,</span> <span class="pre">0.75757576,</span> <span class="pre">0.76767677,</span> <span class="pre">0.77777778,</span> <span class="pre">0.78787879,</span> <span class="pre">0.7979798,</span> <span class="pre">0.80808081,</span> <span class="pre">0.81818182,</span> <span class="pre">0.82828283,</span> <span class="pre">0.83838384,</span> <span class="pre">0.84848485,</span> <span class="pre">0.85858586,</span> <span class="pre">0.86868687,</span> <span class="pre">0.87878788,</span> <span class="pre">0.88888889,</span> <span class="pre">0.8989899,</span> <span class="pre">0.90909091,</span> <span class="pre">0.91919192,</span> <span class="pre">0.92929293,</span> <span class="pre">0.93939394,</span> <span class="pre">0.94949495,</span> <span class="pre">0.95959596,</span> <span class="pre">0.96969697,</span> <span class="pre">0.97979798,</span> <span class="pre">0.98989899,</span> <span class="pre">1.])</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.utils.interpolate_roc" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
 <section id="module-palma.utils">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-palma.utils" title="Link to this heading"></a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-palma.utils" title="Link to this heading">¶</a></h2>
 </section>
 </section>
 
 
-           </div>
           </div>
-          <footer>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2024, Eurobios-Mews-Labs.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
-        </div>
-      </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2024, Eurobios-Mews-Labs.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
 </html>

@@ -6,13 +6,15 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and limitations under the License.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 from datetime import datetime
 
 from palma.base.project import Project
 from palma.components.base import Component
-from palma.utils.utils import get_hash, AverageEstimator, _clone
+from palma.utils.utils import (get_hash, AverageEstimator, _clone,
+                               get_estimator_name)
 
 
 class ModelEvaluation:
@@ -52,8 +54,7 @@ class ModelEvaluation:
         self.predictions_val_ = self.__compute_predictions(
             project, project.validation_strategy.indexes_val)
 
-        if hasattr(project, "_logger"):
-            self._logger = project._logger
+        self._logger = project._logger
 
         for name, comp in self.__components.items():
             comp(project, self)
@@ -100,14 +101,3 @@ class ModelEvaluation:
     def components(self):
         return self.__components
 
-
-def get_estimator_name(estimator):
-    if hasattr(estimator, "steps"):
-        est = estimator.steps[-1][1]
-    else:
-        est = estimator
-    if hasattr(est, "__name__"):
-        estimator_name = est.__name__
-    else:
-        estimator_name = str(est).split("(")[0]
-    return estimator_name

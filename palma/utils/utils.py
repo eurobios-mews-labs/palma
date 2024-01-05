@@ -6,7 +6,8 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and limitations under the License.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 import hashlib
 import json
@@ -124,6 +125,18 @@ def get_hash(**kwargs) -> str:
             hash_.update(json.dumps(kwargs[key]).encode())
 
     return hash_.hexdigest()
+
+
+def get_estimator_name(estimator) -> str:
+    if hasattr(estimator, "steps"):
+        est = estimator.steps[-1][1]
+    else:
+        est = estimator
+    if hasattr(est, "__name__"):
+        estimator_name = est.__name__
+    else:
+        estimator_name = str(est).split("(")[0]
+    return estimator_name
 
 
 def check_started(message: str, need_build: bool = False) -> Callable:

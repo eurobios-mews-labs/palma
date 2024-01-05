@@ -6,13 +6,15 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and limitations under the License.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 import numpy as np
 import pandas as pd
 import pytest
 from sklearn.datasets import make_classification
 from sklearn.model_selection import ShuffleSplit, GroupKFold
 
+from palma import Project
 from palma.base.splitting_strategy import ValidationStrategy
 
 
@@ -121,7 +123,6 @@ def test_splitter_association():
 
 
 def test_group_splitting_strategy(classification_data):
-    from palma import Project
     project = Project(project_name="test", problem="classification")
     X, y = classification_data
     X = pd.DataFrame(X)
@@ -133,6 +134,23 @@ def test_group_splitting_strategy(classification_data):
         y,
         splitter=GroupKFold(n_splits=n_splits),
         groups=groups
+    )
+    assert len(project.validation_strategy.indexes_val) == n_splits, \
+        "wrong number of split"
+
+
+def test__splitting_strategy(classification_data):
+    project = Project(project_name="test", problem="classification")
+    X, y = classification_data
+    X = pd.DataFrame(X)
+    y = pd.Series(np.ravel(y))
+    n_splits = 5
+    project.start(
+        X,
+        y,
+        X_test=X,
+        y_test=y,
+        splitter=ShuffleSplit(n_splits=n_splits),
     )
     assert len(project.validation_strategy.indexes_val) == n_splits, \
         "wrong number of split"

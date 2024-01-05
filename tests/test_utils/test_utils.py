@@ -6,7 +6,8 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and limitations under the License.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 from datetime import datetime
 
@@ -106,3 +107,19 @@ def test_average_estimator(learning_data):
     unique = np.unique(learn.avg_estimator_val_.predict(X))
     assert len(unique) <= 10
     assert max(np.unique(learn.avg_estimator_val_.predict_proba(X)[:, 1])) <= 1
+
+
+def test_clone_estimator():
+    from xgboost import XGBClassifier
+
+    xgb = XGBClassifier()
+    assert "estimator" == utils._clone("estimator")
+    assert isinstance(xgb, XGBClassifier)
+
+
+def test_name_estimator():
+    from xgboost import XGBClassifier
+    xgb = XGBClassifier()
+    assert "XGBClassifier" == utils.get_estimator_name(xgb)
+    xgb.__name__ = "test"
+    assert "test" == utils.get_estimator_name(xgb)

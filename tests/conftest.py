@@ -6,7 +6,8 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and limitations under the License.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 import tempfile
 
@@ -15,19 +16,18 @@ import pytest
 from sklearn import metrics
 from sklearn import model_selection
 from sklearn.datasets import make_classification, make_regression
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import ShuffleSplit
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
 from palma import ModelEvaluation
 from palma import Project
-from palma.components import performance
 from palma.components import FileSystemLogger
-from palma import Project
-from palma.components import FileSystemLogger
-from sklearn.model_selection import ShuffleSplit
 from palma.components import dashboard
+from palma.components import performance
+
 
 @pytest.fixture(scope='module')
 def classification_data():
@@ -141,7 +141,7 @@ def build_classification_project(unbuilt_classification_project,
     project.start(
         X,
         y,
-        splitter=ShuffleSplit()
+        splitter=ShuffleSplit(n_splits=2)
     )
     return project
 

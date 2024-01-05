@@ -42,6 +42,10 @@ To access the components (for instance, those providing analysis methods and plo
     component = model.components["Component"]
     component
 
+.. image:: ../../.static/component.png
+   :width: 500
+
+
 Implemented Components
 -----------------------
 

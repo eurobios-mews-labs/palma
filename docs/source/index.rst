@@ -50,6 +50,10 @@ The instantiation defines the type of problem, and the `start` method will set u
 Run Hyper-optimization
 ----------------------
 
+.. image:: ../../.static/hyperopt.png
+   :width: 800
+
+
 The hyper-optimization process will look for the best model in a pool of models that tend to perform well on various problems. For this specific task, the FLAML module is used. After hyperparameterization, the metric to track can be computed:
 
 .. code-block:: python

@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Palma Library
-============
+=============
 
 The Palma library aims at providing tools for an automatic machine learning approach. While many tools exist for individual components of AutoML, this library focuses on providing a structured framework rather than implementing a complete service.
 
@@ -92,13 +92,8 @@ Eurobios Mews Labs
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :hidden:
+   :caption: Contents
 
+   components
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-* :ref:`components`

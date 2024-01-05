@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Components &mdash; palma  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/fonts.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            palma
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Components</a><ul>
+<li><a class="reference internal" href="#adding-components">Adding Components</a></li>
+<li><a class="reference internal" href="#accessing-the-components">Accessing the Components</a></li>
+<li><a class="reference internal" href="#implemented-components">Implemented Components</a></li>
+<li><a class="reference internal" href="#creating-your-own-component">Creating Your Own Component</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">palma</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Components</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/components.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="components">
+<h1>Components<a class="headerlink" href="#components" title="Link to this heading"></a></h1>
+<p>In this library, adding components enables the user to enrich their project by adding (optional) analyses. The idea is to quickly incorporate an analysis using the proposed framework.</p>
+<section id="adding-components">
+<h2>Adding Components<a class="headerlink" href="#adding-components" title="Link to this heading"></a></h2>
+<p>To add a component, simply use the method <cite>.add</cite> of <cite>project</cite> or <cite>model</cite>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+
+<span class="kn">from</span> <span class="nn">palma</span> <span class="kn">import</span> <span class="n">Project</span>
+<span class="kn">from</span> <span class="nn">palma</span> <span class="kn">import</span> <span class="n">components</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+<span class="n">splitter</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="s2">&quot;classification&quot;</span><span class="p">,</span> <span class="n">project_name</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
+
+<span class="n">project</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">components</span><span class="o">.</span><span class="n">FileSystemLogger</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">()))</span>  <span class="c1"># Add an empty component</span>
+<span class="n">project</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">splitter</span><span class="o">=</span><span class="n">splitter</span><span class="p">)</span>                           <span class="c1"># Execute the __call__ of all added components</span>
+</pre></div>
+</div>
+</section>
+<section id="accessing-the-components">
+<h2>Accessing the Components<a class="headerlink" href="#accessing-the-components" title="Link to this heading"></a></h2>
+<p>To access the components (for instance, those providing analysis methods and plots), do:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">component</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="s2">&quot;Component&quot;</span><span class="p">]</span>
+<span class="n">component</span>
+</pre></div>
+</div>
+</section>
+<section id="implemented-components">
+<h2>Implemented Components<a class="headerlink" href="#implemented-components" title="Link to this heading"></a></h2>
+<p><strong>Associated to `Project`</strong></p>
+<ul class="simple">
+<li><p><cite>FileSystemLogger</cite>: log data in the file system in a location provided in parameters</p></li>
+<li><p><cite>MLFlowLogger</cite>: log data and project information using MLFlow</p></li>
+<li><p><cite>Profiler</cite>: using Ydata profiling, create a report. Requires logger</p></li>
+<li><p><cite>DeepChecks</cite></p></li>
+</ul>
+<p><strong>Associated to `ModelEvaluation`</strong></p>
+<ul class="simple">
+<li><p><cite>ScoringAnalyser</cite>: analysis tools for a classification problem</p></li>
+<li><p><cite>RegressionAnalyser</cite>: analysis tools for a regression problem</p></li>
+<li><p><cite>ShapAnalyser</cite>: local explanation using SHAP values</p></li>
+</ul>
+</section>
+<section id="creating-your-own-component">
+<h2>Creating Your Own Component<a class="headerlink" href="#creating-your-own-component" title="Link to this heading"></a></h2>
+<p>Assume you have a function <cite>fun(X, y, **parameters)</cite> that makes some analysis; then, you can instantiate a component as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">palma.components.base</span> <span class="kn">import</span> <span class="n">ProjectComponent</span>  <span class="c1"># import base class</span>
+
+<span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">class</span> <span class="nc">MyComponent</span><span class="p">(</span><span class="n">ProjectComponent</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">parameters</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Component properly called&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fun</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">project</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And then use it in the following fashion:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">project</span> <span class="o">=</span> <span class="n">Project</span><span class="p">(</span><span class="n">problem</span><span class="o">=</span><span class="s2">&quot;classification&quot;</span><span class="p">,</span> <span class="n">project_name</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
+<span class="n">project</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MyComponent</span><span class="p">())</span>   <span class="c1"># Add an empty component</span>
+<span class="n">project</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">splitter</span><span class="o">=</span><span class="n">splitter</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you want to create a <cite>ModelEvaluation</cite>’s component, the signature of the <cite>__call__</cite> is slightly different and should use both <cite>project</cite> and <cite>model</cite> objects:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Component properly called&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fun</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">project</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Eurobios-Mews-Labs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -107,10 +107,29 @@ Eurobios Mews Labs
 .. image:: ../../.static/logoEurobiosMewsLabs.png
    :width: 150
 
+
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: Contents
+   :caption: Concepts
+
+   concept
+
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Basic components
+
+   project
+   model.selector
+   model.evaluation
+
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Advanced Usage
 
    components
 

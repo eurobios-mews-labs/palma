@@ -4,14 +4,6 @@ palma.preprocessing package
 Submodules
 ----------
 
-palma.preprocessing.autoencoder module
---------------------------------------
-
-.. automodule:: palma.preprocessing.autoencoder
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 palma.preprocessing.na\_encoder module
 --------------------------------------
 

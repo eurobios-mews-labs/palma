@@ -2,9 +2,9 @@
    sphinx-quickstart on Thu Jan  4 17:25:24 2024.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
+.. image::
+   ../../.static/logo.png
 
-Palma Library
-=============
 .. image:: https://img.shields.io/badge/maintained%3F-yes-green.svg
    :target: https://GitHub.com/eurobios-mews-labs/palma/graphs/commit-activity
 

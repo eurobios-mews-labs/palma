@@ -18,7 +18,7 @@ author = 'Eurobios-Mews-Labs'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = ['sphinx.ext.autodoc', 'myst_parser', "sphinx.ext.coverage",
-              'sphinx.ext.todo', 'sphinx_copybutton', 'sphinx_favicon',
+                  'sphinx.ext.todo', 'sphinx_copybutton', 'sphinx_favicon',
               'autoapi.extension', 'versionwarning.extension', "sphinx-prompt"
               ]
 

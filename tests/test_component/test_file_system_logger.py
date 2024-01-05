@@ -80,7 +80,7 @@ def test_is_logged_project_existing_project_name(build_classification_project):
 
 
 def test_log_model(build_classification_project):
-    engine_parameters = dict(time_budget=5, task='regression')
+    engine_parameters = dict(time_budget=2, task='regression')
     ms = ModelSelector(
         engine='FlamlOptimizer',
         engine_parameters=engine_parameters,

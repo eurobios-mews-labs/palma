@@ -27,10 +27,9 @@ dependencies = [
     "numba",
 ]
 
-[tool.setuptools.packages.find]
-include = ["palma"]
 
 [project.optional-dependencies]
 components = ["deepchecks", "pandas-profiling", "plot-metric",
               "mlflow", "boto3", "explainerdashboard"]
-test = ["pylint", "coverage", "pytest", "pytest-cov", "pytest-cov", "jupyer-notebook"]
+test = ["pylint", "coverage", "pytest", "pytest-cov", "pytest-cov",
+        "jupyter","notebook", "sphinx", "renku-sphinx-theme", "myst-parser"]

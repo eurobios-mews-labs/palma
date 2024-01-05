@@ -211,9 +211,6 @@ class ShapAnalysis(Analyser):
 class ScoringAnalysis(Analyser):
     mean_fpr = np.linspace(0, 1, 100)
 
-    def __call__(self, project: "Project", model: "ModelEvaluation"):
-        self._add(project, model)
-
     def confusion_matrix(self, in_percentage=False):
 
         cv = self.indexes.copy()

@@ -13,28 +13,6 @@ from palma.base.engine import AutoSklearnOptimizer, BaseOptimizer, FlamlOptimize
 
 
 @pytest.fixture
-def get_engine_autosklearn_classification(classification_data):
-    X, y = classification_data
-    engine = AutoSklearnOptimizer(
-        problem="classification",
-        engine_parameters=dict(time_left_for_this_task=10),
-    )
-    engine.optimize(X, y)
-    return engine
-
-
-@pytest.fixture
-def get_engine_autosklearn_regression(regression_data):
-    X, y = regression_data
-    engine = AutoSklearnOptimizer(
-        problem="classification",
-        engine_parameters=dict(time_left_for_this_task=10),
-    )
-    engine.optimize(X, y)
-    return engine
-
-
-@pytest.fixture
 def get_engine_flaml_regression(regression_data):
     X, y = regression_data
     engine = FlamlOptimizer(
@@ -47,7 +25,6 @@ def get_engine_flaml_regression(regression_data):
     engine.optimize(X, y)
     return engine
 
-
 def test_engine_flaml_set_problem():
     engine = FlamlOptimizer(
         problem="regression",
@@ -57,47 +34,6 @@ def test_engine_flaml_set_problem():
             task="unknown"))
     assert engine.engine_parameters["task"] == "regression", \
         "Problem was not correctly set"
-
-
-# def test_engine_classification_optimize(get_engine_autosklearn_classification):
-#     assert hasattr(get_engine_autosklearn_classification, 'optimize'), \
-#         "Optimizer instance should have a optimize attribute"
-#
-#
-# def test_engine_classification_optimizer(get_engine_autosklearn_classification):
-#     assert hasattr(get_engine_autosklearn_classification, 'optimizer'),\
-#         "Optimizer instance should have a optimizer attribute"
-#
-#
-# def test_engine_classification_transformer(
-#         get_engine_autosklearn_classification):
-#     assert hasattr(get_engine_autosklearn_classification, 'transformer_'),\
-#         "Optimizer instance should have a transformer_ attribute"
-#
-#
-# def test_engine_classification_estimator(
-#         get_engine_autosklearn_classification):
-#     assert hasattr(get_engine_autosklearn_classification, 'estimator_'),\
-#         "Optimizer instance should have a estimator_ attribute"
-#
-#
-# def test_autosklearn_optimizer(get_engine_autosklearn_classification):
-#     from autosklearn.classification import AutoSklearnClassifier
-#     assert isinstance(
-#         get_engine_autosklearn_classification.optimizer,
-#         AutoSklearnClassifier
-#     ), 'Optimizer should be an instance of AutoSklearnClassifier'
-#
-#
-# def test_engine_classification_unknown_problem(regression_data):
-#     engine = AutoSklearnOptimizer(
-#         problem="unknown",
-#         engine_parameters=dict(time_left_for_this_task=10),
-#     )
-#     with pytest.raises(ValueError) as exc_info:
-#         engine.optimize(regression_data.X_train, regression_data.y_train)
-#     assert type(exc_info.value) == ValueError, "Unknown problem name"
-
 
 @pytest.fixture()
 def get_dummy_engine():

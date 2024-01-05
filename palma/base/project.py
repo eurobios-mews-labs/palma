@@ -6,7 +6,8 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and limitations under the License.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 from datetime import datetime
 from hashlib import blake2b
@@ -75,13 +76,9 @@ class Project(object):
                 pd.concat([self.__X, self.__y], axis=1)
             ).values, digest_size=5
         ).hexdigest()
-
         self.__call_components(self)
-
         self.__is_started = True
-
-        if hasattr(self, "_logger"):
-            self._logger.log_project(self)
+        self._logger.log_project(self)
 
     def __call_components(self, object_: "Project") -> None:
         for _, component in self.components.items():

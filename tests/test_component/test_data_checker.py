@@ -14,6 +14,8 @@ from palma.components.data_checker import DeepCheck
 
 def test_date_property(classification_project):
     print(classification_project.X)
-    dc = DeepCheck()
+    dc = DeepCheck(dataset_parameters={"label": classification_project.y.name})
     dc(classification_project)
     dc.items_to_log()
+
+    print(dc)

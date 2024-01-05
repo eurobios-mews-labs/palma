@@ -33,4 +33,4 @@ components = ["deepchecks", "pandas-profiling", "plot-metric",
               "mlflow", "boto3", "explainerdashboard"]
 test = ["pylint", "coverage", "pytest", "pytest-cov", "pytest-cov",
         "jupyter","notebook"]
-doc = ["sphinx", "phinx-press-theme", "myst-parser", "sphinx-copybutton"]
+doc = ["sphinx", "sphinx-press-theme", "myst-parser", "sphinx-copybutton"]

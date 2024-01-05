@@ -5,6 +5,17 @@
 
 Palma Library
 =============
+.. image:: https://img.shields.io/badge/maintained%3F-yes-green.svg
+   :target: https://GitHub.com/eurobios-mews-labs/palma/graphs/commit-activity
+
+.. image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
+   :target: https://github.com/pre-commit/pre-commit
+
+.. image:: https://github.com/eurobios-scb/palma/actions/workflows/pytest.yml/badge.svg?event=push
+   :target: https://docs.pytest.org
+
+.. image:: https://badge.fury.io/py/palma.svg
+   :target: https://badge.fury.io/py/palma
 
 The Palma library aims at providing tools for an automatic machine learning approach. While many tools exist for individual components of AutoML, this library focuses on providing a structured framework rather than implementing a complete service.
 

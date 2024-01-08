@@ -34,4 +34,5 @@ components = ["deepchecks", "pandas-profiling", "plot-metric",
 test = ["pylint", "coverage", "pytest", "pytest-cov", "pytest-cov",
         "jupyter","notebook"]
 doc = ["sphinx", "sphinx-press-theme", "myst-parser", "sphinx-copybutton", "sphinx-favicon",
-       "sphinx-autoapi", "sphinx-version-warning", "sphinx-prompt"]
+       "sphinx-autoapi", "sphinx-version-warning", "sphinx-prompt",
+       "numpydoc"]

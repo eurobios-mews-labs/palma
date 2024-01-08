@@ -27,15 +27,18 @@ It therefore contains the following elements
 2. A collection of [components](doc/components.md) that can be added to enrich
    analysis
 
-## Install notice
-
+Install it with 
 ``` powershell
 python -m pip install palma
 ```
 
+## Documentation 
+
+Access the [**full documentation here**](https://eurobios-mews-labs.github.io/palma/).
+
 ## Basic usage
 
-### Start your project
+1. Start your project
 
 To start using the library, use the project class
 
@@ -71,7 +74,7 @@ splitter = model_selection.ShuffleSplit(n_splits=5, random_state=42)
 
 - Training data `X` and target `y`
 
-### Run hyper-optimisation
+2.  Run hyper-optimisation
 
 The hyper-optimisation process will look for the best model in pool of models
 that tend to perform well on various problem.
@@ -87,7 +90,7 @@ ms.start(project)
 print(ms.best_model_)
 ```
 
-### Tailoring and analysing your estimator
+3. Tailoring and analysing your estimator
 
 
 ```python
@@ -102,11 +105,16 @@ model.fit(project)
 model = ModelEvaluation(estimator=ms.best_model_)
 model.fit(project)
 ```
+## Contributing
 
-### Manage components
+You are very welcome to contribute to the project, by requesting features,
+pointing out new tools that can be added as component, by identifying issues and creating new features. 
+Development guidelines will be detailed in near future.
 
-You can add component to enrich the project.
-See [here](doc/components.md) for a detailed documentation.
+* Fork the repository
+* Clone your forked repository ```git clone https://github.com/$USER/palma.git```
+* Test using pytest ````pip install pytest; pytest tests/````
+* Submit you work with a pull request.
 
 ## Authors
 

@@ -10,7 +10,7 @@ import sys
 sys.path.insert(0, os.path.abspath('../'))
 sys.path.insert(0, os.path.abspath('.'))
 
-project = 'PALMA : project for automated learning machine'
+project = 'palma'
 copyright = '2024, Eurobios-Mews-Labs'
 author = 'Eurobios-Mews-Labs'
 
@@ -19,7 +19,8 @@ author = 'Eurobios-Mews-Labs'
 
 extensions = ['sphinx.ext.autodoc', 'myst_parser', "sphinx.ext.coverage",
                   'sphinx.ext.todo', 'sphinx_copybutton', 'sphinx_favicon',
-              'autoapi.extension', 'versionwarning.extension', "sphinx-prompt"
+              'autoapi.extension', 'versionwarning.extension', "sphinx-prompt",
+                'sphinx.ext.coverage', 'numpydoc'
               ]
 
 templates_path = ['_templates']

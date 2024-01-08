@@ -37,12 +37,35 @@
     <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="../../../../index.html" class="home-link">
     
-      <span class="site-name">PALMA : project for automated learning machine</span>
+      <span class="site-name">palma</span>
     
   </router-link>
 
   <div class="links">
     <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
 
 
 
@@ -57,6 +80,29 @@
           
           <navlinks>
             
+
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
 
 
 
@@ -76,7 +122,61 @@
   
     <div class="sidebar-group">
       <p class="caption">
-        <span class="caption-text"><a href="../../../../index.html#authors">Contents</a></span>
+        <span class="caption-text"><a href="../../../../index.html#authors">Concepts</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../concept.html" class="reference internal ">The main concepts</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../../index.html#authors">Basic components</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../project.html" class="reference internal ">Project</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../model.selector.html" class="reference internal ">Model selector</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../model.evaluation.html" class="reference internal ">Model evaluation</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../../index.html#authors">Advanced Usage</a></span>
       </p>
       <ul class="">
         
@@ -144,7 +244,7 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../../../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Project</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Represents a machine learning project with various components</p></td>
 </tr>
 </tbody>
 </table>
@@ -152,6 +252,42 @@
 <dt class="sig sig-object py" id="palma.base.project.Project">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.base.project.</span></span><span class="sig-name descname"><span class="pre">Project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.base.project.Project" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents a machine learning project with various components
+and logging capabilities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>project_name (str): The name of the project.</strong></dt><dd></dd>
+<dt><strong>problem (str): The description of the machine learning problem.</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>base_index (List[int]): List of base indices for the project.</strong></dt><dd></dd>
+<dt><strong>components (dict): Dictionary containing project components.</strong></dt><dd></dd>
+<dt><strong>date (datetime): The date and time when the project was created.</strong></dt><dd></dd>
+<dt><strong>project_id (str): Unique identifier for the project.</strong></dt><dd></dd>
+<dt><strong>is_started (bool): Indicates whether the project has been started.</strong></dt><dd></dd>
+<dt><strong>problem (str): Description of the machine learning problem.</strong></dt><dd></dd>
+<dt><strong>validation_strategy (ValidationStrategy): The validation strategy used in the project.</strong></dt><dd></dd>
+<dt><strong>project_name (str): The name of the project.</strong></dt><dd></dd>
+<dt><strong>study_name (str): The randomly generated study name.</strong></dt><dd></dd>
+<dt><strong>X (pd.DataFrame): The feature data for the project.</strong></dt><dd></dd>
+<dt><strong>y (pd.Series): The target variable for the project.</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>add(component: Component) -&gt; None: Adds a component to the project.</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>start(X: pd.DataFrame, y: pd.Series, splitter, X_test=None, y_test=None, groups=None, **kwargs) -&gt; None:</strong></p></td>
+<td><p>Starts the project with the specified data and validation strategy.</p></td>
+</tr>
+</tbody>
+</table>
 <dl class="py property">
 <dt class="sig sig-object py" id="palma.base.project.Project.base_index">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base_index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#palma.base.project.Project.base_index" title="Link to this definition">¶</a></dt>

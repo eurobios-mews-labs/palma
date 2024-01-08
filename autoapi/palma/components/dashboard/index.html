@@ -37,12 +37,35 @@
     <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="../../../../index.html" class="home-link">
     
-      <span class="site-name">PALMA : project for automated learning machine</span>
+      <span class="site-name">palma</span>
     
   </router-link>
 
   <div class="links">
     <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
 
 
 
@@ -57,6 +80,29 @@
           
           <navlinks>
             
+
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
 
 
 
@@ -76,7 +122,61 @@
   
     <div class="sidebar-group">
       <p class="caption">
-        <span class="caption-text"><a href="../../../../index.html#authors">Contents</a></span>
+        <span class="caption-text"><a href="../../../../index.html#authors">Concepts</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../concept.html" class="reference internal ">The main concepts</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../../index.html#authors">Basic components</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../project.html" class="reference internal ">Project</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../model.selector.html" class="reference internal ">Model selector</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../model.evaluation.html" class="reference internal ">Model evaluation</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../../index.html#authors">Advanced Usage</a></span>
       </p>
       <ul class="">
         
@@ -172,34 +272,33 @@
 <span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">Project</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Model</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">explainerdashboard.ExplainerDashboard</span></span></span><a class="headerlink" href="#palma.components.dashboard.ExplainerDashboard.__call__" title="Link to this definition">¶</a></dt>
 <dd><p>This function returns dashboard instance. This dashboard is to be run
 using its <cite>run</cite> method.</p>
-<section id="examples">
-<h4>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h4>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>project: Project</strong></dt><dd><p>Instance of project used to compute explainer.</p>
+</dd>
+<dt><strong>model: Run</strong></dt><dd><p>Current run to use in explainer.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span> <span class="o">=</span> <span class="n">ExpDash</span><span class="p">(</span><span class="n">dashboard_config</span><span class="o">=</span><span class="s2">&quot;path_to_my_config&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">explainer_dashboard</span> <span class="o">=</span> <span class="n">db</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">explainer_dashboard</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
 <span class="gp">&gt;&gt;&gt; </span>   <span class="n">port</span><span class="o">=</span><span class="s2">&quot;8050&quot;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="n">use_waitress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="parameters">
-<h4>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h4>
-<dl class="simple">
-<dt>project: Project</dt><dd><p>Instance of project used to compute explainer.</p>
-</dd>
-<dt>model: Run</dt><dd><p>Current run to use in explainer.</p>
-</dd>
-</dl>
-</section>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.dashboard.ExplainerDashboard.update_config">
 <span class="sig-name descname"><span class="pre">update_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.dashboard.ExplainerDashboard.update_config" title="Link to this definition">¶</a></dt>
 <dd><p>Update specific parameters from the actual configuration.</p>
-<section id="id1">
-<h4>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
-<dl class="simple">
-<dt>dict_value: dict</dt><dd><dl class="simple">
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dict_value: dict</strong></dt><dd><dl class="simple">
 <dt>explainer_parameters: dict</dt><dd><p>Parameters to be used in see <cite>explainerdashboard.RegressionExplainer</cite>
 or <cite>explainerdashboard.ClassifierExplainer</cite>.</p>
 </dd>
@@ -212,13 +311,8 @@ for more detail.</p>
 </dl>
 </dd>
 </dl>
-</section>
-<section id="example">
-<h4>Example<a class="headerlink" href="#example" title="Link to this heading">¶</a></h4>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">update_config</span><span class="p">({</span><span class="s2">&quot;explainer_parameters&quot;</span><span class="p">:{</span><span class="s2">&quot;shap&quot;</span><span class="p">:</span> <span class="s2">&quot;tree&quot;</span><span class="p">}})</span>
-</pre></div>
-</div>
-</section>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">

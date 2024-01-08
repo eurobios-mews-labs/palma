@@ -36,12 +36,35 @@
     <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="../../../../index.html" class="home-link">
     
-      <span class="site-name">PALMA : project for automated learning machine</span>
+      <span class="site-name">palma</span>
     
   </router-link>
 
   <div class="links">
     <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
 
 
 
@@ -56,6 +79,29 @@
           
           <navlinks>
             
+
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
 
 
 
@@ -75,7 +121,61 @@
   
     <div class="sidebar-group">
       <p class="caption">
-        <span class="caption-text"><a href="../../../../index.html#authors">Contents</a></span>
+        <span class="caption-text"><a href="../../../../index.html#authors">Concepts</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../concept.html" class="reference internal ">The main concepts</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../../index.html#authors">Basic components</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../project.html" class="reference internal ">Project</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../model.selector.html" class="reference internal ">Model selector</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../model.evaluation.html" class="reference internal ">Model evaluation</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../../index.html#authors">Advanced Usage</a></span>
       </p>
       <ul class="">
         
@@ -231,19 +331,21 @@
 <span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">check_started</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">need_build</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="headerlink" href="#palma.utils.utils.check_started" title="Link to this definition">¶</a></dt>
 <dd><p>check_built is a decorator used for methods that must be called on     built or unbuilt <code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code>.
 If the <code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code> is_built attribute has     not the correct value, an AttributeError is raised with the message passed     as argument.</p>
-<section id="parameters">
-<h4>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h4>
-<dl class="simple">
-<dt>message: str</dt><dd><p>Error message</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>message: str</strong></dt><dd><p>Error message</p>
 </dd>
-<dt>need_build: bool</dt><dd><p>Expected value for <code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code> is_built         attribute</p>
+<dt><strong>need_build: bool</strong></dt><dd><p>Expected value for <code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code> is_built         attribute</p>
 </dd>
 </dl>
-</section>
-<section id="returns">
-<h4>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h4>
-<p>Callable</p>
-</section>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Callable</dt><dd></dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">

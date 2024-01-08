@@ -35,12 +35,35 @@
     <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="index.html" class="home-link">
     
-      <span class="site-name">PALMA : project for automated learning machine</span>
+      <span class="site-name">palma</span>
     
   </router-link>
 
   <div class="links">
     <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link ">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
 
 
 
@@ -55,6 +78,29 @@
           
           <navlinks>
             
+
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link ">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
 
 
 
@@ -74,7 +120,61 @@
   
     <div class="sidebar-group">
       <p class="caption">
-        <span class="caption-text"><a href="index.html#authors">Contents</a></span>
+        <span class="caption-text"><a href="index.html#authors">Concepts</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="concept.html" class="reference internal ">The main concepts</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#authors">Basic components</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="project.html" class="reference internal ">Project</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="model.selector.html" class="reference internal ">Model selector</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="model.evaluation.html" class="reference internal ">Model evaluation</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#authors">Advanced Usage</a></span>
       </p>
       <ul class="">
         
@@ -140,6 +240,14 @@
 </ul>
 </dd>
 </dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#palma.utils.checker.ProjectPlanChecker.run_checks" title="palma.utils.checker.ProjectPlanChecker.run_checks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_checks</span></code></a>(project)</p></td>
+<td><p>Perform some tests on the project plan</p></td>
+</tr>
+</tbody>
+</table>
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.utils.checker.ProjectPlanChecker.run_checks">
 <span class="sig-name descname"><span class="pre">run_checks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker.run_checks" title="Link to this definition">¶</a></dt>
@@ -153,13 +261,14 @@ project plan is consistent:</p>
 <li><p>checks the data provided by the user (scikit learn wrapper)</p></li>
 </ul>
 </div></blockquote>
-<section id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
-<dl>
-<dt>project<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></span></dt><dd><p>an Project instance</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>project</strong><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></span></dt><dd><p>an Project instance</p>
 </dd>
 </dl>
-</section>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -171,13 +280,14 @@ project plan is consistent:</p>
 <dt class="sig sig-object py" id="palma.utils.names.get_random_name">
 <span class="sig-prename descclassname"><span class="pre">palma.utils.names.</span></span><span class="sig-name descname"><span class="pre">get_random_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#palma.utils.names.get_random_name" title="Link to this definition">¶</a></dt>
 <dd><p>get_random_name generates a random name</p>
-<section id="returns">
-<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h3>
-<dl class="simple">
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
 <dt>str</dt><dd><p>random name</p>
 </dd>
 </dl>
-</section>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -215,6 +325,17 @@ project plan is consistent:</p>
 <dt class="sig sig-object py" id="palma.utils.utils.AverageEstimator">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">AverageEstimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.utils.AverageEstimator" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>predict</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>predict_proba</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.utils.utils.AverageEstimator.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">iter</span></span></span><a class="headerlink" href="#palma.utils.utils.AverageEstimator.predict" title="Link to this definition">¶</a></dt>
@@ -237,19 +358,21 @@ project plan is consistent:</p>
 <span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">check_started</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">need_build</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="headerlink" href="#palma.utils.utils.check_started" title="Link to this definition">¶</a></dt>
 <dd><p>check_built is a decorator used for methods that must be called on     built or unbuilt <code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code>.
 If the <code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code> is_built attribute has     not the correct value, an AttributeError is raised with the message passed     as argument.</p>
-<section id="id1">
-<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
-<dl class="simple">
-<dt>message: str</dt><dd><p>Error message</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>message: str</strong></dt><dd><p>Error message</p>
 </dd>
-<dt>need_build: bool</dt><dd><p>Expected value for <code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code> is_built         attribute</p>
+<dt><strong>need_build: bool</strong></dt><dd><p>Expected value for <code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code> is_built         attribute</p>
 </dd>
 </dl>
-</section>
-<section id="id2">
-<h3>Returns<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
-<p>Callable</p>
-</section>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Callable</dt><dd></dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">

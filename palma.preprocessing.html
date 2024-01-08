@@ -35,12 +35,35 @@
     <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="index.html" class="home-link">
     
-      <span class="site-name">PALMA : project for automated learning machine</span>
+      <span class="site-name">palma</span>
     
   </router-link>
 
   <div class="links">
     <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link ">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
 
 
 
@@ -55,6 +78,29 @@
           
           <navlinks>
             
+
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link ">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
 
 
 
@@ -74,7 +120,61 @@
   
     <div class="sidebar-group">
       <p class="caption">
-        <span class="caption-text"><a href="index.html#authors">Contents</a></span>
+        <span class="caption-text"><a href="index.html#authors">Concepts</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="concept.html" class="reference internal ">The main concepts</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#authors">Basic components</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="project.html" class="reference internal ">Project</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="model.selector.html" class="reference internal ">Model selector</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="model.evaluation.html" class="reference internal ">Model evaluation</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#authors">Advanced Usage</a></span>
       </p>
       <ul class="">
         
@@ -124,9 +224,6 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
-<section id="palma-preprocessing-autoencoder-module">
-<h2>palma.preprocessing.autoencoder module<a class="headerlink" href="#palma-preprocessing-autoencoder-module" title="Link to this heading">¶</a></h2>
-</section>
 <section id="module-palma.preprocessing.na_encoder">
 <span id="palma-preprocessing-na-encoder-module"></span><h2>palma.preprocessing.na_encoder module<a class="headerlink" href="#module-palma.preprocessing.na_encoder" title="Link to this heading">¶</a></h2>
 <dl class="py class">
@@ -135,59 +232,81 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Encodes missing values for both numerical and categorical features.</p>
 <p>Several strategies are possible in each case.</p>
-<section id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
-<dl class="simple">
-<dt>numerical_strategy<span class="classifier">str or float or int. default = “mean”</span></dt><dd><p>The strategy to encode NA for numerical features.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>numerical_strategy</strong><span class="classifier">str or float or int. default = “mean”</span></dt><dd><p>The strategy to encode NA for numerical features.
 Available strategies = “mean”, “median”,
 “most_frequent” or a float/int value</p>
 </dd>
-<dt>categorical_strategy<span class="classifier">str, default = ‘&lt;NULL&gt;’</span></dt><dd><p>The strategy to encode NA for categorical features.
+<dt><strong>categorical_strategy</strong><span class="classifier">str, default = ‘&lt;NULL&gt;’</span></dt><dd><p>The strategy to encode NA for categorical features.
 Available strategies = a string or “most_frequent”</p>
 </dd>
 </dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#palma.preprocessing.na_encoder.NA_encoder.fit" title="palma.preprocessing.na_encoder.NA_encoder.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(df_train[, y_train])</p></td>
+<td><p>Fits NA Encoder.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#palma.preprocessing.na_encoder.NA_encoder.fit_transform" title="palma.preprocessing.na_encoder.NA_encoder.fit_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_transform</span></code></a>(df_train[, y_train])</p></td>
+<td><p>Fits NA Encoder and transforms the dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#palma.preprocessing.na_encoder.NA_encoder.get_params" title="palma.preprocessing.na_encoder.NA_encoder.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>([deep])</p></td>
+<td><p>Get parameters of a NA_encoder object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#palma.preprocessing.na_encoder.NA_encoder.set_params" title="palma.preprocessing.na_encoder.NA_encoder.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(**params)</p></td>
+<td><p>Set parameters for a NA_encoder object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#palma.preprocessing.na_encoder.NA_encoder.transform" title="palma.preprocessing.na_encoder.NA_encoder.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a>(df)</p></td>
+<td><p>Transform the dataset.</p></td>
+</tr>
+</tbody>
+</table>
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.preprocessing.na_encoder.NA_encoder.fit">
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.preprocessing.na_encoder.NA_encoder.fit" title="Link to this definition">¶</a></dt>
 <dd><p>Fits NA Encoder.</p>
-<section id="id1">
-<h4>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
-<dl class="simple">
-<dt>df_train<span class="classifier">pandas dataframe of shape = (n_train, n_features)</span></dt><dd><p>The train dataset with numerical and categorical features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df_train</strong><span class="classifier">pandas dataframe of shape = (n_train, n_features)</span></dt><dd><p>The train dataset with numerical and categorical features.</p>
 </dd>
-<dt>y_train<span class="classifier">pandas series of shape = (n_train, ), default = None</span></dt><dd><p>The target for classification or regression tasks.</p>
+<dt><strong>y_train</strong><span class="classifier">pandas series of shape = (n_train, ), default = None</span></dt><dd><p>The target for classification or regression tasks.</p>
 </dd>
 </dl>
-</section>
-<section id="returns">
-<h4>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h4>
-<dl class="simple">
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
 <dt>object</dt><dd><p>self</p>
 </dd>
 </dl>
-</section>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.preprocessing.na_encoder.NA_encoder.fit_transform">
 <span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.preprocessing.na_encoder.NA_encoder.fit_transform" title="Link to this definition">¶</a></dt>
 <dd><p>Fits NA Encoder and transforms the dataset.</p>
-<section id="id2">
-<h4>Parameters<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
-<dl class="simple">
-<dt>df_train<span class="classifier">pandas.Dataframe of shape = (n_train, n_features)</span></dt><dd><p>The train dataset with numerical and categorical features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df_train</strong><span class="classifier">pandas.Dataframe of shape = (n_train, n_features)</span></dt><dd><p>The train dataset with numerical and categorical features.</p>
 </dd>
-<dt>y_train<span class="classifier">pandas.Series of shape = (n_train, ), default = None</span></dt><dd><p>The target for classification or regression tasks.</p>
+<dt><strong>y_train</strong><span class="classifier">pandas.Series of shape = (n_train, ), default = None</span></dt><dd><p>The target for classification or regression tasks.</p>
 </dd>
 </dl>
-</section>
-<section id="id3">
-<h4>Returns<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
-<dl class="simple">
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
 <dt>pandas.Dataframe of shape = (n_train, n_features)</dt><dd><p>The train dataset with no missing values.</p>
 </dd>
 </dl>
-</section>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -201,38 +320,38 @@ Available strategies = a string or “most_frequent”</p>
 <span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.preprocessing.na_encoder.NA_encoder.set_params" title="Link to this definition">¶</a></dt>
 <dd><p>Set parameters for a NA_encoder object.</p>
 <p>Set numerical strategy and categorical strategy.</p>
-<section id="id4">
-<h4>Parameters<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
-<dl class="simple">
-<dt>numerical_strategy<span class="classifier">str or float or int. default = “mean”</span></dt><dd><p>The strategy to encode NA for numerical features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>numerical_strategy</strong><span class="classifier">str or float or int. default = “mean”</span></dt><dd><p>The strategy to encode NA for numerical features.</p>
 </dd>
-<dt>categorical_strategy<span class="classifier">str, default = ‘&lt;NULL&gt;’</span></dt><dd><p>The strategy to encode NA for categorical features.</p>
+<dt><strong>categorical_strategy</strong><span class="classifier">str, default = ‘&lt;NULL&gt;’</span></dt><dd><p>The strategy to encode NA for categorical features.</p>
 </dd>
 </dl>
-</section>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.preprocessing.na_encoder.NA_encoder.transform">
 <span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.preprocessing.na_encoder.NA_encoder.transform" title="Link to this definition">¶</a></dt>
 <dd><p>Transform the dataset.</p>
-<section id="id5">
-<h4>Parameters<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
-<dl class="simple">
-<dt>df<span class="classifier">pandas.Dataframe of shape = (n, n_features)</span></dt><dd><p>The dataset with numerical and categorical features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>df</strong><span class="classifier">pandas.Dataframe of shape = (n, n_features)</span></dt><dd><p>The dataset with numerical and categorical features.</p>
 </dd>
 </dl>
-</section>
-<section id="id6">
-<h4>Returns<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
-<dl class="simple">
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
 <dt>pandas.Dataframe of shape = (n, n_features)</dt><dd><p>The dataset with no missing values.</p>
 </dd>
 </dl>
-</section>
+</dd>
+</dl>
 </dd></dl>
 
-</section>
 </dd></dl>
 
 </section>
@@ -242,6 +361,54 @@ Available strategies = a string or “most_frequent”</p>
 <dt class="sig sig-object py" id="palma.preprocessing.pca.PCA">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.preprocessing.pca.</span></span><span class="sig-name descname"><span class="pre">PCA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pc'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.preprocessing.pca.PCA" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>nb_component</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>get_correlation</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>get_individual_contributions</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>get_variables_contributions</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>plot_circle_corr</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>plot_correlation_matrix</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>plot_cumulated_variance</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>plot_eigen_values</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>plot_factorial_plan</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>plot_var_cp</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>plot_variance_bar</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>set_nb_components</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>transform</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.preprocessing.pca.PCA.get_correlation">
 <span class="sig-name descname"><span class="pre">get_correlation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_components</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#palma.preprocessing.pca.PCA.get_correlation" title="Link to this definition">¶</a></dt>

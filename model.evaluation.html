@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html  lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link sizes="16x16" href="https://secure.example.com/favicon/favicon-16x16.png" rel="icon" type="image/png">
+    <link sizes="32x32" href="https://secure.example.com/favicon/favicon-32x32.png" rel="icon" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="_static/apple-touch-icon-180x180.png" type="image/png">
+      <title>Model evaluation</title>
+    
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
+          <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+          <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/js/versionwarning.js?v=d4224a34"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="_static/theme-vendors.js"></script> -->
+      <script src="_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="next" title="Components" href="components.html" />
+  <link rel="prev" title="Model selector" href="model.selector.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="index.html" class="home-link">
+    
+      <span class="site-name">palma</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link  router-link-active">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link  router-link-active">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#authors">Concepts</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="concept.html" class="reference internal ">The main concepts</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#authors">Basic components</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="project.html" class="reference internal ">Project</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="model.selector.html" class="reference internal ">Model selector</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current">
+            
+              <a href="#" class="reference internal current">Model evaluation</a>
+            
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#model-fitting" class="reference internal">Model fitting</a></li>
+                
+                  <li class="toctree-l2"><a href="#model-analysis" class="reference internal">Model analysis</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#authors">Advanced Usage</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="components.html" class="reference internal ">Components</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="autoapi/index.html" class="reference internal ">API Reference</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+    <li>Model evaluation</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="model.selector.html"
+       title="previous chapter">← Model selector</a>
+  </li>
+  <li class="next">
+    <a href="components.html"
+       title="next chapter">Components →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <section id="model-evaluation">
+<h1>Model evaluation<a class="headerlink" href="#model-evaluation" title="Link to this heading">¶</a></h1>
+<section id="model-fitting">
+<h2>Model fitting<a class="headerlink" href="#model-fitting" title="Link to this heading">¶</a></h2>
+<p>This module fits any scikit-learn estimator on the train, validation and test
+index specified on the project.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">palma</span> <span class="kn">import</span> <span class="n">ModelEvaluation</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="c1"># Use your own estimator</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ModelEvaluation</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">RandomForestClassifier</span><span class="p">())</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
+
+<span class="c1"># Get the optimized estimator</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ModelEvaluation</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">ms</span><span class="o">.</span><span class="n">best_model_</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The ModelEvaluation exposes several objects such as <code class="code docutils literal notranslate"><span class="pre">all_estimators_val_</span></code>
+the list of all estimators fit on cross validation index.</p>
+</section>
+<section id="model-analysis">
+<h2>Model analysis<a class="headerlink" href="#model-analysis" title="Link to this heading">¶</a></h2>
+<p>To evaluate the performance of a model, you have to had analysis component first.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">palma</span> <span class="kn">import</span> <span class="n">ModelEvaluation</span>
+<span class="kn">from</span> <span class="nn">palma.components</span> <span class="kn">import</span> <span class="n">ScoringAnalysis</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="c1"># Use your own estimator</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ModelEvaluation</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">RandomForestClassifier</span><span class="p">())</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ScoringAnalysis</span><span class="p">())</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="model.selector.html"
+       title="previous chapter">← Model selector</a>
+  </li>
+  <li class="next">
+    <a href="components.html"
+       title="next chapter">Components →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2024, Eurobios-Mews-Labs.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>

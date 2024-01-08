@@ -37,12 +37,35 @@
     <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="../../../../index.html" class="home-link">
     
-      <span class="site-name">PALMA : project for automated learning machine</span>
+      <span class="site-name">palma</span>
     
   </router-link>
 
   <div class="links">
     <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
 
 
 
@@ -57,6 +80,29 @@
           
           <navlinks>
             
+
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
 
 
 
@@ -76,7 +122,61 @@
   
     <div class="sidebar-group">
       <p class="caption">
-        <span class="caption-text"><a href="../../../../index.html#authors">Contents</a></span>
+        <span class="caption-text"><a href="../../../../index.html#authors">Concepts</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../concept.html" class="reference internal ">The main concepts</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../../index.html#authors">Basic components</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../project.html" class="reference internal ">Project</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../model.selector.html" class="reference internal ">Model selector</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../model.evaluation.html" class="reference internal ">Model evaluation</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../../index.html#authors">Advanced Usage</a></span>
       </p>
       <ul class="">
         
@@ -144,7 +244,7 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../../../../palma.base.html#palma.base.splitting_strategy.ValidationStrategy" title="palma.base.splitting_strategy.ValidationStrategy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValidationStrategy</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Validation strategy for a machine learning project.</p></td>
 </tr>
 </tbody>
 </table>
@@ -175,6 +275,32 @@
 <dt class="sig sig-object py" id="palma.base.splitting_strategy.ValidationStrategy">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.base.splitting_strategy.</span></span><span class="sig-name descname"><span class="pre">ValidationStrategy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">splitter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">sklearn.model_selection._split.BaseShuffleSplit</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">sklearn.model_selection._split.BaseCrossValidator</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.base.splitting_strategy.ValidationStrategy" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Validation strategy for a machine learning project.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>- splitter (Union[BaseShuffleSplit, BaseCrossValidator, List[tuple], List[str]]): The data splitting strategy.</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>- test_index (np.ndarray): Index array for the test set.</strong></dt><dd></dd>
+<dt><strong>- train_index (np.ndarray): Index array for the training set.</strong></dt><dd></dd>
+<dt><strong>- indexes_val (list): List of indexes for validation sets.</strong></dt><dd></dd>
+<dt><strong>- indexes_train_test (list): List containing tuples of training and test indexes.</strong></dt><dd></dd>
+<dt><strong>- id: Unique identifier for the validation strategy.</strong></dt><dd></dd>
+<dt><strong>- splitter: The data splitting strategy.</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>- __call__(X: pd.DataFrame, y: pd.Series, X_test: pd.DataFrame = None, y_test: pd.Series = None, groups=None, **kwargs):</strong></p></td>
+<td><p>Applies the validation strategy to the provided data.</p></td>
+</tr>
+</tbody>
+</table>
 <dl class="py property">
 <dt class="sig sig-object py" id="palma.base.splitting_strategy.ValidationStrategy.test_index">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">test_index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#palma.base.splitting_strategy.ValidationStrategy.test_index" title="Link to this definition">¶</a></dt>
@@ -208,7 +334,8 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.base.splitting_strategy.ValidationStrategy.__call__">
 <span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_test</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.DataFrame</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_test</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.Series</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.base.splitting_strategy.ValidationStrategy.__call__" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Apply the validation strategy to the provided data.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.base.splitting_strategy.ValidationStrategy.__correct_nested">

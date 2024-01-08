@@ -37,12 +37,35 @@
     <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="../../../../index.html" class="home-link">
     
-      <span class="site-name">PALMA : project for automated learning machine</span>
+      <span class="site-name">palma</span>
     
   </router-link>
 
   <div class="links">
     <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
 
 
 
@@ -57,6 +80,29 @@
           
           <navlinks>
             
+
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
 
 
 
@@ -76,7 +122,61 @@
   
     <div class="sidebar-group">
       <p class="caption">
-        <span class="caption-text"><a href="../../../../index.html#authors">Contents</a></span>
+        <span class="caption-text"><a href="../../../../index.html#authors">Concepts</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../concept.html" class="reference internal ">The main concepts</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../../index.html#authors">Basic components</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../project.html" class="reference internal ">Project</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../model.selector.html" class="reference internal ">Model selector</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../model.evaluation.html" class="reference internal ">Model evaluation</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../../index.html#authors">Advanced Usage</a></span>
       </p>
       <ul class="">
         
@@ -154,65 +254,71 @@
 <dd><p>Bases: <a class="reference internal" href="../../../../palma.components.html#palma.components.Component" title="palma.components.Component"><code class="xref py py-obj docutils literal notranslate"><span class="pre">palma.components.Component</span></code></a></p>
 <p>This object is a wrapper of the Deepchecks library and allows to audit the
 data through various checks such as data drift, duplicate values, …</p>
-<section id="parameters">
-<h4>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h4>
-<dl class="simple">
-<dt>dataset_parameters<span class="classifier">dict, optional</span></dt><dd><p>Parameters and their values that will be used to generate
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dataset_parameters</strong><span class="classifier">dict, optional</span></dt><dd><p>Parameters and their values that will be used to generate
 <code class="xref py py-class docutils literal notranslate"><span class="pre">deepchecks.Dataset</span></code> instances (required to run the checks on)</p>
 </dd>
-<dt>whole_dataset_checks: Union[List[BaseCheck], BaseSuite], optional</dt><dd><p>List of checks or suite of checks that will be run on the whole dataset
+<dt><strong>whole_dataset_checks: Union[List[BaseCheck], BaseSuite], optional</strong></dt><dd><p>List of checks or suite of checks that will be run on the whole dataset
 By default: use the default suite single_dataset_integrity to detect
 the integrity issues</p>
 </dd>
-<dt>train_test_datasets_checks: Union[List[BaseCheck], BaseSuite], optional</dt><dd><p>List of checks or suite of checks to detect issues related to the
+<dt><strong>train_test_datasets_checks: Union[List[BaseCheck], BaseSuite], optional</strong></dt><dd><p>List of checks or suite of checks to detect issues related to the
 train-test split, such as feature drift, detecting data leakage…
 By default: use the default suites train_test_validation and
 train_test_leakage</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.data_checker.DeepCheck.__call__">
 <span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../palma.html#palma.Project" title="palma.Project"><span class="pre">palma.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.data_checker.DeepCheck.__call__" title="Link to this definition">¶</a></dt>
 <dd><p>Run suite of checks on the project data.</p>
-<section id="id1">
-<h5>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h5>
-<p>project: project</p>
-</section>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>project: project</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.data_checker.DeepCheck.__generate_datasets">
 <span class="sig-name descname"><span class="pre">__generate_datasets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../palma.html#palma.Project" title="palma.Project"><span class="pre">palma.Project</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.data_checker.DeepCheck.__generate_datasets" title="Link to this definition">¶</a></dt>
 <dd><p>Generate <code class="xref py py-class docutils literal notranslate"><span class="pre">deepchecks.Dataset</span></code></p>
-<section id="id2">
-<h5>Parameters<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h5>
-<dl class="simple">
-<dt>project: project</dt><dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">project</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>project: project</strong></dt><dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">project</span></code></p>
 </dd>
 </dl>
-</section>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.data_checker.DeepCheck.__generate_suite">
 <span class="sig-name descname"><span class="pre">__generate_suite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">checks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">deepchecks.core.BaseCheck</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">deepchecks.core.BaseSuite</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">deepchecks.tabular.Suite</span></span></span><a class="headerlink" href="#palma.components.data_checker.DeepCheck.__generate_suite" title="Link to this definition">¶</a></dt>
 <dd><p>Generate a Suite of checks from a list of checks or a suite of checks</p>
-<section id="id3">
-<h5>Parameters<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h5>
-<dl class="simple">
-<dt>checks: Union[List[BaseCheck], BaseSuite], optional</dt><dd><p>List of checks or suite of checks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>checks: Union[List[BaseCheck], BaseSuite], optional</strong></dt><dd><p>List of checks or suite of checks</p>
 </dd>
-<dt>name: str</dt><dd><p>Name for the suite to returned</p>
+<dt><strong>name: str</strong></dt><dd><p>Name for the suite to returned</p>
 </dd>
 </dl>
-</section>
-<section id="returns">
-<h5>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h5>
-<dl class="simple">
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
 <dt>suite: <code class="xref py py-class docutils literal notranslate"><span class="pre">deepchecks.Suite</span></code></dt><dd><p>instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">deepchecks.Suite</span></code></p>
 </dd>
 </dl>
-</section>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -228,7 +334,6 @@ and a json file.</p>
 <dd><p>Return str(self).</p>
 </dd></dl>
 
-</section>
 </dd></dl>
 
 </section>

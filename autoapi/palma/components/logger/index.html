@@ -37,12 +37,35 @@
     <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
   <router-link to="../../../../index.html" class="home-link">
     
-      <span class="site-name">PALMA : project for automated learning machine</span>
+      <span class="site-name">palma</span>
     
   </router-link>
 
   <div class="links">
     <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
 
 
 
@@ -57,6 +80,29 @@
           
           <navlinks>
             
+
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Concepts
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Basic components
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../../index.html#authors"
+         class="nav-link ">
+         Advanced Usage
+      </a>
+    </div>
+  
 
 
 
@@ -76,7 +122,61 @@
   
     <div class="sidebar-group">
       <p class="caption">
-        <span class="caption-text"><a href="../../../../index.html#authors">Contents</a></span>
+        <span class="caption-text"><a href="../../../../index.html#authors">Concepts</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../concept.html" class="reference internal ">The main concepts</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../../index.html#authors">Basic components</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../project.html" class="reference internal ">Project</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../model.selector.html" class="reference internal ">Model selector</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../../../model.evaluation.html" class="reference internal ">Model evaluation</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../../index.html#authors">Advanced Usage</a></span>
       </p>
       <ul class="">
         
@@ -147,7 +247,11 @@
 <td><p>Logger is an abstract class that defines a common</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../../../../palma.components.html#palma.components.logger.FileSystemLogger" title="palma.components.logger.FileSystemLogger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FileSystemLogger</span></code></a></p></td>
-<td><p>Parameters</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../../../../palma.components.html#palma.components.logger.MLFlowLogger" title="palma.components.logger.MLFlowLogger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLFlowLogger</span></code></a></p></td>
 <td><p>Logger is an abstract class that defines a common</p></td>
@@ -204,10 +308,12 @@ the rest of the components.</p>
 <dt class="sig sig-object py" id="palma.components.logger.FileSystemLogger">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.logger.</span></span><span class="sig-name descname"><span class="pre">FileSystemLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">tempfile.gettempdir()</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.logger.FileSystemLogger" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../../../palma.components.html#palma.components.base.Logger" title="palma.components.base.Logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">palma.components.base.Logger</span></code></a></p>
-<section id="parameters">
-<h4>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h4>
-<dl class="simple">
-<dt>uri<span class="classifier">str</span></dt><dd><p>root path or directory, from which will be saved artifacts and metadata</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>uri</strong><span class="classifier">str</span></dt><dd><p>root path or directory, from which will be saved artifacts and metadata</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <dl class="py method">
@@ -216,13 +322,14 @@ the rest of the components.</p>
 <dd><p>log_project performs the first level of backup as described
 in the object description.</p>
 <p>This method creates the needed folders and saves an instance of         <a class="reference internal" href="../../../../palma.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a>.</p>
-<section id="id1">
-<h5>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h5>
-<dl class="simple">
-<dt>project: <a class="reference internal" href="../../../../palma.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a></dt><dd><p>an instance of Project</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>project: :class:`~palma.Project`</strong></dt><dd><p>an instance of Project</p>
 </dd>
 </dl>
-</section>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -240,7 +347,6 @@ in the object description.</p>
 <span class="sig-name descname"><span class="pre">_log_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.logger.FileSystemLogger._log_params" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</section>
 </dd></dl>
 
 <dl class="py class">

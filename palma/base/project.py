@@ -21,6 +21,35 @@ from palma.utils.utils import check_started
 
 
 class Project(object):
+    """
+    Represents a machine learning project with various components
+    and logging capabilities.
+
+    Parameters
+    ----------
+    project_name (str): The name of the project.
+    problem (str): The description of the machine learning problem.
+
+    Attributes
+    ----------
+    base_index (List[int]): List of base indices for the project.
+    components (dict): Dictionary containing project components.
+    date (datetime): The date and time when the project was created.
+    project_id (str): Unique identifier for the project.
+    is_started (bool): Indicates whether the project has been started.
+    problem (str): Description of the machine learning problem.
+    validation_strategy (ValidationStrategy): The validation strategy used in the project.
+    project_name (str): The name of the project.
+    study_name (str): The randomly generated study name.
+    X (pd.DataFrame): The feature data for the project.
+    y (pd.Series): The target variable for the project.
+
+    Methods
+    -------
+    add(component: Component) -> None: Adds a component to the project.
+    start(X: pd.DataFrame, y: pd.Series, splitter, X_test=None, y_test=None, groups=None, **kwargs) -> None:
+        Starts the project with the specified data and validation strategy.
+    """
 
     def __init__(
             self,

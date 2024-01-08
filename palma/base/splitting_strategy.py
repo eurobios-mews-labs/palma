@@ -27,6 +27,36 @@ def _bool_to_index(array):
 
 
 class ValidationStrategy(object):
+    """
+    Validation strategy for a machine learning project.
+
+    Parameters
+    ----------
+    - splitter (Union[BaseShuffleSplit, BaseCrossValidator, List[tuple], List[str]]): The data splitting strategy.
+
+    Attributes
+    ----------
+    - test_index (np.ndarray): Index array for the test set.
+    - train_index (np.ndarray): Index array for the training set.
+    - indexes_val (list): List of indexes for validation sets.
+    - indexes_train_test (list): List containing tuples of training and test indexes.
+    - id: Unique identifier for the validation strategy.
+    - splitter: The data splitting strategy.
+
+    Methods
+    -------
+    - __call__(X: pd.DataFrame, y: pd.Series, X_test: pd.DataFrame = None, y_test: pd.Series = None, groups=None, **kwargs):
+        Applies the validation strategy to the provided data.
+
+    Properties
+    ----------
+    - test_index (np.ndarray): Getter for the test index array.
+    - train_index (np.ndarray): Getter for the training index array.
+    - indexes_val (list): Getter for the list of validation indexes.
+    - indexes_train_test (list): Getter for the list of tuples containing training and test indexes.
+    - id: Getter for the unique identifier.
+    - splitter: Getter for the data splitting strategy.
+    """
 
     def __init__(
             self,
@@ -58,6 +88,16 @@ class ValidationStrategy(object):
             groups=None,
             **kwargs
     ):
+        """Apply the validation strategy to the provided data.
+
+        Parameters:
+        -----------
+        - X (pd.DataFrame): The feature data for the project.
+        - y (pd.Series): The target variable for the project.
+        - X_test (pd.DataFrame): Optional test feature data.
+        - y_test (pd.Series): Optional test target variable.
+        - groups: Optional grouping information.
+        """
 
         if X_test is not None and y_test is not None:
             n_train, n_test = len(X), len(X_test)

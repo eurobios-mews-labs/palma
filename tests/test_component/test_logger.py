@@ -107,3 +107,10 @@ def get_mlflow_logger(classification_data):
 def test_is_logged_project_mlflow(get_mlflow_logger):
     get_mlflow_logger._log_metrics({"a": 1})
 
+
+def test_changing_logger(get_mlflow_logger):
+    from palma.components.logger import logger
+    print(logger.logger)
+    assert isinstance(logger.logger, DummyLogger)
+    logger.set(get_mlflow_logger)
+    assert isinstance(logger.logger, MLFlowLogger)

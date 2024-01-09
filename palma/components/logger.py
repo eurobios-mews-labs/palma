@@ -25,8 +25,8 @@ except ImportError:
 
 from palma.components.base import Logger
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.NOTSET)
+_logger = logging.getLogger(__name__)
+_logger.setLevel(logging.NOTSET)
 
 
 class DummyLogger(Logger):
@@ -73,14 +73,14 @@ class FileSystemLogger(Logger):
         self.path_study = f"{self.path_project}/{project.study_name}"
 
         if not os.path.exists(self.path_study):
-            logger.info(f"No {project.project_name} folder found,"
+            _logger.info(f"No {project.project_name} folder found,"
                         f" creating {self.path_study} folders")
             os.makedirs(self.path_study)
 
         artifact_name = f"{self.path_study}/project.pkl"
 
         with open(artifact_name, "wb") as output_file:
-            logger.info(
+            _logger.info(
                 "Project instance saved in {}".format(artifact_name)
             )
             pickle.dump(project, output_file)
@@ -97,7 +97,7 @@ class FileSystemLogger(Logger):
     def _log_model(self, estimator, path: str) -> None:
         path = f"{self.path_study}/{path}"
         with open(path, 'wb') as output_file:
-            logger.info(f"Model saved in {path}")
+            _logger.info(f"Model saved in {path}")
             pickle.dump(estimator, output_file)
 
     def _log_params(self,
@@ -106,7 +106,7 @@ class FileSystemLogger(Logger):
         path = f"{self.path_study}/{path}.json"
 
         with open(path, 'w') as output_file:
-            logger.info(f"Model's parameters saved in {path}")
+            _logger.info(f"Model's parameters saved in {path}")
             json.dump(parameters, output_file, indent=4)
 
 
@@ -139,3 +139,18 @@ class MLFlowLogger(Logger):
     def _log_model(self, model, path):
         self.tmp_logger._log_model(model, path)
         mlflow.log_artifacts(f"{self.tmp_logger.path_study}")
+
+
+class Log:
+    def __init__(self, dummy):
+        self.logger = dummy
+
+    def __set__(self, logger):
+        self.logger = logger
+
+
+logger = Log(DummyLogger)
+
+
+def set(log_object):
+    logger.__set__(log_object)

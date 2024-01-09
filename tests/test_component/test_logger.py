@@ -6,7 +6,9 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and limitations under the License.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import os
 import tempfile
 
@@ -108,9 +110,8 @@ def test_is_logged_project_mlflow(get_mlflow_logger):
     get_mlflow_logger._log_metrics({"a": 1})
 
 
-def test_changing_logger(get_mlflow_logger):
-    from palma.components.logger import logger
-    print(logger.logger)
+def test_changing_logger():
+    from palma.components.logger import logger, set
     assert isinstance(logger.logger, DummyLogger)
-    logger.set(get_mlflow_logger)
+    set(MLFlowLogger(uri="."))
     assert isinstance(logger.logger, MLFlowLogger)

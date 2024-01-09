@@ -141,7 +141,7 @@ class MLFlowLogger(Logger):
         mlflow.log_artifacts(f"{self.tmp_logger.path_study}")
 
 
-class Log:
+class __Log:
     def __init__(self, dummy):
         self.logger = dummy
 
@@ -149,7 +149,7 @@ class Log:
         self.logger = logger
 
 
-logger = Log(DummyLogger)
+logger = __Log(DummyLogger(uri='.'))
 
 
 def set(log_object):

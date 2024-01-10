@@ -43,11 +43,13 @@ def regression_data():
 
 @pytest.fixture(scope="module")
 def classification_project(classification_data):
+    from palma import set_logger
+    set_logger(FileSystemLogger(tempfile.gettempdir()))
     X, y = classification_data
     X = pd.DataFrame(X)
     y = pd.Series(y)
     project = Project(problem="classification", project_name="test")
-    project.add(FileSystemLogger(tempfile.gettempdir()))
+
     project.start(
         X, y,
         splitter=model_selection.ShuffleSplit(n_splits=4, random_state=42),
@@ -96,13 +98,16 @@ def get_shap_analyser(learning_data):
 
 @pytest.fixture(scope='module')
 def learning_data_regression(regression_data):
+    from palma import set_logger
+    set_logger(FileSystemLogger(tempfile.gettempdir()))
+
     estimator = Pipeline(
         steps=[("scaler", StandardScaler()), ("est", LinearRegression())])
     X, y = regression_data
     X = pd.DataFrame(X)
     y = pd.Series(y)
     project = Project(problem="classification", project_name="test")
-    project.add(FileSystemLogger(tempfile.gettempdir()))
+
     project.start(
         X, y,
         splitter=model_selection.ShuffleSplit(n_splits=4, random_state=42),
@@ -133,11 +138,12 @@ def test_get_name_using_pipeline(learning_data_regression):
 @pytest.fixture(scope='module')
 def build_classification_project(unbuilt_classification_project,
                                  classification_data):
+    from palma import set_logger
+    set_logger(FileSystemLogger(uri=tempfile.gettempdir()))
     project = Project(problem="classification", project_name="test")
     X, y = classification_data
     X = pd.DataFrame(X)
     y = pd.Series(y)
-    project.add(FileSystemLogger(uri=tempfile.gettempdir()))
     project.start(
         X,
         y,

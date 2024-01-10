@@ -70,14 +70,10 @@ class Project(object):
 
     @check_started("You cannot add a Component for a started Project")
     def add(self, component: "Component") -> None:
-        from palma.components.base import ProjectComponent, Logger
-
+        from palma.components.base import ProjectComponent
         self.__component_list.append(str)
         if isinstance(component, ProjectComponent):
             self.__components.update({str(component): component.add_loger(self)})
-        elif isinstance(component, Logger) or hasattr(component, "log_project"):
-            self._logger = component
-
         else:
             raise TypeError(
                 "The added component must be an instance of class Component"
@@ -94,6 +90,7 @@ class Project(object):
             **kwargs
     ) -> None:
         from palma.utils.checker import ProjectPlanChecker
+        from palma import logger
         self.__validation_strategy = ValidationStrategy(splitter)
         self.__base_index = list(range(len(X)))
         self.__X, self.__y = self.__validation_strategy(
@@ -107,7 +104,7 @@ class Project(object):
         ).hexdigest()
         self.__call_components(self)
         self.__is_started = True
-        self._logger.log_project(self)
+        logger.logger.log_project(self)
 
     def __call_components(self, object_: "Project") -> None:
         for _, component in self.components.items():

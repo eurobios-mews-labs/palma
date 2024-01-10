@@ -10,9 +10,7 @@
 # limitations under the License.
 
 from abc import ABCMeta, abstractmethod
-from typing import Union
 
-from palma.base.model_selection import ModelSelector
 from palma.base.project import Project
 
 
@@ -50,46 +48,3 @@ class ModelComponent(Component):
     @abstractmethod
     def __call__(self, project: Project, model):
         pass
-
-
-class Logger(metaclass=ABCMeta):
-    """
-    Logger is an abstract class that defines a common
-    interface for a set of Logger-subclasses.
-
-    It provides common methods for all possible subclasses, making it 
-    possible for a user to create a custom subclass compatible  with 
-    the rest of the components. 
-    """
-
-    def __init__(self, uri: str, **kwargs) -> None:
-        self.__uri = uri
-
-    def __call__(self, obj: Union["Project", "ModelSelector"]) -> None:
-        if isinstance(obj, Project):
-            self.log_project(obj)
-
-        elif isinstance(obj, ModelSelector):
-            self.log_run(obj)
-
-    @abstractmethod
-    def log_project(self, project: 'Project') -> None:
-        ...
-
-    @abstractmethod
-    def _log_metrics(self, **kwargs) -> None:
-
-        ...
-
-    @abstractmethod
-    def _log_params(self, **kwargs) -> None:
-
-        ...
-
-    @abstractmethod
-    def _log_model(self, **kwargs) -> None:
-        ...
-
-    @property
-    def uri(self):
-        return self.__uri

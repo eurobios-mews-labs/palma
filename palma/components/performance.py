@@ -69,9 +69,10 @@ class Analyser(ModelComponent, metaclass=ABCMeta):
         return feature_importance.T
 
     def compute_metrics(self, metric: dict):
+        from palma import logger
         for name, fun in metric.items():
             self._compute_metric(name, fun)
-        self.logger._log_metrics(
+        logger.logger.log_metrics(
             {k: str(v) for k, v in self.get_test_metrics().to_dict().items()},
             path="metrics")
 

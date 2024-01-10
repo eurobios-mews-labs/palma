@@ -118,7 +118,7 @@ class FlamlOptimizer(BaseOptimizer):
         self.__optimizer.fit(
             X_train=pd.DataFrame(X.values, index=range(len(X))),
             y_train=pd.Series(y.values, index=range(len(X))),
-            split_type=splitter,
+            split_type=splitter, mlflow_logging=False,
             **self.engine_parameters
         )
 

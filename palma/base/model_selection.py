@@ -6,7 +6,8 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and limitations under the License.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 from datetime import datetime
 from typing import Union, Dict
@@ -35,6 +36,7 @@ class ModelSelector:
             raise ValueError(f"Optimizer {engine} not implemented")
 
     def start(self, project: "Project"):
+        from palma import logger
         self.engine_ = self.engine(
             project.problem,
             engine_parameters=self.__parameters,
@@ -50,7 +52,7 @@ class ModelSelector:
         self.best_model_ = self.engine_.estimator_
         logging.basicConfig(level=logging.DEBUG)
 
-        project._logger._log_model(
+        logger.logger.log_model(
             self.engine_.estimator_,
             self.__run_id)
 

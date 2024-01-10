@@ -6,7 +6,9 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and limitations under the License.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import os
 import tempfile
 
@@ -20,27 +22,28 @@ from sklearn.preprocessing import StandardScaler
 from palma import ModelEvaluation
 from palma import ModelSelector
 from palma import Project
-from palma.components import FileSystemLogger
+from palma.components import FileSystemLogger, ScoringAnalysis
+
 from palma.components import MLFlowLogger
 from palma.components.logger import DummyLogger
 
 
 def test_dummy_logger(classification_data):
+    from palma import set_logger
     project = Project(problem="classification", project_name="test")
     path = tempfile.gettempdir() + "/mlflow"
+    set_logger(DummyLogger(uri=path))
     X, y = classification_data
     X = pd.DataFrame(X)
     y = pd.Series(y)
-    project.add(DummyLogger(uri=path))
-    project.start(
-        X,
-        y,
-        splitter=ShuffleSplit()
-    )
-    project._logger.log_project("p")
-    project._logger._log_params()
-    project._logger._log_metrics()
-    project._logger._log_model()
+    project.start(X, y, splitter=ShuffleSplit())
+    ms = ModelSelector(engine="FlamlOptimizer",
+                       engine_parameters=dict(time_budget=3))
+    ms.start(project)
+
+    model = ModelEvaluation(estimator=ms.best_model_)
+    model.add(ScoringAnalysis(on="indexes_train_test"))
+    model.fit(project)
 
 
 def test_is_logged_project(build_classification_project):
@@ -90,20 +93,36 @@ def test_log_model(build_classification_project):
 
 @pytest.fixture()
 def get_mlflow_logger(classification_data):
+    from palma import set_logger, logger
+
+    set_logger(MLFlowLogger(uri=tempfile.gettempdir() + "/mlflow"))
+
     project = Project(problem="classification", project_name="test")
-    path = tempfile.gettempdir() + "/mlflow"
     X, y = classification_data
     X = pd.DataFrame(X)
     y = pd.Series(y)
-    project.add(MLFlowLogger(uri=path))
+
     project.start(
         X,
         y,
         splitter=ShuffleSplit()
     )
-    return project._logger
+    ms = ModelSelector(engine="FlamlOptimizer",
+                       engine_parameters=dict(time_budget=3))
+    ms.start(project)
+    return logger
 
 
 def test_is_logged_project_mlflow(get_mlflow_logger):
-    get_mlflow_logger._log_metrics({"a": 1})
+    get_mlflow_logger.logger.log_metrics({"a": 1})
 
+
+def test_changing_logger():
+    from palma import logger, set_logger
+
+    set_logger(DummyLogger(uri="."))
+    assert isinstance(logger.logger, DummyLogger)
+    logger.__set__(MLFlowLogger(uri="."))
+    assert isinstance(logger.logger, MLFlowLogger)
+    set_logger(DummyLogger(uri="."))
+    assert isinstance(logger.logger, DummyLogger)

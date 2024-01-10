@@ -17,6 +17,8 @@ import tempfile
 import typing
 from abc import ABCMeta, abstractmethod
 
+import matplotlib.pyplot as plt
+
 from palma.base.project import Project
 
 try:
@@ -54,7 +56,7 @@ class Logger(metaclass=ABCMeta):
         ...
 
     @abstractmethod
-    def log_model(self, **kwargs) -> None:
+    def log_artifact(self, **kwargs) -> None:
         ...
 
     @property
@@ -74,7 +76,7 @@ class DummyLogger(Logger):
                    path: str) -> None:
         pass
 
-    def log_model(self, estimator, path: str) -> None:
+    def log_artifact(self, obj, path: str) -> None:
         pass
 
 
@@ -89,6 +91,8 @@ class FileSystemLogger(Logger):
 
     def __init__(self, uri: str = tempfile.gettempdir(), **kwargs) -> None:
         super().__init__(uri, **kwargs)
+        self.path_project = f"{self.uri}/unknown_project"
+        self.path_study = f"{self.path_project}/unknown_run"
 
     def log_project(self, project: 'Project') -> None:
         """
@@ -106,10 +110,7 @@ class FileSystemLogger(Logger):
         self.path_project = f"{self.uri}/{project.project_name}"
         self.path_study = f"{self.path_project}/{project.study_name}"
 
-        if not os.path.exists(self.path_study):
-            _logger.info(f"No {project.project_name} folder found,"
-                         f" creating {self.path_study} folders")
-            os.makedirs(self.path_study)
+        self.create_directories()
 
         artifact_name = f"{self.path_study}/project.pkl"
 
@@ -128,11 +129,14 @@ class FileSystemLogger(Logger):
             _logger.info("Metrics saved in {}".format(path))
             json.dump(metrics, output_file, indent=4)
 
-    def log_model(self, estimator, path: str) -> None:
+    def log_artifact(self, obj, path: str) -> None:
         path = f"{self.path_study}/{path}"
+        self.create_directories()
         with open(path, 'wb') as output_file:
-            _logger.info(f"Model saved in {path}")
-            pickle.dump(estimator, output_file)
+            if isinstance(obj, plt.Figure):
+                obj.savefig(f"{path}.png")
+            else:
+                pickle.dump(obj, output_file)
 
     def log_params(self,
                    parameters: dict,
@@ -142,6 +146,12 @@ class FileSystemLogger(Logger):
         with open(path, 'w') as output_file:
             _logger.info(f"Model's parameters saved in {path}")
             json.dump(parameters, output_file, indent=4)
+
+    def create_directories(self):
+        if not os.path.exists(self.path_study):
+            _logger.info(f"No {self.path_study} folder found,"
+                         f" creating {self.path_study} folders")
+            os.makedirs(self.path_study)
 
 
 class MLFlowLogger(Logger):
@@ -202,30 +212,30 @@ class MLFlowLogger(Logger):
             raise ImportError("mlflow is not installed")
         super().__init__(uri)
         mlflow.set_tracking_uri(uri)
-        self.tmp_logger = FileSystemLogger()
+        self.file_system_logger = FileSystemLogger()
 
     def log_project(self, project: 'Project') -> None:
         mlflow.set_experiment(
             project.project_name)
-        self.tmp_logger.log_project(project)
+        self.file_system_logger.log_project(project)
         self.log_params({c.replace("_Project__", ""): str(v) for c, v in
                          vars(project).items()})
 
-    def log_metrics(self, metrics: dict[str, typing.Any]) -> None:
+    def log_metrics(self, metrics: dict[str, typing.Any], path=None) -> None:
         mlflow.log_metrics(
             {k: v for k, v in metrics.items()})
 
     def log_artifact(self, artifact: dict, path) -> None:
-        self.tmp_logger.log_model(artifact, path)
+        self.file_system_logger.log_artifact(artifact, path)
 
-        mlflow.log_artifacts(f"{self.tmp_logger.path_study}/{path}")
+        mlflow.log_artifacts(f"{self.file_system_logger.path_study}")
 
     def log_params(self, params: dict) -> None:
         mlflow.log_params({k: str(v)[:100] for k, v in params.items()})
 
     def log_model(self, model, path):
-        self.tmp_logger.log_model(model, path)
-        mlflow.log_artifacts(f"{self.tmp_logger.path_study}")
+        self.file_system_logger.log_artifact(model, path)
+        mlflow.log_artifacts(f"{self.file_system_logger.path_study}")
 
 
 class _Logger:
@@ -254,3 +264,9 @@ class _Logger:
     @property
     def logger(self) -> Logger:
         return self.__logger
+
+
+logger = _Logger(DummyLogger("."))
+
+
+set_logger = logger.__set__

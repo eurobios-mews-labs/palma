@@ -19,11 +19,12 @@ from deepchecks.tabular import Dataset, Suite
 from deepchecks.tabular.suites.default_suites import (train_test_validation,
                                                       data_integrity)
 
-from palma import Project
-from palma.components import Component
+from palma.base.project import Project
+from palma.components.base import ProjectComponent
+from palma.components.logger import logger
 
 
-class DeepCheck(Component):
+class DeepCheck(ProjectComponent):
     """
     This object is a wrapper of the Deepchecks library and allows to audit the
     data through various checks such as data drift, duplicate values, ...
@@ -93,6 +94,7 @@ class DeepCheck(Component):
             train_dataset=self.__train_dataset,
             test_dataset=self.__test_dataset
         )
+        self.items_to_log()
 
     def __generate_datasets(self, project: Project, **kwargs) -> None:
         """
@@ -102,7 +104,7 @@ class DeepCheck(Component):
         Parameters
         ----------
         project: project
-            :class:`~autolm.project.project`
+            :class:`~palma.Project`
         """
 
         df = pd.concat([project.X, project.y], axis=1)
@@ -155,23 +157,11 @@ class DeepCheck(Component):
         and a json file.
         """
 
-        elements_to_log = []
-
         for results in [self.train_test_checks_results,
                         self.whole_dataset_checks_results]:
-            html_result = io.StringIO()
-            results.save_as_html(file=html_result)
-            elements_to_log.append((results.name + '.html', html_result))
 
-            json_result = results.to_json()
-            elements_to_log.append((results.name + '.json', json_result))
+            logger.logger.log_artifact(results, f'{results.name}')
 
-        return elements_to_log
 
     def __str__(self) -> str:
-        data_checks = '\n{} integrity checks\n{} train test checks'.format(
-            len(self.whole_dataset_checks_suite.checks),
-            len(self.train_test_checks_suite.checks)
-        )
-
-        return data_checks
+        return "DeepCheck"

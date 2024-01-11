@@ -18,6 +18,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import ShuffleSplit
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
 
 from palma import ModelEvaluation
 from palma import ModelSelector
@@ -26,6 +27,7 @@ from palma.components import FileSystemLogger, ScoringAnalysis
 
 from palma.components import MLFlowLogger
 from palma.components.logger import DummyLogger
+from palma import logger, set_logger
 
 
 def test_dummy_logger(classification_data):
@@ -126,3 +128,23 @@ def test_changing_logger():
     assert isinstance(logger.logger, MLFlowLogger)
     set_logger(DummyLogger(uri="."))
     assert isinstance(logger.logger, DummyLogger)
+
+
+def test_artifact_logging():
+    set_logger(FileSystemLogger(uri="/tmp/mlflow"))
+
+    fig = plt.figure()
+    logger.logger.log_artifact('a', "text")
+    logger.logger.log_metrics({'a': 1}, "metric")
+    logger.logger.log_artifact(fig, "figure")
+
+    set_logger(MLFlowLogger(uri="/tmp/mlflow/"))
+
+    assert (logger.logger.uri == "/tmp/mlflow/")
+
+    logger.logger.log_artifact('a', "text")
+    logger.logger.log_metrics({'a': 1}, "metric")
+    logger.logger.log_artifact(fig, "figure")
+
+
+

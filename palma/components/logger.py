@@ -115,10 +115,11 @@ class FileSystemLogger(Logger):
         artifact_name = f"{self.path_study}/project.pkl"
 
         with open(artifact_name, "wb") as output_file:
-            _logger.info(
-                "Project instance saved in {}".format(artifact_name)
-            )
-            pickle.dump(project, output_file)
+            _logger.info(f"Project instance saved in {artifact_name}")
+            try:
+                pickle.dump(project, output_file)
+            except AttributeError:
+                _logger.warning(f"Fail to log project")
         self.log_params(
             {c.replace("_Project__", ""): str(v) for c, v in
              vars(project).items()}, "properties")
@@ -135,6 +136,8 @@ class FileSystemLogger(Logger):
         with open(path, 'wb') as output_file:
             if isinstance(obj, plt.Figure):
                 obj.savefig(f"{path}.png")
+            elif hasattr(obj, "save_as_html"):
+                obj.save_as_html(f"{path}.html")
             else:
                 pickle.dump(obj, output_file)
 
@@ -160,12 +163,13 @@ class MLFlowLogger(Logger):
 
     Parameters
     ----------
-    - uri (str): The URI for the MLflow tracking server.
+    uri : str
+        The URI for the MLflow tracking server.
 
     Attributes
     ----------
-    - tmp_logger (FileSystemLogger): Temporary logger for local logging
-    before MLflow logging.
+    tmp_logger : (FileSystemLogger)
+        Temporary logger for local logging before MLflow logging.
 
     Methods
     -------
@@ -255,9 +259,6 @@ class _Logger:
             >>> from palma.components import MLFlowLogger
             >>> set_logger(MLFlowLogger(uri="."))
             >>> set_logger(FileSystemLogger(uri="."))
-        Returns
-        -------
-            None
         """
         self.__logger = logger
 
@@ -267,6 +268,5 @@ class _Logger:
 
 
 logger = _Logger(DummyLogger("."))
-
 
 set_logger = logger.__set__

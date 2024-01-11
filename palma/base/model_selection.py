@@ -52,7 +52,7 @@ class ModelSelector:
         self.best_model_ = self.engine_.estimator_
         logging.basicConfig(level=logging.DEBUG)
 
-        logger.logger.log_model(
+        logger.logger.log_artifact(
             self.engine_.estimator_,
             self.__run_id)
 

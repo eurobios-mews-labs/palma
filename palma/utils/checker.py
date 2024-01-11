@@ -37,16 +37,16 @@ class ProjectPlanChecker(object):
     """
     ProjectPlanChecker is an object that checks the project plan.
 
-    At the :meth:`~autolm.project.Project.build` moment, this object \
-    run severals checks in order to see if the project plan is well designed.
+    At the :meth:`~palma.project.Project.build` moment, this object \
+    run several checks in order to see if the project plan is well designed.
 
     Here is an overview of the checks performed by the object:
-        - :meth:`~autolm.utils.checker.ProjectPlanChecker._check_arrays`\
+        - :meth:`~palma.utils.checker.ProjectPlanChecker._check_arrays`\
         : see whether X and y attribute are compliant with \
         sklearn standards.
-        - :meth:`~autolm.utils.checker.ProjectPlanChecker._check_project_problem`: see if the problem type is correctly \
+        - :meth:`~palma.utils.checker.ProjectPlanChecker._check_project_problem`: see if the problem type is correctly \
         informed by the user.
-        - :meth:`~autolm.utils.checker.ProjectPlanChecker._check_problem_metrics`: see if the known metrics are consistent with \
+        - :meth:`~palma.utils.checker.ProjectPlanChecker._check_problem_metrics`: see if the known metrics are consistent with \
         the project problem
     """
 

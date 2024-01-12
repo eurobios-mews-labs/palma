@@ -41,7 +41,7 @@ class DeepCheck(ProjectComponent):
     train_test_datasets_checks: Union[List[BaseCheck], BaseSuite], optional
         List of checks or suite of checks to detect issues related to the
         train-test split, such as feature drift, detecting data leakage...
-        By default: use the default suites train_test_validation and
+        By default, use the default suites train_test_validation and
         train_test_leakage
     """
 
@@ -83,7 +83,7 @@ class DeepCheck(ProjectComponent):
 
         Parameters
         ----------
-        project: project
+        project: :class:`~palma.Project`
         """
 
         self.__generate_datasets(project, **self.dataset_parameters)

@@ -21,6 +21,7 @@ from deepchecks.tabular.suites.default_suites import (train_test_validation,
 from palma.base.project import Project
 from palma.components.base import ProjectComponent
 from palma.components.logger import logger
+from palma.utils import utils
 
 
 class DeepCheck(ProjectComponent):
@@ -110,7 +111,7 @@ class DeepCheck(ProjectComponent):
 
         df = pd.concat([project.X, project.y], axis=1)
         df.columns = [*project.X.columns.to_list(), "target"]
-        self.__dataset = Dataset(df, label=project.y, **kwargs)
+        self.__dataset = Dataset(df, label=project.y.name, **kwargs)
 
         self.__train_dataset = self.__dataset.copy(
             df.loc[project.validation_strategy.train_index])
@@ -154,3 +155,11 @@ class DeepCheck(ProjectComponent):
 
     def __str__(self) -> str:
         return "DeepCheck"
+
+
+class Leakage(ProjectComponent):
+    def __call__(self, project: Project) -> None:
+        z = utils.get_splitting_matrix(
+            project.X,
+            project.validation_strategy.indexes_train_test)
+        z = z == 2

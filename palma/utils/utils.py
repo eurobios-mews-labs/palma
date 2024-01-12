@@ -25,7 +25,44 @@ from sklearn.pipeline import Pipeline
 
 
 class AverageEstimator:
+    """
+    A simple ensemble estimator that computes the average prediction of a list of estimators.
+
+    Parameters
+    ----------
+    estimator_list : list
+        A list of individual estimators to be averaged.
+
+    Attributes
+    ----------
+    estimator_list : list
+        The list of individual estimators.
+    n : int
+        The number of estimators in the list.
+
+    Methods
+    -------
+    predict(*args, **kwargs)
+        Compute the average prediction across all estimators.
+
+    predict_proba(*args, **kwargs)
+        Compute the average class probabilities across all estimators.
+
+    Returns
+    -------
+    numpy.ndarray
+        The averaged prediction or class probabilities.
+    """
+
     def __init__(self, estimator_list: list):
+        """
+        Initialize the AverageEstimator.
+
+        Parameters
+        ----------
+        estimator_list : list
+            A list of individual estimators to be averaged.
+        """
         self.estimator_list = estimator_list
         self.n = len(estimator_list)
 
@@ -43,6 +80,32 @@ class AverageEstimator:
 
 
 def _clone(estimator):
+    """
+    Create and return a clone of the input estimator.
+
+    Parameters
+    ----------
+    estimator : object
+        The estimator object to be cloned.
+
+    Returns
+    -------
+    object
+        A cloned copy of the input estimator.
+
+    Notes
+    -----
+    This function attempts to create a clone of the input estimator using the
+    `clone` function. If the `clone` function is not available or raises a
+    `TypeError`, it falls back to using `deepcopy`. If both methods fail, the
+    original estimator is returned.
+
+    Examples
+    --------
+    >>> from sklearn.linear_model import LinearRegression
+    >>> original_estimator = LinearRegression()
+    >>> cloned_estimator = _clone(original_estimator)
+    """
     try:
         return clone(estimator)
     except TypeError:
@@ -57,7 +120,34 @@ def _clone(estimator):
 def get_splitting_matrix(X: pd.DataFrame,
                          iter_cross_validation: iter,
                          expand=False) -> pd.DataFrame:
+    """
+    Generate a splitting matrix based on cross-validation iterations.
 
+    Parameters
+    ----------
+    X : pd.DataFrame
+        The input dataframe.
+    iter_cross_validation : Iterable
+        An iterable containing cross-validation splits (train, test).
+    expand : bool, optional
+        If True, the output matrix will have columns for both train and test
+        splits for each iteration. If False (default), the output matrix will
+        have columns for each iteration with 1 for train and 2 for test.
+
+    Returns
+    -------
+    pd.DataFrame
+        A matrix indicating the train (1) and test (2) splits for each
+        iteration. Rows represent data points, and columns represent iterations.
+
+    Examples
+    --------
+    >>> import pandas as pd
+    >>> X = pd.DataFrame({'feature1': [1, 2, 3, 4, 5],
+    ...                   'feature2': ['A', 'B', 'C', 'D', 'E']})
+    >>> iter_cv = [(range(3), range(3, 5)), (range(2), range(2, 5))]
+    >>> get_splitting_matrix(X, iter_cv)
+    """
     if not expand:
         all_splits = pd.DataFrame(0, index=range(len(X)),
                                   columns=range(len(iter_cross_validation)))
@@ -143,7 +233,7 @@ def check_started(message: str, need_build: bool = False) -> Callable:
     """
     check_built is a decorator used for methods that must be called on \
     built or unbuilt :class:`~palma.Project`.
-    If the :class:`~autolm.project.Project` is_built attribute has \
+    If the :class:`~palma.Project` is_built attribute has \
     not the correct value, an AttributeError is raised with the message passed \
     as argument.
 

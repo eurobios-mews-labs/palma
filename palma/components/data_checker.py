@@ -34,7 +34,7 @@ class DeepCheck(ProjectComponent):
     dataset_parameters : dict, optional
         Parameters and their values that will be used to generate
         :class:`deepchecks.Dataset` instances (required to run the checks on)
-    whole_dataset_checks: Union[List[BaseCheck], BaseSuite], optional
+    dataset_checks: Union[List[BaseCheck], BaseSuite], optional
         List of checks or suite of checks that will be run on the whole dataset
         By default: use the default suite single_dataset_integrity to detect
         the integrity issues
@@ -49,7 +49,7 @@ class DeepCheck(ProjectComponent):
             self,
             name: str = 'Data Checker',
             dataset_parameters: dict = None,
-            whole_dataset_checks: Union[
+            dataset_checks: Union[
                 List[BaseCheck], BaseSuite] = data_integrity(),
             train_test_datasets_checks: Union[
                 List[BaseCheck], BaseSuite] = Suite(
@@ -68,7 +68,7 @@ class DeepCheck(ProjectComponent):
         self.name = name
 
         self.whole_dataset_checks_suite = self.__generate_suite(
-            whole_dataset_checks,
+            dataset_checks,
             'Checks on whole dataset'
         )
 
@@ -94,7 +94,10 @@ class DeepCheck(ProjectComponent):
             train_dataset=self.__train_dataset,
             test_dataset=self.__test_dataset
         )
-        self.items_to_log()
+        for results in [self.train_test_checks_results,
+                        self.whole_dataset_checks_results]:
+
+            logger.logger.log_artifact(results, f'{results.name}')
 
     def __generate_datasets(self, project: Project, **kwargs) -> None:
         """
@@ -150,18 +153,6 @@ class DeepCheck(ProjectComponent):
             )
 
         return suite
-
-    def items_to_log(self) -> List[Tuple[str, Any]]:
-        """
-        This method returns the checks' results in two files : an html report
-        and a json file.
-        """
-
-        for results in [self.train_test_checks_results,
-                        self.whole_dataset_checks_results]:
-
-            logger.logger.log_artifact(results, f'{results.name}')
-
 
     def __str__(self) -> str:
         return "DeepCheck"

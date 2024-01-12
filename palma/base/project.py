@@ -59,8 +59,8 @@ class Project(object):
 
         from palma.components.logger import DummyLogger
         self.__project_name = project_name
-        self.__study_name = get_random_name()
         self.__date = datetime.now()
+        self.__study_name = self.date
         self.__problem = problem
 
         self.__components = {}
@@ -144,7 +144,7 @@ class Project(object):
 
     @property
     def study_name(self) -> str:
-        return self.__study_name
+        return self.__data_id
 
     @property
     def X(self) -> pd.DataFrame:

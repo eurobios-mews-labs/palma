@@ -215,7 +215,7 @@ class MLFlowLogger(Logger):
         if mlflow is None:
             raise ImportError("mlflow is not installed")
         super().__init__(uri)
-        mlflow.set_tracking_uri(uri)
+        mlflow.set_tracking_uri(uri.replace("\\", "/"))
         self.file_system_logger = FileSystemLogger()
 
     def log_project(self, project: 'Project') -> None:

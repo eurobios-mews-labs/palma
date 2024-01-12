@@ -18,10 +18,14 @@ from deepchecks.tabular import Dataset, Suite
 from deepchecks.tabular.suites.default_suites import (train_test_validation,
                                                       data_integrity)
 
-from palma.base.project import Project
+from palma import ModelEvaluation
+from palma import ModelSelector
+from palma import Project
+from palma.components import ScoringAnalysis
 from palma.components.base import ProjectComponent
 from palma.components.logger import logger
 from palma.utils import utils
+from sklearn.model_selection import ShuffleSplit
 
 
 class DeepCheck(ProjectComponent):
@@ -163,3 +167,17 @@ class Leakage(ProjectComponent):
             project.X,
             project.validation_strategy.indexes_train_test)
         z = z == 2
+
+        leakage_project = Project(
+            problem="classification", project_name="leakage")
+
+        leakage_project.start(X=project.X, y=z, splitter=Sc)
+        run = ModelSelector(
+            engine="FlamlOptimizer",
+            engine_parameters=dict(time_budget=10))
+        run.start(leakage_project)
+        model = ModelEvaluation(estimator=run.best_model_)
+        model.add(ScoringAnalysis(on="indexes_train_test"))
+        model.fit(project)
+
+        model.metrics

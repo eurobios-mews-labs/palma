@@ -38,10 +38,7 @@ def test_study_name_property(classification_project):
     assert "_" in classification_project.study_name, "bad use case name"
 
 
-def test_add_logger(classification_project):
-    project = classification_project
-    print(project.components)
-    assert hasattr(project, "_logger"), "Logger is not properly set"
+
 
 
 def test_add_bad_component(unbuilt_classification_project):

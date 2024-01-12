@@ -54,8 +54,6 @@ class ModelEvaluation:
         self.predictions_val_ = self.__compute_predictions(
             project, project.validation_strategy.indexes_val)
 
-        self._logger = project._logger
-
         for name, comp in self.__components.items():
             comp(project, self)
 
@@ -87,15 +85,6 @@ class ModelEvaluation:
     @property
     def id(self) -> str:
         return self.__model_id
-
-    @property
-    def logger(self):
-        if not hasattr(self, "_logger"):
-            raise AttributeError(
-                "Logger not found, try to add a logger before starting your "
-                "project")
-
-        return self._logger
 
     @property
     def components(self):

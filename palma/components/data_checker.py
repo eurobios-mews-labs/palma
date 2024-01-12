@@ -9,9 +9,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import io
 import logging
-from typing import Any, List, Tuple, Union
+from typing import List, Union
 
 import pandas as pd
 from deepchecks.core import BaseCheck, BaseSuite
@@ -87,7 +86,7 @@ class DeepCheck(ProjectComponent):
         """
 
         self.__generate_datasets(project, **self.dataset_parameters)
-        self.whole_dataset_checks_results = self.whole_dataset_checks_suite.run(
+        self.dataset_checks_results = self.whole_dataset_checks_suite.run(
             self.__dataset
         )
         self.train_test_checks_results = self.train_test_checks_suite.run(
@@ -95,8 +94,7 @@ class DeepCheck(ProjectComponent):
             test_dataset=self.__test_dataset
         )
         for results in [self.train_test_checks_results,
-                        self.whole_dataset_checks_results]:
-
+                        self.dataset_checks_results]:
             logger.logger.log_artifact(results, f'{results.name}')
 
     def __generate_datasets(self, project: Project, **kwargs) -> None:
@@ -112,15 +110,15 @@ class DeepCheck(ProjectComponent):
 
         df = pd.concat([project.X, project.y], axis=1)
         df.columns = [*project.X.columns.to_list(), "target"]
-        self.__dataset = Dataset(df, label=project.y.name, **kwargs)
+        self.__dataset = Dataset(df, label=project.y, **kwargs)
 
         self.__train_dataset = self.__dataset.copy(
             df.loc[project.validation_strategy.train_index])
         self.__test_dataset = self.__dataset.copy(
             df.loc[project.validation_strategy.test_index])
 
+    @staticmethod
     def __generate_suite(
-            self,
             checks: Union[List[BaseCheck], BaseSuite],
             name: str
     ) -> Suite:

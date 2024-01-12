@@ -123,11 +123,11 @@ def test_changing_logger():
     from palma import logger, set_logger
 
     set_logger(DummyLogger(uri="."))
-    assert isinstance(logger.logger, DummyLogger)
-    logger.__set__(MLFlowLogger(uri="."))
-    assert isinstance(logger.logger, MLFlowLogger)
+    assert isinstance(logger, DummyLogger)
+    set_logger(MLFlowLogger(uri="."))
+    assert isinstance(logger, MLFlowLogger)
     set_logger(DummyLogger(uri="."))
-    assert isinstance(logger.logger, DummyLogger)
+    assert isinstance(logger, DummyLogger)
 
 
 def test_artifact_logging():

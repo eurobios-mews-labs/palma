@@ -18,14 +18,9 @@ from deepchecks.tabular import Dataset, Suite
 from deepchecks.tabular.suites.default_suites import (train_test_validation,
                                                       data_integrity)
 
-from palma import ModelEvaluation
-from palma import ModelSelector
-from palma import Project
-from palma.components import ScoringAnalysis
+from palma.base.project import Project
 from palma.components.base import ProjectComponent
 from palma.components.logger import logger
-from palma.utils import utils
-from sklearn.model_selection import ShuffleSplit
 
 
 class DeepCheck(ProjectComponent):
@@ -115,7 +110,8 @@ class DeepCheck(ProjectComponent):
 
         df = pd.concat([project.X, project.y], axis=1)
         df.columns = [*project.X.columns.to_list(), "target"]
-        self.__dataset = Dataset(df, label=project.y.name, **kwargs)
+        print(df.columns)
+        self.__dataset = Dataset(df, label="target", **kwargs)
 
         self.__train_dataset = self.__dataset.copy(
             df.loc[project.validation_strategy.train_index])
@@ -162,22 +158,70 @@ class DeepCheck(ProjectComponent):
 
 
 class Leakage(ProjectComponent):
+    """
+    Class for detecting data leakage in a classification project.
+
+    This class implements component that checks for data leakage in a given
+    project. It uses the FLAML optimizer for model selection and performs
+    a scoring analysis to check for the presence of data leakage based on
+    the AUC metric.
+
+    Parameters:
+    -----------
+    project : Project
+        The classification project to be evaluated for data leakage.
+
+    Returns:
+    --------
+    None
+
+    Raises:
+    -------
+    ValueError
+        If the AUC score for the test set is greater than 0.8, indicating
+        the presence of data leakage.
+    """
+
     def __call__(self, project: Project) -> None:
+        from palma.base.model import ModelEvaluation
+        from palma.base.model_selection import ModelSelector
+        from sklearn import metrics
+        from sklearn.model_selection import ShuffleSplit
+        from palma.utils import utils
+        from sklearn.impute import SimpleImputer
+        from palma.components import ScoringAnalysis
+
         z = utils.get_splitting_matrix(
             project.X,
             project.validation_strategy.indexes_train_test)
         z = z == 2
+        z = pd.Series(z.iloc[:, 0])
 
+        si = SimpleImputer()
         leakage_project = Project(
             problem="classification", project_name="leakage")
 
-        leakage_project.start(X=project.X, y=z, splitter=Sc)
+        x_leakage = pd.DataFrame(si.fit_transform(project.X),
+                                 columns=project.X.columns)
+
+        leakage_project.start(X=x_leakage, y=z, splitter=ShuffleSplit())
         run = ModelSelector(
             engine="FlamlOptimizer",
-            engine_parameters=dict(time_budget=10))
+            engine_parameters=dict(time_budget=10,
+                                   estimator_list=['xgboost']))
         run.start(leakage_project)
         model = ModelEvaluation(estimator=run.best_model_)
         model.add(ScoringAnalysis(on="indexes_train_test"))
-        model.fit(project)
+        model.fit(leakage_project)
+        model.components['ScoringAnalysis'].compute_metrics(
+            {"auc": metrics.roc_auc_score})
+        comp = model.components['ScoringAnalysis']
+        if comp.metrics["auc"][0]["test"] > 0.8:
+            raise ValueError("Presence of data leakage")
+        self.__leakage = False
+        self.__metric = comp.metrics["auc"][0]["test"]
+        print("No presence detected of leakage detected")
 
-        model.metrics
+    @property
+    def properties(self):
+        return {"leakage": self.__leakage, "metric": self.__metric}

@@ -189,6 +189,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../components/performance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.components.performance</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../datasets/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.datasets</span></code></a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../preprocessing/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.preprocessing</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../preprocessing/na_encoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.preprocessing.na_encoder</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../preprocessing/pca/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.preprocessing.pca</span></code></a></li>
@@ -380,14 +381,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="module-palma.utils.checker">
-<span id="palma-utils-checker"></span><h1><a class="reference internal" href="../../../../palma.utils.html#module-palma.utils.checker" title="palma.utils.checker"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.utils.checker</span></code></a><a class="headerlink" href="#module-palma.utils.checker" title="Link to this heading">#</a></h1>
+<span id="palma-utils-checker"></span><h1><a class="reference internal" href="#module-palma.utils.checker" title="palma.utils.checker"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.utils.checker</span></code></a><a class="headerlink" href="#module-palma.utils.checker" title="Link to this heading">#</a></h1>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
 <section id="classes">
 <h3>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="../../../../palma.utils.html#palma.utils.checker.ProjectPlanChecker" title="palma.utils.checker.ProjectPlanChecker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProjectPlanChecker</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#palma.utils.checker.ProjectPlanChecker" title="palma.utils.checker.ProjectPlanChecker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProjectPlanChecker</span></code></a></p></td>
 <td><p>ProjectPlanChecker is an object that checks the project plan.</p></td>
 </tr>
 </tbody>
@@ -420,28 +421,28 @@ document.write(`
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.utils.checker.</span></span><span class="sig-name descname"><span class="pre">ProjectPlanChecker</span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>ProjectPlanChecker is an object that checks the project plan.</p>
-<p>At the <code class="xref py py-meth docutils literal notranslate"><span class="pre">build()</span></code> moment, this object     run severals checks in order to see if the project plan is well designed.</p>
+<p>At the <code class="xref py py-meth docutils literal notranslate"><span class="pre">build()</span></code> moment, this object     run several checks in order to see if the project plan is well designed.</p>
 <dl class="simple">
 <dt>Here is an overview of the checks performed by the object:</dt><dd><ul class="simple">
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">_check_arrays()</span></code>        : see whether X and y attribute are compliant with         sklearn standards.</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">_check_project_problem()</span></code>: see if the problem type is correctly         informed by the user.</p></li>
+<li><p><a class="reference internal" href="#palma.utils.checker.ProjectPlanChecker._check_arrays" title="palma.utils.checker.ProjectPlanChecker._check_arrays"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_check_arrays()</span></code></a>        : see whether X and y attribute are compliant with         sklearn standards.</p></li>
+<li><p><a class="reference internal" href="#palma.utils.checker.ProjectPlanChecker._check_project_problem" title="palma.utils.checker.ProjectPlanChecker._check_project_problem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_check_project_problem()</span></code></a>: see if the problem type is correctly         informed by the user.</p></li>
 <li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">_check_problem_metrics()</span></code>: see if the known metrics are consistent with         the project problem</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.utils.checker.ProjectPlanChecker._check_arrays">
-<span class="sig-name descname"><span class="pre">_check_arrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../palma.html#palma.Project" title="palma.Project"><span class="pre">palma.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker._check_arrays" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">_check_arrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../index.html#palma.Project" title="palma.Project"><span class="pre">palma.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker._check_arrays" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.utils.checker.ProjectPlanChecker._check_project_problem">
-<span class="sig-name descname"><span class="pre">_check_project_problem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../palma.html#palma.Project" title="palma.Project"><span class="pre">palma.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker._check_project_problem" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">_check_project_problem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../index.html#palma.Project" title="palma.Project"><span class="pre">palma.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker._check_project_problem" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.utils.checker.ProjectPlanChecker.run_checks">
-<span class="sig-name descname"><span class="pre">run_checks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../palma.html#palma.Project" title="palma.Project"><span class="pre">palma.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker.run_checks" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">run_checks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../index.html#palma.Project" title="palma.Project"><span class="pre">palma.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker.run_checks" title="Link to this definition">#</a></dt>
 <dd><p>Perform some tests on the project plan</p>
 <p>Several checks are performed in order to check if the
 project plan is consistent:</p>

@@ -189,6 +189,7 @@
 <li class="toctree-l4"><a class="reference internal" href="performance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.components.performance</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.datasets</span></code></a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../preprocessing/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.preprocessing</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../preprocessing/na_encoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.preprocessing.na_encoder</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../preprocessing/pca/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.preprocessing.pca</span></code></a></li>
@@ -357,16 +358,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-contents">Package Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.Component"><code class="docutils literal notranslate"><span class="pre">Component</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.Component.logger"><code class="docutils literal notranslate"><span class="pre">Component.logger</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.Component.__str__"><code class="docutils literal notranslate"><span class="pre">Component.__str__()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.Component.add_loger"><code class="docutils literal notranslate"><span class="pre">Component.add_loger()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.FileSystemLogger"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.FileSystemLogger.log_project"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger.log_project()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.FileSystemLogger.log_metrics"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger.log_metrics()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.FileSystemLogger.log_model"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger.log_model()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.FileSystemLogger.log_artifact"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger.log_artifact()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.FileSystemLogger.log_params"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger.log_params()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.FileSystemLogger.__create_directories"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger.__create_directories()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.MLFlowLogger"><code class="docutils literal notranslate"><span class="pre">MLFlowLogger</span></code></a><ul class="nav section-nav flex-column">
@@ -374,7 +374,6 @@ document.write(`
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.MLFlowLogger.log_metrics"><code class="docutils literal notranslate"><span class="pre">MLFlowLogger.log_metrics()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.MLFlowLogger.log_artifact"><code class="docutils literal notranslate"><span class="pre">MLFlowLogger.log_artifact()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.MLFlowLogger.log_params"><code class="docutils literal notranslate"><span class="pre">MLFlowLogger.log_params()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.MLFlowLogger.log_model"><code class="docutils literal notranslate"><span class="pre">MLFlowLogger.log_model()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.ProfilerYData"><code class="docutils literal notranslate"><span class="pre">ProfilerYData</span></code></a><ul class="nav section-nav flex-column">
@@ -415,6 +414,19 @@ document.write(`
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.ShapAnalysis.plot_shap_interaction"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_interaction()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.DeepCheck"><code class="docutils literal notranslate"><span class="pre">DeepCheck</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.DeepCheck.__call__"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__call__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.DeepCheck.__generate_datasets"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__generate_datasets()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.DeepCheck.__generate_suite"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__generate_suite()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.DeepCheck.__str__"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__str__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.Leakage"><code class="docutils literal notranslate"><span class="pre">Leakage</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.Leakage.metrics"><code class="docutils literal notranslate"><span class="pre">Leakage.metrics</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.Leakage.__call__"><code class="docutils literal notranslate"><span class="pre">Leakage.__call__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.Leakage.cross_validation_leakage"><code class="docutils literal notranslate"><span class="pre">Leakage.cross_validation_leakage()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -431,7 +443,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="module-palma.components">
-<span id="palma-components"></span><h1><a class="reference internal" href="../../../palma.components.html#module-palma.components" title="palma.components"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.components</span></code></a><a class="headerlink" href="#module-palma.components" title="Link to this heading">#</a></h1>
+<span id="palma-components"></span><h1><a class="reference internal" href="#module-palma.components" title="palma.components"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.components</span></code></a><a class="headerlink" href="#module-palma.components" title="Link to this heading">#</a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
@@ -452,33 +464,35 @@ document.write(`
 <h3>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="../../../palma.components.html#palma.components.Component" title="palma.components.Component"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Component</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#palma.components.Component" title="palma.components.Component"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Component</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../../../palma.components.html#palma.components.FileSystemLogger" title="palma.components.FileSystemLogger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FileSystemLogger</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#palma.components.FileSystemLogger" title="palma.components.FileSystemLogger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FileSystemLogger</span></code></a></p></td>
+<td><p>A logger for saving artifacts and metadata to the file system.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../../../palma.components.html#palma.components.MLFlowLogger" title="palma.components.MLFlowLogger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLFlowLogger</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#palma.components.MLFlowLogger" title="palma.components.MLFlowLogger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLFlowLogger</span></code></a></p></td>
 <td><p>MLFlowLogger class for logging experiments using MLflow.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../../../palma.components.html#palma.components.ProfilerYData" title="palma.components.ProfilerYData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProfilerYData</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#palma.components.ProfilerYData" title="palma.components.ProfilerYData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProfilerYData</span></code></a></p></td>
 <td><p>Base Project Component class</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../../../palma.components.html#palma.components.ExplainerDashboard" title="palma.components.ExplainerDashboard"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplainerDashboard</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#palma.components.ExplainerDashboard" title="palma.components.ExplainerDashboard"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplainerDashboard</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../../../palma.components.html#palma.components.RegressionAnalysis" title="palma.components.RegressionAnalysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RegressionAnalysis</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#palma.components.RegressionAnalysis" title="palma.components.RegressionAnalysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RegressionAnalysis</span></code></a></p></td>
 <td><p>Base Model Component class</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../../../palma.components.html#palma.components.ScoringAnalysis" title="palma.components.ScoringAnalysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScoringAnalysis</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#palma.components.ScoringAnalysis" title="palma.components.ScoringAnalysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScoringAnalysis</span></code></a></p></td>
 <td><p>Base Model Component class</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../../../palma.components.html#palma.components.ShapAnalysis" title="palma.components.ShapAnalysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShapAnalysis</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#palma.components.ShapAnalysis" title="palma.components.ShapAnalysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShapAnalysis</span></code></a></p></td>
 <td><p>Base Model Component class</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#palma.components.DeepCheck" title="palma.components.DeepCheck"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeepCheck</span></code></a></p></td>
+<td><p>This object is a wrapper of the Deepchecks library and allows to audit the</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#palma.components.Leakage" title="palma.components.Leakage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Leakage</span></code></a></p></td>
+<td><p>Class for detecting data leakage in a classification project.</p></td>
 </tr>
 </tbody>
 </table>
@@ -486,21 +500,11 @@ document.write(`
 <dt class="sig sig-object py" id="palma.components.Component">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.</span></span><span class="sig-name descname"><span class="pre">Component</span></span><a class="headerlink" href="#palma.components.Component" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py property">
-<dt class="sig sig-object py" id="palma.components.Component.logger">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#palma.components.Component.logger" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.Component.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.Component.__str__" title="Link to this definition">#</a></dt>
 <dd><p>Return str(self).</p>
 </dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="palma.components.Component.add_loger">
-<span class="sig-name descname"><span class="pre">add_loger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.Component.add_loger" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
@@ -508,20 +512,49 @@ document.write(`
 <dt class="sig sig-object py" id="palma.components.FileSystemLogger">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.</span></span><span class="sig-name descname"><span class="pre">FileSystemLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">tempfile.gettempdir()</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.FileSystemLogger" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Logger</span></code></p>
+<p>A logger for saving artifacts and metadata to the file system.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>uri</strong><span class="classifier">str</span></dt><dd><p>root path or directory, from which will be saved artifacts and metadata</p>
+<dt><strong>uri</strong><span class="classifier">str, optional</span></dt><dd><p>The root path or directory where artifacts and metadata will be saved.
+Defaults to the system temporary directory.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">dict</span></dt><dd><p>Additional keyword arguments to pass to the base logger.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>path_project</strong><span class="classifier">str</span></dt><dd><p>The path to the project directory.</p>
+</dd>
+<dt><strong>path_study</strong><span class="classifier">str</span></dt><dd><p>The path to the study directory within the project.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Methods</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>log_project(project: Project) -&gt; None</strong></p></td>
+<td><p>Performs the first level of backup by creating folders and saving an instance of  <a class="reference internal" href="../index.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>log_metrics(metrics: dict, path: str) -&gt; None</strong></p></td>
+<td><p>Saves metrics in JSON format at the specified path.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>log_artifact(obj, path: str) -&gt; None</strong></p></td>
+<td><p>Saves an artifact at the specified path, handling different types of objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>log_params(parameters: dict, path: str) -&gt; None</strong></p></td>
+<td><p>Saves model parameters in JSON format at the specified path.</p></td>
+</tr>
+</tbody>
+</table>
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.FileSystemLogger.log_project">
 <span class="sig-name descname"><span class="pre">log_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">palma.base.project.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.FileSystemLogger.log_project" title="Link to this definition">#</a></dt>
 <dd><p>log_project performs the first level of backup as described
 in the object description.</p>
-<p>This method creates the needed folders and saves an instance of         <a class="reference internal" href="../../../palma.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a>.</p>
+<p>This method creates the needed folders and saves an instance of         <a class="reference internal" href="../index.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -535,29 +568,76 @@ in the object description.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.FileSystemLogger.log_metrics">
 <span class="sig-name descname"><span class="pre">log_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.FileSystemLogger.log_metrics" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Logs metrics to a JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>metrics</strong><span class="classifier">dict</span></dt><dd><p>The metrics to be logged.</p>
+</dd>
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>The relative path (from the study directory)
+where the metrics JSON file will be saved.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="palma.components.FileSystemLogger.log_model">
-<span class="sig-name descname"><span class="pre">log_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.FileSystemLogger.log_model" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="palma.components.FileSystemLogger.log_artifact">
+<span class="sig-name descname"><span class="pre">log_artifact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.FileSystemLogger.log_artifact" title="Link to this definition">#</a></dt>
+<dd><p>Logs an artifact, handling different types of objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>obj</strong><span class="classifier">any</span></dt><dd><p>The artifact to be logged.</p>
+</dd>
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>The relative path (from the study directory)
+where the artifact will be saved.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.FileSystemLogger.log_params">
 <span class="sig-name descname"><span class="pre">log_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.FileSystemLogger.log_params" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Logs model parameters to a JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>parameters</strong><span class="classifier">dict</span></dt><dd><p>The model parameters to be logged.</p>
+</dd>
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>The relative path (from the study directory) where the parameters
+JSON file will be saved.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.FileSystemLogger.__create_directories">
+<span class="sig-name descname"><span class="pre">__create_directories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.FileSystemLogger.__create_directories" title="Link to this definition">#</a></dt>
+<dd><p>Creates the study directory if it doesn’t exist.</p>
+<p>If the study directory does not exist,
+it is created along with any necessary parent directories.</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="palma.components.MLFlowLogger">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.</span></span><span class="sig-name descname"><span class="pre">MLFlowLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.MLFlowLogger" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.</span></span><span class="sig-name descname"><span class="pre">MLFlowLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">artifact_location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'.mlruns'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.MLFlowLogger" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">Logger</span></code></p>
 <p>MLFlowLogger class for logging experiments using MLflow.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>- uri (str): The URI for the MLflow tracking server.</strong></dt><dd></dd>
+<dt><strong>uri</strong><span class="classifier">str</span></dt><dd><p>The URI for the MLflow tracking server.</p>
+</dd>
+<dt><strong>artifact_location</strong><span class="classifier">str</span></dt><dd><p>The place to save artifact on file system logger</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -567,8 +647,8 @@ in the object description.</p>
 </dd>
 <dt class="field-odd">Attributes<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>- tmp_logger (FileSystemLogger): Temporary logger for local logging</strong></dt><dd></dd>
-<dt><strong>before MLflow logging.</strong></dt><dd></dd>
+<dt><strong>tmp_logger</strong><span class="classifier">(FileSystemLogger)</span></dt><dd><p>Temporary logger for local logging before MLflow logging.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -599,7 +679,7 @@ in the object description.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.MLFlowLogger.log_metrics">
-<span class="sig-name descname"><span class="pre">log_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.MLFlowLogger.log_metrics" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">log_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.MLFlowLogger.log_metrics" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -610,11 +690,6 @@ in the object description.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.MLFlowLogger.log_params">
 <span class="sig-name descname"><span class="pre">log_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.MLFlowLogger.log_params" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="palma.components.MLFlowLogger.log_model">
-<span class="sig-name descname"><span class="pre">log_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.MLFlowLogger.log_model" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -704,7 +779,7 @@ for more detail.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.ExplainerDashboard._get_dashboard">
-<span class="sig-name descname"><span class="pre">_get_dashboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">explainer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">explainerdashboard.explainers.BaseExplainer</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../../palma.components.html#palma.components.ExplainerDashboard" title="palma.components.ExplainerDashboard"><span class="pre">ExplainerDashboard</span></a></span></span><a class="headerlink" href="#palma.components.ExplainerDashboard._get_dashboard" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">_get_dashboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">explainer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">explainerdashboard.explainers.BaseExplainer</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#palma.components.ExplainerDashboard" title="palma.components.ExplainerDashboard"><span class="pre">ExplainerDashboard</span></a></span></span><a class="headerlink" href="#palma.components.ExplainerDashboard._get_dashboard" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -845,6 +920,113 @@ for more detail.</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="palma.components.DeepCheck">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.</span></span><span class="sig-name descname"><span class="pre">DeepCheck</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Data</span> <span class="pre">Checker'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_checks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">deepchecks.core.BaseCheck</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">deepchecks.core.BaseSuite</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">data_integrity()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_test_datasets_checks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">deepchecks.core.BaseCheck</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">deepchecks.core.BaseSuite</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Suite('Checks</span> <span class="pre">train</span> <span class="pre">test',</span> <span class="pre">train_test_validation())</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.DeepCheck" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../palma.components.html#palma.components.base.ProjectComponent" title="palma.components.base.ProjectComponent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">palma.components.base.ProjectComponent</span></code></a></p>
+<p>This object is a wrapper of the Deepchecks library and allows to audit the
+data through various checks such as data drift, duplicate values, …</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dataset_parameters</strong><span class="classifier">dict, optional</span></dt><dd><p>Parameters and their values that will be used to generate
+<code class="xref py py-class docutils literal notranslate"><span class="pre">deepchecks.Dataset</span></code> instances (required to run the checks on)</p>
+</dd>
+<dt><strong>dataset_checks: Union[List[BaseCheck], BaseSuite], optional</strong></dt><dd><p>List of checks or suite of checks that will be run on the whole dataset
+By default: use the default suite single_dataset_integrity to detect
+the integrity issues</p>
+</dd>
+<dt><strong>train_test_datasets_checks: Union[List[BaseCheck], BaseSuite], optional</strong></dt><dd><p>List of checks or suite of checks to detect issues related to the
+train-test split, such as feature drift, detecting data leakage…
+By default, use the default suites train_test_validation and
+train_test_leakage</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.DeepCheck.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">palma.base.project.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.DeepCheck.__call__" title="Link to this definition">#</a></dt>
+<dd><p>Run suite of checks on the project data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>project: :class:`~palma.Project`</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.DeepCheck.__generate_datasets">
+<span class="sig-name descname"><span class="pre">__generate_datasets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">palma.base.project.Project</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.DeepCheck.__generate_datasets" title="Link to this definition">#</a></dt>
+<dd><p>Generate <code class="xref py py-class docutils literal notranslate"><span class="pre">deepchecks.Dataset</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>project: project</strong></dt><dd><p><a class="reference internal" href="../index.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.DeepCheck.__generate_suite">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__generate_suite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">checks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">deepchecks.core.BaseCheck</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">deepchecks.core.BaseSuite</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">deepchecks.tabular.Suite</span></span></span><a class="headerlink" href="#palma.components.DeepCheck.__generate_suite" title="Link to this definition">#</a></dt>
+<dd><p>Generate a Suite of checks from a list of checks or a suite of checks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>checks: Union[List[BaseCheck], BaseSuite], optional</strong></dt><dd><p>List of checks or suite of checks</p>
+</dd>
+<dt><strong>name: str</strong></dt><dd><p>Name for the suite to returned</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>suite: <code class="xref py py-class docutils literal notranslate"><span class="pre">deepchecks.Suite</span></code></dt><dd><p>instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">deepchecks.Suite</span></code></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.DeepCheck.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#palma.components.DeepCheck.__str__" title="Link to this definition">#</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="palma.components.Leakage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.</span></span><span class="sig-name descname"><span class="pre">Leakage</span></span><a class="headerlink" href="#palma.components.Leakage" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../palma.components.html#palma.components.base.ProjectComponent" title="palma.components.base.ProjectComponent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">palma.components.base.ProjectComponent</span></code></a></p>
+<p>Class for detecting data leakage in a classification project.</p>
+<p>This class implements component that checks for data leakage in a given
+project. It uses the FLAML optimizer for model selection and performs
+a scoring analysis to check for the presence of data leakage based on
+the AUC metric.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.components.Leakage.metrics">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metrics</span></span><a class="headerlink" href="#palma.components.Leakage.metrics" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.Leakage.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">palma.base.project.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.Leakage.__call__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.Leakage.cross_validation_leakage">
+<span class="sig-name descname"><span class="pre">cross_validation_leakage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.Leakage.cross_validation_leakage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 </section>
@@ -898,16 +1080,15 @@ for more detail.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-contents">Package Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.Component"><code class="docutils literal notranslate"><span class="pre">Component</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.Component.logger"><code class="docutils literal notranslate"><span class="pre">Component.logger</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.Component.__str__"><code class="docutils literal notranslate"><span class="pre">Component.__str__()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.Component.add_loger"><code class="docutils literal notranslate"><span class="pre">Component.add_loger()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.FileSystemLogger"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.FileSystemLogger.log_project"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger.log_project()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.FileSystemLogger.log_metrics"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger.log_metrics()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.FileSystemLogger.log_model"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger.log_model()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.FileSystemLogger.log_artifact"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger.log_artifact()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.FileSystemLogger.log_params"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger.log_params()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.FileSystemLogger.__create_directories"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger.__create_directories()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.MLFlowLogger"><code class="docutils literal notranslate"><span class="pre">MLFlowLogger</span></code></a><ul class="nav section-nav flex-column">
@@ -915,7 +1096,6 @@ for more detail.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.MLFlowLogger.log_metrics"><code class="docutils literal notranslate"><span class="pre">MLFlowLogger.log_metrics()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.MLFlowLogger.log_artifact"><code class="docutils literal notranslate"><span class="pre">MLFlowLogger.log_artifact()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.MLFlowLogger.log_params"><code class="docutils literal notranslate"><span class="pre">MLFlowLogger.log_params()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.MLFlowLogger.log_model"><code class="docutils literal notranslate"><span class="pre">MLFlowLogger.log_model()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.ProfilerYData"><code class="docutils literal notranslate"><span class="pre">ProfilerYData</span></code></a><ul class="nav section-nav flex-column">
@@ -954,6 +1134,19 @@ for more detail.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.ShapAnalysis.plot_shap_summary_plot"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_summary_plot()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.ShapAnalysis.plot_shap_decision_plot"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_decision_plot()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.ShapAnalysis.plot_shap_interaction"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_interaction()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.DeepCheck"><code class="docutils literal notranslate"><span class="pre">DeepCheck</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.DeepCheck.__call__"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__call__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.DeepCheck.__generate_datasets"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__generate_datasets()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.DeepCheck.__generate_suite"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__generate_suite()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.DeepCheck.__str__"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__str__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.Leakage"><code class="docutils literal notranslate"><span class="pre">Leakage</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.Leakage.metrics"><code class="docutils literal notranslate"><span class="pre">Leakage.metrics</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.Leakage.__call__"><code class="docutils literal notranslate"><span class="pre">Leakage.__call__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.Leakage.cross_validation_leakage"><code class="docutils literal notranslate"><span class="pre">Leakage.cross_validation_leakage()</span></code></a></li>
 </ul>
 </li>
 </ul>

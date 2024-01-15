@@ -35,6 +35,8 @@ Classes
    palma.components.RegressionAnalysis
    palma.components.ScoringAnalysis
    palma.components.ShapAnalysis
+   palma.components.DeepCheck
+   palma.components.Leakage
 
 
 
@@ -43,9 +45,6 @@ Classes
 
 
    Bases: :py:obj:`object`
-
-   .. py:property:: logger
-
 
    .. py:method:: __str__()
 
@@ -70,9 +69,6 @@ Classes
       ..
           !! processed by numpydoc !!
 
-   .. py:method:: add_loger(project)
-
-
 
 .. py:class:: FileSystemLogger(uri: str = tempfile.gettempdir(), **kwargs)
 
@@ -80,13 +76,17 @@ Classes
    Bases: :py:obj:`Logger`
 
    
-
+   A logger for saving artifacts and metadata to the file system.
 
 
    :Parameters:
 
-       **uri** : str
-           root path or directory, from which will be saved artifacts and metadata 
+       **uri** : str, optional
+           The root path or directory where artifacts and metadata will be saved.
+           Defaults to the system temporary directory.
+
+       **\*\*kwargs** : dict
+           Additional keyword arguments to pass to the base logger.
 
 
 
@@ -99,7 +99,24 @@ Classes
 
 
 
+   :Attributes:
 
+       **path_project** : str
+           The path to the project directory.
+
+       **path_study** : str
+           The path to the study directory within the project.
+
+   .. rubric:: Methods
+
+
+
+   ===================================================  ==========
+             **log_project(project: Project) -> None**  Performs the first level of backup by creating folders and saving an instance of  :class:`~palma.Project`.  
+     **log_metrics(metrics: dict, path: str) -> None**  Saves metrics in JSON format at the specified path.  
+              **log_artifact(obj, path: str) -> None**  Saves an artifact at the specified path, handling different types of objects.  
+   **log_params(parameters: dict, path: str) -> None**  Saves model parameters in JSON format at the specified path.  
+   ===================================================  ==========
 
    ..
        !! processed by numpydoc !!
@@ -134,15 +151,124 @@ Classes
 
    .. py:method:: log_metrics(metrics: dict, path: str) -> None
 
+      
+      Logs metrics to a JSON file.
 
-   .. py:method:: log_model(estimator, path: str) -> None
 
+      :Parameters:
+
+          **metrics** : dict
+              The metrics to be logged.
+
+          **path** : str
+              The relative path (from the study directory)
+              where the metrics JSON file will be saved.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: log_artifact(obj, path: str) -> None
+
+      
+      Logs an artifact, handling different types of objects.
+
+
+      :Parameters:
+
+          **obj** : any
+              The artifact to be logged.
+
+          **path** : str
+              The relative path (from the study directory)
+              where the artifact will be saved.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
 
    .. py:method:: log_params(parameters: dict, path: str) -> None
 
+      
+      Logs model parameters to a JSON file.
 
 
-.. py:class:: MLFlowLogger(uri: str)
+      :Parameters:
+
+          **parameters** : dict
+              The model parameters to be logged.
+
+          **path** : str
+              The relative path (from the study directory) where the parameters
+              JSON file will be saved.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: __create_directories()
+
+      
+      Creates the study directory if it doesn't exist.
+
+      If the study directory does not exist,
+      it is created along with any necessary parent directories.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: MLFlowLogger(uri: str, artifact_location: str = '.mlruns')
 
 
    Bases: :py:obj:`Logger`
@@ -153,8 +279,11 @@ Classes
 
    :Parameters:
 
-       **- uri (str): The URI for the MLflow tracking server.**
-           ..
+       **uri** : str
+           The URI for the MLflow tracking server.
+
+       **artifact_location** : str
+           The place to save artifact on file system logger
 
 
 
@@ -173,11 +302,8 @@ Classes
 
    :Attributes:
 
-       **- tmp_logger (FileSystemLogger): Temporary logger for local logging**
-           ..
-
-       **before MLflow logging.**
-           ..
+       **tmp_logger** : (FileSystemLogger)
+           Temporary logger for local logging before MLflow logging.
 
    .. rubric:: Methods
 
@@ -196,16 +322,13 @@ Classes
    .. py:method:: log_project(project: palma.base.project.Project) -> None
 
 
-   .. py:method:: log_metrics(metrics: dict[str, Any]) -> None
+   .. py:method:: log_metrics(metrics: dict[str, Any], path=None) -> None
 
 
    .. py:method:: log_artifact(artifact: dict, path) -> None
 
 
    .. py:method:: log_params(params: dict) -> None
-
-
-   .. py:method:: log_model(model, path)
 
 
 
@@ -555,6 +678,200 @@ Classes
 
 
    .. py:method:: plot_shap_interaction(feature_x, feature_y)
+
+
+
+.. py:class:: DeepCheck(name: str = 'Data Checker', dataset_parameters: dict = None, dataset_checks: Union[List[deepchecks.core.BaseCheck], deepchecks.core.BaseSuite] = data_integrity(), train_test_datasets_checks: Union[List[deepchecks.core.BaseCheck], deepchecks.core.BaseSuite] = Suite('Checks train test', train_test_validation()))
+
+
+   Bases: :py:obj:`palma.components.base.ProjectComponent`
+
+   
+   This object is a wrapper of the Deepchecks library and allows to audit the
+   data through various checks such as data drift, duplicate values, ...
+
+
+   :Parameters:
+
+       **dataset_parameters** : dict, optional
+           Parameters and their values that will be used to generate
+           :class:`deepchecks.Dataset` instances (required to run the checks on)
+
+       **dataset_checks: Union[List[BaseCheck], BaseSuite], optional**
+           List of checks or suite of checks that will be run on the whole dataset
+           By default: use the default suite single_dataset_integrity to detect
+           the integrity issues
+
+       **train_test_datasets_checks: Union[List[BaseCheck], BaseSuite], optional**
+           List of checks or suite of checks to detect issues related to the
+           train-test split, such as feature drift, detecting data leakage...
+           By default, use the default suites train_test_validation and
+           train_test_leakage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: __call__(project: palma.base.project.Project) -> None
+
+      
+      Run suite of checks on the project data.
+
+
+      :Parameters:
+
+          **project: :class:`~palma.Project`**
+              ..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: __generate_datasets(project: palma.base.project.Project, **kwargs) -> None
+
+      
+      Generate :class:`deepchecks.Dataset`
+
+
+      :Parameters:
+
+          **project: project**
+              :class:`~palma.Project`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: __generate_suite(checks: Union[List[deepchecks.core.BaseCheck], deepchecks.core.BaseSuite], name: str) -> deepchecks.tabular.Suite
+      :staticmethod:
+
+      
+      Generate a Suite of checks from a list of checks or a suite of checks
+
+
+      :Parameters:
+
+          **checks: Union[List[BaseCheck], BaseSuite], optional**
+              List of checks or suite of checks
+
+          **name: str**
+              Name for the suite to returned
+
+      :Returns:
+
+          suite: :class:`deepchecks.Suite`
+              instance of :class:`deepchecks.Suite`
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: __str__() -> str
+
+      
+      Return str(self).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: Leakage
+
+
+   Bases: :py:obj:`palma.components.base.ProjectComponent`
+
+   
+   Class for detecting data leakage in a classification project.
+
+   This class implements component that checks for data leakage in a given
+   project. It uses the FLAML optimizer for model selection and performs
+   a scoring analysis to check for the presence of data leakage based on
+   the AUC metric.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:property:: metrics
+
+
+   .. py:method:: __call__(project: palma.base.project.Project) -> None
+
+
+   .. py:method:: cross_validation_leakage(project)
 
 
 

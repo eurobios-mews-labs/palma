@@ -28,6 +28,8 @@ Attributes
 
    palma.components.logger.mlflow
    palma.components.logger._logger
+   palma.components.logger.logger
+   palma.components.logger.set_logger
 
 
 .. py:data:: mlflow
@@ -80,7 +82,7 @@ Attributes
       :abstractmethod:
 
 
-   .. py:method:: log_model(**kwargs) -> None
+   .. py:method:: log_artifact(**kwargs) -> None
       :abstractmethod:
 
 
@@ -123,7 +125,7 @@ Attributes
    .. py:method:: log_params(parameters: dict, path: str) -> None
 
 
-   .. py:method:: log_model(estimator, path: str) -> None
+   .. py:method:: log_artifact(obj, path: str) -> None
 
 
 
@@ -133,13 +135,17 @@ Attributes
    Bases: :py:obj:`Logger`
 
    
-
+   A logger for saving artifacts and metadata to the file system.
 
 
    :Parameters:
 
-       **uri** : str
-           root path or directory, from which will be saved artifacts and metadata 
+       **uri** : str, optional
+           The root path or directory where artifacts and metadata will be saved.
+           Defaults to the system temporary directory.
+
+       **\*\*kwargs** : dict
+           Additional keyword arguments to pass to the base logger.
 
 
 
@@ -152,7 +158,24 @@ Attributes
 
 
 
+   :Attributes:
 
+       **path_project** : str
+           The path to the project directory.
+
+       **path_study** : str
+           The path to the study directory within the project.
+
+   .. rubric:: Methods
+
+
+
+   ===================================================  ==========
+             **log_project(project: Project) -> None**  Performs the first level of backup by creating folders and saving an instance of  :class:`~palma.Project`.  
+     **log_metrics(metrics: dict, path: str) -> None**  Saves metrics in JSON format at the specified path.  
+              **log_artifact(obj, path: str) -> None**  Saves an artifact at the specified path, handling different types of objects.  
+   **log_params(parameters: dict, path: str) -> None**  Saves model parameters in JSON format at the specified path.  
+   ===================================================  ==========
 
    ..
        !! processed by numpydoc !!
@@ -187,15 +210,124 @@ Attributes
 
    .. py:method:: log_metrics(metrics: dict, path: str) -> None
 
+      
+      Logs metrics to a JSON file.
 
-   .. py:method:: log_model(estimator, path: str) -> None
 
+      :Parameters:
+
+          **metrics** : dict
+              The metrics to be logged.
+
+          **path** : str
+              The relative path (from the study directory)
+              where the metrics JSON file will be saved.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: log_artifact(obj, path: str) -> None
+
+      
+      Logs an artifact, handling different types of objects.
+
+
+      :Parameters:
+
+          **obj** : any
+              The artifact to be logged.
+
+          **path** : str
+              The relative path (from the study directory)
+              where the artifact will be saved.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
 
    .. py:method:: log_params(parameters: dict, path: str) -> None
 
+      
+      Logs model parameters to a JSON file.
 
 
-.. py:class:: MLFlowLogger(uri: str)
+      :Parameters:
+
+          **parameters** : dict
+              The model parameters to be logged.
+
+          **path** : str
+              The relative path (from the study directory) where the parameters
+              JSON file will be saved.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+   .. py:method:: __create_directories()
+
+      
+      Creates the study directory if it doesn't exist.
+
+      If the study directory does not exist,
+      it is created along with any necessary parent directories.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
+
+
+.. py:class:: MLFlowLogger(uri: str, artifact_location: str = '.mlruns')
 
 
    Bases: :py:obj:`Logger`
@@ -206,8 +338,11 @@ Attributes
 
    :Parameters:
 
-       **- uri (str): The URI for the MLflow tracking server.**
-           ..
+       **uri** : str
+           The URI for the MLflow tracking server.
+
+       **artifact_location** : str
+           The place to save artifact on file system logger
 
 
 
@@ -226,11 +361,8 @@ Attributes
 
    :Attributes:
 
-       **- tmp_logger (FileSystemLogger): Temporary logger for local logging**
-           ..
-
-       **before MLflow logging.**
-           ..
+       **tmp_logger** : (FileSystemLogger)
+           Temporary logger for local logging before MLflow logging.
 
    .. rubric:: Methods
 
@@ -249,16 +381,13 @@ Attributes
    .. py:method:: log_project(project: palma.base.project.Project) -> None
 
 
-   .. py:method:: log_metrics(metrics: dict[str, Any]) -> None
+   .. py:method:: log_metrics(metrics: dict[str, Any], path=None) -> None
 
 
    .. py:method:: log_artifact(artifact: dict, path) -> None
 
 
    .. py:method:: log_params(params: dict) -> None
-
-
-   .. py:method:: log_model(model, path)
 
 
 
@@ -269,7 +398,10 @@ Attributes
       :type: Logger
 
 
-   .. py:method:: __set__(logger) -> None
+   .. py:property:: uri
+
+
+   .. py:method:: __set__(_logger) -> None
 
       
 
@@ -277,7 +409,7 @@ Attributes
 
       :Parameters:
 
-          **logger: Logger**
+          **_logger: Logger**
               Define the logger to use.
               
               >>> from palma import logger, set_logger
@@ -285,12 +417,6 @@ Attributes
               >>> from palma.components import MLFlowLogger
               >>> set_logger(MLFlowLogger(uri="."))
               >>> set_logger(FileSystemLogger(uri="."))
-
-          **Returns**
-              ..
-
-          **-------**
-              None
 
 
 
@@ -308,4 +434,12 @@ Attributes
       ..
           !! processed by numpydoc !!
 
+
+.. py:data:: logger
+
+   
+
+.. py:data:: set_logger
+
+   
 

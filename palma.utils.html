@@ -187,6 +187,7 @@
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/components/performance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.components.performance</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/palma/datasets/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.datasets</span></code></a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/palma/preprocessing/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.preprocessing</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/preprocessing/na_encoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.preprocessing.na_encoder</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/preprocessing/pca/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.preprocessing.pca</span></code></a></li>
@@ -352,13 +353,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-palma.utils.checker">palma.utils.checker module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.utils.checker.ProjectPlanChecker"><code class="docutils literal notranslate"><span class="pre">ProjectPlanChecker</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.utils.checker.ProjectPlanChecker.run_checks"><code class="docutils literal notranslate"><span class="pre">ProjectPlanChecker.run_checks()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#palma-utils-checker-module">palma.utils.checker module</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-palma.utils.names">palma.utils.names module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.utils.names.get_random_name"><code class="docutils literal notranslate"><span class="pre">get_random_name()</span></code></a></li>
 </ul>
@@ -403,55 +398,8 @@ document.write(`
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 </section>
-<section id="module-palma.utils.checker">
-<span id="palma-utils-checker-module"></span><h2>palma.utils.checker module<a class="headerlink" href="#module-palma.utils.checker" title="Link to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="palma.utils.checker.ProjectPlanChecker">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.utils.checker.</span></span><span class="sig-name descname"><span class="pre">ProjectPlanChecker</span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>ProjectPlanChecker is an object that checks the project plan.</p>
-<p>At the <code class="xref py py-meth docutils literal notranslate"><span class="pre">build()</span></code> moment, this object     run severals checks in order to see if the project plan is well designed.</p>
-<dl class="simple">
-<dt>Here is an overview of the checks performed by the object:</dt><dd><ul class="simple">
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">_check_arrays()</span></code>        : see whether X and y attribute are compliant with         sklearn standards.</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">_check_project_problem()</span></code>: see if the problem type is correctly         informed by the user.</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">_check_problem_metrics()</span></code>: see if the known metrics are consistent with         the project problem</p></li>
-</ul>
-</dd>
-</dl>
-<p class="rubric">Methods</p>
-<table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#palma.utils.checker.ProjectPlanChecker.run_checks" title="palma.utils.checker.ProjectPlanChecker.run_checks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_checks</span></code></a>(project)</p></td>
-<td><p>Perform some tests on the project plan</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="py method">
-<dt class="sig sig-object py" id="palma.utils.checker.ProjectPlanChecker.run_checks">
-<span class="sig-name descname"><span class="pre">run_checks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker.run_checks" title="Link to this definition">#</a></dt>
-<dd><p>Perform some tests on the project plan</p>
-<p>Several checks are performed in order to check if the
-project plan is consistent:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>checks the project problem</p></li>
-<li><p>checks the metrics provided by the user</p></li>
-<li><p>checks the data provided by the user (scikit learn wrapper)</p></li>
-</ul>
-</div></blockquote>
-<dl class="field-list">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl>
-<dt><strong>project</strong><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></span></dt><dd><p>an Project instance</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+<section id="palma-utils-checker-module">
+<h2>palma.utils.checker module<a class="headerlink" href="#palma-utils-checker-module" title="Link to this heading">#</a></h2>
 </section>
 <section id="module-palma.utils.names">
 <span id="palma-utils-names-module"></span><h2>palma.utils.names module<a class="headerlink" href="#module-palma.utils.names" title="Link to this heading">#</a></h2>
@@ -504,14 +452,37 @@ project plan is consistent:</p>
 <dt class="sig sig-object py" id="palma.utils.utils.AverageEstimator">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">AverageEstimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.utils.utils.AverageEstimator" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A simple ensemble estimator that computes the average prediction of a list of estimators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>estimator_list</strong><span class="classifier">list</span></dt><dd><p>A list of individual estimators to be averaged.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>numpy.ndarray</dt><dd><p>The averaged prediction or class probabilities.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>estimator_list</strong><span class="classifier">list</span></dt><dd><p>The list of individual estimators.</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">int</span></dt><dd><p>The number of estimators in the list.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <p class="rubric">Methods</p>
 <table class="table">
 <tbody>
-<tr class="row-odd"><td><p><strong>predict</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><strong>predict(*args, **kwargs)</strong></p></td>
+<td><p>Compute the average prediction across all estimators.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>predict_proba</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><strong>predict_proba(*args, **kwargs)</strong></p></td>
+<td><p>Compute the average class probabilities across all estimators.</p></td>
 </tr>
 </tbody>
 </table>
@@ -535,14 +506,14 @@ project plan is consistent:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="palma.utils.utils.check_started">
 <span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">check_started</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">need_build</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="headerlink" href="#palma.utils.utils.check_started" title="Link to this definition">#</a></dt>
-<dd><p>check_built is a decorator used for methods that must be called on     built or unbuilt <code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code>.
-If the <code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code> is_built attribute has     not the correct value, an AttributeError is raised with the message passed     as argument.</p>
+<dd><p>check_built is a decorator used for methods that must be called on     built or unbuilt <a class="reference internal" href="autoapi/palma/index.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a>.
+If the <a class="reference internal" href="autoapi/palma/index.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> is_built attribute has     not the correct value, an AttributeError is raised with the message passed     as argument.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>message: str</strong></dt><dd><p>Error message</p>
 </dd>
-<dt><strong>need_build: bool</strong></dt><dd><p>Expected value for <code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code> is_built         attribute</p>
+<dt><strong>need_build: bool</strong></dt><dd><p>Expected value for <a class="reference internal" href="autoapi/palma/index.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> is_built         attribute</p>
 </dd>
 </dl>
 </dd>
@@ -568,7 +539,37 @@ If the <code class="xref py py-class docutils literal notranslate"><span class="
 <dl class="py function">
 <dt class="sig sig-object py" id="palma.utils.utils.get_splitting_matrix">
 <span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">get_splitting_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iter_cross_validation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">iter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#palma.utils.utils.get_splitting_matrix" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Generate a splitting matrix based on cross-validation iterations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>The input dataframe.</p>
+</dd>
+<dt><strong>iter_cross_validation</strong><span class="classifier">Iterable</span></dt><dd><p>An iterable containing cross-validation splits (train, test).</p>
+</dd>
+<dt><strong>expand</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the output matrix will have columns for both train and test
+splits for each iteration. If False (default), the output matrix will
+have columns for each iteration with 1 for train and 2 for test.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>A matrix indicating the train (1) and test (2) splits for each
+iteration. Rows represent data points, and columns represent iterations.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;feature1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+<span class="gp">... </span>                  <span class="s1">&#39;feature2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">iter_cv</span> <span class="o">=</span> <span class="p">[(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span> <span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">))]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_splitting_matrix</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">iter_cv</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="palma.utils.utils.hash_dataframe">
@@ -614,13 +615,7 @@ If the <code class="xref py py-class docutils literal notranslate"><span class="
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-palma.utils.checker">palma.utils.checker module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.utils.checker.ProjectPlanChecker"><code class="docutils literal notranslate"><span class="pre">ProjectPlanChecker</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.utils.checker.ProjectPlanChecker.run_checks"><code class="docutils literal notranslate"><span class="pre">ProjectPlanChecker.run_checks()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#palma-utils-checker-module">palma.utils.checker module</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-palma.utils.names">palma.utils.names module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.utils.names.get_random_name"><code class="docutils literal notranslate"><span class="pre">get_random_name()</span></code></a></li>
 </ul>

@@ -189,6 +189,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../performance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.components.performance</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../datasets/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.datasets</span></code></a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../preprocessing/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.preprocessing</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../preprocessing/na_encoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.preprocessing.na_encoder</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../preprocessing/pca/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.preprocessing.pca</span></code></a></li>
@@ -359,8 +360,13 @@ document.write(`
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.__call__"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__call__()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.__generate_datasets"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__generate_datasets()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.__generate_suite"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__generate_suite()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.items_to_log"><code class="docutils literal notranslate"><span class="pre">DeepCheck.items_to_log()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.__str__"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__str__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.Leakage"><code class="docutils literal notranslate"><span class="pre">Leakage</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.Leakage.metrics"><code class="docutils literal notranslate"><span class="pre">Leakage.metrics</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.Leakage.__call__"><code class="docutils literal notranslate"><span class="pre">Leakage.__call__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.Leakage.cross_validation_leakage"><code class="docutils literal notranslate"><span class="pre">Leakage.cross_validation_leakage()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -389,12 +395,15 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="#palma.components.data_checker.DeepCheck" title="palma.components.data_checker.DeepCheck"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeepCheck</span></code></a></p></td>
 <td><p>This object is a wrapper of the Deepchecks library and allows to audit the</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#palma.components.data_checker.Leakage" title="palma.components.data_checker.Leakage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Leakage</span></code></a></p></td>
+<td><p>Class for detecting data leakage in a classification project.</p></td>
+</tr>
 </tbody>
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="palma.components.data_checker.DeepCheck">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.data_checker.</span></span><span class="sig-name descname"><span class="pre">DeepCheck</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Data</span> <span class="pre">Checker'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">whole_dataset_checks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">deepchecks.core.BaseCheck</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">deepchecks.core.BaseSuite</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">data_integrity()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_test_datasets_checks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">deepchecks.core.BaseCheck</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">deepchecks.core.BaseSuite</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Suite('Checks</span> <span class="pre">train</span> <span class="pre">test',</span> <span class="pre">train_test_validation())</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.data_checker.DeepCheck" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../../../palma.components.html#palma.components.Component" title="palma.components.Component"><code class="xref py py-obj docutils literal notranslate"><span class="pre">palma.components.Component</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.data_checker.</span></span><span class="sig-name descname"><span class="pre">DeepCheck</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Data</span> <span class="pre">Checker'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_checks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">deepchecks.core.BaseCheck</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">deepchecks.core.BaseSuite</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">data_integrity()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_test_datasets_checks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">deepchecks.core.BaseCheck</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">deepchecks.core.BaseSuite</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Suite('Checks</span> <span class="pre">train</span> <span class="pre">test',</span> <span class="pre">train_test_validation())</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.data_checker.DeepCheck" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../../palma.components.html#palma.components.base.ProjectComponent" title="palma.components.base.ProjectComponent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">palma.components.base.ProjectComponent</span></code></a></p>
 <p>This object is a wrapper of the Deepchecks library and allows to audit the
 data through various checks such as data drift, duplicate values, …</p>
 <dl class="field-list simple">
@@ -403,13 +412,13 @@ data through various checks such as data drift, duplicate values, …</p>
 <dt><strong>dataset_parameters</strong><span class="classifier">dict, optional</span></dt><dd><p>Parameters and their values that will be used to generate
 <code class="xref py py-class docutils literal notranslate"><span class="pre">deepchecks.Dataset</span></code> instances (required to run the checks on)</p>
 </dd>
-<dt><strong>whole_dataset_checks: Union[List[BaseCheck], BaseSuite], optional</strong></dt><dd><p>List of checks or suite of checks that will be run on the whole dataset
+<dt><strong>dataset_checks: Union[List[BaseCheck], BaseSuite], optional</strong></dt><dd><p>List of checks or suite of checks that will be run on the whole dataset
 By default: use the default suite single_dataset_integrity to detect
 the integrity issues</p>
 </dd>
 <dt><strong>train_test_datasets_checks: Union[List[BaseCheck], BaseSuite], optional</strong></dt><dd><p>List of checks or suite of checks to detect issues related to the
 train-test split, such as feature drift, detecting data leakage…
-By default: use the default suites train_test_validation and
+By default, use the default suites train_test_validation and
 train_test_leakage</p>
 </dd>
 </dl>
@@ -417,12 +426,12 @@ train_test_leakage</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.data_checker.DeepCheck.__call__">
-<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../palma.html#palma.Project" title="palma.Project"><span class="pre">palma.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.data_checker.DeepCheck.__call__" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">palma.base.project.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.data_checker.DeepCheck.__call__" title="Link to this definition">#</a></dt>
 <dd><p>Run suite of checks on the project data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>project: project</strong></dt><dd></dd>
+<dt><strong>project: :class:`~palma.Project`</strong></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -430,12 +439,12 @@ train_test_leakage</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.data_checker.DeepCheck.__generate_datasets">
-<span class="sig-name descname"><span class="pre">__generate_datasets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../palma.html#palma.Project" title="palma.Project"><span class="pre">palma.Project</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.data_checker.DeepCheck.__generate_datasets" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__generate_datasets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">palma.base.project.Project</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.data_checker.DeepCheck.__generate_datasets" title="Link to this definition">#</a></dt>
 <dd><p>Generate <code class="xref py py-class docutils literal notranslate"><span class="pre">deepchecks.Dataset</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>project: project</strong></dt><dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">project</span></code></p>
+<dt><strong>project: project</strong></dt><dd><p><a class="reference internal" href="../../index.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a></p>
 </dd>
 </dl>
 </dd>
@@ -444,7 +453,7 @@ train_test_leakage</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.data_checker.DeepCheck.__generate_suite">
-<span class="sig-name descname"><span class="pre">__generate_suite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">checks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">deepchecks.core.BaseCheck</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">deepchecks.core.BaseSuite</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">deepchecks.tabular.Suite</span></span></span><a class="headerlink" href="#palma.components.data_checker.DeepCheck.__generate_suite" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__generate_suite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">checks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">deepchecks.core.BaseCheck</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">deepchecks.core.BaseSuite</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">deepchecks.tabular.Suite</span></span></span><a class="headerlink" href="#palma.components.data_checker.DeepCheck.__generate_suite" title="Link to this definition">#</a></dt>
 <dd><p>Generate a Suite of checks from a list of checks or a suite of checks</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -465,17 +474,36 @@ train_test_leakage</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="palma.components.data_checker.DeepCheck.items_to_log">
-<span class="sig-name descname"><span class="pre">items_to_log</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#palma.components.data_checker.DeepCheck.items_to_log" title="Link to this definition">#</a></dt>
-<dd><p>This method returns the checks’ results in two files : an html report
-and a json file.</p>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="palma.components.data_checker.DeepCheck.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#palma.components.data_checker.DeepCheck.__str__" title="Link to this definition">#</a></dt>
 <dd><p>Return str(self).</p>
 </dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="palma.components.data_checker.Leakage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.data_checker.</span></span><span class="sig-name descname"><span class="pre">Leakage</span></span><a class="headerlink" href="#palma.components.data_checker.Leakage" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../../palma.components.html#palma.components.base.ProjectComponent" title="palma.components.base.ProjectComponent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">palma.components.base.ProjectComponent</span></code></a></p>
+<p>Class for detecting data leakage in a classification project.</p>
+<p>This class implements component that checks for data leakage in a given
+project. It uses the FLAML optimizer for model selection and performs
+a scoring analysis to check for the presence of data leakage based on
+the AUC metric.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.components.data_checker.Leakage.metrics">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metrics</span></span><a class="headerlink" href="#palma.components.data_checker.Leakage.metrics" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.data_checker.Leakage.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">palma.base.project.Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.components.data_checker.Leakage.__call__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.data_checker.Leakage.cross_validation_leakage">
+<span class="sig-name descname"><span class="pre">cross_validation_leakage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.data_checker.Leakage.cross_validation_leakage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -534,8 +562,13 @@ and a json file.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.__call__"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__call__()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.__generate_datasets"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__generate_datasets()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.__generate_suite"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__generate_suite()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.items_to_log"><code class="docutils literal notranslate"><span class="pre">DeepCheck.items_to_log()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.__str__"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__str__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.Leakage"><code class="docutils literal notranslate"><span class="pre">Leakage</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.Leakage.metrics"><code class="docutils literal notranslate"><span class="pre">Leakage.metrics</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.Leakage.__call__"><code class="docutils literal notranslate"><span class="pre">Leakage.__call__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.Leakage.cross_validation_leakage"><code class="docutils literal notranslate"><span class="pre">Leakage.cross_validation_leakage()</span></code></a></li>
 </ul>
 </li>
 </ul>

@@ -24,9 +24,6 @@ Classes
 
    Bases: :py:obj:`object`
 
-   .. py:property:: logger
-
-
    .. py:method:: __str__()
 
       
@@ -49,9 +46,6 @@ Classes
 
       ..
           !! processed by numpydoc !!
-
-   .. py:method:: add_loger(project)
-
 
 
 .. py:class:: ProjectComponent

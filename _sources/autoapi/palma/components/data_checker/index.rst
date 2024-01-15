@@ -13,14 +13,15 @@ Classes
 .. autoapisummary::
 
    palma.components.data_checker.DeepCheck
+   palma.components.data_checker.Leakage
 
 
 
 
-.. py:class:: DeepCheck(name: str = 'Data Checker', dataset_parameters: dict = None, whole_dataset_checks: Union[List[deepchecks.core.BaseCheck], deepchecks.core.BaseSuite] = data_integrity(), train_test_datasets_checks: Union[List[deepchecks.core.BaseCheck], deepchecks.core.BaseSuite] = Suite('Checks train test', train_test_validation()))
+.. py:class:: DeepCheck(name: str = 'Data Checker', dataset_parameters: dict = None, dataset_checks: Union[List[deepchecks.core.BaseCheck], deepchecks.core.BaseSuite] = data_integrity(), train_test_datasets_checks: Union[List[deepchecks.core.BaseCheck], deepchecks.core.BaseSuite] = Suite('Checks train test', train_test_validation()))
 
 
-   Bases: :py:obj:`palma.components.Component`
+   Bases: :py:obj:`palma.components.base.ProjectComponent`
 
    
    This object is a wrapper of the Deepchecks library and allows to audit the
@@ -33,7 +34,7 @@ Classes
            Parameters and their values that will be used to generate
            :class:`deepchecks.Dataset` instances (required to run the checks on)
 
-       **whole_dataset_checks: Union[List[BaseCheck], BaseSuite], optional**
+       **dataset_checks: Union[List[BaseCheck], BaseSuite], optional**
            List of checks or suite of checks that will be run on the whole dataset
            By default: use the default suite single_dataset_integrity to detect
            the integrity issues
@@ -41,7 +42,7 @@ Classes
        **train_test_datasets_checks: Union[List[BaseCheck], BaseSuite], optional**
            List of checks or suite of checks to detect issues related to the
            train-test split, such as feature drift, detecting data leakage...
-           By default: use the default suites train_test_validation and
+           By default, use the default suites train_test_validation and
            train_test_leakage
 
 
@@ -59,7 +60,7 @@ Classes
 
    ..
        !! processed by numpydoc !!
-   .. py:method:: __call__(project: palma.Project) -> None
+   .. py:method:: __call__(project: palma.base.project.Project) -> None
 
       
       Run suite of checks on the project data.
@@ -67,7 +68,7 @@ Classes
 
       :Parameters:
 
-          **project: project**
+          **project: :class:`~palma.Project`**
               ..
 
 
@@ -86,7 +87,7 @@ Classes
       ..
           !! processed by numpydoc !!
 
-   .. py:method:: __generate_datasets(project: palma.Project, **kwargs) -> None
+   .. py:method:: __generate_datasets(project: palma.base.project.Project, **kwargs) -> None
 
       
       Generate :class:`deepchecks.Dataset`
@@ -95,7 +96,7 @@ Classes
       :Parameters:
 
           **project: project**
-              :class:`~autolm.project.project`
+              :class:`~palma.Project`
 
 
 
@@ -114,6 +115,7 @@ Classes
           !! processed by numpydoc !!
 
    .. py:method:: __generate_suite(checks: Union[List[deepchecks.core.BaseCheck], deepchecks.core.BaseSuite], name: str) -> deepchecks.tabular.Suite
+      :staticmethod:
 
       
       Generate a Suite of checks from a list of checks or a suite of checks
@@ -131,30 +133,6 @@ Classes
 
           suite: :class:`deepchecks.Suite`
               instance of :class:`deepchecks.Suite`
-
-
-
-
-
-
-
-
-
-
-
-
-
-      ..
-          !! processed by numpydoc !!
-
-   .. py:method:: items_to_log() -> List[Tuple[str, Any]]
-
-      
-      This method returns the checks' results in two files : an html report
-      and a json file.
-
-
-
 
 
 
@@ -193,5 +171,44 @@ Classes
 
       ..
           !! processed by numpydoc !!
+
+
+.. py:class:: Leakage
+
+
+   Bases: :py:obj:`palma.components.base.ProjectComponent`
+
+   
+   Class for detecting data leakage in a classification project.
+
+   This class implements component that checks for data leakage in a given
+   project. It uses the FLAML optimizer for model selection and performs
+   a scoring analysis to check for the presence of data leakage based on
+   the AUC metric.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+   .. py:property:: metrics
+
+
+   .. py:method:: __call__(project: palma.base.project.Project) -> None
+
+
+   .. py:method:: cross_validation_leakage(project)
+
 
 

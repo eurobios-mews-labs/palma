@@ -24,9 +24,6 @@ Classes
       :type: str
 
 
-   .. py:property:: logger
-
-
    .. py:property:: components
 
 

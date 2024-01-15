@@ -12,6 +12,7 @@ Subpackages
 
    base/index.rst
    components/index.rst
+   datasets/index.rst
    preprocessing/index.rst
    utils/index.rst
 
@@ -45,9 +46,6 @@ Attributes
 
    .. py:property:: id
       :type: str
-
-
-   .. py:property:: logger
 
 
    .. py:property:: components

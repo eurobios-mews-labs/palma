@@ -6,18 +6,30 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and limitations under the License.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 from palma.base.model import ModelEvaluation
 from palma.base.model_selection import ModelSelector
 from palma.base.project import Project
 from palma import components
 from palma.utils import plotting
+from palma.components.logger import _Logger
+from palma.components.logger import DummyLogger
+
+
+logger = _Logger(DummyLogger("."))
+
+
+set_logger = logger.__set__
+
 
 __all__ = [
     "ModelEvaluation",
     "Project",
     "ModelSelector",
     "components",
-    "plotting"
+    "plotting",
+    "logger",
+    "set_logger"
 ]

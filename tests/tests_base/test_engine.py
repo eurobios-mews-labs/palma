@@ -6,10 +6,12 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and limitations under the License.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 import pytest
 
-from palma.base.engine import AutoSklearnOptimizer, BaseOptimizer, FlamlOptimizer
+from palma.base.engine import AutoSklearnOptimizer, BaseOptimizer, \
+    FlamlOptimizer
 
 
 @pytest.fixture
@@ -25,6 +27,7 @@ def get_engine_flaml_regression(regression_data):
     engine.optimize(X, y)
     return engine
 
+
 def test_engine_flaml_set_problem():
     engine = FlamlOptimizer(
         problem="regression",
@@ -34,6 +37,7 @@ def test_engine_flaml_set_problem():
             task="unknown"))
     assert engine.engine_parameters["task"] == "regression", \
         "Problem was not correctly set"
+
 
 @pytest.fixture()
 def get_dummy_engine():
@@ -73,7 +77,7 @@ def test_engine_regression_optimizer_flaml(get_engine_flaml_regression):
         "Optimizer instance should have a optimize attribute"
 
 
-def test_engine_regression_tranformer_flaml(get_engine_flaml_regression):
+def test_engine_regression_transformer_flaml(get_engine_flaml_regression):
     assert hasattr(get_engine_flaml_regression, 'transformer_'), \
         "Optimizer instance should have a transformer_ attribute"
 

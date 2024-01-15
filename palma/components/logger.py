@@ -15,18 +15,51 @@ import os
 import pickle
 import tempfile
 import typing
+from abc import ABCMeta, abstractmethod
 
 from palma.base.project import Project
 
 try:
     import mlflow
 except ImportError:
-    pass
+    mlflow = None
 
-from palma.components.base import Logger
+_logger = logging.getLogger(__name__)
+_logger.setLevel(logging.NOTSET)
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.NOTSET)
+
+class Logger(metaclass=ABCMeta):
+    """
+    Logger is an abstract class that defines a common
+    interface for a set of Logger-subclasses.
+
+    It provides common methods for all possible subclasses, making it
+    possible for a user to create a custom subclass compatible  with
+    the rest of the components.
+    """
+
+    def __init__(self, uri: str, **kwargs) -> None:
+        self.__uri = uri
+
+    @abstractmethod
+    def log_project(self, project: 'Project') -> None:
+        ...
+
+    @abstractmethod
+    def log_metrics(self, metrics: dict, path: str) -> None:
+        ...
+
+    @abstractmethod
+    def log_params(self, **kwargs) -> None:
+        ...
+
+    @abstractmethod
+    def log_model(self, **kwargs) -> None:
+        ...
+
+    @property
+    def uri(self):
+        return self.__uri
 
 
 class DummyLogger(Logger):
@@ -34,13 +67,14 @@ class DummyLogger(Logger):
     def log_project(self, project: 'Project') -> None:
         pass
 
-    def _log_metrics(self, **kwargs) -> None:
+    def log_metrics(self, metrics: dict, path: str) -> None:
         pass
 
-    def _log_params(self, **kwargs) -> None:
+    def log_params(self, parameters: dict,
+                   path: str) -> None:
         pass
 
-    def _log_model(self, **kwargs) -> None:
+    def log_model(self, estimator, path: str) -> None:
         pass
 
 
@@ -73,45 +107,99 @@ class FileSystemLogger(Logger):
         self.path_study = f"{self.path_project}/{project.study_name}"
 
         if not os.path.exists(self.path_study):
-            logger.info(f"No {project.project_name} folder found,"
-                        f" creating {self.path_study} folders")
+            _logger.info(f"No {project.project_name} folder found,"
+                         f" creating {self.path_study} folders")
             os.makedirs(self.path_study)
 
         artifact_name = f"{self.path_study}/project.pkl"
 
         with open(artifact_name, "wb") as output_file:
-            logger.info(
+            _logger.info(
                 "Project instance saved in {}".format(artifact_name)
             )
             pickle.dump(project, output_file)
-        self._log_params(
+        self.log_params(
             {c.replace("_Project__", ""): str(v) for c, v in
              vars(project).items()}, "properties")
 
-    def _log_metrics(self, metrics: dict, path: str) -> None:
+    def log_metrics(self, metrics: dict, path: str) -> None:
         path = f"{self.path_study}/{path}.json"
         with open(path, 'w') as output_file:
-            logger.info("Metrics saved in {}".format(path))
+            _logger.info("Metrics saved in {}".format(path))
             json.dump(metrics, output_file, indent=4)
 
-    def _log_model(self, estimator, path: str) -> None:
+    def log_model(self, estimator, path: str) -> None:
         path = f"{self.path_study}/{path}"
         with open(path, 'wb') as output_file:
-            logger.info(f"Model saved in {path}")
+            _logger.info(f"Model saved in {path}")
             pickle.dump(estimator, output_file)
 
-    def _log_params(self,
-                    parameters: dict,
-                    path: str) -> None:
+    def log_params(self,
+                   parameters: dict,
+                   path: str) -> None:
         path = f"{self.path_study}/{path}.json"
 
         with open(path, 'w') as output_file:
-            logger.info(f"Model's parameters saved in {path}")
+            _logger.info(f"Model's parameters saved in {path}")
             json.dump(parameters, output_file, indent=4)
 
 
 class MLFlowLogger(Logger):
+    """
+    MLFlowLogger class for logging experiments using MLflow.
+
+    Parameters
+    ----------
+    - uri (str): The URI for the MLflow tracking server.
+
+    Attributes
+    ----------
+    - tmp_logger (FileSystemLogger): Temporary logger for local logging
+    before MLflow logging.
+
+    Methods
+    -------
+
+    log_project(project: 'Project') -> None:
+        Logs the project information to MLflow, including project name and parameters.
+
+    log_metrics(metrics: dict[str, typing.Any]) -> None:
+        Logs metrics to MLflow.
+
+    log_artifact(artifact: dict, path) -> None:
+        Logs artifacts to MLflow using the temporary logger.
+
+    log_params(params: dict) -> None:
+        Logs parameters to MLflow.
+
+    log_model(model, path) -> None:
+        Logs the model to MLflow using the temporary logger.
+
+    Raises
+    ------
+    ImportError: If mlflow is not installed.
+
+    Example
+    -------
+    ```python
+    mlflow_logger = MLFlowLogger(uri="http://mlflow-server:5000")
+    mlflow_logger.log_project(my_project)
+    mlflow_logger.log_metrics({"accuracy": 0.95, "loss": 0.05})
+    mlflow_logger.log_artifact(my_artifact, "path/to/artifact")
+    mlflow_logger.log_params({"param1": 42, "param2": "value"})
+    mlflow_logger.log_model(my_model, "path/to/model")
+    ```
+
+    Note
+    ----
+
+    Ensure that MLflow is installed before using this class.
+
+    """
+
     def __init__(self, uri: str) -> None:
+        if mlflow is None:
+            raise ImportError("mlflow is not installed")
         super().__init__(uri)
         mlflow.set_tracking_uri(uri)
         self.tmp_logger = FileSystemLogger()
@@ -120,22 +208,49 @@ class MLFlowLogger(Logger):
         mlflow.set_experiment(
             project.project_name)
         self.tmp_logger.log_project(project)
-        self._log_params(
-            {c.replace("_Project__", ""): str(v) for c, v in
-             vars(project).items()})
+        self.log_params({c.replace("_Project__", ""): str(v) for c, v in
+                         vars(project).items()})
 
-    def _log_metrics(self, metrics: dict[str, typing.Any]) -> None:
+    def log_metrics(self, metrics: dict[str, typing.Any]) -> None:
         mlflow.log_metrics(
             {k: v for k, v in metrics.items()})
 
-    def _log_artifact(self, artifact: dict, path) -> None:
-        self.tmp_logger._log_model(artifact, path)
+    def log_artifact(self, artifact: dict, path) -> None:
+        self.tmp_logger.log_model(artifact, path)
 
         mlflow.log_artifacts(f"{self.tmp_logger.path_study}/{path}")
 
-    def _log_params(self, params: dict) -> None:
+    def log_params(self, params: dict) -> None:
         mlflow.log_params({k: str(v)[:100] for k, v in params.items()})
 
-    def _log_model(self, model, path):
-        self.tmp_logger._log_model(model, path)
+    def log_model(self, model, path):
+        self.tmp_logger.log_model(model, path)
         mlflow.log_artifacts(f"{self.tmp_logger.path_study}")
+
+
+class _Logger:
+    def __init__(self, dummy) -> None:
+        self.__logger = dummy
+
+    def __set__(self, logger) -> None:
+        """
+        
+        Parameters
+        ----------
+        logger: Logger
+            Define the logger to use.
+
+            >>> from palma import logger, set_logger
+            >>> from palma.components import FileSystemLogger
+            >>> from palma.components import MLFlowLogger
+            >>> set_logger(MLFlowLogger(uri="."))
+            >>> set_logger(FileSystemLogger(uri="."))
+        Returns
+        -------
+            None
+        """
+        self.__logger = logger
+
+    @property
+    def logger(self) -> Logger:
+        return self.__logger

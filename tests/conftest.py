@@ -32,7 +32,7 @@ from palma.components import performance
 @pytest.fixture(scope='module')
 def classification_data():
     X, y = make_classification()
-    return pd.DataFrame(X[:, :4]), pd.Series(y)
+    return pd.DataFrame(X[:, :4]), pd.Series(y, name="target")
 
 
 @pytest.fixture(scope='module')
@@ -52,8 +52,7 @@ def classification_project(classification_data):
 
     project.start(
         X, y,
-        splitter=model_selection.ShuffleSplit(n_splits=4, random_state=42),
-    )
+        splitter=model_selection.ShuffleSplit(n_splits=4, random_state=42))
     return project
 
 

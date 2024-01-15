@@ -6,7 +6,8 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and limitations under the License.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 import os
 import tempfile
@@ -35,13 +36,9 @@ def test_problem_property(classification_project):
 
 
 def test_study_name_property(classification_project):
-    assert "_" in classification_project.study_name, "bad use case name"
-
-
-def test_add_logger(classification_project):
-    project = classification_project
-    print(project.components)
-    assert hasattr(project, "_logger"), "Logger is not properly set"
+    year = classification_project.study_name[:4]
+    assert int(year) > 2023
+    assert int(year) < 2100
 
 
 def test_add_bad_component(unbuilt_classification_project):

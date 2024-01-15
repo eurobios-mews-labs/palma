@@ -12,6 +12,7 @@
 import os
 import tempfile
 
+import matplotlib.pyplot as plt
 import pandas as pd
 import pytest
 from sklearn.linear_model import LinearRegression
@@ -22,8 +23,8 @@ from sklearn.preprocessing import StandardScaler
 from palma import ModelEvaluation
 from palma import ModelSelector
 from palma import Project
+from palma import logger, set_logger
 from palma.components import FileSystemLogger, ScoringAnalysis
-
 from palma.components import MLFlowLogger
 from palma.components.logger import DummyLogger
 
@@ -105,7 +106,7 @@ def get_mlflow_logger(classification_data):
     project.start(
         X,
         y,
-        splitter=ShuffleSplit()
+        splitter=ShuffleSplit(n_splits=2)
     )
     ms = ModelSelector(engine="FlamlOptimizer",
                        engine_parameters=dict(time_budget=3))
@@ -122,7 +123,27 @@ def test_changing_logger():
 
     set_logger(DummyLogger(uri="."))
     assert isinstance(logger.logger, DummyLogger)
-    logger.__set__(MLFlowLogger(uri="."))
+    assert logger.uri == "."
+    set_logger(MLFlowLogger(uri="."))
     assert isinstance(logger.logger, MLFlowLogger)
     set_logger(DummyLogger(uri="."))
     assert isinstance(logger.logger, DummyLogger)
+
+
+def test_artifact_logging():
+    set_logger(FileSystemLogger(uri="/tmp/mlflow"))
+
+    fig = plt.figure()
+    logger.logger.log_artifact('a', "text")
+    logger.logger.log_metrics({'a': 1}, "metric")
+    logger.logger.log_artifact(fig, "figure")
+
+    set_logger(MLFlowLogger(uri="/tmp/mlflow/"))
+
+    assert (logger.logger.uri == "/tmp/mlflow/")
+
+    logger.logger.log_artifact('a', "text")
+    logger.logger.log_metrics({'a': 1}, "metric")
+    logger.logger.log_artifact(fig, "figure")
+
+

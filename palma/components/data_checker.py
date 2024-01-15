@@ -9,9 +9,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import io
 import logging
-from typing import Any, List, Tuple, Union
+from typing import List, Union
 
 import pandas as pd
 from deepchecks.core import BaseCheck, BaseSuite
@@ -19,11 +18,12 @@ from deepchecks.tabular import Dataset, Suite
 from deepchecks.tabular.suites.default_suites import (train_test_validation,
                                                       data_integrity)
 
-from palma import Project
-from palma.components import Component
+from palma.base.project import Project
+from palma.components.base import ProjectComponent
+from palma.components.logger import logger
 
 
-class DeepCheck(Component):
+class DeepCheck(ProjectComponent):
     """
     This object is a wrapper of the Deepchecks library and allows to audit the
     data through various checks such as data drift, duplicate values, ...
@@ -33,14 +33,14 @@ class DeepCheck(Component):
     dataset_parameters : dict, optional
         Parameters and their values that will be used to generate
         :class:`deepchecks.Dataset` instances (required to run the checks on)
-    whole_dataset_checks: Union[List[BaseCheck], BaseSuite], optional
+    dataset_checks: Union[List[BaseCheck], BaseSuite], optional
         List of checks or suite of checks that will be run on the whole dataset
         By default: use the default suite single_dataset_integrity to detect
         the integrity issues
     train_test_datasets_checks: Union[List[BaseCheck], BaseSuite], optional
         List of checks or suite of checks to detect issues related to the
         train-test split, such as feature drift, detecting data leakage...
-        By default: use the default suites train_test_validation and
+        By default, use the default suites train_test_validation and
         train_test_leakage
     """
 
@@ -48,7 +48,7 @@ class DeepCheck(Component):
             self,
             name: str = 'Data Checker',
             dataset_parameters: dict = None,
-            whole_dataset_checks: Union[
+            dataset_checks: Union[
                 List[BaseCheck], BaseSuite] = data_integrity(),
             train_test_datasets_checks: Union[
                 List[BaseCheck], BaseSuite] = Suite(
@@ -67,7 +67,7 @@ class DeepCheck(Component):
         self.name = name
 
         self.whole_dataset_checks_suite = self.__generate_suite(
-            whole_dataset_checks,
+            dataset_checks,
             'Checks on whole dataset'
         )
 
@@ -82,17 +82,20 @@ class DeepCheck(Component):
 
         Parameters
         ----------
-        project: project
+        project: :class:`~palma.Project`
         """
 
         self.__generate_datasets(project, **self.dataset_parameters)
-        self.whole_dataset_checks_results = self.whole_dataset_checks_suite.run(
+        self.dataset_checks_results = self.whole_dataset_checks_suite.run(
             self.__dataset
         )
         self.train_test_checks_results = self.train_test_checks_suite.run(
             train_dataset=self.__train_dataset,
             test_dataset=self.__test_dataset
         )
+        for results in [self.train_test_checks_results,
+                        self.dataset_checks_results]:
+            logger.logger.log_artifact(results, f'{results.name}')
 
     def __generate_datasets(self, project: Project, **kwargs) -> None:
         """
@@ -102,20 +105,21 @@ class DeepCheck(Component):
         Parameters
         ----------
         project: project
-            :class:`~autolm.project.project`
+            :class:`~palma.Project`
         """
 
         df = pd.concat([project.X, project.y], axis=1)
         df.columns = [*project.X.columns.to_list(), "target"]
-        self.__dataset = Dataset(df, label=project.y.name, **kwargs)
+        print(df.columns)
+        self.__dataset = Dataset(df, label="target", **kwargs)
 
         self.__train_dataset = self.__dataset.copy(
             df.loc[project.validation_strategy.train_index])
         self.__test_dataset = self.__dataset.copy(
             df.loc[project.validation_strategy.test_index])
 
+    @staticmethod
     def __generate_suite(
-            self,
             checks: Union[List[BaseCheck], BaseSuite],
             name: str
     ) -> Suite:
@@ -149,29 +153,79 @@ class DeepCheck(Component):
 
         return suite
 
-    def items_to_log(self) -> List[Tuple[str, Any]]:
-        """
-        This method returns the checks' results in two files : an html report
-        and a json file.
-        """
-
-        elements_to_log = []
-
-        for results in [self.train_test_checks_results,
-                        self.whole_dataset_checks_results]:
-            html_result = io.StringIO()
-            results.save_as_html(file=html_result)
-            elements_to_log.append((results.name + '.html', html_result))
-
-            json_result = results.to_json()
-            elements_to_log.append((results.name + '.json', json_result))
-
-        return elements_to_log
-
     def __str__(self) -> str:
-        data_checks = '\n{} integrity checks\n{} train test checks'.format(
-            len(self.whole_dataset_checks_suite.checks),
-            len(self.train_test_checks_suite.checks)
-        )
+        return "DeepCheck"
 
-        return data_checks
+
+class Leakage(ProjectComponent):
+    """
+    Class for detecting data leakage in a classification project.
+
+    This class implements component that checks for data leakage in a given
+    project. It uses the FLAML optimizer for model selection and performs
+    a scoring analysis to check for the presence of data leakage based on
+    the AUC metric.
+
+    Parameters:
+    -----------
+    project : Project
+        The classification project to be evaluated for data leakage.
+
+    Returns:
+    --------
+    None
+
+    Raises:
+    -------
+    ValueError
+        If the AUC score for the test set is greater than 0.8, indicating
+        the presence of data leakage.
+    """
+
+    def __call__(self, project: Project) -> None:
+        self.cross_validation_leakage(project)
+
+    def cross_validation_leakage(self, project):
+        from palma.base.model import ModelEvaluation
+        from palma.base.model_selection import ModelSelector
+        from sklearn import metrics
+        from sklearn.model_selection import ShuffleSplit
+        from palma.utils import utils
+        from sklearn.impute import SimpleImputer
+        from palma.components import ScoringAnalysis
+        z = utils.get_splitting_matrix(
+            project.X,
+            project.validation_strategy.indexes_train_test)
+        z = z == 2
+        z = pd.Series(z.iloc[:, 0])
+
+        si = SimpleImputer()
+        leakage_project = Project(
+            problem="classification", project_name="leakage")
+        data = si.fit_transform(project.X)
+        x_leakage = pd.DataFrame(data,
+                                 columns=project.X.columns)
+        x_leakage["target"] = project.y.values
+
+        leakage_project.start(X=x_leakage, y=z,
+                              splitter=ShuffleSplit(n_splits=2, test_size=0.5))
+        run = ModelSelector(
+            engine="FlamlOptimizer",
+            engine_parameters=dict(time_budget=5,
+                                   estimator_list=['xgboost']))
+        run.start(leakage_project)
+        model = ModelEvaluation(estimator=run.best_model_)
+        model.add(ScoringAnalysis(on="indexes_train_test"))
+        model.fit(leakage_project)
+        model.components['ScoringAnalysis'].compute_metrics(
+            {"auc": metrics.roc_auc_score})
+        comp = model.components['ScoringAnalysis']
+        if comp.metrics["auc"][0]["test"] > 0.8:
+            raise ValueError("Presence of data leakage")
+        self.__leakage = False
+        self.__metric = comp.metrics["auc"][0]["test"]
+        logger.logger.log_metrics(self.metrics, "leakage")
+
+    @property
+    def metrics(self):
+        return {"leakage": self.__leakage, "metric": self.__metric}

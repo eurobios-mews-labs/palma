@@ -51,15 +51,16 @@ def test_splitting_strategy_has_test_index_attribute(
 
 def test_splitting_strategy_raise_key_error():
     return None  # TODO add this feature
-    X, y = make_classification()
-    X = pd.DataFrame(X)
-    y = pd.Series(y)
 
-    splitting_strategy = ValidationStrategy(splitter=ShuffleSplit(),
-                                            sort_by="col1")
-    with pytest.raises(KeyError) as exc_info:
-        splitting_strategy(X, y)
-    assert exc_info.type == KeyError, "Wrong error type"
+# X, y = make_classification()
+# X = pd.DataFrame(X)
+# y = pd.Series(y)
+#
+# splitting_strategy = ValidationStrategy(splitter=ShuffleSplit(),
+#                                         sort_by="col1")
+# with pytest.raises(KeyError) as exc_info:
+#     splitting_strategy(X, y)
+# assert exc_info.type == KeyError, "Wrong error type"
 
 
 def test_splitting_strategy_has_sort_by_attribute():

@@ -16,6 +16,8 @@ exclude_lines =
     raise NotImplementedError
     ImportError
 
+    pass
+
     # Don't complain if non-runnable code isn't run:
     if 0:
     if __name__ == .__main__.:

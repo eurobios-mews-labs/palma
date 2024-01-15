@@ -183,6 +183,9 @@ class Leakage(ProjectComponent):
     """
 
     def __call__(self, project: Project) -> None:
+        self.cross_validation_leakage(project)
+
+    def cross_validation_leakage(self, project):
         from palma.base.model import ModelEvaluation
         from palma.base.model_selection import ModelSelector
         from sklearn import metrics
@@ -190,7 +193,6 @@ class Leakage(ProjectComponent):
         from palma.utils import utils
         from sklearn.impute import SimpleImputer
         from palma.components import ScoringAnalysis
-
         z = utils.get_splitting_matrix(
             project.X,
             project.validation_strategy.indexes_train_test)
@@ -200,14 +202,16 @@ class Leakage(ProjectComponent):
         si = SimpleImputer()
         leakage_project = Project(
             problem="classification", project_name="leakage")
-
-        x_leakage = pd.DataFrame(si.fit_transform(project.X),
+        data = si.fit_transform(project.X)
+        x_leakage = pd.DataFrame(data,
                                  columns=project.X.columns)
+        x_leakage["target"] = project.y.values
 
-        leakage_project.start(X=x_leakage, y=z, splitter=ShuffleSplit())
+        leakage_project.start(X=x_leakage, y=z,
+                              splitter=ShuffleSplit(n_splits=2, test_size=0.5))
         run = ModelSelector(
             engine="FlamlOptimizer",
-            engine_parameters=dict(time_budget=10,
+            engine_parameters=dict(time_budget=5,
                                    estimator_list=['xgboost']))
         run.start(leakage_project)
         model = ModelEvaluation(estimator=run.best_model_)
@@ -220,8 +224,8 @@ class Leakage(ProjectComponent):
             raise ValueError("Presence of data leakage")
         self.__leakage = False
         self.__metric = comp.metrics["auc"][0]["test"]
-        print("No presence detected of leakage detected")
+        logger.logger.log_metrics(self.metrics, "leakage")
 
     @property
-    def properties(self):
+    def metrics(self):
         return {"leakage": self.__leakage, "metric": self.__metric}

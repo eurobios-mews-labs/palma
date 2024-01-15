@@ -314,10 +314,6 @@ class MLFlowLogger(Logger):
     def log_params(self, params: dict) -> None:
         mlflow.log_params({k: str(v)[:100] for k, v in params.items()})
 
-    def log_model(self, model, path):
-        self.file_system_logger.log_artifact(model, path)
-        mlflow.log_artifacts(f"{self.file_system_logger.path_study}")
-
 
 class _Logger:
     def __init__(self, dummy) -> None:

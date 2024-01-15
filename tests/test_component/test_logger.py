@@ -106,7 +106,7 @@ def get_mlflow_logger(classification_data):
     project.start(
         X,
         y,
-        splitter=ShuffleSplit()
+        splitter=ShuffleSplit(n_splits=2)
     )
     ms = ModelSelector(engine="FlamlOptimizer",
                        engine_parameters=dict(time_budget=3))
@@ -123,7 +123,7 @@ def test_changing_logger():
 
     set_logger(DummyLogger(uri="."))
     assert isinstance(logger.logger, DummyLogger)
-
+    assert logger.uri == "."
     set_logger(MLFlowLogger(uri="."))
     assert isinstance(logger.logger, MLFlowLogger)
     set_logger(DummyLogger(uri="."))
@@ -145,3 +145,5 @@ def test_artifact_logging():
     logger.logger.log_artifact('a', "text")
     logger.logger.log_metrics({'a': 1}, "metric")
     logger.logger.log_artifact(fig, "figure")
+
+

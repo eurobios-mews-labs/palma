@@ -12,6 +12,7 @@
 import tempfile
 
 import pandas as pd
+import pytest
 from sklearn import model_selection
 
 from palma import Project
@@ -20,9 +21,6 @@ from palma.components.data_checker import DeepCheck, Leakage
 
 
 def test_deep_check(classification_project):
-    print(classification_project.X.columns)
-    print(classification_project.y.name
-          )
     dc = DeepCheck(dataset_parameters={"label": classification_project.y.name})
     dc(classification_project)
 
@@ -33,9 +31,24 @@ def test_leakage(classification_data):
     X, y = classification_data
     X = pd.DataFrame(X)
     y = pd.Series(y)
+
+    # First project good one
     project = Project(problem="classification", project_name="test")
     project.add(Leakage())
     project.start(
         X, y,
-        splitter=model_selection.ShuffleSplit(n_splits=4, random_state=42))
+        splitter=model_selection.ShuffleSplit(n_splits=2),
+    )
 
+    # Second project leaked data
+    X_test = X.__deepcopy__()
+    X_test.iloc[:, 0] = 10
+    project = Project(problem="classification", project_name="test")
+    project.add(Leakage())
+    with pytest.raises(ValueError) as e:
+        project.start(
+            X, y,
+            splitter=model_selection.ShuffleSplit(n_splits=2),
+            X_test=X_test, y_test=y
+        )
+        assert e == "Presence of data leakage"

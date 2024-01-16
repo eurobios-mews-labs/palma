@@ -36,7 +36,7 @@ jobs:
 
     - name: Run notebook examples
       run: |
-        jupyter execute examples/*
+        jupyter execute examples/*.ipynb
         
     - name: Analysing the code with pytest
       run: |
@@ -44,12 +44,12 @@ jobs:
         coverage report
         coverage json
 
-    #    - name: Coverage Badge
-    #      uses: tj-actions/coverage-badge-py@v1.8
-    #      with:
-    #        output: .static/coverage.svg
-    #    - name: Publish coverage report to coverage-badge branch
-    #      uses: JamesIves/github-pages-deploy-action@v4
-    #      with:
-    #        branch: coverage-badge
-    #        folder: .static
+    - name: Coverage Badge
+      uses: tj-actions/coverage-badge-py@v1.8
+      with:
+        output: .static/coverage.svg
+    - name: Publish coverage report to coverage-badge branch
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: coverage-badge
+        folder: .static

@@ -19,14 +19,6 @@ class Component(object, metaclass=ABCMeta):
     def __str__(self):
         return self.__class__.__name__
 
-    def add_loger(self, project):
-        self.__logger = project._logger
-        return self
-
-    @property
-    def logger(self):
-        return self.__logger
-
 
 class ProjectComponent(Component):
     """

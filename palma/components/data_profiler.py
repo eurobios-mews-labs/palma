@@ -31,5 +31,4 @@ class ProfilerYData(ProjectComponent):
             **self.config,
             title="Pandas Profiling Report")
         profile.to_file(f"report_{project.project_name}.html")
-        if hasattr(project, "_logger"):
-            project._logger  # TODO
+

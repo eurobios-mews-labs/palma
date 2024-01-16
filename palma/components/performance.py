@@ -20,6 +20,8 @@ from sklearn import metrics
 
 from palma.components.base import ModelComponent
 from palma.utils import plotting, utils
+from palma.components.logger import logger
+
 
 colors = ['r', 'b', '#33cc33', '#ff6600', "darkblue", '#9933ff',
           '#99cc00', '#3399ff'] * 50
@@ -38,7 +40,7 @@ class Analyser(ModelComponent, metaclass=ABCMeta):
         self._add(project, model)
 
     def _add(self, project, model):
-        self.add_loger(project)
+
         if self.__on == "indexes_train_test":
             self.indexes = project.validation_strategy.indexes_train_test
             self.estimators = model.all_estimators_
@@ -108,6 +110,7 @@ class Analyser(ModelComponent, metaclass=ABCMeta):
         from palma.utils.plotting import plot_variable_importance
         plot_variable_importance(
             self.variable_importance(), mode=mode, color=color, cmap=cmap)
+        logger.logger.log_artifact(plot.gcf(), "variable_importance")
 
 
 class ShapAnalysis(Analyser):
@@ -207,6 +210,8 @@ class ShapAnalysis(Analyser):
             self.shap_interaction, self.shap_X,
             display_features=self.shap_X
         )
+        logger.logger.log_artifact(plot.gcf(), f"shap_interaction_"
+                                               f"{feature_x}_{feature_y}")
 
 
 class ScoringAnalysis(Analyser):
@@ -311,6 +316,8 @@ class ScoringAnalysis(Analyser):
 
         if plot_base:
             plotting.roc_plot_base()
+
+        logger.logger.log_artifact(plot.gcf(), "roc_curve")
         return plot
 
     def compute_threshold(
@@ -361,6 +368,7 @@ class ScoringAnalysis(Analyser):
             fpr.append(roc[0][idx])
             tpr.append(roc[1][idx])
         plot.scatter(fpr, tpr, **plot_kwargs)
+        logger.logger.log_artifact(plot.gcf(), "roc_threshold")
 
     @property
     def threshold(self):
@@ -397,6 +405,7 @@ class RegressionAnalysis(Analyser):
         ax.grid()
         ax.set_ylabel("Predicted values")
         ax.set_xlabel("Real values")
+        logger.logger.log_artifact(plot.gcf(), "true_vs_predicted")
 
     def plot_errors_pairgrid(self, fun=None, number_percentiles=4,
                              palette="rocket_r", features=None):
@@ -420,3 +429,6 @@ class RegressionAnalysis(Analyser):
         g.map_diag(sns.histplot, multiple="stack")
         g.map_offdiag(sns.scatterplot, size=df_plot["error"])
         g.add_legend(title="", adjust_subtitles=True)
+        logger.logger.log_artifact(plot.gcf(), "pair_grid")
+
+

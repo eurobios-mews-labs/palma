@@ -57,14 +57,12 @@ class Project(object):
             problem: str
     ) -> None:
 
-        from palma.components.logger import DummyLogger
         self.__project_name = project_name
-        self.__study_name = get_random_name()
         self.__date = datetime.now()
+        self.__study_name = self.date
         self.__problem = problem
 
         self.__components = {}
-        self._logger = DummyLogger('.')
         self.__is_started = False
         self.__component_list = []
 
@@ -73,7 +71,7 @@ class Project(object):
         from palma.components.base import ProjectComponent
         self.__component_list.append(str)
         if isinstance(component, ProjectComponent):
-            self.__components.update({str(component): component.add_loger(self)})
+            self.__components.update({str(component): component})
         else:
             raise TypeError(
                 "The added component must be an instance of class Component"
@@ -102,9 +100,9 @@ class Project(object):
                 pd.concat([self.__X, self.__y], axis=1)
             ).values, digest_size=5
         ).hexdigest()
+        logger.logger.log_project(self)
         self.__call_components(self)
         self.__is_started = True
-        logger.logger.log_project(self)
 
     def __call_components(self, object_: "Project") -> None:
         for _, component in self.components.items():
@@ -144,7 +142,7 @@ class Project(object):
 
     @property
     def study_name(self) -> str:
-        return self.__study_name
+        return str(self.date)
 
     @property
     def X(self) -> pd.DataFrame:

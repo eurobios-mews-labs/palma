@@ -14,14 +14,8 @@ from palma.base.model_selection import ModelSelector
 from palma.base.project import Project
 from palma import components
 from palma.utils import plotting
-from palma.components.logger import _Logger
-from palma.components.logger import DummyLogger
-
-
-logger = _Logger(DummyLogger("."))
-
-
-set_logger = logger.__set__
+from palma.components.logger import logger
+from palma.components.logger import set_logger
 
 
 __all__ = [

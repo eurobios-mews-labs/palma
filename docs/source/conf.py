@@ -7,6 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 import os
 import sys
+
 sys.path.insert(0, os.path.abspath('../'))
 sys.path.insert(0, os.path.abspath('.'))
 
@@ -17,16 +18,22 @@ author = 'Eurobios-Mews-Labs'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['sphinx.ext.autodoc', 'myst_parser', "sphinx.ext.coverage",
-                  'sphinx.ext.todo', 'sphinx_copybutton', 'sphinx_favicon',
-              'autoapi.extension', 'versionwarning.extension', "sphinx-prompt",
-                'sphinx.ext.coverage', 'numpydoc'
+extensions = ['sphinx.ext.autodoc',
+              'myst_parser',
+              "sphinx.ext.coverage",
+              'sphinx.ext.todo',
+              'sphinx_copybutton',
+              'sphinx_favicon',
+              'autoapi.extension',
+              'versionwarning.extension',
+              "sphinx-prompt",
+              'sphinx.ext.coverage',
+              'numpydoc',
+              'nbsphinx',
               ]
 
 templates_path = ['_templates']
 exclude_patterns = []
-
-
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output

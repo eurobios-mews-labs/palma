@@ -37,7 +37,7 @@ def test_leakage(classification_data):
     project.add(Leakage())
     project.start(
         X, y,
-        splitter=model_selection.ShuffleSplit(n_splits=2),
+        splitter=model_selection.ShuffleSplit(n_splits=1, random_state=1),
     )
 
     # Second project leaked data
@@ -48,7 +48,7 @@ def test_leakage(classification_data):
     with pytest.raises(ValueError) as e:
         project.start(
             X, y,
-            splitter=model_selection.ShuffleSplit(n_splits=2),
+            splitter=model_selection.ShuffleSplit(n_splits=1, random_state=1),
             X_test=X_test, y_test=y
         )
         assert e == "Presence of data leakage"

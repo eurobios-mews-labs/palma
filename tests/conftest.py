@@ -31,7 +31,7 @@ from palma.components import performance
 
 @pytest.fixture(scope='module')
 def classification_data():
-    X, y = make_classification()
+    X, y = make_classification(random_state=0)
     return pd.DataFrame(X[:, :4]), pd.Series(y, name="target")
 
 

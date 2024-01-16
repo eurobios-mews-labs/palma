@@ -6,11 +6,13 @@
 Components
 ==========
 
-In this library, adding components enables the user to enrich their project by adding (optional) analyses. The idea is to quickly incorporate an analysis using the proposed framework.
-
+This library empowers experienced users to integrate components,
+allowing them to enhance their projects with optional analyses.
+The goal is to seamlessly integrate analyses into projects using
+the provided framework.
 
 Adding Components
------------------
+`````````````````
 
 To add a component, simply use the method `.add` of `project` or `model`:
 
@@ -33,7 +35,10 @@ To add a component, simply use the method `.add` of `project` or `model`:
     project.start(X, y, splitter=splitter)                           # Execute the __call__ of all added components
 
 Accessing the Components
-------------------------
+````````````````````````
+
+.. warning::
+    This API is likely to change !
 
 To access the components (for instance, those providing analysis methods and plots), do:
 
@@ -47,14 +52,13 @@ To access the components (for instance, those providing analysis methods and plo
 
 
 Implemented Components
------------------------
+
 
 **Associated to `Project`**
 
-- `FileSystemLogger`: log data in the file system in a location provided in parameters
-- `MLFlowLogger`: log data and project information using MLFlow
+
 - `Profiler`: using Ydata profiling, create a report. Requires logger
-- `DeepChecks`
+- `DeepChecks`: run analysis to prevent data drift and data leakage
 
 **Associated to `ModelEvaluation`**
 
@@ -62,17 +66,18 @@ Implemented Components
 - `RegressionAnalyser`: analysis tools for a regression problem
 - `ShapAnalyser`: local explanation using SHAP values
 
-Creating Your Own Component
----------------------------
+Create component
+````````````````
 
 Assume you have a function `fun(X, y, **parameters)` that makes some analysis; then, you can instantiate a component as follows:
 
 .. code-block:: python
 
     from palma.components.base import ProjectComponent  # import base class
+    from palma import logger
 
     def fun(X, y, **kwargs):
-        return None
+        return {"average" : y.mean()}
 
     class MyComponent(ProjectComponent):
         def __init__(self, **parameters):
@@ -80,7 +85,9 @@ Assume you have a function `fun(X, y, **parameters)` that makes some analysis; t
 
         def __call__(self, project):
             print("Component properly called")
-            return fun(project.X, project.y, **self.parameters)
+            ret = fun(project.X, project.y, **self.parameters)
+            logger.logger.log_metrics(ret, path="my_component") # log something
+            return ret
 
 And then use it in the following fashion:
 
@@ -97,3 +104,19 @@ If you want to create a `ModelEvaluation`'s component, the signature of the `__c
     def __call__(self, project, model):
         print("Component properly called")
         return fun(project.X, project.y, **self.parameters)
+
+Log data
+````````
+Once the logger is configured, information can be recorded in the form of metrics, artifacts, or parameters.
+
+*    A metric typically represents a score, a p-value, an error, or a rate.
+*    An artifact can take the form of a figure (created with Matplotlib), a model, or any picklable object.
+*    A parameter, akin to a metric, primarily pertains to algorithm parameters, contextualization data, and similar attributes.
+
+.. code-block:: python
+
+    from palma import logger
+    from matplotlib.pyplot import figure
+    logger.logger.log_metrics({"name_of_the_metric":1}, path="metric")
+    logger.logger.log_artifact(figure(), path="figure")
+    logger.logger.log_params({"name_of_the_parameter":1}, path="param")

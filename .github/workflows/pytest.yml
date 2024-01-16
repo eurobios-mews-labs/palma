@@ -36,7 +36,7 @@ jobs:
 
     - name: Run notebook examples
       run: |
-        jupyter execute examples/*
+        jupyter execute examples/*.ipynb
         
     - name: Analysing the code with pytest
       run: |

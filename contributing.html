@@ -10,7 +10,7 @@
     <link href="_static/favicon-16x16.png" rel="icon" type="image/png">
     <link href="_static/favicon-32x32.png" rel="icon" type="image/png">
     <link href="_static/favicon.svg" rel="icon" type="image/svg+xml">
-    <title>The main concepts &#8212; palma  documentation</title>
+    <title>Contributing to palma &#8212; palma  documentation</title>
   
   
   
@@ -48,11 +48,11 @@
     <script src="_static/js/versionwarning.js?v=d4224a34"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'concept';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contributing';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Project" href="project.html" />
-    <link rel="prev" title="Installation" href="index.html" />
+    <link rel="next" title="API Reference" href="autoapi/index.html" />
+    <link rel="prev" title="Components" href="components.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -160,8 +160,8 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Concepts</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">The main concepts</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="concept.html">The main concepts</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic components</span></p>
 <ul class="nav bd-sidenav">
@@ -170,9 +170,9 @@
 <li class="toctree-l1"><a class="reference internal" href="model.evaluation.html">Model evaluation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Usage</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to palma</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Contributing to palma</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="autoapi/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/palma/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/palma/base/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">palma.base</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -264,7 +264,7 @@
       
       
       
-      <li><a href="_sources/concept.rst" target="_blank"
+      <li><a href="_sources/contributing.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -335,7 +335,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -346,11 +348,22 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>The main concepts</h1>
+    <h1>Contributing to palma</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forking-the-repository">Forking the Repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-with-pytest">Testing with Pytest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-documentation">Building the Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-a-merge-request">Making a Merge Request</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -360,15 +373,73 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="the-main-concepts">
-<h1>The main concepts<a class="headerlink" href="#the-main-concepts" title="Link to this heading">#</a></h1>
-<p>The Palma library aims at providing tools for an automatic machine learning approach. While many tools exist for individual components of AutoML, this library focuses on providing a structured framework rather than implementing a complete service.</p>
-<p>In this library, a broad definition of AutoML is used, covering the optimization of hyperparameters, model historization, performance analysis, and any other element that can be replicated and must be included in the analysis results of the models.</p>
-<p>Thanks to the use of components, this library is designed to be modular, allowing users to add their own analyses. It includes the following elements:</p>
-<ol class="arabic simple">
-<li><p>A vanilla approach described below (in the Basic Usage section) and in the notebooks [classification](examples/classification.ipynb) and [regression](examples/regression.ipynb).</p></li>
-<li><p>A collection of <a class="reference internal" href="components.html"><span class="doc">Components</span></a> that can be added to enrich the analysis.</p></li>
-</ol>
+  <div class="toctree-wrapper compound">
+</div>
+<section id="contributing-to-palma">
+<h1>Contributing to palma<a class="headerlink" href="#contributing-to-palma" title="Link to this heading">#</a></h1>
+<p>Thank you for considering contributing to palma ! This guide will help you get
+started with the contribution process.</p>
+<section id="forking-the-repository">
+<h2>Forking the Repository<a class="headerlink" href="#forking-the-repository" title="Link to this heading">#</a></h2>
+<p>To contribute, fork the repository on GitHub. Click the “Fork” button on the top right corner
+of the repository page. This creates a copy of the repository in your GitHub account.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">/</span><span class="n">palma</span>
+<span class="n">cd</span> <span class="n">repository</span>
+</pre></div>
+</div>
+<p>Create a virtual environment and install the project dependencies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">venv</span>
+<span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>  <span class="c1"># On Windows, use &#39;venv\Scripts\activate&#39;</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Create a branch for your changes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">feature</span><span class="o">-</span><span class="n">branch</span>
+</pre></div>
+</div>
+<p>Make your changes and commit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Your descriptive commit message&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="testing-with-pytest">
+<h2>Testing with Pytest<a class="headerlink" href="#testing-with-pytest" title="Link to this heading">#</a></h2>
+<p>We use pytest for testing our code. Ensure you have it installed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pytest</span>
+</pre></div>
+</div>
+<p>Run the tests using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="n">tests</span>
+</pre></div>
+</div>
+<p>Make sure all tests pass before submitting your changes.</p>
+</section>
+<section id="building-the-documentation">
+<h2>Building the Documentation<a class="headerlink" href="#building-the-documentation" title="Link to this heading">#</a></h2>
+<p>To build the documentation, ensure you have the necessary documentation tools
+installed using the following prompt :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">.</span><span class="p">[</span><span class="n">doc</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Build the documentation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">docs</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">build</span> <span class="n">source</span> <span class="n">build</span>
+</pre></div>
+</div>
+<p>This generates the documentation in the <code class="docutils literal notranslate"><span class="pre">docs/build</span></code> directory.
+Open <code class="docutils literal notranslate"><span class="pre">index.html</span></code> in a web browser to review your changes.
+Before pushing for ideas make sure you have correctly documented your code !</p>
+</section>
+<section id="making-a-merge-request">
+<h2>Making a Merge Request<a class="headerlink" href="#making-a-merge-request" title="Link to this heading">#</a></h2>
+<p>Push your changes to your fork:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">feature</span><span class="o">-</span><span class="n">branch</span>
+</pre></div>
+</div>
+<p>Visit your fork on GitHub and click the “Compare &amp; pull request” button.
+Provide a clear and concise description of your changes in the pull request.</p>
+</section>
 </section>
 
 
@@ -383,20 +454,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html"
+       href="components.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Installation</p>
+        <p class="prev-next-title">Components</p>
       </div>
     </a>
     <a class="right-next"
-       href="project.html"
+       href="autoapi/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Project</p>
+        <p class="prev-next-title">API Reference</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -407,7 +478,23 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forking-the-repository">Forking the Repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-with-pytest">Testing with Pytest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-documentation">Building the Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-a-merge-request">Making a Merge Request</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

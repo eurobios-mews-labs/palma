@@ -19,10 +19,13 @@
 .. image:: https://badge.fury.io/py/palma.svg
    :target: https://badge.fury.io/py/palma
 
+.. image:: https://raw.githubusercontent.com/eurobios-mews-labs/palma/coverage-badge/coverage.svg?raw=true
+   :target: https://raw.githubusercontent.com/eurobios-mews-labs/palma/coverage-badge/coverage.svg?raw=true
+
 * The Palma library aims to provide simple tools to accelerate the development of your machine learning project
 
 Installation
-------------
+````````````
 
 To install the Palma library, use the following command:
 
@@ -31,7 +34,7 @@ To install the Palma library, use the following command:
    python -m pip install palma
 
 Basic Usage
------------
+```````````
 
 Start your project by using the project class:
 
@@ -53,7 +56,7 @@ Start your project by using the project class:
 The instantiation defines the type of problem, and the `start` method will set up what is needed to carry out an ML project, including a testing strategy (argument `splitter`), training data `X`, and target `y`.
 
 Run Hyper-optimization
-----------------------
+``````````````````````
 
 .. image:: ../../.static/hyperopt.png
    :width: 800
@@ -71,7 +74,7 @@ The hyper-optimization process will look for the best model in a pool of models 
    print(ms.best_model_)
 
 Tailoring and Analyzing Your Estimator
---------------------------------------
+``````````````````````````````````````
 
 .. code-block:: python
 
@@ -87,12 +90,12 @@ Tailoring and Analyzing Your Estimator
    model.fit(project)
 
 Manage Components
------------------
+`````````````````
 
 You can add components to enrich the project. See :doc:`components` for detailed documentation.
 
 Authors
--------
+```````
 
 Eurobios Mews Labs
 
@@ -124,4 +127,5 @@ Eurobios Mews Labs
    :caption: Advanced Usage
 
    components
+   contributing
 

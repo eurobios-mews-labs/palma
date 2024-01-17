@@ -256,7 +256,7 @@ if __name__ == '__main__':
 
     plot_correlation(X.iloc[:, :8], cmap="RdBu_r", vmin=-0.5, vmax=0.5)
     project = Project(problem="classification", project_name="test")
-    project.add(components.FileSystemLogger("/tmp/"))
+    # project.add(components.FileSystemLogger("/tmp/"))
     pca: PCA = PCA(X)
     pca.get_variables_contributions()
     pca.get_correlation()

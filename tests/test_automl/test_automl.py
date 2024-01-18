@@ -13,3 +13,15 @@ def test_automl_classification(classification_data):
 
     assert hasattr(automl, "project")
     assert hasattr(automl, "model")
+
+
+def test_automl_regression(regression_data):
+    automl = AutoMl(
+        "my-project",
+        'regression',
+        *regression_data,
+        ShuffleSplit(),
+    ).run("FlamlOptimizer", {"time_budget": 5})
+
+    assert hasattr(automl, "project")
+    assert hasattr(automl, "model")

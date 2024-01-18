@@ -28,7 +28,7 @@ __default_scoring_component__ = [
 
 class AutoMl:
     """
-   AutoMl - Automated Machine Learning
+    AutoMl - Automated Machine Learning
 
        Parameters
        ----------

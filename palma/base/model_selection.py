@@ -14,6 +14,7 @@ from typing import Union, Dict
 
 from palma.base import engine as eng
 from palma.utils.utils import get_hash
+from palma.base.project import Project
 import logging
 
 

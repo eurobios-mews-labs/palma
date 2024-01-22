@@ -18,7 +18,7 @@ Classes
 
 
 
-.. py:class:: DeepCheck(name: str = 'Data Checker', dataset_parameters: dict = None, dataset_checks: Union[List[deepchecks.core.BaseCheck], deepchecks.core.BaseSuite] = data_integrity(), train_test_datasets_checks: Union[List[deepchecks.core.BaseCheck], deepchecks.core.BaseSuite] = Suite('Checks train test', train_test_validation()))
+.. py:class:: DeepCheck(name: str = 'Data Checker', dataset_parameters: dict = None, dataset_checks: Union[List[deepchecks.core.BaseCheck], deepchecks.core.BaseSuite] = data_integrity(), train_test_datasets_checks: Union[List[deepchecks.core.BaseCheck], deepchecks.core.BaseSuite] = Suite('Checks train test', train_test_validation()), raise_on_fail=True)
 
 
    Bases: :py:obj:`palma.components.base.ProjectComponent`
@@ -44,6 +44,9 @@ Classes
            train-test split, such as feature drift, detecting data leakage...
            By default, use the default suites train_test_validation and
            train_test_leakage
+
+       **raise_on_fail: bool, optional**
+           Raises error if one test fails
 
 
 

@@ -42,6 +42,8 @@ class DeepCheck(ProjectComponent):
         train-test split, such as feature drift, detecting data leakage...
         By default, use the default suites train_test_validation and
         train_test_leakage
+    raise_on_fail: bool, optional
+        Raises error if one test fails
     """
 
     def __init__(
@@ -52,7 +54,8 @@ class DeepCheck(ProjectComponent):
                 List[BaseCheck], BaseSuite] = data_integrity(),
             train_test_datasets_checks: Union[
                 List[BaseCheck], BaseSuite] = Suite(
-                'Checks train test', train_test_validation())
+                'Checks train test', train_test_validation()),
+            raise_on_fail=True
     ) -> None:
 
         if dataset_parameters:
@@ -75,6 +78,7 @@ class DeepCheck(ProjectComponent):
             train_test_datasets_checks,
             'Checks on train and test datasets'
         )
+        self.raise_on_fail = raise_on_fail
 
     def __call__(self, project: Project) -> None:
         """
@@ -93,9 +97,22 @@ class DeepCheck(ProjectComponent):
             train_dataset=self.__train_dataset,
             test_dataset=self.__test_dataset
         )
+
         for results in [self.train_test_checks_results,
                         self.dataset_checks_results]:
             logger.logger.log_artifact(results, f'{results.name}')
+
+        list_results = [
+            *self.train_test_checks_results.get_not_passed_checks(),
+            *self.dataset_checks_results.get_not_passed_checks(),
+        ]
+        if self.raise_on_fail and len(list_results):
+            line = "="*50
+            raise ValueError(
+                f"The following tests did not pass :"
+                f"{line}\n"
+                f"{list_results}\n"
+                f"{line}")
 
     def __generate_datasets(self, project: Project, **kwargs) -> None:
         """
@@ -110,13 +127,13 @@ class DeepCheck(ProjectComponent):
 
         df = pd.concat([project.X, project.y], axis=1)
         df.columns = [*project.X.columns.to_list(), "target"]
-        print(df.columns)
         self.__dataset = Dataset(df, label="target", **kwargs)
 
         self.__train_dataset = self.__dataset.copy(
             df.loc[project.validation_strategy.train_index])
         self.__test_dataset = self.__dataset.copy(
             df.loc[project.validation_strategy.test_index])
+
 
     @staticmethod
     def __generate_suite(

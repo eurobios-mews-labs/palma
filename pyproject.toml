@@ -17,7 +17,7 @@ dependencies = [
     "flaml[automl]>=2",
     "matplotlib>=3.4",
     "numpy >= 1",
-    "scikit-learn >= 1",
+    "scikit-learn >= 1, <1.4 ",
     "pandas >= 1",
     "shap",
     "llvmlite >= 0.39",

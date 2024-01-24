@@ -292,24 +292,35 @@ class ScoringAnalysis(Analyser):
         super().__init__(on)
 
     def confusion_matrix(self, in_percentage=False):
+        """
+        Compute the confusion matrix.
 
-        cv = self.indexes.copy()
+        Parameters
+        ----------
+        in_percentage : bool, optional
+            Whether to return the confusion matrix in percentage, by default False
 
-        mat_ = np.array([[0, 0], [0, 0]])
-        for i, (_, val) in enumerate(cv):
+        Returns
+        -------
+        pandas.DataFrame
+            The confusion matrix
+        """
+
+        matrix = np.array([[0, 0], [0, 0]])
+        for i, (_, val) in enumerate(self.indexes):
             proba = self.estimators[i].predict_proba(self.X.iloc[val])[:, -1]
             y_pred = proba > self.threshold
-            mat_ += metrics.confusion_matrix(self.y.iloc[val], y_pred)
-            mat_ = mat_ / len(cv)
+            matrix += metrics.confusion_matrix(self.y.iloc[val], y_pred)
+            matrix = matrix / len(self.indexes)
         columns = ['predicted : 0', 'predicted : 1']
         index = ['real : 0', 'real : 1']
 
-        mat_ = pd.DataFrame(mat_, index=index, columns=columns,
+        matrix = pd.DataFrame(matrix, index=index, columns=columns,
                             ).round(decimals=1)
         if in_percentage:
-            mat_ = mat_ / mat_.sum().sum() * 100
-            mat_ = mat_.round(decimals=1)
-        return mat_
+            matrix = matrix / matrix.sum().sum() * 100
+            matrix = matrix.round(decimals=1)
+        return matrix
 
     def __interpolate_roc(self, _):
         self._hidden_metrics["roc_curve_interp"] = utils.interpolate_roc(
@@ -347,7 +358,6 @@ class ScoringAnalysis(Analyser):
 
         cmap: str
 
-        cv_iter
         label
         mode
         label_iter
@@ -394,7 +404,31 @@ class ScoringAnalysis(Analyser):
             method: str = "total_population",
             value: float = 0.5,
             metric: typing.Callable = None):
-        """Compute threshold using various heuristics"""
+        """
+        Compute threshold using various heuristics
+
+        Parameters
+        ----------
+        method : str, optional
+            The method to compute the threshold, by default "total_population"
+
+            - total population : compute threshold so that the percentage of
+            positive prediction is equal to `value`
+            - fpr : compute threshold so that the false positive rate
+            is equal to `value`
+            - optimize_metric : compute threshold so that the metric is optimized
+            `value` parameter is ignored, `metric` parameter must be provided
+
+        value : float, optional
+            The value to use for the threshold computation, by default 0.5
+        metric : typing.Callable, optional
+            The metric function to use for the threshold computation, by default None
+
+        Returns
+        -------
+        float
+            The computed threshold
+        """
         th = []
 
         if method == "total_population":
@@ -430,6 +464,19 @@ class ScoringAnalysis(Analyser):
         return self.__threshold
 
     def plot_threshold(self, **plot_kwargs):
+        """
+        Plot the threshold on fpr/tpr axes
+
+        Parameters
+        ----------
+        plot_kwargs : dict, optional
+            Additional keyword arguments to pass to the scatter plot function
+
+        Returns
+        -------
+        matplotlib.pyplot
+            The threshold plot
+        """
         fpr = []
         tpr = []
         for i, _ in enumerate(self.indexes):

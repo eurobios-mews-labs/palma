@@ -17,7 +17,7 @@ import numpy as np
 import pandas as pd
 import shap
 from sklearn import metrics
-from sklearn.metrics import _regression
+from sklearn.metrics import _regression, _ranking
 
 from palma.components.base import ModelComponent
 from palma.components.logger import logger
@@ -67,12 +67,21 @@ class Analyser(ModelComponent, metaclass=ABCMeta):
         __tmp = utils._get_processing_pipeline(self.estimators)
         self.preproc_estimators, self.only_estimators = __tmp
         self._is_regression = project.problem == "regression"
-        if self._is_regression:
+        if project.problem == "regression":
             for metric in _regression.__ALL__:
                 try:
                     self.compute_metrics({metric: getattr(_regression, metric)})
                 except ValueError:
                     pass
+        elif project.problem == "classification":
+            for metric in ["roc_auc_score",
+                           "label_ranking_average_precision_score",
+                           "coverage_error", "label_ranking_loss", "dcg_score"]:
+                try:
+                    self.compute_metrics({metric: getattr(_ranking, metric)})
+                except ValueError:
+                    pass
+
     def variable_importance(self):
         """
         Compute the feature importance for each estimator.
@@ -316,7 +325,7 @@ class ScoringAnalysis(Analyser):
         index = ['real : 0', 'real : 1']
 
         matrix = pd.DataFrame(matrix, index=index, columns=columns,
-                            ).round(decimals=1)
+                              ).round(decimals=1)
         if in_percentage:
             matrix = matrix / matrix.sum().sum() * 100
             matrix = matrix.round(decimals=1)
@@ -529,6 +538,7 @@ class RegressionAnalysis(Analyser):
     metrics : dict
         The computed metrics.
     """
+
     def __init__(self, on):
         super().__init__(on)
 

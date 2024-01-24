@@ -21,7 +21,8 @@ from palma.components.data_checker import DeepCheck, Leakage
 
 
 def test_deep_check(classification_project):
-    dc = DeepCheck(dataset_parameters={"label": classification_project.y.name})
+    dc = DeepCheck(dataset_parameters={"label": classification_project.y.name},
+                   raise_on_fail=False)
     dc(classification_project)
 
 

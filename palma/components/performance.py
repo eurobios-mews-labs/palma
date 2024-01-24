@@ -17,24 +17,30 @@ import numpy as np
 import pandas as pd
 import shap
 from sklearn import metrics
+from sklearn.metrics import _regression
 
 from palma.components.base import ModelComponent
-from palma.utils import plotting, utils
 from palma.components.logger import logger
+from palma.utils import plotting, utils
 
-
-colors = ['r', 'b', '#33cc33', '#ff6600', "darkblue", '#9933ff',
-          '#99cc00', '#3399ff'] * 50
-
-colors_rainbow = [plot.get_cmap("rainbow")(1 - i / 4) for i in range(5)] * 3
+__fpr_sampling__ = np.linspace(0, 1, 200)
 
 
 class Analyser(ModelComponent, metaclass=ABCMeta):
-    metrics = {}
-    _metrics = {}
+    """
+    Analyser class for performing analysis on a model.
+
+    Parameters
+    ----------
+    on : str
+        The type of analysis to perform. Possible values are
+        "indexes_train_test" or "indexes_val".
+    """
 
     def __init__(self, on):
         self.__on = on
+        self.__metrics = {}
+        self._hidden_metrics = {}
 
     def __call__(self, project: "Project", model: "ModelEvaluation"):
         self._add(project, model)
@@ -61,8 +67,21 @@ class Analyser(ModelComponent, metaclass=ABCMeta):
         __tmp = utils._get_processing_pipeline(self.estimators)
         self.preproc_estimators, self.only_estimators = __tmp
         self._is_regression = project.problem == "regression"
-
+        if self._is_regression:
+            for metric in _regression.__ALL__:
+                try:
+                    self.compute_metrics({metric: getattr(_regression, metric)})
+                except ValueError:
+                    pass
     def variable_importance(self):
+        """
+        Compute the feature importance for each estimator.
+
+        Returns
+        -------
+        feature_importance : pandas.DataFrame
+            DataFrame containing the feature importance values for each estimator.
+        """
         feature_importance = pd.DataFrame(columns=self.X.columns)
         for i, _ in enumerate(self.indexes):
             importance = utils._get_and_check_var_importance(
@@ -71,6 +90,14 @@ class Analyser(ModelComponent, metaclass=ABCMeta):
         return feature_importance.T
 
     def compute_metrics(self, metric: dict):
+        """
+        Compute the specified metrics for each estimator.
+
+        Parameters
+        ----------
+        metric : dict
+            Dictionary containing the metric name as key and the metric function as value.
+        """
         from palma import logger
         for name, fun in metric.items():
             self._compute_metric(name, fun)
@@ -79,10 +106,19 @@ class Analyser(ModelComponent, metaclass=ABCMeta):
             path="metrics")
 
     def _compute_metric(self, name: str, fun: typing.Callable):
-        """Compute on specific metric and add it to 'metric' attribute"""
-        self.metrics[name] = {}
+        """
+        Compute a specific metric and add it to the metrics attribute.
+
+        Parameters
+        ----------
+        name : str
+            The name of the metric.
+        fun : callable
+            The function to compute the metric.
+        """
+        self.__metrics[name] = {}
         for i, (train, test) in enumerate(self.indexes):
-            self.metrics[name][i] = dict(
+            self.__metrics[name][i] = dict(
                 train=fun(self.y.iloc[train],
                           self.predictions[i]["train"]),
                 test=fun(self.y.iloc[test],
@@ -90,13 +126,29 @@ class Analyser(ModelComponent, metaclass=ABCMeta):
             )
 
     def get_train_metrics(self) -> pd.DataFrame:
+        """
+        Get the computed metrics for the training set.
+
+        Returns
+        -------
+        pd.DataFrame
+            DataFrame containing the computed metrics for the training set.
+        """
         return self.__get_metrics_helper("train")
 
     def get_test_metrics(self) -> pd.DataFrame:
+        """
+        Get the computed metrics for the test set.
+
+        Returns
+        -------
+        pd.DataFrame
+            DataFrame containing the computed metrics for the test set.
+        """
         return self.__get_metrics_helper("test")
 
     def __get_metrics_helper(self, identifier) -> pd.DataFrame:
-        m = self.metrics
+        m = self.__metrics
         ret = pd.DataFrame(columns=list(m.keys()),
                            index=m[list(m.keys())[0]].keys())
         for k in m.keys():
@@ -107,10 +159,26 @@ class Analyser(ModelComponent, metaclass=ABCMeta):
     def plot_variable_importance(self, mode="minmax",
                                  color="darkblue",
                                  cmap="flare"):
+        """
+        Plot the variable importance.
+
+        Parameters
+        ----------
+        mode : str, optional
+            The mode for plotting the variable importance, by default "minmax".
+        color : str, optional
+            The color for the plot, by default "darkblue".
+        cmap : str, optional
+            The colormap for the plot, by default "flare".
+        """
         from palma.utils.plotting import plot_variable_importance
         plot_variable_importance(
             self.variable_importance(), mode=mode, color=color, cmap=cmap)
         logger.logger.log_artifact(plot.gcf(), "variable_importance")
+
+    @property
+    def metrics(self):
+        return self.__metrics
 
 
 class ShapAnalysis(Analyser):
@@ -215,7 +283,13 @@ class ShapAnalysis(Analyser):
 
 
 class ScoringAnalysis(Analyser):
-    mean_fpr = np.linspace(0, 1, 100)
+    """
+    The ScoringAnalyser class provides methods for analyzing the performance of
+    a machine learning model.
+    """
+
+    def __init__(self, on):
+        super().__init__(on)
 
     def confusion_matrix(self, in_percentage=False):
 
@@ -238,16 +312,15 @@ class ScoringAnalysis(Analyser):
         return mat_
 
     def __interpolate_roc(self, _):
-        self._metrics["roc_curve_interp"] = utils.interpolate_roc(
-            self.metrics["roc_curve"], self.mean_fpr)
+        self._hidden_metrics["roc_curve_interp"] = utils.interpolate_roc(
+            self.metrics["roc_curve"], __fpr_sampling__)
 
     def plot_roc_curve(
             self,
             plot_method="mean",
             plot_train: bool = False,
-            c=colors[0],
+            c='C0',
             cmap: str = "inferno",
-            cv_iter=None,
             label: str = "",
             mode: str = "std",
             label_iter: iter = None,
@@ -288,17 +361,13 @@ class ScoringAnalysis(Analyser):
 
         """
         self._compute_metric("roc_curve", metrics.roc_curve)
-        self.label = label
-        if cv_iter is not None:
-            cv = list(np.array(self.indexes)[cv_iter])
-        else:
-            cv = self.indexes.copy()
-        self.__interpolate_roc(cv)
-        roc = self._metrics["roc_curve_interp"]
+
+        self.__interpolate_roc(self.indexes)
+        roc = self._hidden_metrics["roc_curve_interp"]
 
         select_i = "train" if plot_train else "test"
-        list_tpr = [roc[i][select_i][1] for i in range(len(cv))]
-        list_fpr = [roc[i][select_i][0] for i in range(len(cv))]
+        list_tpr = [roc[i][select_i][1] for i in range(len(self.indexes))]
+        list_fpr = [roc[i][select_i][0] for i in range(len(self.indexes))]
 
         if plot_method not in ["beam", "all", "mean"]:
             raise ValueError(
@@ -308,11 +377,11 @@ class ScoringAnalysis(Analyser):
         plot_beam: bool = plot_method == "beam"
         plot_mean: bool = plot_method == "mean"
 
-        plotting.roc_plot_bundle(list_fpr, list_tpr, mean_fpr=self.mean_fpr,
+        plotting.roc_plot_bundle(list_fpr, list_tpr, mean_fpr=__fpr_sampling__,
                                  plot_all=plot_all, plot_beam=plot_beam,
                                  label_iter=label_iter,
                                  cmap=cmap, plot_mean=plot_mean,
-                                 c=c, mode=mode, label=self.label)
+                                 c=c, mode=mode, label=label)
 
         if plot_base:
             plotting.roc_plot_base()
@@ -336,14 +405,14 @@ class ScoringAnalysis(Analyser):
                 self._compute_metric("roc_curve", metrics.roc_curve)
             self.__interpolate_roc(self.indexes)
             for i, _ in enumerate(self.indexes):
-                roc = self._metrics["roc_curve_interp"][i]["test"]
+                roc = self._hidden_metrics["roc_curve_interp"][i]["test"]
                 idx = np.argmin(np.abs(roc[0] - value))
                 th.append(roc[2][idx])
         elif method == "optimize_metric":
             name = "threshold_criterion"
             if metric is None:
                 raise ValueError("Argument metric must not be not None")
-            self._metrics[name] = {}
+            self._hidden_metrics[name] = {}
             for i, (train, test) in enumerate(self.indexes):
                 ths = np.unique(self.predictions[i]["test"])
                 temp = {}
@@ -351,9 +420,10 @@ class ScoringAnalysis(Analyser):
                     temp[th_] = metric(
                         self.y.iloc[test],
                         self.predictions[i]["test"] > th_)
-                self._metrics[name][i] = dict(test=pd.Series(temp).idxmax())
-                th = [self._metrics[name][i]["test"] for i in
-                      self._metrics[name].keys()]
+                self._hidden_metrics[name][i] = dict(
+                    test=pd.Series(temp).idxmax())
+                th = [self._hidden_metrics[name][i]["test"] for i in
+                      self._hidden_metrics[name].keys()]
         else:
             raise ValueError(f"method {method} is not recognized")
         self.__threshold = np.nanmean(th)
@@ -363,7 +433,7 @@ class ScoringAnalysis(Analyser):
         fpr = []
         tpr = []
         for i, _ in enumerate(self.indexes):
-            roc = self._metrics["roc_curve_interp"][i]["test"]
+            roc = self._hidden_metrics["roc_curve_interp"][i]["test"]
             idx = np.argmin(np.abs(roc[2] - self.__threshold))
             fpr.append(roc[0][idx])
             tpr.append(roc[1][idx])
@@ -376,6 +446,44 @@ class ScoringAnalysis(Analyser):
 
 
 class RegressionAnalysis(Analyser):
+    """
+    Analyser class for performing analysis on a regression model.
+
+    Parameters
+    ----------
+    on : str
+        The type of analysis to perform. Possible values are
+        "indexes_train_test" or "indexes_val".
+
+    Attributes
+    ----------
+    _hidden_metrics : dict
+        Dictionary to store additional metrics that are not displayed.
+
+    Methods
+    -------
+    variable_importance()
+        Compute the feature importance for each estimator.
+    compute_metrics(metric: dict)
+        Compute the specified metrics for each estimator.
+    get_train_metrics() -> pd.DataFrame
+        Get the computed metrics for the training set.
+    get_test_metrics() -> pd.DataFrame
+        Get the computed metrics for the test set.
+    plot_variable_importance(mode="minmax", color="darkblue", cmap="flare")
+        Plot the variable importance.
+    plot_prediction_versus_real
+        Plot prediction versus real values
+    plot_errors_pairgrid
+        Plot pair grid errors
+
+    Properties
+    ----------
+    metrics : dict
+        The computed metrics.
+    """
+    def __init__(self, on):
+        super().__init__(on)
 
     def compute_predictions_errors(self, fun=None):
         self.errors = {}
@@ -430,5 +538,3 @@ class RegressionAnalysis(Analyser):
         g.map_offdiag(sns.scatterplot, size=df_plot["error"])
         g.add_legend(title="", adjust_subtitles=True)
         logger.logger.log_artifact(plot.gcf(), "pair_grid")
-
-

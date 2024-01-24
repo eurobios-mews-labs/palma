@@ -31,7 +31,7 @@ from palma.components import performance
 
 @pytest.fixture(scope='module')
 def classification_data():
-    X, y = make_classification(random_state=0)
+    X, y = make_classification(random_state=0, n_samples=300)
     return pd.DataFrame(X[:, :4]), pd.Series(y, name="target")
 
 
@@ -105,7 +105,7 @@ def learning_data_regression(regression_data):
     X, y = regression_data
     X = pd.DataFrame(X)
     y = pd.Series(y)
-    project = Project(problem="classification", project_name="test")
+    project = Project(problem="regression", project_name="test")
 
     project.start(
         X, y,

@@ -9,10 +9,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import matplotlib
+import pytest
 from sklearn import metrics
 
 from palma.components import performance
-import pytest
+
 matplotlib.use("agg")
 
 
@@ -46,8 +47,8 @@ def test_raise_value_when_no_threshold(get_scoring_analyser):
     assert exc_info.type == AttributeError, "Wrong error type"
 
 
-def test_compute_threshold(get_scoring_analyser):
-    get_scoring_analyser.metrics = {}
+def test_compute_threshold(get_scoring_analyser: performance.ScoringAnalysis):
+    get_scoring_analyser._Analyser__metrics = {}
     get_scoring_analyser.compute_threshold("fpr", value=0.2)
     get_scoring_analyser.confusion_matrix(in_percentage=True)
 
@@ -97,6 +98,7 @@ def test_shap_regression_compute(get_shap_analyser):
 def test_regression_perf(get_regression_analyser):
     get_regression_analyser.plot_prediction_versus_real()
     get_regression_analyser.plot_variable_importance()
+    get_regression_analyser.plot_errors_pairgrid()
 
 
 def test_performance_pipeline_version(get_regression_analyser):
@@ -115,3 +117,21 @@ def test_performance_get_metric_dataframe(get_regression_analyser):
     assert get_regression_analyser.get_train_metrics()["r2_score"].iloc[0] < 0.5
     get_regression_analyser.plot_errors_pairgrid()
 
+
+def test_shap_with_pipeline(get_shap_analyser, learning_data_regression):
+    project, model, X, y = learning_data_regression
+    get_shap_analyser.__init__(on="indexes_train_test", n_shap=50)
+    get_shap_analyser._add(project, model)
+
+
+def test_compute_metrics(get_regression_analyser):
+    assert len(get_regression_analyser.metrics) > 5
+
+    for v in ['max_error', 'mean_absolute_error', 'mean_squared_error',
+              'mean_squared_log_error', 'median_absolute_error',
+              'mean_absolute_percentage_error', 'mean_pinball_loss', 'r2_score',
+              'explained_variance_score', 'mean_tweedie_deviance',
+              'mean_poisson_deviance', 'mean_gamma_deviance',
+              'd2_tweedie_score', 'd2_pinball_score',
+              'd2_absolute_error_score']:
+        assert v in get_regression_analyser.metrics.keys()

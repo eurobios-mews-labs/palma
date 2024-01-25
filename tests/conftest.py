@@ -129,9 +129,7 @@ def get_regression_analyser(learning_data_regression):
     return perf
 
 
-def test_get_name_using_pipeline(learning_data_regression):
-    project, learn, X, y = learning_data_regression
-    assert learn.estimator_name == "LinearRegression"
+
 
 
 @pytest.fixture(scope='module')

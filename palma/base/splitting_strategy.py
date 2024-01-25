@@ -169,4 +169,4 @@ class ValidationStrategy(object):
 
     @property
     def groups(self):
-        return self.__groups
+        return np.array(self.__groups)

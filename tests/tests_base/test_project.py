@@ -89,3 +89,8 @@ def test_log_project(classification_project):
         "project.pkl"
     )
     assert os.path.exists(path_to_check), f"{path_to_check} doesn't exist"
+
+
+def test_get_name_using_pipeline(learning_data_regression):
+    project, learn, X, y = learning_data_regression
+    assert learn.estimator_name == "LinearRegression"

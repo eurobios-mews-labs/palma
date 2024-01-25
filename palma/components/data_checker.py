@@ -107,7 +107,7 @@ class DeepCheck(ProjectComponent):
             *self.dataset_checks_results.get_not_passed_checks(),
         ]
         if self.raise_on_fail and len(list_results):
-            line = "="*50
+            line = "=" * 50
             raise ValueError(
                 f"The following tests did not pass :"
                 f"{line}\n"
@@ -133,7 +133,6 @@ class DeepCheck(ProjectComponent):
             df.loc[project.validation_strategy.train_index])
         self.__test_dataset = self.__dataset.copy(
             df.loc[project.validation_strategy.test_index])
-
 
     @staticmethod
     def __generate_suite(
@@ -169,9 +168,6 @@ class DeepCheck(ProjectComponent):
             )
 
         return suite
-
-    def __str__(self) -> str:
-        return "DeepCheck"
 
 
 class Leakage(ProjectComponent):

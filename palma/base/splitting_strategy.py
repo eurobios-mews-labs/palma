@@ -67,7 +67,7 @@ class ValidationStrategy(object):
                 List[str]],
             **kwargs
     ) -> None:
-
+        self.__groups = None
         self.__splitter = splitter
         if hasattr(self.__splitter, "split"):
             self._splitter_args = self.__splitter.__dict__
@@ -98,7 +98,7 @@ class ValidationStrategy(object):
         - y_test (pd.Series): Optional test target variable.
         - groups: Optional grouping information.
         """
-
+        self.__groups = groups
         if X_test is not None and y_test is not None:
             n_train, n_test = len(X), len(X_test)
             X = pd.concat((X, X_test), axis=0)
@@ -166,3 +166,7 @@ class ValidationStrategy(object):
     @property
     def splitter(self):
         return self.__splitter
+
+    @property
+    def groups(self):
+        return self.__groups

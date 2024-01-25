@@ -167,7 +167,7 @@ class Analyser(ModelComponent, metaclass=ABCMeta):
 
     def plot_variable_importance(self, mode="minmax",
                                  color="darkblue",
-                                 cmap="flare"):
+                                 cmap="flare", **kwargs):
         """
         Plot the variable importance.
 
@@ -182,7 +182,9 @@ class Analyser(ModelComponent, metaclass=ABCMeta):
         """
         from palma.utils.plotting import plot_variable_importance
         plot_variable_importance(
-            self.variable_importance(), mode=mode, color=color, cmap=cmap)
+            self.variable_importance(), mode=mode, color=color, cmap=cmap,
+            **kwargs
+        )
         logger.logger.log_artifact(plot.gcf(), "variable_importance")
 
     @property

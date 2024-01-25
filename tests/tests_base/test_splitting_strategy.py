@@ -52,17 +52,6 @@ def test_splitting_strategy_has_test_index_attribute(
 def test_splitting_strategy_raise_key_error():
     return None  # TODO add this feature
 
-# X, y = make_classification()
-# X = pd.DataFrame(X)
-# y = pd.Series(y)
-#
-# splitting_strategy = ValidationStrategy(splitter=ShuffleSplit(),
-#                                         sort_by="col1")
-# with pytest.raises(KeyError) as exc_info:
-#     splitting_strategy(X, y)
-# assert exc_info.type == KeyError, "Wrong error type"
-
-
 def test_splitting_strategy_has_sort_by_attribute():
     return None  # TODO add this feature
     X, y = make_classification()
@@ -140,7 +129,7 @@ def test_group_splitting_strategy(classification_data):
         "wrong number of split"
 
 
-def test__splitting_strategy(classification_data):
+def test_splitting_strategy(classification_data):
     project = Project(project_name="test", problem="classification")
     X, y = classification_data
     X = pd.DataFrame(X)
@@ -155,3 +144,25 @@ def test__splitting_strategy(classification_data):
     )
     assert len(project.validation_strategy.indexes_val) == n_splits, \
         "wrong number of split"
+
+
+def test_splitting_strategy_with_flaml_engine(classification_data):
+    from palma import ModelSelector
+    project = Project(project_name="test", problem="classification")
+    X, y = classification_data
+    X = pd.DataFrame(X)
+    y = pd.Series(np.ravel(y))
+    n_splits = 5
+    groups = (np.random.uniform(size=y.__len__()) * 10).astype(int)
+    project.start(
+        X,
+        y,
+        splitter=GroupKFold(n_splits=n_splits),
+        groups=groups
+    )
+    assert groups is not None
+    assert project.validation_strategy.groups is not None
+    ms = ModelSelector(engine="FlamlOptimizer",
+                       engine_parameters={'time_budget': 5})
+    ms.start(project)
+    assert True

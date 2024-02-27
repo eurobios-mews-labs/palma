@@ -59,7 +59,7 @@ class Project(object):
 
         self.__project_name = project_name
         self.__date = datetime.now()
-        self.__study_name = self.date
+        self.__study_name = str(self.__date).replace("-", "").replace(":", "_").replace(".", "_")
         self.__problem = problem
 
         self.__components = {}
@@ -137,7 +137,7 @@ class Project(object):
 
     @property
     def study_name(self) -> str:
-        return str(self.date)
+        return str(self.__study_name)
 
     @property
     def X(self) -> pd.DataFrame:

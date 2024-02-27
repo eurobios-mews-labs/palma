@@ -88,7 +88,6 @@ class DeepCheck(ProjectComponent):
         ----------
         project: :class:`~palma.Project`
         """
-
         self.__generate_datasets(project, **self.dataset_parameters)
         self.dataset_checks_results = self.whole_dataset_checks_suite.run(
             self.__dataset
@@ -100,7 +99,7 @@ class DeepCheck(ProjectComponent):
 
         for results in [self.train_test_checks_results,
                         self.dataset_checks_results]:
-            logger.logger.log_artifact(results, f'{results.name}')
+            logger.logger.log_artifact(results, f'data_checker_{results.name}'.lower().replace(" ", "_"))
 
         list_results = [
             *self.train_test_checks_results.get_not_passed_checks(),

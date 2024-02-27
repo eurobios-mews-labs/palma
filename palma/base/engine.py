@@ -119,7 +119,8 @@ class FlamlOptimizer(BaseOptimizer):
                  ) -> None:
         split_type = None if splitter is None else splitter.splitter
         groups = None if splitter is None else splitter.groups
-        groups = groups if groups is None else groups[splitter.train_index]
+        if groups is not None:
+            groups = groups[splitter.train_index]
 
         self.allowing_splitter(splitter)
         self.__optimizer = AutoML()

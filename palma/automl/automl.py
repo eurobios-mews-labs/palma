@@ -72,8 +72,8 @@ class AutoMl:
        --------
        >>> automl = AutoMl(project_name='my-project',
        ...                 problem='classification',
-       ...                 X=train_features,
-       ...                 y=train_labels,
+       ...                 X=X,
+       ...                 y=y,
        ...                 splitter=StratifiedKFold(n_splits=5))
        >>> automl.run(engine_name='FlamlEngine', engine_parameter={'time_budget': 20})
        """
@@ -108,6 +108,7 @@ class AutoMl:
         -------
         self
         """
+        from sklearn.base import clone
         self.runner = ModelSelector(engine_name, engine_parameter)
         self.runner.start(self.project)
         self.model = ModelEvaluation(self.runner.best_model_)
@@ -116,6 +117,7 @@ class AutoMl:
         elif self.project.problem == "regression":
             [self.model.add(c) for c in __default_regression_component__]
         self.model.fit(self.project)
+        self.estimator_ = clone(self.runner.best_model_).fit(self.project.X, self.project.y)
         return self
 
 

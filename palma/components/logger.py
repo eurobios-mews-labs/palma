@@ -148,16 +148,16 @@ class FileSystemLogger(Logger):
         self.__create_directories()
 
         artifact_name = f"{self.path_study}/project.pkl"
-
         with open(artifact_name, "wb") as output_file:
             _logger.info(f"Project instance saved in {artifact_name}")
             try:
                 pickle.dump(project, output_file)
-            except AttributeError:
+            except AttributeError as e:
                 _logger.warning(f"Fail to log project")
+                print(e)
         self.log_params(
             {c.replace("_Project__", ""): str(v) for c, v in
-             vars(project).items()}, "properties")
+             vars(project).items()}, "project_properties")
 
     def log_metrics(self, metrics: dict, path: str) -> None:
         """
@@ -172,9 +172,14 @@ class FileSystemLogger(Logger):
             where the metrics JSON file will be saved.
         """
         path = f"{self.path_study}/{path}.json"
+        if os.path.exists(path):
+            with open(path, 'r') as file:
+                old_metrics = json.load(file)
+        else:
+            old_metrics = {}
         with open(path, 'w') as output_file:
             _logger.info(f"Metrics saved in {path}")
-            json.dump(metrics, output_file, indent=4)
+            json.dump({**old_metrics, **metrics}, output_file, indent=4)
 
     def log_artifact(self, obj, path: str) -> None:
         """
@@ -190,12 +195,13 @@ class FileSystemLogger(Logger):
         """
         path = f"{self.path_study}/{path}"
         self.__create_directories()
-        with open(path, 'wb') as output_file:
-            if isinstance(obj, plt.Figure):
-                obj.savefig(f"{path}.png")
-            elif hasattr(obj, "save_as_html"):
-                obj.save_as_html(f"{path}.html")
-            else:
+
+        if isinstance(obj, plt.Figure):
+            obj.savefig(f"{path}.png")
+        elif hasattr(obj, "save_as_html"):
+            obj.save_as_html(f"{path}.html")
+        else:
+            with open(path, 'wb') as output_file:
                 pickle.dump(obj, output_file)
 
     def log_params(self,

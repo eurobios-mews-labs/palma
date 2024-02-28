@@ -13,7 +13,11 @@ import pandas as pd
 
 from palma import Project, ModelSelector, ModelEvaluation
 from palma import components
+import matplotlib
 
+__default_project_component__ = [
+    components.DeepCheck(),
+]
 __default_model_component__ = [
     components.ShapAnalysis(on='indexes_train_test', n_shap=200),]
 __default_regression_component__ = [
@@ -75,7 +79,7 @@ class AutoMl:
        ...                 X=X,
        ...                 y=y,
        ...                 splitter=StratifiedKFold(n_splits=5))
-       >>> automl.run(engine_name='FlamlEngine', engine_parameter={'time_budget': 20})
+       >>> automl.run(engine='FlamlEngine', engine_parameter={'time_budget': 20})
        """
 
     def __init__(self,
@@ -88,20 +92,24 @@ class AutoMl:
                  y_test=None,
                  groups=None,
                  ):
+        self.save_plt_backend = matplotlib.get_backend()
+        matplotlib.use("agg")
         self.project = Project(project_name, problem)
+        [self.project.add(c) for c in __default_project_component__]
         self.project.start(X=X, y=y, splitter=splitter, X_test=X_test,
                            y_test=y_test,
                            groups=groups)
+        matplotlib.use(self.save_plt_backend)
 
-    def run(self, engine_name, engine_parameter):
+    def run(self, engine, engine_parameters):
         """
         Run the automated machine learning process.
 
         Parameters
         ----------
-        engine_name : str
+        engine : str
             Name of the engine to use.
-        engine_parameter
+        engine_parameters
             Parameters specific to the chosen machine learning engine.
 
         Returns
@@ -109,7 +117,9 @@ class AutoMl:
         self
         """
         from sklearn.base import clone
-        self.runner = ModelSelector(engine_name, engine_parameter)
+        self.save_plt_backend = matplotlib.get_backend()
+        matplotlib.use("agg")
+        self.runner = ModelSelector(engine, engine_parameters)
         self.runner.start(self.project)
         self.model = ModelEvaluation(self.runner.best_model_)
         if self.project.problem == "classification":
@@ -118,6 +128,7 @@ class AutoMl:
             [self.model.add(c) for c in __default_regression_component__]
         self.model.fit(self.project)
         self.estimator_ = clone(self.runner.best_model_).fit(self.project.X, self.project.y)
+        matplotlib.use(self.save_plt_backend)
         return self
 
 

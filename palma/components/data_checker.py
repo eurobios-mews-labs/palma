@@ -69,7 +69,7 @@ class DeepCheck(ProjectComponent):
 
         self.name = name
 
-        self.whole_dataset_checks_suite = self.__generate_suite(
+        self.data_integrity_suite = self.__generate_suite(
             dataset_checks,
             'Checks on whole dataset'
         )
@@ -89,7 +89,7 @@ class DeepCheck(ProjectComponent):
         project: :class:`~palma.Project`
         """
         self.__generate_datasets(project, **self.dataset_parameters)
-        self.dataset_checks_results = self.whole_dataset_checks_suite.run(
+        self.dataset_checks_results = self.data_integrity_suite.run(
             self.__dataset
         )
         self.train_test_checks_results = self.train_test_checks_suite.run(
@@ -111,7 +111,7 @@ class DeepCheck(ProjectComponent):
                 f"The following tests did not pass :"
                 f"{line}\n"
                 f"{list_results}\n"
-                f"{line}")
+                f"{line}\n")
 
     def __generate_datasets(self, project: Project, **kwargs) -> None:
         """
@@ -236,6 +236,7 @@ class Leakage(ProjectComponent):
             raise ValueError("Presence of data leakage")
         self.__leakage = False
         self.__metric = comp.metrics["auc"][0]["test"]
+
         logger.logger.log_metrics(self.metrics, "leakage")
 
     @property

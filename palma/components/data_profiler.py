@@ -13,11 +13,6 @@ import pandas as pd
 
 from palma.components.base import ProjectComponent
 
-try:
-    from pandas_profiling import ProfileReport
-except ImportError:
-    ProfileReport = None
-
 
 class ProfilerYData(ProjectComponent):
 
@@ -27,9 +22,9 @@ class ProfilerYData(ProjectComponent):
         self.config = config
 
     def __call__(self, project: "Project"):
+        from pandas_profiling import ProfileReport
         profile = ProfileReport(
             pd.concat((project.X, project.y)),
             **self.config,
             title="Pandas Profiling Report")
-        profile.to_file(f"report_{project.project_name}.html")
-
+        profile.to_file(f"data_profiler_{project.project_name}.html")

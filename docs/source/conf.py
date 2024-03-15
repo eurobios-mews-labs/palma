@@ -9,7 +9,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.abspath('../'))
-sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath("../../"))
 
 project = 'palma'
 copyright = '2024, Eurobios-Mews-Labs'
@@ -38,7 +38,8 @@ exclude_patterns = []
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'sphinx_book_theme'
+html_theme = "sphinx_book_theme"
+# html_style = '_static/palma.css'
 html_static_path = ['../../.static']
 source_suffix = {
     '.rst': 'restructuredtext',

@@ -73,9 +73,9 @@ def plot_splitting_strategy(X: pd.DataFrame, y: pd.Series,
 def plot_variable_importance(
         variable_importance: pd.DataFrame,
         mode="minmax",
-        color="darkblue",
+        color="C0",
         cmap="flare",
-        alpha=0.2, **kwargs
+        alpha=1, **kwargs
 ):
     variable_importance = variable_importance.copy()
     variable_importance.index = variable_importance.index.astype(str)
@@ -136,7 +136,7 @@ def roc_plot_bundle(list_fpr, list_tpr,
                     plot_beam=True,
                     cmap="inferno",
                     plot_mean=True,
-                    c="b",
+                    c="C0",
                     label_iter=None,
                     mode="std",
                     label="",
@@ -193,7 +193,6 @@ def roc_plot_base():
     ax.set_xlabel('False Positive Rate')
     ax.set_ylabel('True Positive Rate')
     ax.legend(loc="lower right")
-    ax.grid(True)
     ax.axis("equal")
     ax.set_xlim([-0.05, 1.05])
     ax.set_ylim([-0.05, 1.05])

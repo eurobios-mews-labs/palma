@@ -96,7 +96,7 @@ def test_log_model(build_classification_project):
 def get_mlflow_logger(classification_data):
     from palma import set_logger, logger
 
-    set_logger(MLFlowLogger(uri=tempfile.gettempdir() + "/mlflow"))
+    set_logger(MLFlowLogger(uri="logger/mlflow"))
 
     project = Project(problem="classification", project_name="test")
     X, y = classification_data

@@ -22,9 +22,9 @@ class ProfilerYData(ProjectComponent):
         self.config = config
 
     def __call__(self, project: "Project"):
-        from pandas_profiling import ProfileReport
+        from ydata_profiling import ProfileReport
         profile = ProfileReport(
-            pd.concat((project.X, project.y)),
+            pd.concat((project.X, project.y), axis=1),
             **self.config,
             title="Pandas Profiling Report")
         profile.to_file(f"data_profiler_{project.project_name}.html")

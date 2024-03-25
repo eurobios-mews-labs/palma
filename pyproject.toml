@@ -29,7 +29,7 @@ dependencies = [
 
 
 [project.optional-dependencies]
-components = ["deepchecks", "pandas-profiling", "plot-metric",
+components = ["deepchecks", "ydata-profiling", "plot-metric",
               "mlflow", "boto3", "explainerdashboard"]
 test = ["pylint", "coverage", "pytest", "pytest-cov", "pytest-cov",
         "jupyter","notebook", "uci_dataset"]

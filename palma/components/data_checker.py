@@ -71,12 +71,12 @@ class DeepCheck(ProjectComponent):
 
         self.data_integrity_suite = self.__generate_suite(
             dataset_checks,
-            'Checks on whole dataset'
+            'Dataset integrity suite'
         )
 
         self.train_test_checks_suite = self.__generate_suite(
             train_test_datasets_checks,
-            'Checks on train and test datasets'
+            'Train test suite'
         )
         self.raise_on_fail = raise_on_fail
 

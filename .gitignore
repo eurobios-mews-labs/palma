@@ -1,7 +1,8 @@
 # mlflow
 *mlruns*
 *mlartifacts*
-
+*.html*
+*logger/*
 
 *__pycache__*
 

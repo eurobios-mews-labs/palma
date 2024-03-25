@@ -16,7 +16,7 @@ from palma import components
 import matplotlib
 
 __default_project_component__ = [
-    components.DeepCheck(),
+    # components.DeepCheck(),
 ]
 __default_model_component__ = [
     components.ShapAnalysis(on='indexes_train_test', n_shap=200),]

@@ -146,4 +146,3 @@ def test_artifact_logging():
     logger.logger.log_metrics({'a': 1}, "metric")
     logger.logger.log_artifact(fig, "figure")
 
-

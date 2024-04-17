@@ -110,9 +110,12 @@ class Analyser(ModelComponent, metaclass=ABCMeta):
         from palma import logger
         for name, fun in metric.items():
             self._compute_metric(name, fun)
-        logger.logger.log_metrics(
-            {k: str(v) for k, v in self.get_test_metrics().to_dict().items()},
-            path="metrics")
+
+        for m_name, metric_fold in self.get_test_metrics().to_dict().items():
+            for k, v in metric_fold.items():
+                if isinstance(v, float) or isinstance(v, int):
+                    logger.logger.log_metrics(
+                        {f"{m_name}_fold{k}": v}, path="metrics")
 
     def _compute_metric(self, name: str, fun: typing.Callable):
         """

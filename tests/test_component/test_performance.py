@@ -9,12 +9,57 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import matplotlib
+import numpy as np
 import pytest
-from sklearn import metrics
+import pandas as pd
+from sklearn import metrics, model_selection
 
-from palma.components import performance
+from palma.components import performance, FileSystemLogger, MLFlowLogger
+from sklearn.ensemble import RandomForestClassifier
+import tempfile
+from palma import ModelEvaluation, Project
+from palma import set_logger
 
 matplotlib.use("agg")
+
+
+@pytest.fixture(scope='module')
+def get_scoring_analyser(classification_data):
+    set_logger(FileSystemLogger(tempfile.gettempdir() + "/logger"))
+
+    X, y = classification_data
+    X = pd.DataFrame(X)
+    y = pd.Series(y)
+    project = Project(problem="classification",
+                      project_name=str(np.random.uniform()))
+
+    project.start(
+        X, y,
+        splitter=model_selection.ShuffleSplit(n_splits=4, random_state=42))
+    estimator = RandomForestClassifier()
+
+    learn = ModelEvaluation(estimator)
+    learn.fit(project)
+
+    perf = performance.ScoringAnalysis(on="indexes_val")
+    perf(project, learn)
+
+    perf.compute_metrics(metric={
+        metrics.roc_auc_score.__name__: metrics.roc_auc_score,
+        metrics.roc_curve.__name__: metrics.roc_curve
+    })
+    return perf
+
+
+@pytest.fixture(scope='module')
+def get_shap_analyser(learning_data):
+    project, model, X, y = learning_data
+    perf = performance.ShapAnalysis(on="indexes_val", n_shap=100,
+                                    compute_interaction=True)
+
+    perf(project, model)
+
+    return perf
 
 
 def test_classification_perf(get_scoring_analyser):

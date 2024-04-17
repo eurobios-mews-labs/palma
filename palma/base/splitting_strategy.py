@@ -169,4 +169,6 @@ class ValidationStrategy(object):
 
     @property
     def groups(self):
+        if self.__groups is None:
+            return None
         return np.array(self.__groups)

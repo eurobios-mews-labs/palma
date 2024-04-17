@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 import pytest
 from sklearn.datasets import make_classification
-from sklearn.model_selection import ShuffleSplit, GroupKFold
+from sklearn.model_selection import ShuffleSplit, GroupKFold, StratifiedGroupKFold
 
 from palma import Project
 from palma.base.splitting_strategy import ValidationStrategy
@@ -51,6 +51,7 @@ def test_splitting_strategy_has_test_index_attribute(
 
 def test_splitting_strategy_raise_key_error():
     return None  # TODO add this feature
+
 
 def test_splitting_strategy_has_sort_by_attribute():
     return None  # TODO add this feature
@@ -166,3 +167,53 @@ def test_splitting_strategy_with_flaml_engine(classification_data):
                        engine_parameters={'time_budget': 5})
     ms.start(project)
     assert True
+
+
+def test_splitting_strategy_stratified(classification_data):
+    from palma import ModelSelector
+    project = Project(project_name="test", problem="classification")
+    X, y = classification_data
+    X = pd.DataFrame(X)
+    y = pd.Series(np.ravel(y))
+    n_splits = 5
+    groups = (np.random.uniform(size=y.__len__()) * 10).astype(int)
+    project.start(
+        X,
+        y,
+        splitter=StratifiedGroupKFold(n_splits=n_splits),
+        groups=groups
+
+    )
+
+    ms = ModelSelector(engine="FlamlOptimizer",
+                       engine_parameters={'time_budget': 5})
+    ms.start(project)
+    assert True
+
+
+# def test_new_data():
+#     from flaml import AutoML
+#     from sklearn.model_selection import StratifiedGroupKFold, GroupKFold
+#     from flaml.automl import data
+#
+#     # Get data
+#     X_train, X_test, y_train, y_test = data.load_openml_dataset(dataset_id=1169, data_dir='./')
+#
+#     # cross validation instance
+#     cv = StratifiedGroupKFold(n_splits=5, shuffle=True, random_state=0)
+#
+#     # Initialize an AutoML instance
+#     automl = AutoML()
+#     # Specify automl goal and constraint
+#
+#     settings = {
+#         "time_budget": 600,  # in seconds
+#         "metric": 'ap',
+#         "task": 'classification',
+#         'eval_method': 'cv',
+#         'split_type': cv,
+#         'groups': X_train['Airline'],
+#         'seed': 0
+#     }
+#
+#     automl.fit(X_train=X_train, y_train=y_train, **settings)

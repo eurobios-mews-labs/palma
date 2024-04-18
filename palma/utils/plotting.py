@@ -75,7 +75,7 @@ def plot_variable_importance(
         mode="minmax",
         color="darkblue",
         cmap="flare",
-        alpha=0.2,
+        alpha=0.2, **kwargs
 ):
     variable_importance = variable_importance.copy()
     variable_importance.index = variable_importance.index.astype(str)

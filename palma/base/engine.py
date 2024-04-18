@@ -16,6 +16,8 @@ import pandas as pd
 from flaml import AutoML
 from sklearn import base
 
+from palma.base.splitting_strategy import ValidationStrategy
+
 try:
     from autosklearn.classification import AutoSklearnClassifier
     from autosklearn.regression import AutoSklearnRegressor
@@ -29,7 +31,8 @@ class BaseOptimizer(object, metaclass=ABCMeta):
         self.__engine_parameters = engine_parameters
 
     @abstractmethod
-    def optimize(self, X: pd.DataFrame, y: pd.Series, splitter=None
+    def optimize(self, X: pd.DataFrame, y: pd.Series,
+                 splitter: "ValidationStrategy" = None
                  ) -> None:
         ...
 
@@ -87,13 +90,13 @@ class AutoSklearnOptimizer(BaseOptimizer):
     @property
     def optimizer(self) -> Union[
         'AutoSklearnClassifier',
-            'AutoSklearnRegressor']:
+        'AutoSklearnRegressor']:
         return self.__optimizer
 
     @property
     def estimator_(self) -> Union[
         'AutoSklearnClassifier',
-            'AutoSklearnRegressor']:
+        'AutoSklearnRegressor']:
         return self.__optimizer.get_models_with_weights()
 
     @property
@@ -111,14 +114,20 @@ class FlamlOptimizer(BaseOptimizer):
             )
         engine_parameters["task"] = problem
 
-    def optimize(self, X: pd.DataFrame, y: pd.DataFrame, splitter=None
+    def optimize(self, X: pd.DataFrame, y: pd.DataFrame,
+                 splitter: ValidationStrategy = None
                  ) -> None:
+        split_type = None if splitter is None else splitter.splitter
+        groups = None if splitter is None else splitter.groups
+        groups = groups if groups is None else groups[splitter.train_index]
+
         self.allowing_splitter(splitter)
         self.__optimizer = AutoML()
         self.__optimizer.fit(
             X_train=pd.DataFrame(X.values, index=range(len(X))),
             y_train=pd.Series(y.values, index=range(len(X))),
-            split_type=splitter, mlflow_logging=False,
+            split_type=split_type, groups=groups,
+            mlflow_logging=False,
             **self.engine_parameters
         )
 

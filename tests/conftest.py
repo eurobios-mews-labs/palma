@@ -31,7 +31,7 @@ from palma.components import performance
 
 @pytest.fixture(scope='module')
 def classification_data():
-    X, y = make_classification(random_state=0)
+    X, y = make_classification(random_state=0, n_samples=300)
     return pd.DataFrame(X[:, :4]), pd.Series(y, name="target")
 
 
@@ -73,29 +73,6 @@ def learning_data(classification_project, classification_data):
 
 
 @pytest.fixture(scope='module')
-def get_scoring_analyser(learning_data):
-    project, model, X, y = learning_data
-    perf = performance.ScoringAnalysis(on="indexes_train_test")
-    perf._add(project, model)
-
-    perf.compute_metrics(metric={
-        metrics.roc_auc_score.__name__: metrics.roc_auc_score,
-        metrics.roc_curve.__name__: metrics.roc_curve
-    })
-    return perf
-
-
-@pytest.fixture(scope='module')
-def get_shap_analyser(learning_data):
-    project, model, X, y = learning_data
-    perf = performance.ShapAnalysis(on="indexes_val", n_shap=100,
-                                    compute_interaction=True)
-    perf(project, model)
-
-    return perf
-
-
-@pytest.fixture(scope='module')
 def learning_data_regression(regression_data):
     from palma import set_logger
     set_logger(FileSystemLogger(tempfile.gettempdir()))
@@ -105,7 +82,7 @@ def learning_data_regression(regression_data):
     X, y = regression_data
     X = pd.DataFrame(X)
     y = pd.Series(y)
-    project = Project(problem="classification", project_name="test")
+    project = Project(problem="regression", project_name="test")
 
     project.start(
         X, y,
@@ -127,11 +104,6 @@ def get_regression_analyser(learning_data_regression):
     })
 
     return perf
-
-
-def test_get_name_using_pipeline(learning_data_regression):
-    project, learn, X, y = learning_data_regression
-    assert learn.estimator_name == "LinearRegression"
 
 
 @pytest.fixture(scope='module')

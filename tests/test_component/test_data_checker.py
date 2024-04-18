@@ -52,4 +52,4 @@ def test_leakage(classification_data):
             splitter=model_selection.ShuffleSplit(n_splits=1, random_state=1),
             X_test=X_test, y_test=y
         )
-        assert e == "Presence of data leakage"
+    assert str(e.value) == "Presence of data leakage"

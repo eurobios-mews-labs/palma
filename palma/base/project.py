@@ -90,7 +90,6 @@ class Project(object):
         from palma.utils.checker import ProjectPlanChecker
         from palma import logger
         self.__validation_strategy = ValidationStrategy(splitter)
-        self.__base_index = list(range(len(X)))
         self.__X, self.__y = self.__validation_strategy(
             X=X, y=y, X_test=X_test, y_test=y_test,
             groups=groups)
@@ -107,10 +106,6 @@ class Project(object):
     def __call_components(self, object_: "Project") -> None:
         for _, component in self.components.items():
             component(object_)
-
-    @property
-    def base_index(self) -> List[int]:
-        return self.__base_index
 
     @property
     def components(self) -> dict:

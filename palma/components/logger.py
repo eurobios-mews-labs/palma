@@ -173,7 +173,7 @@ class FileSystemLogger(Logger):
         """
         path = f"{self.path_study}/{path}.json"
         with open(path, 'w') as output_file:
-            _logger.info("Metrics saved in {}".format(path))
+            _logger.info(f"Metrics saved in {path}")
             json.dump(metrics, output_file, indent=4)
 
     def log_artifact(self, obj, path: str) -> None:

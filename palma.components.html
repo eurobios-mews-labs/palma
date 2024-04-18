@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -41,7 +41,7 @@
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <script defer data-domain="eurobios-mews-labs.github.io/palma" src="https://plausible.io/js/script.js"></script>
-    <jinja2.runtime.BlockReference object at 0x7f1760442ce0>
+    <jinja2.runtime.BlockReference object at 0x7f9d36d9a3b0>
 
   </head>
   
@@ -423,7 +423,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.compute_threshold"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.compute_threshold()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.confusion_matrix"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.confusion_matrix()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.mean_fpr"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.mean_fpr</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.plot_roc_curve"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.plot_roc_curve()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.plot_threshold"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.plot_threshold()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.threshold"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.threshold</span></code></a></li>
@@ -501,7 +500,7 @@ document.write(`
 <span id="palma-components-dashboard-module"></span><h2>palma.components.dashboard module<a class="headerlink" href="#module-palma.components.dashboard" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="palma.components.dashboard.ExplainerDashboard">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.dashboard.</span></span><span class="sig-name descname"><span class="pre">ExplainerDashboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dashboard_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'/home/runner/.local/lib/python3.10/site-packages/palma/components/configuration_materials/default_dashboard.yaml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_sample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.dashboard.ExplainerDashboard" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.dashboard.</span></span><span class="sig-name descname"><span class="pre">ExplainerDashboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dashboard_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'/home/runner/work/palma/palma/palma/components/configuration_materials/default_dashboard.yaml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_sample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.dashboard.ExplainerDashboard" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#palma.components.base.Component" title="palma.components.base.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
 <p class="rubric">Methods</p>
 <table class="autosummary longtable table autosummary">
@@ -878,62 +877,122 @@ the rest of the components.</p>
 <dt class="sig sig-object py" id="palma.components.performance.Analyser">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.performance.</span></span><span class="sig-name descname"><span class="pre">Analyser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.Analyser" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#palma.components.base.ModelComponent" title="palma.components.base.ModelComponent"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelComponent</span></code></a></p>
+<p>Analyser class for performing analysis on a model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>on</strong><span class="classifier">str</span></dt><dd><p>The type of analysis to perform. Possible values are
+“indexes_train_test” or “indexes_val”.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>metrics</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
 <p class="rubric">Methods</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="autoapi/palma/components/performance/index.html#palma.components.performance.Analyser.__call__" title="palma.components.performance.Analyser.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code></a>(project, model)</p></td>
 <td><p>Call self as a function.</p></td>
 </tr>
-</tbody>
-</table>
-<table class="table">
-<tbody>
-<tr class="row-odd"><td><p><strong>compute_metrics</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#palma.components.performance.Analyser.compute_metrics" title="palma.components.performance.Analyser.compute_metrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_metrics</span></code></a>(metric)</p></td>
+<td><p>Compute the specified metrics for each estimator.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>get_test_metrics</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#palma.components.performance.Analyser.get_test_metrics" title="palma.components.performance.Analyser.get_test_metrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_test_metrics</span></code></a>()</p></td>
+<td><p>Get the computed metrics for the test set.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>get_train_metrics</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#palma.components.performance.Analyser.get_train_metrics" title="palma.components.performance.Analyser.get_train_metrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_train_metrics</span></code></a>()</p></td>
+<td><p>Get the computed metrics for the training set.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>plot_variable_importance</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#palma.components.performance.Analyser.plot_variable_importance" title="palma.components.performance.Analyser.plot_variable_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_variable_importance</span></code></a>([mode, color, cmap])</p></td>
+<td><p>Plot the variable importance.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>variable_importance</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#palma.components.performance.Analyser.variable_importance" title="palma.components.performance.Analyser.variable_importance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variable_importance</span></code></a>()</p></td>
+<td><p>Compute the feature importance for each estimator.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.performance.Analyser.compute_metrics">
 <span class="sig-name descname"><span class="pre">compute_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.Analyser.compute_metrics" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Compute the specified metrics for each estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>metric</strong><span class="classifier">dict</span></dt><dd><p>Dictionary containing the metric name as key and the metric function as value.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.performance.Analyser.get_test_metrics">
 <span class="sig-name descname"><span class="pre">get_test_metrics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#palma.components.performance.Analyser.get_test_metrics" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Get the computed metrics for the test set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>DataFrame containing the computed metrics for the test set.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.performance.Analyser.get_train_metrics">
 <span class="sig-name descname"><span class="pre">get_train_metrics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#palma.components.performance.Analyser.get_train_metrics" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Get the computed metrics for the training set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>DataFrame containing the computed metrics for the training set.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
-<dl class="py attribute">
+<dl class="py property">
 <dt class="sig sig-object py" id="palma.components.performance.Analyser.metrics">
-<span class="sig-name descname"><span class="pre">metrics</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#palma.components.performance.Analyser.metrics" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">metrics</span></span><a class="headerlink" href="#palma.components.performance.Analyser.metrics" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.performance.Analyser.plot_variable_importance">
-<span class="sig-name descname"><span class="pre">plot_variable_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'minmax'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'darkblue'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'flare'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.Analyser.plot_variable_importance" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">plot_variable_importance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'minmax'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'darkblue'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'flare'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.Analyser.plot_variable_importance" title="Link to this definition">#</a></dt>
+<dd><p>Plot the variable importance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mode</strong><span class="classifier">str, optional</span></dt><dd><p>The mode for plotting the variable importance, by default “minmax”.</p>
+</dd>
+<dt><strong>color</strong><span class="classifier">str, optional</span></dt><dd><p>The color for the plot, by default “darkblue”.</p>
+</dd>
+<dt><strong>cmap</strong><span class="classifier">str, optional</span></dt><dd><p>The colormap for the plot, by default “flare”.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.performance.Analyser.variable_importance">
 <span class="sig-name descname"><span class="pre">variable_importance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.Analyser.variable_importance" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Compute the feature importance for each estimator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>feature_importance</strong><span class="classifier">pandas.DataFrame</span></dt><dd><p>DataFrame containing the feature importance values for each estimator.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -941,39 +1000,45 @@ the rest of the components.</p>
 <dt class="sig sig-object py" id="palma.components.performance.RegressionAnalysis">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.performance.</span></span><span class="sig-name descname"><span class="pre">RegressionAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.RegressionAnalysis" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#palma.components.performance.Analyser" title="palma.components.performance.Analyser"><code class="xref py py-class docutils literal notranslate"><span class="pre">Analyser</span></code></a></p>
+<p>Analyser class for performing analysis on a regression model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>on</strong><span class="classifier">str</span></dt><dd><p>The type of analysis to perform. Possible values are
+“indexes_train_test” or “indexes_val”.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>_hidden_metrics</strong><span class="classifier">dict</span></dt><dd><p>Dictionary to store additional metrics that are not displayed.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <p class="rubric">Methods</p>
-<table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code>(project, model)</p></td>
-<td><p>Call self as a function.</p></td>
-</tr>
-</tbody>
-</table>
 <table class="table">
 <tbody>
-<tr class="row-odd"><td><p><strong>compute_metrics</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><strong>variable_importance()</strong></p></td>
+<td><p>Compute the feature importance for each estimator.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>compute_predictions_errors</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><strong>compute_metrics(metric: dict)</strong></p></td>
+<td><p>Compute the specified metrics for each estimator.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>get_test_metrics</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><strong>get_train_metrics() -&gt; pd.DataFrame</strong></p></td>
+<td><p>Get the computed metrics for the training set.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>get_train_metrics</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><strong>get_test_metrics() -&gt; pd.DataFrame</strong></p></td>
+<td><p>Get the computed metrics for the test set.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>plot_errors_pairgrid</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><strong>plot_variable_importance(mode=”minmax”, color=”darkblue”, cmap=”flare”)</strong></p></td>
+<td><p>Plot the variable importance.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>plot_prediction_versus_real</strong></p></td>
-<td></td>
+<td><p>Plot prediction versus real values</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>plot_variable_importance</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>variable_importance</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><strong>plot_errors_pairgrid</strong></p></td>
+<td><p>Plot pair grid errors</p></td>
 </tr>
 </tbody>
 </table>
@@ -998,9 +1063,12 @@ the rest of the components.</p>
 <dt class="sig sig-object py" id="palma.components.performance.ScoringAnalysis">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.performance.</span></span><span class="sig-name descname"><span class="pre">ScoringAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.ScoringAnalysis" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#palma.components.performance.Analyser" title="palma.components.performance.Analyser"><code class="xref py py-class docutils literal notranslate"><span class="pre">Analyser</span></code></a></p>
+<p>The ScoringAnalyser class provides methods for analyzing the performance of
+a machine learning model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Attributes<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
+<dt><strong>metrics</strong></dt><dd></dd>
 <dt><strong>threshold</strong></dt><dd></dd>
 </dl>
 </dd>
@@ -1011,36 +1079,32 @@ the rest of the components.</p>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code>(project, model)</p></td>
 <td><p>Call self as a function.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#palma.components.performance.ScoringAnalysis.compute_threshold" title="palma.components.performance.ScoringAnalysis.compute_threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_threshold</span></code></a>([method, value, metric])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_metrics</span></code>(metric)</p></td>
+<td><p>Compute the specified metrics for each estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#palma.components.performance.ScoringAnalysis.compute_threshold" title="palma.components.performance.ScoringAnalysis.compute_threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_threshold</span></code></a>([method, value, metric])</p></td>
 <td><p>Compute threshold using various heuristics</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#palma.components.performance.ScoringAnalysis.confusion_matrix" title="palma.components.performance.ScoringAnalysis.confusion_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">confusion_matrix</span></code></a>([in_percentage])</p></td>
+<td><p>Compute the confusion matrix.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_test_metrics</span></code>()</p></td>
+<td><p>Get the computed metrics for the test set.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_train_metrics</span></code>()</p></td>
+<td><p>Get the computed metrics for the training set.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#palma.components.performance.ScoringAnalysis.plot_roc_curve" title="palma.components.performance.ScoringAnalysis.plot_roc_curve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_roc_curve</span></code></a>([plot_method, plot_train, c, ...])</p></td>
 <td><p>Plot the ROC curve.</p></td>
 </tr>
-</tbody>
-</table>
-<table class="table">
-<tbody>
-<tr class="row-odd"><td><p><strong>compute_metrics</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#palma.components.performance.ScoringAnalysis.plot_threshold" title="palma.components.performance.ScoringAnalysis.plot_threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_threshold</span></code></a>(**plot_kwargs)</p></td>
+<td><p>Plot the threshold on fpr/tpr axes</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>confusion_matrix</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_variable_importance</span></code>([mode, color, cmap])</p></td>
+<td><p>Plot the variable importance.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>get_test_metrics</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>get_train_metrics</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>plot_threshold</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>plot_variable_importance</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>variable_importance</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">variable_importance</span></code>()</p></td>
+<td><p>Compute the feature importance for each estimator.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1048,21 +1112,57 @@ the rest of the components.</p>
 <dt class="sig sig-object py" id="palma.components.performance.ScoringAnalysis.compute_threshold">
 <span class="sig-name descname"><span class="pre">compute_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'total_population'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.ScoringAnalysis.compute_threshold" title="Link to this definition">#</a></dt>
 <dd><p>Compute threshold using various heuristics</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>method</strong><span class="classifier">str, optional</span></dt><dd><p>The method to compute the threshold, by default “total_population”</p>
+<ul class="simple">
+<li><p>total population : compute threshold so that the percentage of</p></li>
+</ul>
+<p>positive prediction is equal to <cite>value</cite>
+- fpr : compute threshold so that the false positive rate
+is equal to <cite>value</cite>
+- optimize_metric : compute threshold so that the metric is optimized
+<cite>value</cite> parameter is ignored, <cite>metric</cite> parameter must be provided</p>
+</dd>
+<dt><strong>value</strong><span class="classifier">float, optional</span></dt><dd><p>The value to use for the threshold computation, by default 0.5</p>
+</dd>
+<dt><strong>metric</strong><span class="classifier">typing.Callable, optional</span></dt><dd><p>The metric function to use for the threshold computation, by default None</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>float</dt><dd><p>The computed threshold</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.performance.ScoringAnalysis.confusion_matrix">
 <span class="sig-name descname"><span class="pre">confusion_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_percentage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.ScoringAnalysis.confusion_matrix" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="palma.components.performance.ScoringAnalysis.mean_fpr">
-<span class="sig-name descname"><span class="pre">mean_fpr</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">array([0.</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">,</span> <span class="pre">0.01010101,</span> <span class="pre">0.02020202,</span> <span class="pre">0.03030303,</span> <span class="pre">0.04040404,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.05050505,</span> <span class="pre">0.06060606,</span> <span class="pre">0.07070707,</span> <span class="pre">0.08080808,</span> <span class="pre">0.09090909,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.1010101</span> <span class="pre">,</span> <span class="pre">0.11111111,</span> <span class="pre">0.12121212,</span> <span class="pre">0.13131313,</span> <span class="pre">0.14141414,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.15151515,</span> <span class="pre">0.16161616,</span> <span class="pre">0.17171717,</span> <span class="pre">0.18181818,</span> <span class="pre">0.19191919,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.2020202</span> <span class="pre">,</span> <span class="pre">0.21212121,</span> <span class="pre">0.22222222,</span> <span class="pre">0.23232323,</span> <span class="pre">0.24242424,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.25252525,</span> <span class="pre">0.26262626,</span> <span class="pre">0.27272727,</span> <span class="pre">0.28282828,</span> <span class="pre">0.29292929,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.3030303</span> <span class="pre">,</span> <span class="pre">0.31313131,</span> <span class="pre">0.32323232,</span> <span class="pre">0.33333333,</span> <span class="pre">0.34343434,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.35353535,</span> <span class="pre">0.36363636,</span> <span class="pre">0.37373737,</span> <span class="pre">0.38383838,</span> <span class="pre">0.39393939,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.4040404</span> <span class="pre">,</span> <span class="pre">0.41414141,</span> <span class="pre">0.42424242,</span> <span class="pre">0.43434343,</span> <span class="pre">0.44444444,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.45454545,</span> <span class="pre">0.46464646,</span> <span class="pre">0.47474747,</span> <span class="pre">0.48484848,</span> <span class="pre">0.49494949,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.50505051,</span> <span class="pre">0.51515152,</span> <span class="pre">0.52525253,</span> <span class="pre">0.53535354,</span> <span class="pre">0.54545455,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.55555556,</span> <span class="pre">0.56565657,</span> <span class="pre">0.57575758,</span> <span class="pre">0.58585859,</span> <span class="pre">0.5959596</span> <span class="pre">,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.60606061,</span> <span class="pre">0.61616162,</span> <span class="pre">0.62626263,</span> <span class="pre">0.63636364,</span> <span class="pre">0.64646465,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.65656566,</span> <span class="pre">0.66666667,</span> <span class="pre">0.67676768,</span> <span class="pre">0.68686869,</span> <span class="pre">0.6969697</span> <span class="pre">,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.70707071,</span> <span class="pre">0.71717172,</span> <span class="pre">0.72727273,</span> <span class="pre">0.73737374,</span> <span class="pre">0.74747475,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.75757576,</span> <span class="pre">0.76767677,</span> <span class="pre">0.77777778,</span> <span class="pre">0.78787879,</span> <span class="pre">0.7979798</span> <span class="pre">,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.80808081,</span> <span class="pre">0.81818182,</span> <span class="pre">0.82828283,</span> <span class="pre">0.83838384,</span> <span class="pre">0.84848485,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.85858586,</span> <span class="pre">0.86868687,</span> <span class="pre">0.87878788,</span> <span class="pre">0.88888889,</span> <span class="pre">0.8989899</span> <span class="pre">,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.90909091,</span> <span class="pre">0.91919192,</span> <span class="pre">0.92929293,</span> <span class="pre">0.93939394,</span> <span class="pre">0.94949495,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">0.95959596,</span> <span class="pre">0.96969697,</span> <span class="pre">0.97979798,</span> <span class="pre">0.98989899,</span> <span class="pre">1.</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">])</span></em><a class="headerlink" href="#palma.components.performance.ScoringAnalysis.mean_fpr" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Compute the confusion matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>in_percentage</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to return the confusion matrix in percentage, by default False</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>pandas.DataFrame</dt><dd><p>The confusion matrix</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.performance.ScoringAnalysis.plot_roc_curve">
-<span class="sig-name descname"><span class="pre">plot_roc_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_train</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'inferno'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'std'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_iter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">iter</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.ScoringAnalysis.plot_roc_curve" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">plot_roc_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_train</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'inferno'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'std'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_iter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">iter</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.ScoringAnalysis.plot_roc_curve" title="Link to this definition">#</a></dt>
 <dd><p>Plot the ROC curve.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1079,7 +1179,6 @@ the rest of the components.</p>
 <dt><strong>c: str</strong></dt><dd><p>Not used only with plot_method=”all”. Set the color of ROC curve</p>
 </dd>
 <dt><strong>cmap: str</strong></dt><dd></dd>
-<dt><strong>cv_iter</strong></dt><dd></dd>
 <dt><strong>label</strong></dt><dd></dd>
 <dt><strong>mode</strong></dt><dd></dd>
 <dt><strong>label_iter</strong></dt><dd></dd>
@@ -1097,7 +1196,22 @@ the rest of the components.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.performance.ScoringAnalysis.plot_threshold">
 <span class="sig-name descname"><span class="pre">plot_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">plot_kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.ScoringAnalysis.plot_threshold" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Plot the threshold on fpr/tpr axes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>plot_kwargs</strong><span class="classifier">dict, optional</span></dt><dd><p>Additional keyword arguments to pass to the scatter plot function</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>matplotlib.pyplot</dt><dd><p>The threshold plot</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="palma.components.performance.ScoringAnalysis.threshold">
@@ -1110,38 +1224,45 @@ the rest of the components.</p>
 <dt class="sig sig-object py" id="palma.components.performance.ShapAnalysis">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.performance.</span></span><span class="sig-name descname"><span class="pre">ShapAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_shap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_interaction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.ShapAnalysis" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#palma.components.performance.Analyser" title="palma.components.performance.Analyser"><code class="xref py py-class docutils literal notranslate"><span class="pre">Analyser</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>metrics</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
 <p class="rubric">Methods</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="autoapi/palma/components/performance/index.html#palma.components.performance.ShapAnalysis.__call__" title="palma.components.performance.ShapAnalysis.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code></a>(project, model)</p></td>
 <td><p>Call self as a function.</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_metrics</span></code>(metric)</p></td>
+<td><p>Compute the specified metrics for each estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_test_metrics</span></code>()</p></td>
+<td><p>Get the computed metrics for the test set.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_train_metrics</span></code>()</p></td>
+<td><p>Get the computed metrics for the training set.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_variable_importance</span></code>([mode, color, cmap])</p></td>
+<td><p>Plot the variable importance.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">variable_importance</span></code>()</p></td>
+<td><p>Compute the feature importance for each estimator.</p></td>
+</tr>
 </tbody>
 </table>
 <table class="table">
 <tbody>
-<tr class="row-odd"><td><p><strong>compute_metrics</strong></p></td>
+<tr class="row-odd"><td><p><strong>plot_shap_decision_plot</strong></p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>get_test_metrics</strong></p></td>
+<tr class="row-even"><td><p><strong>plot_shap_interaction</strong></p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>get_train_metrics</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>plot_shap_decision_plot</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>plot_shap_interaction</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>plot_shap_summary_plot</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>plot_variable_importance</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>variable_importance</strong></p></td>
+<tr class="row-odd"><td><p><strong>plot_shap_summary_plot</strong></p></td>
 <td></td>
 </tr>
 </tbody>
@@ -1191,10 +1312,12 @@ the rest of the components.</p>
 
 
   <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-palma.components.base">palma.components.base module</a><ul class="nav section-nav flex-column">
@@ -1268,7 +1391,6 @@ the rest of the components.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.compute_threshold"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.compute_threshold()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.confusion_matrix"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.confusion_matrix()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.mean_fpr"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.mean_fpr</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.plot_roc_curve"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.plot_roc_curve()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.plot_threshold"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.plot_threshold()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.threshold"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.threshold</span></code></a></li>

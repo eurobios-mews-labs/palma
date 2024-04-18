@@ -27,7 +27,7 @@ Functions
 .. py:function:: plot_splitting_strategy(X: pandas.DataFrame, y: pandas.Series, iter_cross_validation: iter, cmap, sort_by=None, modulus=1)
 
 
-.. py:function:: plot_variable_importance(variable_importance: pandas.DataFrame, mode='minmax', color='darkblue', cmap='flare', alpha=0.2)
+.. py:function:: plot_variable_importance(variable_importance: pandas.DataFrame, mode='minmax', color='darkblue', cmap='flare', alpha=0.2, **kwargs)
 
 
 .. py:function:: roc_plot_bundle(list_fpr, list_tpr, mean_fpr=np.linspace(0, 1, 100), plot_all=False, plot_beam=True, cmap='inferno', plot_mean=True, c='b', label_iter=None, mode='std', label='', **args)

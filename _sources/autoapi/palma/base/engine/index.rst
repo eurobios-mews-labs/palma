@@ -46,7 +46,7 @@ Classes
    .. py:property:: allow_splitter
 
 
-   .. py:method:: optimize(X: pandas.DataFrame, y: pandas.Series, splitter=None) -> None
+   .. py:method:: optimize(X: pandas.DataFrame, y: pandas.Series, splitter: palma.base.splitting_strategy.ValidationStrategy = None) -> None
       :abstractmethod:
 
 
@@ -94,7 +94,7 @@ Classes
    .. py:property:: allow_splitter
 
 
-   .. py:method:: optimize(X: pandas.DataFrame, y: pandas.DataFrame, splitter=None) -> None
+   .. py:method:: optimize(X: pandas.DataFrame, y: pandas.DataFrame, splitter: palma.base.splitting_strategy.ValidationStrategy = None) -> None
 
 
 

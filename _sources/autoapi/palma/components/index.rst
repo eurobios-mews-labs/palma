@@ -478,7 +478,14 @@ Classes
    Bases: :py:obj:`Analyser`
 
    
-   Base Model Component class
+   Analyser class for performing analysis on a regression model.
+
+
+   :Parameters:
+
+       **on** : str
+           The type of analysis to perform. Possible values are
+           "indexes_train_test" or "indexes_val".
 
 
 
@@ -491,9 +498,24 @@ Classes
 
 
 
+   :Attributes:
+
+       **_hidden_metrics** : dict
+           Dictionary to store additional metrics that are not displayed.
+
+   .. rubric:: Methods
 
 
 
+   ===========================================================================  ==========
+                                                     **variable_importance()**  Compute the feature importance for each estimator.  
+                                             **compute_metrics(metric: dict)**  Compute the specified metrics for each estimator.  
+                                       **get_train_metrics() -> pd.DataFrame**  Get the computed metrics for the training set.  
+                                        **get_test_metrics() -> pd.DataFrame**  Get the computed metrics for the test set.  
+   **plot_variable_importance(mode="minmax", color="darkblue", cmap="flare")**  Plot the variable importance.  
+                                               **plot_prediction_versus_real**  Plot prediction versus real values  
+                                                      **plot_errors_pairgrid**  Plot pair grid errors  
+   ===========================================================================  ==========
 
    ..
        !! processed by numpydoc !!
@@ -513,7 +535,8 @@ Classes
    Bases: :py:obj:`Analyser`
 
    
-   Base Model Component class
+   The ScoringAnalyser class provides methods for analyzing the performance of
+   a machine learning model.
 
 
 
@@ -535,17 +558,41 @@ Classes
    .. py:property:: threshold
 
 
-   .. py:attribute:: mean_fpr
-
-      
-
    .. py:method:: confusion_matrix(in_percentage=False)
 
+      
+      Compute the confusion matrix.
+
+
+      :Parameters:
+
+          **in_percentage** : bool, optional
+              Whether to return the confusion matrix in percentage, by default False
+
+      :Returns:
+
+          pandas.DataFrame
+              The confusion matrix
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
 
    .. py:method:: __interpolate_roc(_)
 
 
-   .. py:method:: plot_roc_curve(plot_method='mean', plot_train: bool = False, c=colors[0], cmap: str = 'inferno', cv_iter=None, label: str = '', mode: str = 'std', label_iter: iter = None, plot_base: bool = True, **kwargs)
+   .. py:method:: plot_roc_curve(plot_method='mean', plot_train: bool = False, c='C0', cmap: str = 'inferno', label: str = '', mode: str = 'std', label_iter: iter = None, plot_base: bool = True, **kwargs)
 
       
       Plot the ROC curve.
@@ -567,9 +614,6 @@ Classes
               Not used only with plot_method="all". Set the color of ROC curve
 
           **cmap: str**
-              ..
-
-          **cv_iter**
               ..
 
           **label**
@@ -613,7 +657,28 @@ Classes
       Compute threshold using various heuristics
 
 
+      :Parameters:
 
+          **method** : str, optional
+              The method to compute the threshold, by default "total_population"
+              
+              - total population : compute threshold so that the percentage of
+              positive prediction is equal to `value`
+              - fpr : compute threshold so that the false positive rate
+              is equal to `value`
+              - optimize_metric : compute threshold so that the metric is optimized
+              `value` parameter is ignored, `metric` parameter must be provided
+
+          **value** : float, optional
+              The value to use for the threshold computation, by default 0.5
+
+          **metric** : typing.Callable, optional
+              The metric function to use for the threshold computation, by default None
+
+      :Returns:
+
+          float
+              The computed threshold
 
 
 
@@ -632,6 +697,34 @@ Classes
 
    .. py:method:: plot_threshold(**plot_kwargs)
 
+      
+      Plot the threshold on fpr/tpr axes
+
+
+      :Parameters:
+
+          **plot_kwargs** : dict, optional
+              Additional keyword arguments to pass to the scatter plot function
+
+      :Returns:
+
+          matplotlib.pyplot
+              The threshold plot
+
+
+
+
+
+
+
+
+
+
+
+
+
+      ..
+          !! processed by numpydoc !!
 
 
 .. py:class:: ShapAnalysis(on, n_shap, compute_interaction=False)
@@ -640,9 +733,14 @@ Classes
    Bases: :py:obj:`Analyser`
 
    
-   Base Model Component class
+   Analyser class for performing analysis on a model.
 
 
+   :Parameters:
+
+       **on** : str
+           The type of analysis to perform. Possible values are
+           "indexes_train_test" or "indexes_val".
 
 
 
@@ -799,29 +897,6 @@ Classes
 
           suite: :class:`deepchecks.Suite`
               instance of :class:`deepchecks.Suite`
-
-
-
-
-
-
-
-
-
-
-
-
-
-      ..
-          !! processed by numpydoc !!
-
-   .. py:method:: __str__() -> str
-
-      
-      Return str(self).
-
-
-
 
 
 

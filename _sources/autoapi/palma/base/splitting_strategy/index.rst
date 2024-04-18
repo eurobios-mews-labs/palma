@@ -109,6 +109,9 @@ Functions
    .. py:property:: splitter
 
 
+   .. py:property:: groups
+
+
    .. py:method:: __call__(X: pandas.DataFrame, y: pandas.Series, X_test: pandas.DataFrame = None, y_test: pandas.Series = None, groups=None, **kwargs)
 
       

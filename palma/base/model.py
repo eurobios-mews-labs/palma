@@ -17,6 +17,8 @@ from palma.utils.utils import (get_hash, AverageEstimator, _clone,
                                get_estimator_name)
 
 
+# TODO: add unfit best estimator
+
 class ModelEvaluation:
     def __init__(self, estimator):
         self.__date = datetime.now()
@@ -89,4 +91,8 @@ class ModelEvaluation:
     @property
     def components(self):
         return self.__components
+
+    @property
+    def unfit_estimator(self):
+        return self.__estimator
 

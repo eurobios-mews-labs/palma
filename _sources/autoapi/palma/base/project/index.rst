@@ -20,8 +20,6 @@ Classes
 .. py:class:: Project(project_name: str, problem: str)
 
 
-   Bases: :py:obj:`object`
-
    
    Represents a machine learning project with various components
    and logging capabilities.
@@ -33,7 +31,7 @@ Classes
            ..
 
        **problem (str): The description of the machine learning problem.**
-           ..
+           Accepted values: "classification" or "regression".
 
 
 

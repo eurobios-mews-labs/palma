@@ -35,8 +35,6 @@ Functions
 .. py:class:: ValidationStrategy(splitter: Union[sklearn.model_selection._split.BaseShuffleSplit, sklearn.model_selection._split.BaseCrossValidator, List[tuple], List[str]], **kwargs)
 
 
-   Bases: :py:obj:`object`
-
    
    Validation strategy for a machine learning project.
 

@@ -54,7 +54,7 @@
     <link rel="next" title="palma.base" href="base/index.html" />
     <link rel="prev" title="API Reference" href="../index.html" />
     <script defer data-domain="eurobios-mews-labs.github.io/palma" src="https://plausible.io/js/script.js"></script>
-    <jinja2.runtime.BlockReference object at 0x7fb7acfcef80>
+    <jinja2.runtime.BlockReference object at 0x7ff42cc742b0>
 
   </head>
   
@@ -158,7 +158,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../concept.html">The main concepts</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic components</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Usage</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../project.html">Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../model.selector.html">Model selector</a></li>
@@ -454,7 +454,7 @@ document.write(`
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#palma.ModelSelector" title="palma.ModelSelector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelSelector</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Wrapper to optimizers selecting the best model for a Project.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#palma.Project" title="palma.Project"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Project</span></code></a></p></td>
 <td><p>Represents a machine learning project with various components</p></td>
@@ -512,7 +512,27 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="palma.ModelSelector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.</span></span><span class="sig-name descname"><span class="pre">ModelSelector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="../../palma.base.html#palma.base.engine.BaseOptimizer" title="palma.base.engine.BaseOptimizer"><span class="pre">palma.base.engine.BaseOptimizer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.ModelSelector" title="Link to this definition">#</a></dt>
-<dd><dl class="py property">
+<dd><p>Wrapper to optimizers selecting the best model for a Project.</p>
+<p>The optimization can be launched with the <code class="docutils literal notranslate"><span class="pre">start</span></code> method.
+Once the optimization is done, the best model can be accessed as the <code class="docutils literal notranslate"><span class="pre">best_model_</span></code> attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>- engine (str): Currently accepted values are “FlamlOptimizer” or</strong></dt><dd><p>“AutoSklearnOptimizer” (the latter is deprecatted).</p>
+</dd>
+<dt><strong>- engine_parameters (dict): parameters passed to the engine.</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>- start(project: Project): look for best model</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py property">
 <dt class="sig sig-object py" id="palma.ModelSelector.run_id">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#palma.ModelSelector.run_id" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
@@ -527,14 +547,14 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="palma.Project">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.</span></span><span class="sig-name descname"><span class="pre">Project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.Project" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Represents a machine learning project with various components
+<dd><p>Represents a machine learning project with various components
 and logging capabilities.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>project_name (str): The name of the project.</strong></dt><dd></dd>
-<dt><strong>problem (str): The description of the machine learning problem.</strong></dt><dd></dd>
+<dt><strong>problem (str): The description of the machine learning problem.</strong></dt><dd><p>Accepted values: “classification” or “regression”.</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Attributes<span class="colon">:</span></dt>
@@ -685,12 +705,10 @@ and logging capabilities.</p>
 
 
   <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+  <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-contents">Package Contents</a><ul class="nav section-nav flex-column">

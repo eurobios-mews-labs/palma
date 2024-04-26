@@ -22,8 +22,6 @@ Classes
 .. py:class:: BaseOptimizer(engine_parameters: dict)
 
 
-   Bases: :py:obj:`object`
-
    .. py:property:: optimizer
       :type: None
       :abstractmethod:

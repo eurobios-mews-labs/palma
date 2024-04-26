@@ -54,7 +54,7 @@
     <link rel="next" title="Model selector" href="model.selector.html" />
     <link rel="prev" title="The main concepts" href="concept.html" />
     <script defer data-domain="eurobios-mews-labs.github.io/palma" src="https://plausible.io/js/script.js"></script>
-    <jinja2.runtime.BlockReference object at 0x7fb7abb89690>
+    <jinja2.runtime.BlockReference object at 0x7ff42b670550>
 
   </head>
   
@@ -158,7 +158,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="concept.html">The main concepts</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic components</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Usage</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model.selector.html">Model selector</a></li>
@@ -357,11 +357,13 @@ document.write(`
                   
   <section id="project">
 <h1>Project<a class="headerlink" href="#project" title="Link to this heading">#</a></h1>
-<p>The  <cite>Project</cite> class is used to specify the type of model you want to implement.
-The only possibilities being for now <cite>regression</cite> and classification.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Project</span></code> class is used to store how the training and validation will be carried out.
+Two kind of problems are supported: <code class="docutils literal notranslate"><span class="pre">regression</span></code> and <code class="docutils literal notranslate"><span class="pre">classification</span></code>.</p>
 <p>An example in  <a class="reference external" href="https://github.com/eurobios-mews-labs/palma/blob/main/examples/regression.ipynb">regression</a> and <a class="reference external" href="https://github.com/eurobios-mews-labs/palma/blob/main/examples/classification.ipynb">classification</a></p>
 <p>The idea of the project class is to fix before running any algorithm how
 the training and validation will be carried out.</p>
+<p>The setup is done in two steps: by initializing the class itself and then by calling the <code class="docutils literal notranslate"><span class="pre">start</span></code> method.
+In the mean time, optional <code class="docutils literal notranslate"><span class="pre">Component</span></code> can be added with the <code class="docutils literal notranslate"><span class="pre">add</span></code> method.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>section in construction</p>

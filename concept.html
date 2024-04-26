@@ -54,7 +54,7 @@
     <link rel="next" title="Project" href="project.html" />
     <link rel="prev" title="Installation" href="index.html" />
     <script defer data-domain="eurobios-mews-labs.github.io/palma" src="https://plausible.io/js/script.js"></script>
-    <jinja2.runtime.BlockReference object at 0x7fb7ac67d570>
+    <jinja2.runtime.BlockReference object at 0x7ff42c3f0220>
 
   </head>
   
@@ -158,7 +158,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">The main concepts</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic components</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Usage</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="project.html">Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model.selector.html">Model selector</a></li>
@@ -361,8 +361,8 @@ document.write(`
 <p>In this library, a broad definition of AutoML is used, covering the optimization of hyperparameters, model historization, performance analysis, and any other element that can be replicated and must be included in the analysis results of the models.</p>
 <p>Thanks to the use of components, this library is designed to be modular, allowing users to add their own analyses. It includes the following elements:</p>
 <ol class="arabic simple">
-<li><p>A vanilla approach described below (in the Basic Usage section) and in the notebooks [classification](examples/classification.ipynb) and [regression](examples/regression.ipynb).</p></li>
-<li><p>A collection of <a class="reference internal" href="components.html"><span class="doc">Components</span></a> that can be added to enrich the analysis.</p></li>
+<li><p>A vanilla approach in the Basic Usage section and in the notebooks [classification](<a class="github reference external" href="https://github.com/eurobios-mews-labs/palma/blob/main/examples/classification.ipynb">eurobios-mews-labs/palma</a>) and [regression](<a class="github reference external" href="https://github.com/eurobios-mews-labs/palma/blob/main/examples/regression.ipynb">eurobios-mews-labs/palma</a>). In this approach, the users define a <span class="xref std std-doc">Project</span>, which can then be passed to either a <span class="xref std std-doc">Model selector</span> to find the best model for this project, or to a <span class="xref std std-doc">Model evaluation</span> to study more in depth the behavior of a given model on this project.</p></li>
+<li><p>A collection of <a class="reference internal" href="components.html"><span class="doc">Components</span></a> that can be added to enrich the analysis. They can be added to a <code class="docutils literal notranslate"><span class="pre">Project</span></code> or to a <code class="docutils literal notranslate"><span class="pre">ModelEvaluation</span></code>.</p></li>
 </ol>
 </section>
 

@@ -21,11 +21,15 @@ library is designed to be modular and allows the user to add his own
 analyses.    
 It therefore contains the following elements
 
-1. A vanilla approach described below (in basic usage section) and in the notebooks
-[classification](examples/classification.ipynb) and [regression](examples/regression.ipynb)
+1. A vanilla approach described below (in basic usage section) and in the
+   notebooks [classification](examples/classification.ipynb) and
+   [regression](examples/regression.ipynb). In this approach, the users define
+   a `Project`, which can then be passed to either a `ModelSelector` to find
+   the best model for this project, or to a `ModelEvaluation` to study more in
+   depth the behavior of a given model on this project.
 
 2. A collection of [components](doc/components.md) that can be added to enrich
-   analysis
+   analysis.
 
 Install it with 
 ``` powershell
@@ -44,16 +48,18 @@ To start using the library, use the project class
 
 ```python
 import pandas as pd
-from sklearn import model_selection
 from sklearn.datasets import make_classification
+from sklearn.model_selection import ShuffleSplit
 from palma import Project
 
 X, y = make_classification(n_informative=2, n_features=100)
 X, y = pd.DataFrame(X), pd.Series(y).astype(bool)
+
 project = Project(problem="classification", project_name="default")
+
 project.start(
     X, y,
-    splitter=model_selection.ShuffleSplit(n_splits=10, random_state=42),
+    splitter=ShuffleSplit(n_splits=10, random_state=42),
 )
 ```
 
@@ -74,12 +80,15 @@ splitter = model_selection.ShuffleSplit(n_splits=5, random_state=42)
 
 - Training data `X` and target `y`
 
+This initialization is done in two steps to allow user to add optional
+``Component``s to the project before its start.
+
 2.  Run hyper-optimisation
 
 The hyper-optimisation process will look for the best model in pool of models
-that tend to perform well on various problem.
-For this specific task we make use of FLAML module. After hyper parametrisation,
-the metric to track can be computed
+that tend to perform well on various problem. For this specific task we make
+use of [FLAML module](https://microsoft.github.io/FLAML/docs/Use-Cases/Task-Oriented-AutoML).
+After hyper parametrisation, the metric to track can be computed
 
 ```python
 from palma import ModelSelector
@@ -105,6 +114,7 @@ model.fit(project)
 model = ModelEvaluation(estimator=ms.best_model_)
 model.fit(project)
 ```
+
 ## Contributing
 
 You are very welcome to contribute to the project, by requesting features,

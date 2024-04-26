@@ -115,7 +115,7 @@ Eurobios Mews Labs
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: Basic components
+   :caption: Basic Usage
 
    project
    model.selector

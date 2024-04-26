@@ -18,6 +18,7 @@ import pandas as pd
 import shap
 from sklearn import metrics
 from sklearn.metrics import _regression, _ranking
+from sklearn.inspection import permutation_importance
 
 from palma.components.base import ModelComponent
 from palma.components.logger import logger
@@ -600,3 +601,62 @@ class RegressionAnalysis(Analyser):
         g.map_offdiag(sns.scatterplot, size=df_plot["error"])
         g.add_legend(title="", adjust_subtitles=True)
         logger.logger.log_artifact(plot.gcf(), "pair_grid")
+
+
+class PermutationFeatureImportance(ModelComponent):
+    """
+    Class for doing permutation feature importance
+
+    Parameters
+    ----------
+    n_repeat: int
+        The number of times to permute a feature.
+    random_state: int
+        The pseudo-random number generator to control the permutations of each feature.
+    n_job: int
+        The number of jobs to run in parallel. If n_job = -1, it takes all processors.
+    max_samples: int or float
+        The number of samples to draw from X to compute feature importance in each repeat (without replacement).
+        If int, then draw max_samples samples.
+        If float, then draw max_samples * X.shape[0] samples.
+    color: str
+        The color for bar plot.
+
+    Methods
+    -------
+    plot_permutation_feature_importance()
+        Plotting the result of feature permutation ONLY on the TRAINING SET
+    """
+
+    def __init__(self, n_repeat: int = 5, random_state: int = 42, n_job: int = 2,
+                 scoring: str = None, max_samples: typing.Union[int, float] = 0.7, color: str = 'darkblue'):
+        self.n_repeat = n_repeat
+        self.random_state = random_state
+        self.n_job = n_job
+        self.scoring = scoring
+        self.max_samples = max_samples
+        self.color = color
+
+    def __call__(self, project: "Project", model: "ModelEvaluation"):
+        self.indexes = project.validation_strategy.indexes_train_test
+        self.estimator = model.unfit_estimator
+        train_id = self.indexes[0][0]  # get only training indices
+        self.X_train = project.X.iloc[train_id]
+        self.y_train = project.y.iloc[train_id]
+        self.plot_permutation_feature_importance()
+
+    def plot_permutation_feature_importance(self):
+
+        args = dict(edgecolor='white', color=self.color)
+        ax = plot.gca()
+        train_res = permutation_importance(self.estimator, self.X_train, self.y_train, n_repeats=self.n_repeat,
+                                           random_state=self.random_state, n_jobs=self.n_job, scoring=self.scoring,
+                                           max_samples=self.max_samples)
+
+        sorted_importances_idx = train_res.importances_mean.argsort()
+        ax.barh(range(len(sorted_importances_idx)), train_res.importances_mean[sorted_importances_idx],
+                align='center', **args)
+        ax.set_yticks(range(len(sorted_importances_idx)), np.array(self.X_train.columns)[sorted_importances_idx])
+        ax.set_title('Train set')
+        plot.tight_layout()
+        logger.logger.log_artifact(plot.gcf(), "permutation_feature_importance")

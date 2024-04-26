@@ -180,3 +180,13 @@ def test_compute_metrics(get_regression_analyser):
               'd2_tweedie_score', 'd2_pinball_score',
               'd2_absolute_error_score']:
         assert v in get_regression_analyser.metrics.keys()
+
+
+def test_permutation_feature_importance(learning_data):
+    project, model, X, y = learning_data
+    perf = performance.PermutationFeatureImportance(scoring='roc_auc')
+    perf(project, model)
+
+
+
+

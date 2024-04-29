@@ -8,17 +8,18 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import tempfile
+
 import matplotlib
 import numpy as np
-import pytest
 import pandas as pd
+import pytest
 from sklearn import metrics, model_selection
-
-from palma.components import performance, FileSystemLogger, MLFlowLogger
 from sklearn.ensemble import RandomForestClassifier
-import tempfile
+
 from palma import ModelEvaluation, Project
 from palma import set_logger
+from palma.components import performance, FileSystemLogger
 
 matplotlib.use("agg")
 
@@ -158,7 +159,6 @@ def test_performance_get_metric_dataframe(get_regression_analyser):
     })
     assert len(get_regression_analyser.get_test_metrics().columns) >= len(
         get_regression_analyser.metrics.keys())
-    print(get_regression_analyser.get_train_metrics())
     assert get_regression_analyser.get_train_metrics()["r2_score"].iloc[0] < 0.5
     get_regression_analyser.plot_errors_pairgrid()
 
@@ -180,3 +180,29 @@ def test_compute_metrics(get_regression_analyser):
               'd2_tweedie_score', 'd2_pinball_score',
               'd2_absolute_error_score']:
         assert v in get_regression_analyser.metrics.keys()
+
+
+def test_metric_computation(learning_data_regression):
+    project, model, X, y = learning_data_regression
+    perf = performance.RegressionAnalysis(
+        on="indexes_train_test")
+    perf(project, model)
+    perf.compute_metrics(metric={
+        metrics.r2_score.__name__: metrics.r2_score,
+    })
+    y_test = project.y.iloc[project.validation_strategy.test_index]
+    x_test = project.X.iloc[project.validation_strategy.test_index]
+
+    ret = metrics.r2_score(
+        y_test,
+        model.predictions_[0]["test"]
+    )
+    assert abs(perf.metrics["r2_score"][0]["test"] - ret) < 1e-8
+    y_pred = model.all_estimators_[0].predict(x_test)
+
+    ret2 = metrics.r2_score(
+        y_test,
+        y_pred
+    )
+    assert abs(perf.metrics["r2_score"][0]["test"] - ret2) < 1e-8
+    assert all(y_pred == model.predictions_[0]["test"])

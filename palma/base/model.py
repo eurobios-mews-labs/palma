@@ -50,9 +50,9 @@ class ModelEvaluation:
         self.all_estimators_, self.avg_estimator_ = ret[1]
 
         self.predictions_ = self.__compute_predictions(
-            project, project.validation_strategy.indexes_train_test)
+            project, project.validation_strategy.indexes_train_test, self.all_estimators_)
         self.predictions_val_ = self.__compute_predictions(
-            project, project.validation_strategy.indexes_val)
+            project, project.validation_strategy.indexes_val, self.all_estimators_val_)
 
         for name, comp in self.__components.items():
             comp(project, self)
@@ -68,10 +68,10 @@ class ModelEvaluation:
         avg_estimator = AverageEstimator(est)
         return est, avg_estimator
 
-    def __compute_predictions(self, project, indexes):
+    def __compute_predictions(self, project, indexes, estimators):
         predictions = {}
         for i, (train, test) in enumerate(indexes):
-            est = self.all_estimators_val_[i]
+            est = estimators[i]
             if hasattr(est, "predict_proba"):
                 predict_train = est.predict_proba(project.X.iloc[train])[:, 1]
                 predict_test = est.predict_proba(project.X.iloc[test])[:, 1]

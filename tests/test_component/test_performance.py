@@ -8,6 +8,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+import os
 import tempfile
 
 import matplotlib
@@ -182,6 +184,7 @@ def test_compute_metrics(get_regression_analyser):
         assert v in get_regression_analyser.metrics.keys()
 
 
+
 def test_metric_computation(learning_data_regression):
     project, model, X, y = learning_data_regression
     perf = performance.RegressionAnalysis(
@@ -206,3 +209,12 @@ def test_metric_computation(learning_data_regression):
     )
     assert abs(perf.metrics["r2_score"][0]["test"] - ret2) < 1e-8
     assert all(y_pred == model.predictions_[0]["test"])
+
+def test_permutation_feature_importance(learning_data):
+    res_dir = tempfile.gettempdir() + "/logger"
+    set_logger(FileSystemLogger(res_dir))
+    project, model, X, y = learning_data
+    perf = performance.PermutationFeatureImportance(scoring='roc_auc')
+    perf(project, model)
+    print(f"{os.listdir(res_dir) = }")
+

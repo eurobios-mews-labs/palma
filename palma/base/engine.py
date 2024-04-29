@@ -25,7 +25,7 @@ except ImportError:
     pass
 
 
-class BaseOptimizer(object, metaclass=ABCMeta):
+class BaseOptimizer(metaclass=ABCMeta):
 
     def __init__(self, engine_parameters: dict) -> None:
         self.__engine_parameters = engine_parameters

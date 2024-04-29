@@ -11,16 +11,14 @@
 
 from datetime import datetime
 from hashlib import blake2b
-from typing import List
 
 import pandas as pd
 
 from palma.base.splitting_strategy import ValidationStrategy
-from palma.utils.names import get_random_name
 from palma.utils.utils import check_started
 
 
-class Project(object):
+class Project:
     """
     Represents a machine learning project with various components
     and logging capabilities.
@@ -29,6 +27,7 @@ class Project(object):
     ----------
     project_name (str): The name of the project.
     problem (str): The description of the machine learning problem.
+                   Accepted values: "classification" or "regression".
 
     Attributes
     ----------

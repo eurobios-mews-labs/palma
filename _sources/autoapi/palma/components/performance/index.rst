@@ -16,6 +16,7 @@ Classes
    palma.components.performance.ShapAnalysis
    palma.components.performance.ScoringAnalysis
    palma.components.performance.RegressionAnalysis
+   palma.components.performance.PermutationFeatureImportance
 
 
 
@@ -550,6 +551,63 @@ Attributes
 
 
    .. py:method:: plot_errors_pairgrid(fun=None, number_percentiles=4, palette='rocket_r', features=None)
+
+
+
+.. py:class:: PermutationFeatureImportance(n_repeat: int = 5, random_state: int = 42, n_job: int = 2, scoring: str = None, max_samples: Union[int, float] = 0.7, color: str = 'darkblue')
+
+
+   Bases: :py:obj:`palma.components.base.ModelComponent`
+
+   
+   Class for doing permutation feature importance
+
+
+   :Parameters:
+
+       **n_repeat: int**
+           The number of times to permute a feature.
+
+       **random_state: int**
+           The pseudo-random number generator to control the permutations of each feature.
+
+       **n_job: int**
+           The number of jobs to run in parallel. If n_job = -1, it takes all processors.
+
+       **max_samples: int or float**
+           The number of samples to draw from X to compute feature importance in each repeat (without replacement).
+           If int, then draw max_samples samples.
+           If float, then draw max_samples * X.shape[0] samples.
+
+       **color: str**
+           The color for bar plot.
+
+
+
+
+
+
+
+
+
+
+
+
+
+   .. rubric:: Methods
+
+
+
+   =========================================  ==========
+   **plot_permutation_feature_importance()**  Plotting the result of feature permutation ONLY on the TRAINING SET  
+   =========================================  ==========
+
+   ..
+       !! processed by numpydoc !!
+   .. py:method:: __call__(project: Project, model: ModelEvaluation)
+
+
+   .. py:method:: plot_permutation_feature_importance()
 
 
 

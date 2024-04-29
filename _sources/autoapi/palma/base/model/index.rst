@@ -27,6 +27,9 @@ Classes
    .. py:property:: components
 
 
+   .. py:property:: unfit_estimator
+
+
    .. py:method:: add(component, name=None)
 
 

@@ -54,7 +54,7 @@
     <link rel="next" title="palma.datasets" href="../../datasets/index.html" />
     <link rel="prev" title="palma.components.logger" href="../logger/index.html" />
     <script defer data-domain="eurobios-mews-labs.github.io/palma" src="https://plausible.io/js/script.js"></script>
-    <jinja2.runtime.BlockReference object at 0x7ff42ce77850>
+    <jinja2.runtime.BlockReference object at 0x7ff04e8291e0>
 
   </head>
   
@@ -395,6 +395,11 @@ document.write(`
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.RegressionAnalysis.plot_errors_pairgrid"><code class="docutils literal notranslate"><span class="pre">RegressionAnalysis.plot_errors_pairgrid()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.PermutationFeatureImportance"><code class="docutils literal notranslate"><span class="pre">PermutationFeatureImportance</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.PermutationFeatureImportance.__call__"><code class="docutils literal notranslate"><span class="pre">PermutationFeatureImportance.__call__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.PermutationFeatureImportance.plot_permutation_feature_importance"><code class="docutils literal notranslate"><span class="pre">PermutationFeatureImportance.plot_permutation_feature_importance()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -429,6 +434,9 @@ document.write(`
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../../../../palma.components.html#palma.components.performance.RegressionAnalysis" title="palma.components.performance.RegressionAnalysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RegressionAnalysis</span></code></a></p></td>
 <td><p>Analyser class for performing analysis on a regression model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../../palma.components.html#palma.components.performance.PermutationFeatureImportance" title="palma.components.performance.PermutationFeatureImportance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PermutationFeatureImportance</span></code></a></p></td>
+<td><p>Class for doing permutation feature importance</p></td>
 </tr>
 </tbody>
 </table>
@@ -810,6 +818,49 @@ is equal to <cite>value</cite>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="palma.components.performance.PermutationFeatureImportance">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.performance.</span></span><span class="sig-name descname"><span class="pre">PermutationFeatureImportance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_repeat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_job</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'darkblue'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.PermutationFeatureImportance" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../../palma.components.html#palma.components.base.ModelComponent" title="palma.components.base.ModelComponent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">palma.components.base.ModelComponent</span></code></a></p>
+<p>Class for doing permutation feature importance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n_repeat: int</strong></dt><dd><p>The number of times to permute a feature.</p>
+</dd>
+<dt><strong>random_state: int</strong></dt><dd><p>The pseudo-random number generator to control the permutations of each feature.</p>
+</dd>
+<dt><strong>n_job: int</strong></dt><dd><p>The number of jobs to run in parallel. If n_job = -1, it takes all processors.</p>
+</dd>
+<dt><strong>max_samples: int or float</strong></dt><dd><p>The number of samples to draw from X to compute feature importance in each repeat (without replacement).
+If int, then draw max_samples samples.
+If float, then draw max_samples * X.shape[0] samples.</p>
+</dd>
+<dt><strong>color: str</strong></dt><dd><p>The color for bar plot.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>plot_permutation_feature_importance()</strong></p></td>
+<td><p>Plotting the result of feature permutation ONLY on the TRAINING SET</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.performance.PermutationFeatureImportance.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">Project</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../../palma.base.html#palma.base.model.ModelEvaluation" title="palma.base.model.ModelEvaluation"><span class="pre">ModelEvaluation</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.PermutationFeatureImportance.__call__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.performance.PermutationFeatureImportance.plot_permutation_feature_importance">
+<span class="sig-name descname"><span class="pre">plot_permutation_feature_importance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.PermutationFeatureImportance.plot_permutation_feature_importance" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 </section>
@@ -899,6 +950,11 @@ is equal to <cite>value</cite>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.RegressionAnalysis.compute_predictions_errors"><code class="docutils literal notranslate"><span class="pre">RegressionAnalysis.compute_predictions_errors()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.RegressionAnalysis.plot_prediction_versus_real"><code class="docutils literal notranslate"><span class="pre">RegressionAnalysis.plot_prediction_versus_real()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.RegressionAnalysis.plot_errors_pairgrid"><code class="docutils literal notranslate"><span class="pre">RegressionAnalysis.plot_errors_pairgrid()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.PermutationFeatureImportance"><code class="docutils literal notranslate"><span class="pre">PermutationFeatureImportance</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.PermutationFeatureImportance.__call__"><code class="docutils literal notranslate"><span class="pre">PermutationFeatureImportance.__call__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.PermutationFeatureImportance.plot_permutation_feature_importance"><code class="docutils literal notranslate"><span class="pre">PermutationFeatureImportance.plot_permutation_feature_importance()</span></code></a></li>
 </ul>
 </li>
 </ul>

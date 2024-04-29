@@ -54,7 +54,7 @@
     <link rel="next" title="palma.components.base" href="base/index.html" />
     <link rel="prev" title="palma.base.splitting_strategy" href="../base/splitting_strategy/index.html" />
     <script defer data-domain="eurobios-mews-labs.github.io/palma" src="https://plausible.io/js/script.js"></script>
-    <jinja2.runtime.BlockReference object at 0x7ff42d04ef50>
+    <jinja2.runtime.BlockReference object at 0x7ff04edceaa0>
 
   </head>
   
@@ -412,6 +412,11 @@ document.write(`
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.ShapAnalysis.plot_shap_interaction"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_interaction()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.PermutationFeatureImportance"><code class="docutils literal notranslate"><span class="pre">PermutationFeatureImportance</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.PermutationFeatureImportance.__call__"><code class="docutils literal notranslate"><span class="pre">PermutationFeatureImportance.__call__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.PermutationFeatureImportance.plot_permutation_feature_importance"><code class="docutils literal notranslate"><span class="pre">PermutationFeatureImportance.plot_permutation_feature_importance()</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.DeepCheck"><code class="docutils literal notranslate"><span class="pre">DeepCheck</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.DeepCheck.__call__"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__call__()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.DeepCheck.__generate_datasets"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__generate_datasets()</span></code></a></li>
@@ -485,10 +490,13 @@ document.write(`
 <tr class="row-even"><td><p><a class="reference internal" href="#palma.components.ShapAnalysis" title="palma.components.ShapAnalysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShapAnalysis</span></code></a></p></td>
 <td><p>Analyser class for performing analysis on a model.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#palma.components.DeepCheck" title="palma.components.DeepCheck"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeepCheck</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#palma.components.PermutationFeatureImportance" title="palma.components.PermutationFeatureImportance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PermutationFeatureImportance</span></code></a></p></td>
+<td><p>Class for doing permutation feature importance</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#palma.components.DeepCheck" title="palma.components.DeepCheck"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeepCheck</span></code></a></p></td>
 <td><p>This object is a wrapper of the Deepchecks library and allows to audit the</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#palma.components.Leakage" title="palma.components.Leakage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Leakage</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#palma.components.Leakage" title="palma.components.Leakage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Leakage</span></code></a></p></td>
 <td><p>Class for detecting data leakage in a classification project.</p></td>
 </tr>
 </tbody>
@@ -1019,6 +1027,49 @@ is equal to <cite>value</cite>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="palma.components.PermutationFeatureImportance">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.</span></span><span class="sig-name descname"><span class="pre">PermutationFeatureImportance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_repeat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_job</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'darkblue'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.PermutationFeatureImportance" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../palma.components.html#palma.components.base.ModelComponent" title="palma.components.base.ModelComponent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">palma.components.base.ModelComponent</span></code></a></p>
+<p>Class for doing permutation feature importance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n_repeat: int</strong></dt><dd><p>The number of times to permute a feature.</p>
+</dd>
+<dt><strong>random_state: int</strong></dt><dd><p>The pseudo-random number generator to control the permutations of each feature.</p>
+</dd>
+<dt><strong>n_job: int</strong></dt><dd><p>The number of jobs to run in parallel. If n_job = -1, it takes all processors.</p>
+</dd>
+<dt><strong>max_samples: int or float</strong></dt><dd><p>The number of samples to draw from X to compute feature importance in each repeat (without replacement).
+If int, then draw max_samples samples.
+If float, then draw max_samples * X.shape[0] samples.</p>
+</dd>
+<dt><strong>color: str</strong></dt><dd><p>The color for bar plot.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>plot_permutation_feature_importance()</strong></p></td>
+<td><p>Plotting the result of feature permutation ONLY on the TRAINING SET</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.PermutationFeatureImportance.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">Project</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../../palma.base.html#palma.base.model.ModelEvaluation" title="palma.base.model.ModelEvaluation"><span class="pre">ModelEvaluation</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.PermutationFeatureImportance.__call__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.components.PermutationFeatureImportance.plot_permutation_feature_importance">
+<span class="sig-name descname"><span class="pre">plot_permutation_feature_importance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.PermutationFeatureImportance.plot_permutation_feature_importance" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="palma.components.DeepCheck">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.</span></span><span class="sig-name descname"><span class="pre">DeepCheck</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Data</span> <span class="pre">Checker'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_checks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">deepchecks.core.BaseCheck</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">deepchecks.core.BaseSuite</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">data_integrity()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_test_datasets_checks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">deepchecks.core.BaseCheck</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">deepchecks.core.BaseSuite</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Suite('Checks</span> <span class="pre">train</span> <span class="pre">test',</span> <span class="pre">train_test_validation())</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raise_on_fail</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.DeepCheck" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../../palma.components.html#palma.components.base.ProjectComponent" title="palma.components.base.ProjectComponent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">palma.components.base.ProjectComponent</span></code></a></p>
@@ -1227,6 +1278,11 @@ the AUC metric.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.ShapAnalysis.plot_shap_summary_plot"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_summary_plot()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.ShapAnalysis.plot_shap_decision_plot"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_decision_plot()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.ShapAnalysis.plot_shap_interaction"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_interaction()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.PermutationFeatureImportance"><code class="docutils literal notranslate"><span class="pre">PermutationFeatureImportance</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.PermutationFeatureImportance.__call__"><code class="docutils literal notranslate"><span class="pre">PermutationFeatureImportance.__call__()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.PermutationFeatureImportance.plot_permutation_feature_importance"><code class="docutils literal notranslate"><span class="pre">PermutationFeatureImportance.plot_permutation_feature_importance()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.DeepCheck"><code class="docutils literal notranslate"><span class="pre">DeepCheck</span></code></a><ul class="nav section-nav flex-column">

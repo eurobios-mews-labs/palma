@@ -13,7 +13,6 @@ Classes
 .. autoapisummary::
 
    palma.base.engine.BaseOptimizer
-   palma.base.engine.AutoSklearnOptimizer
    palma.base.engine.FlamlOptimizer
 
 
@@ -49,26 +48,6 @@ Classes
 
 
    .. py:method:: allowing_splitter(splitter)
-
-
-
-.. py:class:: AutoSklearnOptimizer(problem: str, engine_parameters: dict)
-
-
-   Bases: :py:obj:`BaseOptimizer`
-
-   .. py:property:: optimizer
-      :type: Union[autosklearn.classification.AutoSklearnClassifier, autosklearn.regression.AutoSklearnRegressor]
-
-
-   .. py:property:: estimator_
-      :type: Union[autosklearn.classification.AutoSklearnClassifier, autosklearn.regression.AutoSklearnRegressor]
-
-
-   .. py:property:: transformer_
-
-
-   .. py:method:: optimize(X: pandas.DataFrame, y: pandas.Series, splitter=None) -> None
 
 
 

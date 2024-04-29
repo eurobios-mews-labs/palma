@@ -54,7 +54,7 @@
     <link rel="next" title="palma.base.model" href="../model/index.html" />
     <link rel="prev" title="palma.base" href="../index.html" />
     <script defer data-domain="eurobios-mews-labs.github.io/palma" src="https://plausible.io/js/script.js"></script>
-    <jinja2.runtime.BlockReference object at 0x7f51bbca7670>
+    <jinja2.runtime.BlockReference object at 0x7f3782137fd0>
 
   </head>
   
@@ -365,13 +365,6 @@ document.write(`
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.BaseOptimizer.allowing_splitter"><code class="docutils literal notranslate"><span class="pre">BaseOptimizer.allowing_splitter()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.AutoSklearnOptimizer"><code class="docutils literal notranslate"><span class="pre">AutoSklearnOptimizer</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.AutoSklearnOptimizer.optimizer"><code class="docutils literal notranslate"><span class="pre">AutoSklearnOptimizer.optimizer</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.AutoSklearnOptimizer.estimator_"><code class="docutils literal notranslate"><span class="pre">AutoSklearnOptimizer.estimator_</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.AutoSklearnOptimizer.transformer_"><code class="docutils literal notranslate"><span class="pre">AutoSklearnOptimizer.transformer_</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.AutoSklearnOptimizer.optimize"><code class="docutils literal notranslate"><span class="pre">AutoSklearnOptimizer.optimize()</span></code></a></li>
-</ul>
-</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.FlamlOptimizer"><code class="docutils literal notranslate"><span class="pre">FlamlOptimizer</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.FlamlOptimizer.optimizer"><code class="docutils literal notranslate"><span class="pre">FlamlOptimizer.optimizer</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.FlamlOptimizer.estimator_"><code class="docutils literal notranslate"><span class="pre">FlamlOptimizer.estimator_</span></code></a></li>
@@ -406,10 +399,7 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="../../../../palma.base.html#palma.base.engine.BaseOptimizer" title="palma.base.engine.BaseOptimizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseOptimizer</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../../../../palma.base.html#palma.base.engine.AutoSklearnOptimizer" title="palma.base.engine.AutoSklearnOptimizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AutoSklearnOptimizer</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../../../../palma.base.html#palma.base.engine.FlamlOptimizer" title="palma.base.engine.FlamlOptimizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FlamlOptimizer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../../palma.base.html#palma.base.engine.FlamlOptimizer" title="palma.base.engine.FlamlOptimizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FlamlOptimizer</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -450,32 +440,6 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.base.engine.BaseOptimizer.allowing_splitter">
 <span class="sig-name descname"><span class="pre">allowing_splitter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">splitter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.base.engine.BaseOptimizer.allowing_splitter" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="palma.base.engine.AutoSklearnOptimizer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.base.engine.</span></span><span class="sig-name descname"><span class="pre">AutoSklearnOptimizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.base.engine.AutoSklearnOptimizer" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../../../palma.base.html#palma.base.engine.BaseOptimizer" title="palma.base.engine.BaseOptimizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseOptimizer</span></code></a></p>
-<dl class="py property">
-<dt class="sig sig-object py" id="palma.base.engine.AutoSklearnOptimizer.optimizer">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">optimizer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">autosklearn.classification.AutoSklearnClassifier</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">autosklearn.regression.AutoSklearnRegressor</span></em><a class="headerlink" href="#palma.base.engine.AutoSklearnOptimizer.optimizer" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="palma.base.engine.AutoSklearnOptimizer.estimator_">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">estimator_</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">autosklearn.classification.AutoSklearnClassifier</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">autosklearn.regression.AutoSklearnRegressor</span></em><a class="headerlink" href="#palma.base.engine.AutoSklearnOptimizer.estimator_" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="palma.base.engine.AutoSklearnOptimizer.transformer_">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">transformer_</span></span><a class="headerlink" href="#palma.base.engine.AutoSklearnOptimizer.transformer_" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="palma.base.engine.AutoSklearnOptimizer.optimize">
-<span class="sig-name descname"><span class="pre">optimize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splitter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.base.engine.AutoSklearnOptimizer.optimize" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -570,13 +534,6 @@ document.write(`
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.BaseOptimizer.allow_splitter"><code class="docutils literal notranslate"><span class="pre">BaseOptimizer.allow_splitter</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.BaseOptimizer.optimize"><code class="docutils literal notranslate"><span class="pre">BaseOptimizer.optimize()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.BaseOptimizer.allowing_splitter"><code class="docutils literal notranslate"><span class="pre">BaseOptimizer.allowing_splitter()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.AutoSklearnOptimizer"><code class="docutils literal notranslate"><span class="pre">AutoSklearnOptimizer</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.AutoSklearnOptimizer.optimizer"><code class="docutils literal notranslate"><span class="pre">AutoSklearnOptimizer.optimizer</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.AutoSklearnOptimizer.estimator_"><code class="docutils literal notranslate"><span class="pre">AutoSklearnOptimizer.estimator_</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.AutoSklearnOptimizer.transformer_"><code class="docutils literal notranslate"><span class="pre">AutoSklearnOptimizer.transformer_</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.AutoSklearnOptimizer.optimize"><code class="docutils literal notranslate"><span class="pre">AutoSklearnOptimizer.optimize()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.engine.FlamlOptimizer"><code class="docutils literal notranslate"><span class="pre">FlamlOptimizer</span></code></a><ul class="nav section-nav flex-column">

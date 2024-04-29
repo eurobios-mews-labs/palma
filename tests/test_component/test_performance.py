@@ -8,17 +8,19 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import os
+import tempfile
+
 import matplotlib
 import numpy as np
-import pytest
 import pandas as pd
+import pytest
 from sklearn import metrics, model_selection
-
-from palma.components import performance, FileSystemLogger, MLFlowLogger
 from sklearn.ensemble import RandomForestClassifier
-import tempfile
+
 from palma import ModelEvaluation, Project
 from palma import set_logger
+from palma.components import performance, FileSystemLogger
 
 matplotlib.use("agg")
 
@@ -180,3 +182,12 @@ def test_compute_metrics(get_regression_analyser):
               'd2_tweedie_score', 'd2_pinball_score',
               'd2_absolute_error_score']:
         assert v in get_regression_analyser.metrics.keys()
+
+
+def test_permutation_feature_importance(learning_data):
+    res_dir = tempfile.gettempdir() + "/logger"
+    set_logger(FileSystemLogger(res_dir))
+    project, model, X, y = learning_data
+    perf = performance.PermutationFeatureImportance(scoring='roc_auc')
+    perf(project, model)
+    print(f"{os.listdir(res_dir) = }")

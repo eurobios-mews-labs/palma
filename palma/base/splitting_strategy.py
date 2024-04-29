@@ -26,7 +26,7 @@ def _bool_to_index(array):
     return np.where(array)[0]
 
 
-class ValidationStrategy(object):
+class ValidationStrategy:
     """
     Validation strategy for a machine learning project.
 

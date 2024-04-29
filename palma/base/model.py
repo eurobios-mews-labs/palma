@@ -90,3 +90,7 @@ class ModelEvaluation:
     def components(self):
         return self.__components
 
+    @property
+    def unfit_estimator(self):
+        return self.__estimator
+

@@ -17,6 +17,7 @@ from palma.components.dashboard import ExplainerDashboard
 from palma.components.performance import RegressionAnalysis
 from palma.components.performance import ScoringAnalysis
 from palma.components.performance import ShapAnalysis
+from palma.components.performance import PermutationFeatureImportance
 from palma.components.data_checker import DeepCheck, Leakage
 
 __all__ = [
@@ -28,6 +29,7 @@ __all__ = [
     "RegressionAnalysis",
     "ScoringAnalysis",
     "ShapAnalysis",
+    "PermutationFeatureImportance",
     "DeepCheck",
     "Leakage"
 ]

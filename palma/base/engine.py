@@ -64,46 +64,6 @@ class BaseOptimizer(object, metaclass=ABCMeta):
             logging.warning(f"Optimizer does not support splitter {splitter}")
 
 
-class AutoSklearnOptimizer(BaseOptimizer):
-
-    def __init__(self, problem: str, engine_parameters: dict) -> None:
-        super().__init__(engine_parameters)
-        self.problem = problem
-
-    def optimize(self, X: pd.DataFrame, y: pd.Series, splitter=None) -> None:
-        if self.problem == "classification":
-            self.__optimizer = self.AutoSklearnClassifier(
-                **self.engine_parameters
-            )
-        elif self.problem == "regression":
-            self.__optimizer = self.AutoSklearnRegressor(
-                **self.engine_parameters
-            )
-        else:
-            raise ValueError(
-                f"{self.problem} problem not compatible with autosklearn engine"
-            )
-
-        self.__optimizer.fit(X, y)
-        self.__optimizer.refit(X, y)
-
-    @property
-    def optimizer(self) -> Union[
-        'AutoSklearnClassifier',
-        'AutoSklearnRegressor']:
-        return self.__optimizer
-
-    @property
-    def estimator_(self) -> Union[
-        'AutoSklearnClassifier',
-        'AutoSklearnRegressor']:
-        return self.__optimizer.get_models_with_weights()
-
-    @property
-    def transformer_(self):
-        ...
-
-
 class FlamlOptimizer(BaseOptimizer):
     def __init__(self, problem: str, engine_parameters: dict) -> None:
         super().__init__(engine_parameters)

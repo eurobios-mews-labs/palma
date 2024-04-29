@@ -10,7 +10,7 @@
 # limitations under the License.
 import pytest
 
-from palma.base.engine import AutoSklearnOptimizer, BaseOptimizer, \
+from palma.base.engine import BaseOptimizer, \
     FlamlOptimizer
 
 

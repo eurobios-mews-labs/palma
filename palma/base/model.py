@@ -37,6 +37,8 @@ class ModelEvaluation:
                 "The added component must be an instance of class Component"
             )
 
+
+
     def fit(self, project: Project):
         ret = []
         for indexes in [project.validation_strategy.indexes_val,

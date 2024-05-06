@@ -19,9 +19,9 @@ dependencies = {file = ["requirements.txt"]}
 
 
 [project.optional-dependencies]
-components = ["deepchecks", "pandas-profiling", "plot-metric",
+components = ["pandas-profiling", "plot-metric",
               "mlflow", "boto3", "explainerdashboard"]
-test = ["pylint", "coverage", "pytest", "pytest-cov", "pytest-cov",
+test = ["pylint", "coverage", "pytest", "pytest-cov",
         "jupyter","notebook", "uci_dataset"]
 doc = ["sphinx", "sphinx-book-theme", "myst-parser", "sphinx-copybutton",
        "sphinx-favicon", "nbsphinx",

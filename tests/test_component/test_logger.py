@@ -146,3 +146,29 @@ def test_artifact_logging():
     logger.logger.log_metrics({'a': 1}, "metric")
     logger.logger.log_artifact(fig, "figure")
 
+
+def test_fit_dataframe_outputs(learning_data):
+    _, learn, X, y = learning_data
+    assert learn.predict_df.shape[1] == 2
+    assert learn.val_predict_df.shape[1] == 2
+    assert learn.predict_proba_df.shape[1] > 2
+    assert learn.val_predict_proba_df.shape[1] > 2
+
+
+def test_fit_predict_predict_proba(learning_data):
+    _, learn, X, y = learning_data
+    y_pred = learn.predict(X)
+    y_pred_proba = learn.predict_proba(X, return_df=True)
+    assert len(y_pred.shape) == 1
+    assert y_pred_proba.shape[1] >= 2
+
+
+def test_fit_predict_failure(learning_data):
+    _, learn, X, y = learning_data
+    Xbis = pd.concat([X,y], axis = 1)
+    y_pred = learn.predict(Xbis)
+    y_pred_proba = learn.predict_proba(Xbis, return_df=True)
+    assert y_pred is None
+    assert y_pred_proba is None
+
+

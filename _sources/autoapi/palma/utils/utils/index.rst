@@ -1,23 +1,19 @@
-:py:mod:`palma.utils.utils`
-===========================
+palma.utils.utils
+=================
 
 .. py:module:: palma.utils.utils
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
    palma.utils.utils.AverageEstimator
 
 
-
 Functions
-~~~~~~~~~
+---------
 
 .. autoapisummary::
 
@@ -33,9 +29,10 @@ Functions
    palma.utils.utils._get_and_check_var_importance
 
 
+Module Contents
+---------------
 
 .. py:class:: AverageEstimator(estimator_list: list)
-
 
    
    A simple ensemble estimator that computes the average prediction of a list of estimators.
@@ -80,11 +77,17 @@ Functions
 
    ..
        !! processed by numpydoc !!
+
+   .. py:attribute:: estimator_list
+
+
+   .. py:attribute:: n
+
+
    .. py:method:: predict(*args, **kwargs) -> iter
 
 
    .. py:method:: predict_proba(*args, **kwargs) -> iter
-
 
 
 .. py:function:: _clone(estimator)
@@ -178,9 +181,7 @@ Functions
 
 .. py:function:: check_splitting_strategy(X: pandas.DataFrame, iter_cross_validation: iter)
 
-
 .. py:function:: hash_dataframe(data: pandas.DataFrame, how='whole')
-
 
 .. py:function:: get_hash(**kwargs) -> str
 
@@ -206,7 +207,6 @@ Functions
        !! processed by numpydoc !!
 
 .. py:function:: get_estimator_name(estimator) -> str
-
 
 .. py:function:: check_started(message: str, need_build: bool = False) -> Callable
 
@@ -245,10 +245,7 @@ Functions
 
 .. py:function:: interpolate_roc(roc_curve_metric: dict[dict[tuple[dict[numpy.array]]]], mean_fpr=np.linspace(0, 1, 100))
 
-
 .. py:function:: _get_processing_pipeline(estimators: list)
 
-
 .. py:function:: _get_and_check_var_importance(estimator)
-
 

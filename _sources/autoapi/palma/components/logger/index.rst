@@ -1,14 +1,22 @@
-:py:mod:`palma.components.logger`
-=================================
+palma.components.logger
+=======================
 
 .. py:module:: palma.components.logger
 
 
-Module Contents
----------------
+Attributes
+----------
+
+.. autoapisummary::
+
+   palma.components.logger.mlflow
+   palma.components.logger._logger
+   palma.components.logger.logger
+   palma.components.logger.set_logger
+
 
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
@@ -19,29 +27,16 @@ Classes
    palma.components.logger._Logger
 
 
-
-
-Attributes
-~~~~~~~~~~
-
-.. autoapisummary::
-
-   palma.components.logger.mlflow
-   palma.components.logger._logger
-   palma.components.logger.logger
-   palma.components.logger.set_logger
-
+Module Contents
+---------------
 
 .. py:data:: mlflow
+   :value: None
 
-   
 
 .. py:data:: _logger
 
-   
-
 .. py:class:: Logger(uri: str, **kwargs)
-
 
    
    Logger is an abstract class that defines a common
@@ -67,19 +62,23 @@ Attributes
 
    ..
        !! processed by numpydoc !!
-   .. py:property:: uri
+
+   .. py:attribute:: __uri
 
 
    .. py:method:: log_project(project: palma.base.project.Project) -> None
       :abstractmethod:
 
 
+
    .. py:method:: log_metrics(metrics: dict, path: str) -> None
       :abstractmethod:
 
 
+
    .. py:method:: log_params(**kwargs) -> None
       :abstractmethod:
+
 
 
    .. py:method:: log_artifact(**kwargs) -> None
@@ -87,10 +86,13 @@ Attributes
 
 
 
+   .. py:property:: uri
+
+
 .. py:class:: DummyLogger(uri: str, **kwargs)
 
-
    Bases: :py:obj:`Logger`
+
 
    
    Logger is an abstract class that defines a common
@@ -116,6 +118,7 @@ Attributes
 
    ..
        !! processed by numpydoc !!
+
    .. py:method:: log_project(project: palma.base.project.Project) -> None
 
 
@@ -128,11 +131,10 @@ Attributes
    .. py:method:: log_artifact(obj, path: str) -> None
 
 
-
 .. py:class:: FileSystemLogger(uri: str = tempfile.gettempdir(), **kwargs)
 
-
    Bases: :py:obj:`Logger`
+
 
    
    A logger for saving artifacts and metadata to the file system.
@@ -179,6 +181,13 @@ Attributes
 
    ..
        !! processed by numpydoc !!
+
+   .. py:attribute:: path_project
+
+
+   .. py:attribute:: path_study
+
+
    .. py:method:: log_project(project: palma.base.project.Project) -> None
 
       
@@ -207,6 +216,7 @@ Attributes
 
       ..
           !! processed by numpydoc !!
+
 
    .. py:method:: log_metrics(metrics: dict, path: str) -> None
 
@@ -239,6 +249,7 @@ Attributes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: log_artifact(obj, path: str) -> None
 
       
@@ -269,6 +280,7 @@ Attributes
 
       ..
           !! processed by numpydoc !!
+
 
    .. py:method:: log_params(parameters: dict, path: str) -> None
 
@@ -301,6 +313,7 @@ Attributes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: __create_directories()
 
       
@@ -329,8 +342,8 @@ Attributes
 
 .. py:class:: MLFlowLogger(uri: str, artifact_location: str = '.mlruns')
 
-
    Bases: :py:obj:`Logger`
+
 
    
    MLFlowLogger class for logging experiments using MLflow.
@@ -378,6 +391,10 @@ Attributes
 
    ..
        !! processed by numpydoc !!
+
+   .. py:attribute:: file_system_logger
+
+
    .. py:method:: log_project(project: palma.base.project.Project) -> None
 
 
@@ -390,15 +407,9 @@ Attributes
    .. py:method:: log_params(params: dict) -> None
 
 
-
 .. py:class:: _Logger(dummy)
 
-
-   .. py:property:: logger
-      :type: Logger
-
-
-   .. py:property:: uri
+   .. py:attribute:: __logger
 
 
    .. py:method:: __set__(_logger) -> None
@@ -435,11 +446,15 @@ Attributes
           !! processed by numpydoc !!
 
 
+   .. py:property:: logger
+      :type: Logger
+
+
+
+   .. py:property:: uri
+
+
 .. py:data:: logger
 
-   
-
 .. py:data:: set_logger
-
-   
 

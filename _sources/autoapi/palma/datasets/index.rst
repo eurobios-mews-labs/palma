@@ -1,21 +1,19 @@
-:py:mod:`palma.datasets`
-========================
+palma.datasets
+==============
 
 .. py:module:: palma.datasets
 
 
-Package Contents
-----------------
-
-
 Functions
-~~~~~~~~~
+---------
 
 .. autoapisummary::
 
    palma.datasets.load_credit_approval
 
 
+Package Contents
+----------------
 
 .. py:function:: load_credit_approval() -> Tuple[pandas.DataFrame, pandas.Series]
 

@@ -1,37 +1,68 @@
-:py:mod:`palma.preprocessing.pca`
-=================================
+palma.preprocessing.pca
+=======================
 
 .. py:module:: palma.preprocessing.pca
 
 
-Module Contents
----------------
-
-Classes
-~~~~~~~
-
-.. autoapisummary::
-
-   palma.preprocessing.pca.PCA
-
-
-
-
 Attributes
-~~~~~~~~~~
+----------
 
 .. autoapisummary::
 
    palma.preprocessing.pca.X
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   palma.preprocessing.pca.PCA
+
+
+Module Contents
+---------------
+
 .. py:class:: PCA(data: pandas.DataFrame, prefix_name='pc')
 
+   .. py:attribute:: data_train
+      :type:  pandas.DataFrame
 
-   .. py:property:: nb_component
+
+   .. py:attribute:: index
+
+
+   .. py:attribute:: n
+
+
+   .. py:attribute:: p
+
+
+   .. py:attribute:: sc
+
+
+   .. py:attribute:: scaled_data
+
+
+   .. py:attribute:: pca
+
+
+   .. py:attribute:: explained_variance
+
+
+   .. py:attribute:: component_names
+
+
+   .. py:attribute:: eigen_values
+
+
+   .. py:attribute:: __nb_comp
 
 
    .. py:method:: set_nb_components(n=None, variance_threshold: float = None, **kwargs)
+
+
+   .. py:property:: nb_component
 
 
    .. py:method:: transform(X: pandas.DataFrame) -> pandas.DataFrame
@@ -70,8 +101,5 @@ Attributes
    .. py:method:: plot_variance_bar(separator=0.5) -> None
 
 
-
 .. py:data:: X
-
-   
 

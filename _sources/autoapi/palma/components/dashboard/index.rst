@@ -1,38 +1,37 @@
-:py:mod:`palma.components.dashboard`
-====================================
+palma.components.dashboard
+==========================
 
 .. py:module:: palma.components.dashboard
 
 
-Module Contents
----------------
-
-Classes
-~~~~~~~
-
-.. autoapisummary::
-
-   palma.components.dashboard.ExplainerDashboard
-
-
-
-
 Attributes
-~~~~~~~~~~
+----------
 
 .. autoapisummary::
 
    palma.components.dashboard.default_config_path
 
 
-.. py:data:: default_config_path
+Classes
+-------
 
-   
+.. autoapisummary::
+
+   palma.components.dashboard.ExplainerDashboard
+
+
+Module Contents
+---------------
+
+.. py:data:: default_config_path
 
 .. py:class:: ExplainerDashboard(dashboard_config: Union[str, Dict] = default_config_path, n_sample: int = None)
 
-
    Bases: :py:obj:`palma.components.base.Component`
+
+
+   .. py:attribute:: n_sample
+
 
    .. py:method:: __call__(project: Project, model: Model) -> explainerdashboard.ExplainerDashboard
 
@@ -71,6 +70,7 @@ Attributes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: update_config(dict_value: Dict[str, Dict])
 
       
@@ -106,6 +106,7 @@ Attributes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: _prepare_dataset() -> None
 
       
@@ -132,10 +133,10 @@ Attributes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: _get_explainer(project: Project, model: Model) -> explainerdashboard.explainers.BaseExplainer
 
 
    .. py:method:: _get_dashboard(explainer: explainerdashboard.explainers.BaseExplainer) -> ExplainerDashboard
-
 
 

@@ -1,29 +1,26 @@
-:py:mod:`palma.components`
-==========================
+palma.components
+================
 
 .. py:module:: palma.components
 
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   base/index.rst
-   checker/index.rst
-   dashboard/index.rst
-   data_checker/index.rst
-   data_profiler/index.rst
-   logger/index.rst
-   performance/index.rst
+   /autoapi/palma/components/base/index
+   /autoapi/palma/components/checker/index
+   /autoapi/palma/components/dashboard/index
+   /autoapi/palma/components/data_checker/index
+   /autoapi/palma/components/data_profiler/index
+   /autoapi/palma/components/logger/index
+   /autoapi/palma/components/performance/index
 
-
-Package Contents
-----------------
 
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
@@ -40,12 +37,13 @@ Classes
    palma.components.Leakage
 
 
-
+Package Contents
+----------------
 
 .. py:class:: Component
 
-
    Bases: :py:obj:`object`
+
 
    .. py:method:: __str__()
 
@@ -73,8 +71,8 @@ Classes
 
 .. py:class:: FileSystemLogger(uri: str = tempfile.gettempdir(), **kwargs)
 
-
    Bases: :py:obj:`Logger`
+
 
    
    A logger for saving artifacts and metadata to the file system.
@@ -121,6 +119,13 @@ Classes
 
    ..
        !! processed by numpydoc !!
+
+   .. py:attribute:: path_project
+
+
+   .. py:attribute:: path_study
+
+
    .. py:method:: log_project(project: palma.base.project.Project) -> None
 
       
@@ -149,6 +154,7 @@ Classes
 
       ..
           !! processed by numpydoc !!
+
 
    .. py:method:: log_metrics(metrics: dict, path: str) -> None
 
@@ -181,6 +187,7 @@ Classes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: log_artifact(obj, path: str) -> None
 
       
@@ -211,6 +218,7 @@ Classes
 
       ..
           !! processed by numpydoc !!
+
 
    .. py:method:: log_params(parameters: dict, path: str) -> None
 
@@ -243,6 +251,7 @@ Classes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: __create_directories()
 
       
@@ -271,8 +280,8 @@ Classes
 
 .. py:class:: MLFlowLogger(uri: str, artifact_location: str = '.mlruns')
 
-
    Bases: :py:obj:`Logger`
+
 
    
    MLFlowLogger class for logging experiments using MLflow.
@@ -320,6 +329,10 @@ Classes
 
    ..
        !! processed by numpydoc !!
+
+   .. py:attribute:: file_system_logger
+
+
    .. py:method:: log_project(project: palma.base.project.Project) -> None
 
 
@@ -332,11 +345,10 @@ Classes
    .. py:method:: log_params(params: dict) -> None
 
 
-
 .. py:class:: ProfilerYData(**config)
 
-
    Bases: :py:obj:`palma.components.base.ProjectComponent`
+
 
    
    Base Project Component class
@@ -359,14 +371,20 @@ Classes
 
    ..
        !! processed by numpydoc !!
-   .. py:method:: __call__(project: Project)
 
+   .. py:attribute:: config
+
+
+   .. py:method:: __call__(project: Project)
 
 
 .. py:class:: ExplainerDashboard(dashboard_config: Union[str, Dict] = default_config_path, n_sample: int = None)
 
-
    Bases: :py:obj:`palma.components.base.Component`
+
+
+   .. py:attribute:: n_sample
+
 
    .. py:method:: __call__(project: Project, model: Model) -> explainerdashboard.ExplainerDashboard
 
@@ -405,6 +423,7 @@ Classes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: update_config(dict_value: Dict[str, Dict])
 
       
@@ -440,6 +459,7 @@ Classes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: _prepare_dataset() -> None
 
       
@@ -466,17 +486,17 @@ Classes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: _get_explainer(project: Project, model: Model) -> explainerdashboard.explainers.BaseExplainer
 
 
    .. py:method:: _get_dashboard(explainer: explainerdashboard.explainers.BaseExplainer) -> ExplainerDashboard
 
 
-
 .. py:class:: RegressionAnalysis(on)
 
-
    Bases: :py:obj:`Analyser`
+
 
    
    Analyser class for performing analysis on a regression model.
@@ -520,6 +540,7 @@ Classes
 
    ..
        !! processed by numpydoc !!
+
    .. py:method:: compute_predictions_errors(fun=None)
 
 
@@ -529,11 +550,10 @@ Classes
    .. py:method:: plot_errors_pairgrid(fun=None, number_percentiles=4, palette='rocket_r', features=None)
 
 
-
 .. py:class:: ScoringAnalysis(on)
 
-
    Bases: :py:obj:`Analyser`
+
 
    
    The ScoringAnalyser class provides methods for analyzing the performance of
@@ -556,8 +576,6 @@ Classes
 
    ..
        !! processed by numpydoc !!
-   .. py:property:: threshold
-
 
    .. py:method:: confusion_matrix(in_percentage=False)
 
@@ -589,6 +607,7 @@ Classes
 
       ..
           !! processed by numpydoc !!
+
 
    .. py:method:: __interpolate_roc(_)
 
@@ -652,6 +671,7 @@ Classes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: compute_threshold(method: str = 'total_population', value: float = 0.5, metric: Callable = None)
 
       
@@ -696,6 +716,7 @@ Classes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: plot_threshold(**plot_kwargs)
 
       
@@ -728,10 +749,13 @@ Classes
           !! processed by numpydoc !!
 
 
+   .. py:property:: threshold
+
+
 .. py:class:: ShapAnalysis(on, n_shap, compute_interaction=False)
 
-
    Bases: :py:obj:`Analyser`
+
 
    
    Analyser class for performing analysis on a model.
@@ -758,6 +782,13 @@ Classes
 
    ..
        !! processed by numpydoc !!
+
+   .. py:attribute:: n_shap
+
+
+   .. py:attribute:: compute_interaction
+
+
    .. py:method:: __call__(project: Project, model: ModelEvaluation)
 
 
@@ -779,11 +810,10 @@ Classes
    .. py:method:: plot_shap_interaction(feature_x, feature_y)
 
 
-
 .. py:class:: PermutationFeatureImportance(n_repeat: int = 5, random_state: int = 42, n_job: int = 2, scoring: str = None, max_samples: Union[int, float] = 0.7, color: str = 'darkblue')
 
-
    Bases: :py:obj:`palma.components.base.ModelComponent`
+
 
    
    Class for doing permutation feature importance
@@ -830,17 +860,35 @@ Classes
 
    ..
        !! processed by numpydoc !!
+
+   .. py:attribute:: n_repeat
+
+
+   .. py:attribute:: random_state
+
+
+   .. py:attribute:: n_job
+
+
+   .. py:attribute:: scoring
+
+
+   .. py:attribute:: max_samples
+
+
+   .. py:attribute:: color
+
+
    .. py:method:: __call__(project: Project, model: ModelEvaluation)
 
 
    .. py:method:: plot_permutation_feature_importance()
 
 
-
 .. py:class:: DeepCheck(name: str = 'Data Checker', dataset_parameters: dict = None, dataset_checks: Union[List[deepchecks.core.BaseCheck], deepchecks.core.BaseSuite] = data_integrity(), train_test_datasets_checks: Union[List[deepchecks.core.BaseCheck], deepchecks.core.BaseSuite] = Suite('Checks train test', train_test_validation()), raise_on_fail=True)
 
-
    Bases: :py:obj:`palma.components.base.ProjectComponent`
+
 
    
    This object is a wrapper of the Deepchecks library and allows to audit the
@@ -882,6 +930,19 @@ Classes
 
    ..
        !! processed by numpydoc !!
+
+   .. py:attribute:: name
+
+
+   .. py:attribute:: whole_dataset_checks_suite
+
+
+   .. py:attribute:: train_test_checks_suite
+
+
+   .. py:attribute:: raise_on_fail
+
+
    .. py:method:: __call__(project: palma.base.project.Project) -> None
 
       
@@ -908,6 +969,7 @@ Classes
 
       ..
           !! processed by numpydoc !!
+
 
    .. py:method:: __generate_datasets(project: palma.base.project.Project, **kwargs) -> None
 
@@ -936,8 +998,10 @@ Classes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: __generate_suite(checks: Union[List[deepchecks.core.BaseCheck], deepchecks.core.BaseSuite], name: str) -> deepchecks.tabular.Suite
       :staticmethod:
+
 
       
       Generate a Suite of checks from a list of checks or a suite of checks
@@ -974,8 +1038,8 @@ Classes
 
 .. py:class:: Leakage
 
-
    Bases: :py:obj:`palma.components.base.ProjectComponent`
+
 
    
    Class for detecting data leakage in a classification project.
@@ -1001,13 +1065,13 @@ Classes
 
    ..
        !! processed by numpydoc !!
-   .. py:property:: metrics
-
 
    .. py:method:: __call__(project: palma.base.project.Project) -> None
 
 
    .. py:method:: cross_validation_leakage(project)
 
+
+   .. py:property:: metrics
 
 

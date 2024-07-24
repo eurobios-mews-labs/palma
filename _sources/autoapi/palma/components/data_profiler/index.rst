@@ -1,38 +1,36 @@
-:py:mod:`palma.components.data_profiler`
-========================================
+palma.components.data_profiler
+==============================
 
 .. py:module:: palma.components.data_profiler
 
 
-Module Contents
----------------
-
-Classes
-~~~~~~~
-
-.. autoapisummary::
-
-   palma.components.data_profiler.ProfilerYData
-
-
-
-
 Attributes
-~~~~~~~~~~
+----------
 
 .. autoapisummary::
 
    palma.components.data_profiler.ProfileReport
 
 
-.. py:data:: ProfileReport
+Classes
+-------
 
-   
+.. autoapisummary::
+
+   palma.components.data_profiler.ProfilerYData
+
+
+Module Contents
+---------------
+
+.. py:data:: ProfileReport
+   :value: None
+
 
 .. py:class:: ProfilerYData(**config)
 
-
    Bases: :py:obj:`palma.components.base.ProjectComponent`
+
 
    
    Base Project Component class
@@ -55,7 +53,10 @@ Attributes
 
    ..
        !! processed by numpydoc !!
-   .. py:method:: __call__(project: Project)
 
+   .. py:attribute:: config
+
+
+   .. py:method:: __call__(project: Project)
 
 

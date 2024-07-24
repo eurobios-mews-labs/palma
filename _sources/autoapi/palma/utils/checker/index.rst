@@ -1,24 +1,11 @@
-:py:mod:`palma.utils.checker`
-=============================
+palma.utils.checker
+===================
 
 .. py:module:: palma.utils.checker
 
 
-Module Contents
----------------
-
-Classes
-~~~~~~~
-
-.. autoapisummary::
-
-   palma.utils.checker.ProjectPlanChecker
-
-
-
-
 Attributes
-~~~~~~~~~~
+----------
 
 .. autoapisummary::
 
@@ -26,20 +13,29 @@ Attributes
    palma.utils.checker._REGRESSION_METRICS
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   palma.utils.checker.ProjectPlanChecker
+
+
+Module Contents
+---------------
+
 .. py:data:: _CLASSIFICATION_METRICS
    :value: ['accuracy', 'balanced_accuracy', 'top_k_accuracy', 'average_precision', 'neg_brier_score',...
 
-   
 
 .. py:data:: _REGRESSION_METRICS
    :value: ['explained_variance', 'r2', 'max_error', 'neg_median_absolute_error',...
 
-   
 
 .. py:class:: ProjectPlanChecker
 
-
    Bases: :py:obj:`object`
+
 
    
    ProjectPlanChecker is an object that checks the project plan.
@@ -67,6 +63,7 @@ Attributes
 
    ..
        !! processed by numpydoc !!
+
    .. py:method:: _check_arrays(project: palma.Project) -> None
 
 

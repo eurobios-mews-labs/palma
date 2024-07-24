@@ -1,24 +1,21 @@
-:py:mod:`palma.preprocessing.na_encoder`
-========================================
+palma.preprocessing.na_encoder
+==============================
 
 .. py:module:: palma.preprocessing.na_encoder
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
    palma.preprocessing.na_encoder.NA_encoder
 
 
-
+Module Contents
+---------------
 
 .. py:class:: NA_encoder(numerical_strategy='mean', categorical_strategy='<NULL>')
-
 
    
    Encodes missing values for both numerical and categorical features.
@@ -51,6 +48,36 @@ Classes
 
    ..
        !! processed by numpydoc !!
+
+   .. py:attribute:: numerical_strategy
+
+
+   .. py:attribute:: categorical_strategy
+
+
+   .. py:attribute:: __Lcat
+      :value: []
+
+
+
+   .. py:attribute:: __Lnum
+      :value: []
+
+
+
+   .. py:attribute:: __imp
+      :value: None
+
+
+
+   .. py:attribute:: __mode
+
+
+   .. py:attribute:: __fitOK
+      :value: False
+
+
+
    .. py:method:: get_params(deep=True)
 
       
@@ -73,6 +100,7 @@ Classes
 
       ..
           !! processed by numpydoc !!
+
 
    .. py:method:: set_params(**params)
 
@@ -104,6 +132,7 @@ Classes
 
       ..
           !! processed by numpydoc !!
+
 
    .. py:method:: fit(df_train, y_train=None)
 
@@ -139,6 +168,7 @@ Classes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: fit_transform(df_train, y_train=None)
 
       
@@ -172,6 +202,7 @@ Classes
 
       ..
           !! processed by numpydoc !!
+
 
    .. py:method:: transform(df)
 

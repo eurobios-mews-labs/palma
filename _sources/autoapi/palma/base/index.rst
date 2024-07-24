@@ -1,19 +1,19 @@
-:py:mod:`palma.base`
-====================
+palma.base
+==========
 
 .. py:module:: palma.base
 
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   engine/index.rst
-   model/index.rst
-   model_selection/index.rst
-   project/index.rst
-   splitting_strategy/index.rst
+   /autoapi/palma/base/engine/index
+   /autoapi/palma/base/model/index
+   /autoapi/palma/base/model_selection/index
+   /autoapi/palma/base/project/index
+   /autoapi/palma/base/splitting_strategy/index
 
 

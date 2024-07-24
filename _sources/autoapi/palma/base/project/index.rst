@@ -1,24 +1,21 @@
-:py:mod:`palma.base.project`
-============================
+palma.base.project
+==================
 
 .. py:module:: palma.base.project
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
    palma.base.project.Project
 
 
-
+Module Contents
+---------------
 
 .. py:class:: Project(project_name: str, problem: str)
-
 
    
    Represents a machine learning project with various components
@@ -90,44 +87,30 @@ Classes
 
    ..
        !! processed by numpydoc !!
-   .. py:property:: components
-      :type: dict
+
+   .. py:attribute:: __project_name
 
 
-   .. py:property:: date
-      :type: datetime.datetime
+   .. py:attribute:: __date
 
 
-   .. py:property:: project_id
-      :type: str
+   .. py:attribute:: __study_name
 
 
-   .. py:property:: is_started
-      :type: bool
+   .. py:attribute:: __problem
 
 
-   .. py:property:: problem
-      :type: str
+   .. py:attribute:: __components
 
 
-   .. py:property:: validation_strategy
-      :type: palma.base.splitting_strategy.ValidationStrategy
+   .. py:attribute:: __is_started
+      :value: False
 
 
-   .. py:property:: project_name
-      :type: str
 
+   .. py:attribute:: __component_list
+      :value: []
 
-   .. py:property:: study_name
-      :type: str
-
-
-   .. py:property:: X
-      :type: pandas.DataFrame
-
-
-   .. py:property:: y
-      :type: pandas.Series
 
 
    .. py:method:: add(component: Component) -> None
@@ -137,6 +120,55 @@ Classes
 
 
    .. py:method:: __call_components(object_: Project) -> None
+
+
+   .. py:property:: components
+      :type: dict
+
+
+
+   .. py:property:: date
+      :type: datetime.datetime
+
+
+
+   .. py:property:: project_id
+      :type: str
+
+
+
+   .. py:property:: is_started
+      :type: bool
+
+
+
+   .. py:property:: problem
+      :type: str
+
+
+
+   .. py:property:: validation_strategy
+      :type: palma.base.splitting_strategy.ValidationStrategy
+
+
+
+   .. py:property:: project_name
+      :type: str
+
+
+
+   .. py:property:: study_name
+      :type: str
+
+
+
+   .. py:property:: X
+      :type: pandas.DataFrame
+
+
+
+   .. py:property:: y
+      :type: pandas.Series
 
 
 

@@ -1,14 +1,19 @@
-:py:mod:`palma.components.performance`
-======================================
+palma.components.performance
+============================
 
 .. py:module:: palma.components.performance
 
 
-Module Contents
----------------
+Attributes
+----------
+
+.. autoapisummary::
+
+   palma.components.performance.__fpr_sampling__
+
 
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
@@ -19,24 +24,15 @@ Classes
    palma.components.performance.PermutationFeatureImportance
 
 
-
-
-Attributes
-~~~~~~~~~~
-
-.. autoapisummary::
-
-   palma.components.performance.__fpr_sampling__
-
+Module Contents
+---------------
 
 .. py:data:: __fpr_sampling__
 
-   
-
 .. py:class:: Analyser(on)
 
-
    Bases: :py:obj:`palma.components.base.ModelComponent`
+
 
    
    Analyser class for performing analysis on a model.
@@ -63,7 +59,14 @@ Attributes
 
    ..
        !! processed by numpydoc !!
-   .. py:property:: metrics
+
+   .. py:attribute:: __on
+
+
+   .. py:attribute:: __metrics
+
+
+   .. py:attribute:: _hidden_metrics
 
 
    .. py:method:: __call__(project: Project, model: ModelEvaluation)
@@ -99,6 +102,7 @@ Attributes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: compute_metrics(metric: dict)
 
       
@@ -125,6 +129,7 @@ Attributes
 
       ..
           !! processed by numpydoc !!
+
 
    .. py:method:: _compute_metric(name: str, fun: Callable)
 
@@ -156,6 +161,7 @@ Attributes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: get_train_metrics() -> pandas.DataFrame
 
       
@@ -183,6 +189,7 @@ Attributes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: get_test_metrics() -> pandas.DataFrame
 
       
@@ -209,6 +216,7 @@ Attributes
 
       ..
           !! processed by numpydoc !!
+
 
    .. py:method:: __get_metrics_helper(identifier) -> pandas.DataFrame
 
@@ -247,10 +255,13 @@ Attributes
           !! processed by numpydoc !!
 
 
+   .. py:property:: metrics
+
+
 .. py:class:: ShapAnalysis(on, n_shap, compute_interaction=False)
 
-
    Bases: :py:obj:`Analyser`
+
 
    
    Analyser class for performing analysis on a model.
@@ -277,6 +288,13 @@ Attributes
 
    ..
        !! processed by numpydoc !!
+
+   .. py:attribute:: n_shap
+
+
+   .. py:attribute:: compute_interaction
+
+
    .. py:method:: __call__(project: Project, model: ModelEvaluation)
 
 
@@ -298,11 +316,10 @@ Attributes
    .. py:method:: plot_shap_interaction(feature_x, feature_y)
 
 
-
 .. py:class:: ScoringAnalysis(on)
 
-
    Bases: :py:obj:`Analyser`
+
 
    
    The ScoringAnalyser class provides methods for analyzing the performance of
@@ -325,8 +342,6 @@ Attributes
 
    ..
        !! processed by numpydoc !!
-   .. py:property:: threshold
-
 
    .. py:method:: confusion_matrix(in_percentage=False)
 
@@ -358,6 +373,7 @@ Attributes
 
       ..
           !! processed by numpydoc !!
+
 
    .. py:method:: __interpolate_roc(_)
 
@@ -421,6 +437,7 @@ Attributes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: compute_threshold(method: str = 'total_population', value: float = 0.5, metric: Callable = None)
 
       
@@ -465,6 +482,7 @@ Attributes
       ..
           !! processed by numpydoc !!
 
+
    .. py:method:: plot_threshold(**plot_kwargs)
 
       
@@ -497,10 +515,13 @@ Attributes
           !! processed by numpydoc !!
 
 
+   .. py:property:: threshold
+
+
 .. py:class:: RegressionAnalysis(on)
 
-
    Bases: :py:obj:`Analyser`
+
 
    
    Analyser class for performing analysis on a regression model.
@@ -544,6 +565,7 @@ Attributes
 
    ..
        !! processed by numpydoc !!
+
    .. py:method:: compute_predictions_errors(fun=None)
 
 
@@ -553,11 +575,10 @@ Attributes
    .. py:method:: plot_errors_pairgrid(fun=None, number_percentiles=4, palette='rocket_r', features=None)
 
 
-
 .. py:class:: PermutationFeatureImportance(n_repeat: int = 5, random_state: int = 42, n_job: int = 2, scoring: str = None, max_samples: Union[int, float] = 0.7, color: str = 'darkblue')
 
-
    Bases: :py:obj:`palma.components.base.ModelComponent`
+
 
    
    Class for doing permutation feature importance
@@ -604,10 +625,28 @@ Attributes
 
    ..
        !! processed by numpydoc !!
+
+   .. py:attribute:: n_repeat
+
+
+   .. py:attribute:: random_state
+
+
+   .. py:attribute:: n_job
+
+
+   .. py:attribute:: scoring
+
+
+   .. py:attribute:: max_samples
+
+
+   .. py:attribute:: color
+
+
    .. py:method:: __call__(project: Project, model: ModelEvaluation)
 
 
    .. py:method:: plot_permutation_feature_importance()
-
 
 

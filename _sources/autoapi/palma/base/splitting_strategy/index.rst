@@ -1,23 +1,19 @@
-:py:mod:`palma.base.splitting_strategy`
-=======================================
+palma.base.splitting_strategy
+=============================
 
 .. py:module:: palma.base.splitting_strategy
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
    palma.base.splitting_strategy.ValidationStrategy
 
 
-
 Functions
-~~~~~~~~~
+---------
 
 .. autoapisummary::
 
@@ -25,15 +21,14 @@ Functions
    palma.base.splitting_strategy._bool_to_index
 
 
+Module Contents
+---------------
 
 .. py:function:: _index_to_bool(array, length)
 
-
 .. py:function:: _bool_to_index(array)
 
-
 .. py:class:: ValidationStrategy(splitter: Union[sklearn.model_selection._split.BaseShuffleSplit, sklearn.model_selection._split.BaseCrossValidator, List[tuple], List[str]], **kwargs)
-
 
    
    Validation strategy for a machine learning project.
@@ -85,29 +80,13 @@ Functions
 
    ..
        !! processed by numpydoc !!
-   .. py:property:: test_index
-      :type: numpy.ndarray
+
+   .. py:attribute:: __groups
+      :value: None
 
 
-   .. py:property:: train_index
-      :type: numpy.ndarray
 
-
-   .. py:property:: indexes_val
-      :type: list
-
-
-   .. py:property:: indexes_train_test
-      :type: list
-
-
-   .. py:property:: id
-
-
-   .. py:property:: splitter
-
-
-   .. py:property:: groups
+   .. py:attribute:: __splitter
 
 
    .. py:method:: __call__(X: pandas.DataFrame, y: pandas.Series, X_test: pandas.DataFrame = None, y_test: pandas.Series = None, groups=None, **kwargs)
@@ -132,6 +111,7 @@ Functions
 
       ..
           !! processed by numpydoc !!
+
 
    .. py:method:: __correct_nested(X)
 
@@ -158,5 +138,34 @@ Functions
 
       ..
           !! processed by numpydoc !!
+
+
+   .. py:property:: test_index
+      :type: numpy.ndarray
+
+
+
+   .. py:property:: train_index
+      :type: numpy.ndarray
+
+
+
+   .. py:property:: indexes_val
+      :type: list
+
+
+
+   .. py:property:: indexes_train_test
+      :type: list
+
+
+
+   .. py:property:: id
+
+
+   .. py:property:: splitter
+
+
+   .. py:property:: groups
 
 

@@ -1,24 +1,11 @@
-:py:mod:`palma.utils.names`
-===========================
+palma.utils.names
+=================
 
 .. py:module:: palma.utils.names
 
 
-Module Contents
----------------
-
-
-Functions
-~~~~~~~~~
-
-.. autoapisummary::
-
-   palma.utils.names.get_random_name
-
-
-
 Attributes
-~~~~~~~~~~
+----------
 
 .. autoapisummary::
 
@@ -26,15 +13,24 @@ Attributes
    palma.utils.names.RIGHT_NAMES
 
 
+Functions
+---------
+
+.. autoapisummary::
+
+   palma.utils.names.get_random_name
+
+
+Module Contents
+---------------
+
 .. py:data:: LEFT_NAMES
    :value: ['admiring', 'adoring', 'affectionate', 'agitated', 'amazing', 'angry', 'awesome', 'beautiful',...
 
-   
 
 .. py:data:: RIGHT_NAMES
    :value: ['albattani', 'allen', 'almeida', 'antonelli', 'agnesi', 'archimedes', 'ardinghelli',...
 
-   
 
 .. py:function:: get_random_name() -> str
 

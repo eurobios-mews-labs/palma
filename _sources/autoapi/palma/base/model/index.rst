@@ -1,33 +1,38 @@
-:py:mod:`palma.base.model`
-==========================
+palma.base.model
+================
 
 .. py:module:: palma.base.model
 
 
-Module Contents
----------------
-
 Classes
-~~~~~~~
+-------
 
 .. autoapisummary::
 
    palma.base.model.ModelEvaluation
 
 
-
+Module Contents
+---------------
 
 .. py:class:: ModelEvaluation(estimator)
 
-
-   .. py:property:: id
-      :type: str
+   .. py:attribute:: __date
 
 
-   .. py:property:: components
+   .. py:attribute:: __model_id
 
 
-   .. py:property:: unfit_estimator
+   .. py:attribute:: __estimator
+
+
+   .. py:attribute:: __components
+
+
+   .. py:attribute:: estimator_name
+
+
+   .. py:attribute:: metrics
 
 
    .. py:method:: add(component, name=None)
@@ -41,5 +46,15 @@ Classes
 
    .. py:method:: __compute_predictions(project, indexes, estimators)
 
+
+   .. py:property:: id
+      :type: str
+
+
+
+   .. py:property:: components
+
+
+   .. py:property:: unfit_estimator
 
 

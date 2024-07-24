@@ -1,18 +1,18 @@
-:py:mod:`palma.utils`
-=====================
+palma.utils
+===========
 
 .. py:module:: palma.utils
 
 
 Submodules
 ----------
+
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
-   checker/index.rst
-   names/index.rst
-   plotting/index.rst
-   utils/index.rst
+   /autoapi/palma/utils/checker/index
+   /autoapi/palma/utils/names/index
+   /autoapi/palma/utils/plotting/index
+   /autoapi/palma/utils/utils/index
 
 

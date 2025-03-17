@@ -12,3 +12,4 @@
     pyaml>12
     llvmlite
     numba
+    deepchecks

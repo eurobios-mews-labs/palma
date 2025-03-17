@@ -2,7 +2,7 @@ name: Pytest
 permissions:
   contents: write
   pages: write
-  
+
 on:
   push:
     branches:
@@ -25,20 +25,29 @@ jobs:
         python-version: ["3.9"]
     steps:
     - uses: actions/checkout@v3
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
+
+    - name: Install without optional dependencies
       run: |
         python -m pip install --upgrade pip
+        pip install .
+
+    - name: Check that it loads
+      run: python -c 'import palma'
+
+    - name: Install with optional dependencies
+      run: |
         pip install .[test]
         pip install .[components]
 
     - name: Run notebook examples
       run: |
         jupyter execute examples/*.ipynb
-        
+
     - name: Analysing the code with pytest
       run: |
         coverage run -m pytest

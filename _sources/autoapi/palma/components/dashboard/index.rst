@@ -31,6 +31,8 @@ Module Contents
 
 
    .. py:attribute:: n_sample
+      :value: None
+
 
 
    .. py:method:: __call__(project: Project, model: Model) -> explainerdashboard.ExplainerDashboard
@@ -58,14 +60,14 @@ Module Contents
 
 
 
+
+
       .. rubric:: Examples
 
       >>> db = ExpDash(dashboard_config="path_to_my_config")
       >>> explainer_dashboard = db(project, model)
       >>> explainer_dashboard.run(
       >>>    port="8050", host="0.0.0.0", use_waitress=False)
-
-
 
       ..
           !! processed by numpydoc !!

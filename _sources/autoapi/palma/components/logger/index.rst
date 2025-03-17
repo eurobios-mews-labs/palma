@@ -149,17 +149,6 @@ Module Contents
        **\*\*kwargs** : dict
            Additional keyword arguments to pass to the base logger.
 
-
-
-
-
-
-
-
-
-
-
-
    :Attributes:
 
        **path_project** : str
@@ -179,13 +168,28 @@ Module Contents
    **log_params(parameters: dict, path: str) -> None**  Saves model parameters in JSON format at the specified path.  
    ===================================================  ==========
 
+
+
+
+
+
+
+
+
+
+
+
    ..
        !! processed by numpydoc !!
 
    .. py:attribute:: path_project
+      :value: 'Uninferable/unknown_project'
+
 
 
    .. py:attribute:: path_study
+      :value: 'Uninferable/unknown_project/unknown_run'
+
 
 
    .. py:method:: log_project(project: palma.base.project.Project) -> None
@@ -357,21 +361,6 @@ Module Contents
        **artifact_location** : str
            The place to save artifact on file system logger
 
-
-
-
-
-   :Raises:
-
-       ImportError: If mlflow is not installed.
-           ..
-
-
-
-
-
-
-
    :Attributes:
 
        **tmp_logger** : (FileSystemLogger)
@@ -388,6 +377,21 @@ Module Contents
                       **log_params(params: dict) -> None:**  Logs parameters to MLflow.  
                         **log_model(model, path) -> None:**  Logs the model to MLflow using the temporary logger.  
    ========================================================  ==========
+
+
+
+
+
+   :Raises:
+
+       ImportError: If mlflow is not installed.
+           ..
+
+
+
+
+
+
 
    ..
        !! processed by numpydoc !!

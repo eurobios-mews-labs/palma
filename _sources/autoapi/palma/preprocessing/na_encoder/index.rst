@@ -50,9 +50,13 @@ Module Contents
        !! processed by numpydoc !!
 
    .. py:attribute:: numerical_strategy
+      :value: 'mean'
+
 
 
    .. py:attribute:: categorical_strategy
+      :value: '<NULL>'
+
 
 
    .. py:attribute:: __Lcat
@@ -148,12 +152,12 @@ Module Contents
           **y_train** : pandas series of shape = (n_train, ), default = None
               The target for classification or regression tasks.
 
+
+
       :Returns:
 
           object
               self
-
-
 
 
 
@@ -183,12 +187,12 @@ Module Contents
           **y_train** : pandas.Series of shape = (n_train, ), default = None
               The target for classification or regression tasks.
 
+
+
       :Returns:
 
           pandas.Dataframe of shape = (n_train, n_features)
               The train dataset with no missing values.
-
-
 
 
 
@@ -215,12 +219,12 @@ Module Contents
           **df** : pandas.Dataframe of shape = (n, n_features)
               The dataset with numerical and categorical features.
 
+
+
       :Returns:
 
           pandas.Dataframe of shape = (n, n_features)
               The dataset with no missing values.
-
-
 
 
 

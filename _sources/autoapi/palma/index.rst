@@ -4,8 +4,8 @@ palma
 .. py:module:: palma
 
 
-Subpackages
------------
+Submodules
+----------
 
 .. toctree::
    :maxdepth: 1
@@ -45,6 +45,8 @@ Package Contents
 
 
    .. py:attribute:: __model_id
+      :value: ''
+
 
 
    .. py:attribute:: __estimator
@@ -99,17 +101,6 @@ Package Contents
            ..
 
 
-
-
-
-
-
-
-
-
-
-
-
    .. rubric:: Methods
 
 
@@ -118,6 +109,17 @@ Package Contents
    **- start(project: Project): look for best model**    
    ==================================================  ==========
 
+
+
+
+
+
+
+
+
+
+
+
    ..
        !! processed by numpydoc !!
 
@@ -125,6 +127,8 @@ Package Contents
 
 
    .. py:attribute:: __run_id
+      :value: ''
+
 
 
    .. py:attribute:: __parameters
@@ -152,17 +156,6 @@ Package Contents
 
        **problem (str): The description of the machine learning problem.**
            Accepted values: "classification" or "regression".
-
-
-
-
-
-
-
-
-
-
-
 
    :Attributes:
 
@@ -207,6 +200,17 @@ Package Contents
                                         **add(component: Component) -> None: Adds a component to the project.**    
    **start(X: pd.DataFrame, y: pd.Series, splitter, X_test=None, y_test=None, groups=None, **kwargs) -> None:**  Starts the project with the specified data and validation strategy.  
    ============================================================================================================  ==========
+
+
+
+
+
+
+
+
+
+
+
 
    ..
        !! processed by numpydoc !!

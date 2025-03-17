@@ -43,21 +43,6 @@ Module Contents
        **estimator_list** : list
            A list of individual estimators to be averaged.
 
-   :Returns:
-
-       numpy.ndarray
-           The averaged prediction or class probabilities.
-
-
-
-
-
-
-
-
-
-
-
    :Attributes:
 
        **estimator_list** : list
@@ -74,6 +59,21 @@ Module Contents
          **predict(*args, **kwargs)**  Compute the average prediction across all estimators.  
    **predict_proba(*args, **kwargs)**  Compute the average class probabilities across all estimators.  
    ==================================  ==========
+
+   :Returns:
+
+       numpy.ndarray
+           The averaged prediction or class probabilities.
+
+
+
+
+
+
+
+
+
+
 
    ..
        !! processed by numpydoc !!
@@ -101,6 +101,8 @@ Module Contents
        **estimator** : object
            The estimator object to be cloned.
 
+
+
    :Returns:
 
        object
@@ -127,8 +129,6 @@ Module Contents
    >>> original_estimator = LinearRegression()
    >>> cloned_estimator = _clone(original_estimator)
 
-
-
    ..
        !! processed by numpydoc !!
 
@@ -150,6 +150,8 @@ Module Contents
            If True, the output matrix will have columns for both train and test
            splits for each iteration. If False (default), the output matrix will
            have columns for each iteration with 1 for train and 2 for test.
+
+
 
    :Returns:
 
@@ -173,8 +175,6 @@ Module Contents
    ...                   'feature2': ['A', 'B', 'C', 'D', 'E']})
    >>> iter_cv = [(range(3), range(3, 5)), (range(2), range(2, 5))]
    >>> get_splitting_matrix(X, iter_cv)
-
-
 
    ..
        !! processed by numpydoc !!
@@ -223,12 +223,12 @@ Module Contents
        **need_build: bool**
            Expected value for :class:`~palma.Project` is_built         attribute
 
+
+
    :Returns:
 
        Callable
            ..
-
-
 
 
 

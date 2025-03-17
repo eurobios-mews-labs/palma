@@ -39,17 +39,6 @@ Module Contents
        **- splitter (Union[BaseShuffleSplit, BaseCrossValidator, List[tuple], List[str]]): The data splitting strategy.**
            ..
 
-
-
-
-
-
-
-
-
-
-
-
    :Attributes:
 
        **- test_index (np.ndarray): Index array for the test set.**
@@ -77,6 +66,17 @@ Module Contents
    ============================================================================================================================  ==========
    **- __call__(X: pd.DataFrame, y: pd.Series, X_test: pd.DataFrame = None, y_test: pd.Series = None, groups=None, **kwargs):**  Applies the validation strategy to the provided data.  
    ============================================================================================================================  ==========
+
+
+
+
+
+
+
+
+
+
+
 
    ..
        !! processed by numpydoc !!
@@ -117,27 +117,6 @@ Module Contents
 
 
    .. py:method:: __str__() -> str
-
-      
-      Return str(self).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      ..
-          !! processed by numpydoc !!
 
 
    .. py:property:: test_index

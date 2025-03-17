@@ -32,17 +32,6 @@ Module Contents
            ..
 
 
-
-
-
-
-
-
-
-
-
-
-
    .. rubric:: Methods
 
 
@@ -51,6 +40,17 @@ Module Contents
    **- start(project: Project): look for best model**    
    ==================================================  ==========
 
+
+
+
+
+
+
+
+
+
+
+
    ..
        !! processed by numpydoc !!
 
@@ -58,6 +58,8 @@ Module Contents
 
 
    .. py:attribute:: __run_id
+      :value: ''
+
 
 
    .. py:attribute:: __parameters

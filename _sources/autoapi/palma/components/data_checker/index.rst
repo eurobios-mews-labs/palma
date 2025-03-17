@@ -63,6 +63,8 @@ Module Contents
        !! processed by numpydoc !!
 
    .. py:attribute:: name
+      :value: 'Data Checker'
+
 
 
    .. py:attribute:: whole_dataset_checks_suite
@@ -72,6 +74,8 @@ Module Contents
 
 
    .. py:attribute:: raise_on_fail
+      :value: True
+
 
 
    .. py:method:: __call__(project: palma.base.project.Project) -> None
@@ -146,12 +150,12 @@ Module Contents
           **name: str**
               Name for the suite to returned
 
+
+
       :Returns:
 
           suite: :class:`deepchecks.Suite`
               instance of :class:`deepchecks.Suite`
-
-
 
 
 

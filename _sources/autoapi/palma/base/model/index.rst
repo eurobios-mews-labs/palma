@@ -21,6 +21,8 @@ Module Contents
 
 
    .. py:attribute:: __model_id
+      :value: ''
+
 
 
    .. py:attribute:: __estimator

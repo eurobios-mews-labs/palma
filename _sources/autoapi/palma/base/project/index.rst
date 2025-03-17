@@ -30,17 +30,6 @@ Module Contents
        **problem (str): The description of the machine learning problem.**
            Accepted values: "classification" or "regression".
 
-
-
-
-
-
-
-
-
-
-
-
    :Attributes:
 
        **base_index (List[int]): List of base indices for the project.**
@@ -84,6 +73,17 @@ Module Contents
                                         **add(component: Component) -> None: Adds a component to the project.**    
    **start(X: pd.DataFrame, y: pd.Series, splitter, X_test=None, y_test=None, groups=None, **kwargs) -> None:**  Starts the project with the specified data and validation strategy.  
    ============================================================================================================  ==========
+
+
+
+
+
+
+
+
+
+
+
 
    ..
        !! processed by numpydoc !!

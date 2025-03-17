@@ -31,9 +31,9 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -41,7 +41,7 @@
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=f281be69"></script>
@@ -54,7 +54,7 @@
     <link rel="next" title="palma.components.base" href="base/index.html" />
     <link rel="prev" title="palma.base.splitting_strategy" href="../base/splitting_strategy/index.html" />
     <script defer data-domain="eurobios-mews-labs.github.io/palma" src="https://plausible.io/js/script.js"></script>
-    <jinja2.runtime.BlockReference object at 0x7fa3ff7a6bc0>
+    <jinja2.runtime.BlockReference object at 0x7fefa06712e0>
 
   </head>
   
@@ -528,8 +528,7 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.components.Component.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.Component.__str__" title="Link to this definition">#</a></dt>
-<dd><p>Return str(self).</p>
-</dd></dl>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -577,12 +576,12 @@ Defaults to the system temporary directory.</p>
 </div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="palma.components.FileSystemLogger.path_project">
-<span class="sig-name descname"><span class="pre">path_project</span></span><a class="headerlink" href="#palma.components.FileSystemLogger.path_project" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">path_project</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Uninferable/unknown_project'</span></em><a class="headerlink" href="#palma.components.FileSystemLogger.path_project" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="palma.components.FileSystemLogger.path_study">
-<span class="sig-name descname"><span class="pre">path_study</span></span><a class="headerlink" href="#palma.components.FileSystemLogger.path_study" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">path_study</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Uninferable/unknown_project/unknown_run'</span></em><a class="headerlink" href="#palma.components.FileSystemLogger.path_study" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -676,13 +675,8 @@ it is created along with any necessary parent directories.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>ImportError: If mlflow is not installed.</dt><dd></dd>
-</dl>
-</dd>
-<dt class="field-odd">Attributes<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
 <dt><strong>tmp_logger</strong><span class="classifier">(FileSystemLogger)</span></dt><dd><p>Temporary logger for local logging before MLflow logging.</p>
 </dd>
 </dl>
@@ -709,6 +703,13 @@ it is created along with any necessary parent directories.</p>
 </tbody>
 </table>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ImportError: If mlflow is not installed.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="palma.components.MLFlowLogger.file_system_logger">
 <span class="sig-name descname"><span class="pre">file_system_logger</span></span><a class="headerlink" href="#palma.components.MLFlowLogger.file_system_logger" title="Link to this definition">#</a></dt>
@@ -760,7 +761,7 @@ it is created along with any necessary parent directories.</p>
 <dd><p>Bases: <a class="reference internal" href="../../../palma.components.html#palma.components.base.Component" title="palma.components.base.Component"><code class="xref py py-obj docutils literal notranslate"><span class="pre">palma.components.base.Component</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="palma.components.ExplainerDashboard.n_sample">
-<span class="sig-name descname"><span class="pre">n_sample</span></span><a class="headerlink" href="#palma.components.ExplainerDashboard.n_sample" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">n_sample</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#palma.components.ExplainerDashboard.n_sample" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1044,7 +1045,7 @@ is equal to <cite>value</cite>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="palma.components.ShapAnalysis.compute_interaction">
-<span class="sig-name descname"><span class="pre">compute_interaction</span></span><a class="headerlink" href="#palma.components.ShapAnalysis.compute_interaction" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">compute_interaction</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#palma.components.ShapAnalysis.compute_interaction" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1118,32 +1119,32 @@ If float, then draw max_samples * X.shape[0] samples.</p>
 </div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="palma.components.PermutationFeatureImportance.n_repeat">
-<span class="sig-name descname"><span class="pre">n_repeat</span></span><a class="headerlink" href="#palma.components.PermutationFeatureImportance.n_repeat" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">n_repeat</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#palma.components.PermutationFeatureImportance.n_repeat" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="palma.components.PermutationFeatureImportance.random_state">
-<span class="sig-name descname"><span class="pre">random_state</span></span><a class="headerlink" href="#palma.components.PermutationFeatureImportance.random_state" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">random_state</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">42</span></em><a class="headerlink" href="#palma.components.PermutationFeatureImportance.random_state" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="palma.components.PermutationFeatureImportance.n_job">
-<span class="sig-name descname"><span class="pre">n_job</span></span><a class="headerlink" href="#palma.components.PermutationFeatureImportance.n_job" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">n_job</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#palma.components.PermutationFeatureImportance.n_job" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="palma.components.PermutationFeatureImportance.scoring">
-<span class="sig-name descname"><span class="pre">scoring</span></span><a class="headerlink" href="#palma.components.PermutationFeatureImportance.scoring" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">scoring</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#palma.components.PermutationFeatureImportance.scoring" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="palma.components.PermutationFeatureImportance.max_samples">
-<span class="sig-name descname"><span class="pre">max_samples</span></span><a class="headerlink" href="#palma.components.PermutationFeatureImportance.max_samples" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">max_samples</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.7</span></em><a class="headerlink" href="#palma.components.PermutationFeatureImportance.max_samples" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="palma.components.PermutationFeatureImportance.color">
-<span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#palma.components.PermutationFeatureImportance.color" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">color</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'darkblue'</span></em><a class="headerlink" href="#palma.components.PermutationFeatureImportance.color" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1186,7 +1187,7 @@ train_test_leakage</p>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="palma.components.DeepCheck.name">
-<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#palma.components.DeepCheck.name" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Data</span> <span class="pre">Checker'</span></em><a class="headerlink" href="#palma.components.DeepCheck.name" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1201,7 +1202,7 @@ train_test_leakage</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="palma.components.DeepCheck.raise_on_fail">
-<span class="sig-name descname"><span class="pre">raise_on_fail</span></span><a class="headerlink" href="#palma.components.DeepCheck.raise_on_fail" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">raise_on_fail</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#palma.components.DeepCheck.raise_on_fail" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">

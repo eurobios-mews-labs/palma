@@ -47,27 +47,6 @@ Package Contents
 
    .. py:method:: __str__()
 
-      
-      Return str(self).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      ..
-          !! processed by numpydoc !!
-
 
 .. py:class:: FileSystemLogger(uri: str = tempfile.gettempdir(), **kwargs)
 
@@ -86,17 +65,6 @@ Package Contents
 
        **\*\*kwargs** : dict
            Additional keyword arguments to pass to the base logger.
-
-
-
-
-
-
-
-
-
-
-
 
    :Attributes:
 
@@ -117,13 +85,28 @@ Package Contents
    **log_params(parameters: dict, path: str) -> None**  Saves model parameters in JSON format at the specified path.  
    ===================================================  ==========
 
+
+
+
+
+
+
+
+
+
+
+
    ..
        !! processed by numpydoc !!
 
    .. py:attribute:: path_project
+      :value: 'Uninferable/unknown_project'
+
 
 
    .. py:attribute:: path_study
+      :value: 'Uninferable/unknown_project/unknown_run'
+
 
 
    .. py:method:: log_project(project: palma.base.project.Project) -> None
@@ -295,21 +278,6 @@ Package Contents
        **artifact_location** : str
            The place to save artifact on file system logger
 
-
-
-
-
-   :Raises:
-
-       ImportError: If mlflow is not installed.
-           ..
-
-
-
-
-
-
-
    :Attributes:
 
        **tmp_logger** : (FileSystemLogger)
@@ -326,6 +294,21 @@ Package Contents
                       **log_params(params: dict) -> None:**  Logs parameters to MLflow.  
                         **log_model(model, path) -> None:**  Logs the model to MLflow using the temporary logger.  
    ========================================================  ==========
+
+
+
+
+
+   :Raises:
+
+       ImportError: If mlflow is not installed.
+           ..
+
+
+
+
+
+
 
    ..
        !! processed by numpydoc !!
@@ -384,6 +367,8 @@ Package Contents
 
 
    .. py:attribute:: n_sample
+      :value: None
+
 
 
    .. py:method:: __call__(project: Project, model: Model) -> explainerdashboard.ExplainerDashboard
@@ -411,14 +396,14 @@ Package Contents
 
 
 
+
+
       .. rubric:: Examples
 
       >>> db = ExpDash(dashboard_config="path_to_my_config")
       >>> explainer_dashboard = db(project, model)
       >>> explainer_dashboard.run(
       >>>    port="8050", host="0.0.0.0", use_waitress=False)
-
-
 
       ..
           !! processed by numpydoc !!
@@ -508,17 +493,6 @@ Package Contents
            The type of analysis to perform. Possible values are
            "indexes_train_test" or "indexes_val".
 
-
-
-
-
-
-
-
-
-
-
-
    :Attributes:
 
        **_hidden_metrics** : dict
@@ -537,6 +511,17 @@ Package Contents
                                                **plot_prediction_versus_real**  Plot prediction versus real values  
                                                       **plot_errors_pairgrid**  Plot pair grid errors  
    ===========================================================================  ==========
+
+
+
+
+
+
+
+
+
+
+
 
    ..
        !! processed by numpydoc !!
@@ -588,12 +573,12 @@ Package Contents
           **in_percentage** : bool, optional
               Whether to return the confusion matrix in percentage, by default False
 
+
+
       :Returns:
 
           pandas.DataFrame
               The confusion matrix
-
-
 
 
 
@@ -651,12 +636,12 @@ Package Contents
           **kwargs:**
               Deprecated
 
+
+
       :Returns:
 
           
               ..
-
-
 
 
 
@@ -696,12 +681,12 @@ Package Contents
           **metric** : typing.Callable, optional
               The metric function to use for the threshold computation, by default None
 
+
+
       :Returns:
 
           float
               The computed threshold
-
-
 
 
 
@@ -728,12 +713,12 @@ Package Contents
           **plot_kwargs** : dict, optional
               Additional keyword arguments to pass to the scatter plot function
 
+
+
       :Returns:
 
           matplotlib.pyplot
               The threshold plot
-
-
 
 
 
@@ -787,6 +772,8 @@ Package Contents
 
 
    .. py:attribute:: compute_interaction
+      :value: False
+
 
 
    .. py:method:: __call__(project: Project, model: ModelEvaluation)
@@ -839,17 +826,6 @@ Package Contents
            The color for bar plot.
 
 
-
-
-
-
-
-
-
-
-
-
-
    .. rubric:: Methods
 
 
@@ -858,25 +834,48 @@ Package Contents
    **plot_permutation_feature_importance()**  Plotting the result of feature permutation ONLY on the TRAINING SET  
    =========================================  ==========
 
+
+
+
+
+
+
+
+
+
+
+
    ..
        !! processed by numpydoc !!
 
    .. py:attribute:: n_repeat
+      :value: 5
+
 
 
    .. py:attribute:: random_state
+      :value: 42
+
 
 
    .. py:attribute:: n_job
+      :value: 2
+
 
 
    .. py:attribute:: scoring
+      :value: None
+
 
 
    .. py:attribute:: max_samples
+      :value: 0.7
+
 
 
    .. py:attribute:: color
+      :value: 'darkblue'
+
 
 
    .. py:method:: __call__(project: Project, model: ModelEvaluation)
@@ -932,6 +931,8 @@ Package Contents
        !! processed by numpydoc !!
 
    .. py:attribute:: name
+      :value: 'Data Checker'
+
 
 
    .. py:attribute:: whole_dataset_checks_suite
@@ -941,6 +942,8 @@ Package Contents
 
 
    .. py:attribute:: raise_on_fail
+      :value: True
+
 
 
    .. py:method:: __call__(project: palma.base.project.Project) -> None
@@ -1015,12 +1018,12 @@ Package Contents
           **name: str**
               Name for the suite to returned
 
+
+
       :Returns:
 
           suite: :class:`deepchecks.Suite`
               instance of :class:`deepchecks.Suite`
-
-
 
 
 

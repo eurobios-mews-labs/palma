@@ -24,27 +24,6 @@ Module Contents
 
    .. py:method:: __str__()
 
-      
-      Return str(self).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      ..
-          !! processed by numpydoc !!
-
 
 .. py:class:: ProjectComponent
 

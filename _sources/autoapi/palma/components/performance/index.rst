@@ -82,12 +82,12 @@ Module Contents
 
 
 
+
+
       :Returns:
 
           **feature_importance** : pandas.DataFrame
               DataFrame containing the feature importance values for each estimator.
-
-
 
 
 
@@ -169,12 +169,12 @@ Module Contents
 
 
 
+
+
       :Returns:
 
           pd.DataFrame
               DataFrame containing the computed metrics for the training set.
-
-
 
 
 
@@ -197,12 +197,12 @@ Module Contents
 
 
 
+
+
       :Returns:
 
           pd.DataFrame
               DataFrame containing the computed metrics for the test set.
-
-
 
 
 
@@ -293,6 +293,8 @@ Module Contents
 
 
    .. py:attribute:: compute_interaction
+      :value: False
+
 
 
    .. py:method:: __call__(project: Project, model: ModelEvaluation)
@@ -354,12 +356,12 @@ Module Contents
           **in_percentage** : bool, optional
               Whether to return the confusion matrix in percentage, by default False
 
+
+
       :Returns:
 
           pandas.DataFrame
               The confusion matrix
-
-
 
 
 
@@ -417,12 +419,12 @@ Module Contents
           **kwargs:**
               Deprecated
 
+
+
       :Returns:
 
           
               ..
-
-
 
 
 
@@ -462,12 +464,12 @@ Module Contents
           **metric** : typing.Callable, optional
               The metric function to use for the threshold computation, by default None
 
+
+
       :Returns:
 
           float
               The computed threshold
-
-
 
 
 
@@ -494,12 +496,12 @@ Module Contents
           **plot_kwargs** : dict, optional
               Additional keyword arguments to pass to the scatter plot function
 
+
+
       :Returns:
 
           matplotlib.pyplot
               The threshold plot
-
-
 
 
 
@@ -533,17 +535,6 @@ Module Contents
            The type of analysis to perform. Possible values are
            "indexes_train_test" or "indexes_val".
 
-
-
-
-
-
-
-
-
-
-
-
    :Attributes:
 
        **_hidden_metrics** : dict
@@ -562,6 +553,17 @@ Module Contents
                                                **plot_prediction_versus_real**  Plot prediction versus real values  
                                                       **plot_errors_pairgrid**  Plot pair grid errors  
    ===========================================================================  ==========
+
+
+
+
+
+
+
+
+
+
+
 
    ..
        !! processed by numpydoc !!
@@ -604,17 +606,6 @@ Module Contents
            The color for bar plot.
 
 
-
-
-
-
-
-
-
-
-
-
-
    .. rubric:: Methods
 
 
@@ -623,25 +614,48 @@ Module Contents
    **plot_permutation_feature_importance()**  Plotting the result of feature permutation ONLY on the TRAINING SET  
    =========================================  ==========
 
+
+
+
+
+
+
+
+
+
+
+
    ..
        !! processed by numpydoc !!
 
    .. py:attribute:: n_repeat
+      :value: 5
+
 
 
    .. py:attribute:: random_state
+      :value: 42
+
 
 
    .. py:attribute:: n_job
+      :value: 2
+
 
 
    .. py:attribute:: scoring
+      :value: None
+
 
 
    .. py:attribute:: max_samples
+      :value: 0.7
+
 
 
    .. py:attribute:: color
+      :value: 'darkblue'
+
 
 
    .. py:method:: __call__(project: Project, model: ModelEvaluation)

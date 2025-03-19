@@ -2,7 +2,8 @@
    sphinx-quickstart on Thu Jan  4 17:25:24 2024.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
-.. image:: ../../.static/logo.png
+
+.. image:: https://raw.githubusercontent.com/eurobios-mews-labs/palma/main/.static/logo.png
    :width: 200
 
 \
@@ -114,7 +115,7 @@ Eurobios Mews Labs
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: Basic components
+   :caption: Basic Usage
 
    project
    model.selector

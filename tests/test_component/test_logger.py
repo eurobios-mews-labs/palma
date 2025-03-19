@@ -148,4 +148,3 @@ def test_artifact_logging():
 
 
 
-

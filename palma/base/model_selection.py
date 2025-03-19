@@ -19,6 +19,24 @@ import logging
 
 
 class ModelSelector:
+    """
+    Wrapper to optimizers selecting the best model for a Project.
+
+    The optimization can be launched with the ``start`` method.
+    Once the optimization is done, the best model can be accessed as the ``best_model_`` attribute.
+
+    Parameters
+    ----------
+    - engine (str): Currently accepted values are "FlamlOptimizer" or
+      "AutoSklearnOptimizer" (the latter is deprecatted).
+    - engine_parameters (dict): parameters passed to the engine.
+
+    Methods
+    -------
+    - start(project: Project): look for best model
+
+
+    """
 
     def __init__(
             self,

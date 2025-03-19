@@ -8,13 +8,61 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import matplotlib
-import pytest
-from sklearn import metrics
 
-from palma.components import performance
+import os
+import tempfile
+
+import matplotlib
+import numpy as np
+import pandas as pd
+import pytest
+from sklearn import metrics, model_selection
+from sklearn.ensemble import RandomForestClassifier
+
+from palma import ModelEvaluation, Project
+from palma import set_logger
+from palma.components import performance, FileSystemLogger
 
 matplotlib.use("agg")
+
+
+@pytest.fixture(scope='module')
+def get_scoring_analyser(classification_data):
+    set_logger(FileSystemLogger(tempfile.gettempdir() + "/logger"))
+
+    X, y = classification_data
+    X = pd.DataFrame(X)
+    y = pd.Series(y)
+    project = Project(problem="classification",
+                      project_name=str(np.random.uniform()))
+
+    project.start(
+        X, y,
+        splitter=model_selection.ShuffleSplit(n_splits=4, random_state=42))
+    estimator = RandomForestClassifier()
+
+    learn = ModelEvaluation(estimator)
+    learn.fit(project)
+
+    perf = performance.ScoringAnalysis(on="indexes_val")
+    perf(project, learn)
+
+    perf.compute_metrics(metric={
+        metrics.roc_auc_score.__name__: metrics.roc_auc_score,
+        metrics.roc_curve.__name__: metrics.roc_curve
+    })
+    return perf
+
+
+@pytest.fixture(scope='module')
+def get_shap_analyser(learning_data):
+    project, model, X, y = learning_data
+    perf = performance.ShapAnalysis(on="indexes_val", n_shap=100,
+                                    compute_interaction=True)
+
+    perf(project, model)
+
+    return perf
 
 
 def test_classification_perf(get_scoring_analyser):
@@ -84,7 +132,6 @@ def test_performance_get_metric_dataframe(get_regression_analyser):
     })
     assert len(get_regression_analyser.get_test_metrics().columns) >= len(
         get_regression_analyser.metrics.keys())
-    print(get_regression_analyser.get_train_metrics())
     assert get_regression_analyser.get_train_metrics()["r2_score"].iloc[0] < 0.5
     get_regression_analyser.plot_errors_pairgrid()
 
@@ -100,3 +147,39 @@ def test_compute_metrics(get_regression_analyser):
               'd2_tweedie_score', 'd2_pinball_score',
               'd2_absolute_error_score']:
         assert v in get_regression_analyser.metrics.keys()
+
+
+
+def test_metric_computation(learning_data_regression):
+    project, model, X, y = learning_data_regression
+    perf = performance.RegressionAnalysis(
+        on="indexes_train_test")
+    perf(project, model)
+    perf.compute_metrics(metric={
+        metrics.r2_score.__name__: metrics.r2_score,
+    })
+    y_test = project.y.iloc[project.validation_strategy.test_index]
+    x_test = project.X.iloc[project.validation_strategy.test_index]
+
+    ret = metrics.r2_score(
+        y_test,
+        model.predictions_[0]["test"]
+    )
+    assert abs(perf.metrics["r2_score"][0]["test"] - ret) < 1e-8
+    y_pred = model.all_estimators_[0].predict(x_test)
+
+    ret2 = metrics.r2_score(
+        y_test,
+        y_pred
+    )
+    assert abs(perf.metrics["r2_score"][0]["test"] - ret2) < 1e-8
+    assert all(y_pred == model.predictions_[0]["test"])
+
+def test_permutation_feature_importance(learning_data):
+    res_dir = tempfile.gettempdir() + "/logger"
+    set_logger(FileSystemLogger(res_dir))
+    project, model, X, y = learning_data
+    perf = performance.PermutationFeatureImportance(scoring='roc_auc')
+    perf(project, model)
+    print(f"{os.listdir(res_dir) = }")
+

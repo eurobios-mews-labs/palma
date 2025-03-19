@@ -26,7 +26,7 @@ def _bool_to_index(array):
     return np.where(array)[0]
 
 
-class ValidationStrategy(object):
+class ValidationStrategy:
     """
     Validation strategy for a machine learning project.
 
@@ -170,4 +170,6 @@ class ValidationStrategy(object):
 
     @property
     def groups(self):
-        return self.__groups
+        if self.__groups is None:
+            return None
+        return np.array(self.__groups)

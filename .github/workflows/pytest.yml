@@ -1,6 +1,7 @@
 name: Pytest
 permissions:
   contents: write
+  pages: write
   
 on:
   push:

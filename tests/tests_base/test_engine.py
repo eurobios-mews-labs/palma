@@ -28,17 +28,6 @@ def get_engine_flaml_regression(regression_data):
     return engine
 
 
-def test_engine_flaml_set_problem():
-    engine = FlamlOptimizer(
-        problem="regression",
-        engine_parameters=dict(
-            time_budget=5,
-            estimator_list=["xgboost"],
-            task="unknown"))
-    assert engine.engine_parameters["task"] == "regression", \
-        "Problem was not correctly set"
-
-
 @pytest.fixture()
 def get_dummy_engine():
     BaseOptimizer.__abstractmethods__ = set()

@@ -29,9 +29,9 @@ class BaseOptimizer(metaclass=ABCMeta):
         self.__run_id = get_hash(date=self.__date)
 
     @abstractmethod
-    def __optimize(self, X: pd.DataFrame, y: pd.Series,
-                   splitter: "ValidationStrategy" = None
-                   ) -> None:
+    def optimize(self, X: pd.DataFrame, y: pd.Series,
+                 splitter: "ValidationStrategy" = None
+                 ) -> None:
         ...
 
     @property
@@ -86,9 +86,9 @@ class FlamlOptimizer(BaseOptimizer):
     def __init__(self, engine_parameters: dict) -> None:
         super().__init__(engine_parameters)
 
-    def __optimize(self, X: pd.DataFrame, y: pd.DataFrame,
-                   splitter: ValidationStrategy = None
-                   ) -> None:
+    def optimize(self, X: pd.DataFrame, y: pd.DataFrame,
+                 splitter: ValidationStrategy = None
+                 ) -> None:
         split_type = None if splitter is None else splitter.splitter
         groups = None if splitter is None else splitter.groups
         groups = groups if groups is None else groups[splitter.train_index]

@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 import pytest
 from sklearn.datasets import make_classification
-from sklearn.model_selection import ShuffleSplit, GroupKFold, StratifiedShuffleSplit
+from sklearn.model_selection import ShuffleSplit, GroupKFold, StratifiedShuffleSplit, StratifiedGroupKFold
 
 from palma import Project
 from palma.base.splitting_strategy import ValidationStrategy

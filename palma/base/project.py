@@ -11,12 +11,10 @@
 
 from datetime import datetime
 from hashlib import blake2b
-from typing import List
 
 import pandas as pd
 
 from palma.base.splitting_strategy import ValidationStrategy
-from palma.utils.names import get_random_name
 from palma.utils.utils import check_started
 
 

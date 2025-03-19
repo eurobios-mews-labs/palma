@@ -79,6 +79,9 @@ class ValidationStrategy(object):
                     100000
                 ))
 
+        self._train_index = []
+        self._test_index = []
+
     def __call__(
             self,
             X: pd.DataFrame,
@@ -139,9 +142,7 @@ class ValidationStrategy(object):
         return ret
 
     def __str__(self) -> str:
-        splitting_strategies = 'train/test split with args: {}' \
-            .format(self._splitter_args)
-        return splitting_strategies
+        return f'train/test split with args: {self._splitter_args}'
 
     @property
     def test_index(self) -> np.ndarray:

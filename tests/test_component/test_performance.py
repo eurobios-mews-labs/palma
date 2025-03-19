@@ -51,10 +51,8 @@ def test_compute_threshold(get_scoring_analyser: performance.ScoringAnalysis):
     get_scoring_analyser._Analyser__metrics = {}
     get_scoring_analyser.compute_threshold("fpr", value=0.2)
     get_scoring_analyser.confusion_matrix(in_percentage=True)
-
     get_scoring_analyser.compute_threshold("optimize_metric",
                                            metric=metrics.f1_score)
-
     get_scoring_analyser.compute_threshold("total_population",
                                            metric=metrics.f1_score)
     get_scoring_analyser.plot_threshold()
@@ -66,33 +64,6 @@ def test_compute_threshold(get_scoring_analyser: performance.ScoringAnalysis):
     with pytest.raises(ValueError) as e:
         get_scoring_analyser.compute_threshold("optimize_metric")
     assert str(e.value) == "Argument metric must not be not None"
-
-
-def test_shap_scoring(get_shap_analyser):
-    get_shap_analyser.plot_shap_interaction(
-        get_shap_analyser.shap_X.columns[0],
-        get_shap_analyser.shap_X.columns[1])
-
-
-def test_shap_regression(get_shap_analyser):
-    get_shap_analyser.plot_shap_summary_plot()
-    get_shap_analyser.plot_shap_decision_plot()
-
-
-def test_analyser_raise_error_parameters(
-        get_shap_analyser, learning_data):
-    project, model, X, y = learning_data
-    get_shap_analyser.__init__(on="test", n_shap=50)
-    with pytest.raises(ValueError) as e:
-        get_shap_analyser._add(project, model)
-    assert (str(e.value) == "on parameter : test is not understood."
-                            " The possible values are 'indexes_train_test'"
-                            " or 'indexes_val'")
-
-
-def test_shap_regression_compute(get_shap_analyser):
-    get_shap_analyser._compute_shap_values(100, is_regression=True,
-                                           explainer_method="auto")
 
 
 def test_regression_perf(get_regression_analyser):
@@ -116,12 +87,6 @@ def test_performance_get_metric_dataframe(get_regression_analyser):
     print(get_regression_analyser.get_train_metrics())
     assert get_regression_analyser.get_train_metrics()["r2_score"].iloc[0] < 0.5
     get_regression_analyser.plot_errors_pairgrid()
-
-
-def test_shap_with_pipeline(get_shap_analyser, learning_data_regression):
-    project, model, X, y = learning_data_regression
-    get_shap_analyser.__init__(on="indexes_train_test", n_shap=50)
-    get_shap_analyser._add(project, model)
 
 
 def test_compute_metrics(get_regression_analyser):

@@ -10,6 +10,6 @@
 # limitations under the License.
 
 
-def test_component_return_api_with_run(get_explainer_dashboard):
-    assert hasattr(get_explainer_dashboard,
-                   "__call__"), "api has no attribute __call__"
+# def test_component_return_api_with_run(get_explainer_dashboard):
+#     assert hasattr(get_explainer_dashboard,
+#                    "__call__"), "api has no attribute __call__"

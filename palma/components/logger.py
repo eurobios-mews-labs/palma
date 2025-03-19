@@ -126,8 +126,9 @@ class FileSystemLogger(Logger):
              Additional keyword arguments to pass to the base logger.
         """
         super().__init__(uri, **kwargs)
-        self.path_project = f"{self.uri}/unknown_project"
-        self.path_study = f"{self.path_project}/unknown_run"
+        self.path_project = f"{self.uri}/no_project"
+        self.path_study = f"{self.path_project}/no_run"
+        self.__create_directories()
 
     def log_project(self, project: 'Project') -> None:
         """
@@ -314,7 +315,6 @@ class MLFlowLogger(Logger):
 
     def log_artifact(self, artifact: dict, path) -> None:
         self.file_system_logger.log_artifact(artifact, path)
-
         mlflow.log_artifacts(f"{self.file_system_logger.path_study}")
 
     def log_params(self, params: dict) -> None:

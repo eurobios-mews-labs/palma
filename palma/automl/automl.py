@@ -95,7 +95,8 @@ class AutoMl:
         self.save_plt_backend = matplotlib.get_backend()
         matplotlib.use("agg")
         self.project = Project(project_name, problem)
-        [self.project.add(c) for c in __default_project_component__]
+        for c in __default_project_component__:
+            self.project.add(c)
         self.project.start(X=X, y=y, splitter=splitter, X_test=X_test,
                            y_test=y_test,
                            groups=groups)

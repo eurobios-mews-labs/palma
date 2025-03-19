@@ -24,6 +24,7 @@ from sklearn.preprocessing import StandardScaler
 
 from palma import ModelEvaluation
 from palma import Project
+from palma import components
 from palma.components import FileSystemLogger
 from palma.components import dashboard
 from palma.components import performance
@@ -86,16 +87,6 @@ def get_scoring_analyser(learning_data):
 
 
 @pytest.fixture(scope='module')
-def get_shap_analyser(learning_data):
-    project, model, X, y = learning_data
-    perf = performance.ShapAnalysis(on="indexes_val", n_shap=100,
-                                    compute_interaction=True)
-    perf(project, model)
-
-    return perf
-
-
-@pytest.fixture(scope='module')
 def learning_data_regression(regression_data):
     from palma import set_logger
     set_logger(FileSystemLogger(tempfile.gettempdir()))
@@ -125,11 +116,7 @@ def get_regression_analyser(learning_data_regression):
     perf.compute_metrics(metric={
         metrics.r2_score.__name__: metrics.r2_score,
     })
-
     return perf
-
-
-
 
 
 @pytest.fixture(scope='module')

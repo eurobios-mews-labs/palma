@@ -1,0 +1,7 @@
+pylint
+coverage
+pytest
+pytest-cov
+jupyter
+notebook
+uci_dataset

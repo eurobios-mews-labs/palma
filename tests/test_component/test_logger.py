@@ -13,6 +13,7 @@ import os
 import tempfile
 
 import matplotlib.pyplot as plt
+import mlflow
 import pandas as pd
 import pytest
 from sklearn.linear_model import LinearRegression
@@ -27,6 +28,16 @@ from palma import logger, set_logger
 from palma.components import FileSystemLogger, ScoringAnalysis
 from palma.components import MLFlowLogger
 from palma.components.logger import DummyLogger
+
+def test_artifact_logging_mlflow():
+    fig = plt.figure()
+    set_logger(MLFlowLogger(uri="mlflow_mlrun"))
+
+    assert (logger.logger.uri == "mlflow_mlrun")
+    logger.logger.log_artifact('a', "text")
+    logger.logger.log_metrics({'a': 1}, "metric")
+    logger.logger.log_artifact(fig, "figure")
+    mlflow.end_run()
 
 
 def test_dummy_logger(classification_data):
@@ -92,8 +103,7 @@ def test_log_model(build_classification_project):
     ms.start(build_classification_project)
 
 
-@pytest.fixture()
-def get_mlflow_logger(classification_data):
+def test_mlflow_logger(classification_data):
     from palma import set_logger, logger
 
     set_logger(MLFlowLogger(uri="logger/mlflow"))
@@ -111,11 +121,7 @@ def get_mlflow_logger(classification_data):
     ms = ModelSelector(engine="FlamlOptimizer",
                        engine_parameters=dict(time_budget=3))
     ms.start(project)
-    return logger
-
-
-def test_is_logged_project_mlflow(get_mlflow_logger):
-    get_mlflow_logger.logger.log_metrics({"a": 1})
+    logger.logger.log_metrics({'a': 1}, "metric")
 
 
 def test_changing_logger():
@@ -131,19 +137,15 @@ def test_changing_logger():
 
 
 def test_artifact_logging():
-    set_logger(FileSystemLogger(uri="/tmp/mlflow"))
+
+    uri = ".mlruns"
+    set_logger(FileSystemLogger(uri=uri))
 
     fig = plt.figure()
     logger.logger.log_artifact('a', "text")
     logger.logger.log_metrics({'a': 1}, "metric")
     logger.logger.log_artifact(fig, "figure")
 
-    set_logger(MLFlowLogger(uri="/tmp/mlflow/"))
 
-    assert (logger.logger.uri == "/tmp/mlflow/")
-
-    logger.logger.log_artifact('a', "text")
-    logger.logger.log_metrics({'a': 1}, "metric")
-    logger.logger.log_artifact(fig, "figure")
 
 

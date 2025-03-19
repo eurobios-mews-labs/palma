@@ -4,10 +4,11 @@ from palma.automl.automl import AutoMl
 
 
 def test_automl_classification(classification_data):
+    x, y = classification_data
     automl = AutoMl(
         "my-project",
         'classification',
-        *classification_data,
+        x, y,
         ShuffleSplit(),
     ).run("FlamlOptimizer", {"time_budget": 5})
 
@@ -16,10 +17,11 @@ def test_automl_classification(classification_data):
 
 
 def test_automl_regression(regression_data):
+    x, y = regression_data
     automl = AutoMl(
         "my-project",
         'regression',
-        *regression_data,
+        x, y,
         ShuffleSplit(),
     ).run("FlamlOptimizer", {"time_budget": 5})
 

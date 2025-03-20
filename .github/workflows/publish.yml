@@ -27,7 +27,7 @@ jobs:
     - name: Store the distribution packages
       uses: actions/upload-artifact@v3
       with:
-        name: python-package-distributions
+        name: my-artifact
         path: dist/
   
   publish-to-pypi:
@@ -46,7 +46,7 @@ jobs:
     - name: Download all the dists
       uses: actions/download-artifact@v3
       with:
-        name: python-package-distributions
         path: dist/
+        name: my-artifact
     - name: Publish distribution 📦 to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1

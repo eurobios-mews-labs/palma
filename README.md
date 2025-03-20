@@ -8,7 +8,7 @@
 [![PyPI version](https://badge.fury.io/py/palma.svg)](https://badge.fury.io/py/palma)
 [![License](https://img.shields.io/badge/license-apache_2.0-blue.svg)]( https://github.com/eurobios-mews-labs/palma/blob/master/LICENSE)
 ![code coverage](https://raw.githubusercontent.com/eurobios-mews-labs/palma/coverage-badge/coverage.svg?raw=true)
-
+[![Publish to PyPI 📦](https://github.com/eurobios-mews-labs/palma/actions/workflows/publish.yml/badge.svg)](https://github.com/eurobios-mews-labs/palma/actions/workflows/publish.yml)
 
 This library aims at providing tools for an automatic machine learning approach.
 As many tools already exist to establish one or the other component of an AutoML

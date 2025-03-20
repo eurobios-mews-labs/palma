@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "palma"
-version = "2025.1.1"
+version = "2025.1.4"
 description = ""
 authors = [{ name = 'Vincent Laurent', email = 'vincent.laurent@mews-labs.com' }]
 readme = "README.md"
@@ -13,7 +13,6 @@ requires-python = '>=3.9'
 
 [tool.setuptools.packages.find]
 include = ["palma*"]
-
 
 [tool.setuptools.dynamic]
 dependencies = { file = ["requirements.txt"] }

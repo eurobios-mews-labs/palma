@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <script defer data-domain="eurobios-mews-labs.github.io/palma" src="https://plausible.io/js/script.js"></script>
-    <jinja2.runtime.BlockReference object at 0x7fedd0c5a750>
+    <jinja2.runtime.BlockReference object at 0x7fed6d99dee0>
 
   </head>
   
@@ -360,7 +360,13 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#palma-utils-checker-module">palma.utils.checker module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-palma.utils.checker">palma.utils.checker module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.utils.checker.ProjectPlanChecker"><code class="docutils literal notranslate"><span class="pre">ProjectPlanChecker</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.utils.checker.ProjectPlanChecker.run_checks"><code class="docutils literal notranslate"><span class="pre">ProjectPlanChecker.run_checks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-palma.utils.names">palma.utils.names module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.utils.names.get_random_name"><code class="docutils literal notranslate"><span class="pre">get_random_name()</span></code></a></li>
 </ul>
@@ -405,8 +411,56 @@ document.write(`
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 </section>
-<section id="palma-utils-checker-module">
-<h2>palma.utils.checker module<a class="headerlink" href="#palma-utils-checker-module" title="Link to this heading">#</a></h2>
+<section id="module-palma.utils.checker">
+<span id="palma-utils-checker-module"></span><h2>palma.utils.checker module<a class="headerlink" href="#module-palma.utils.checker" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="palma.utils.checker.ProjectPlanChecker">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.utils.checker.</span></span><span class="sig-name descname"><span class="pre">ProjectPlanChecker</span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ProjectPlanChecker is an object that checks the project plan.</p>
+<p>At the <code class="xref py py-meth docutils literal notranslate"><span class="pre">build()</span></code> moment, this object     run several checks in order to see if the project plan is well designed.</p>
+<dl class="simple">
+<dt>Here is an overview of the checks performed by the object:</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="autoapi/palma/utils/checker/index.html#palma.utils.checker.ProjectPlanChecker._check_arrays" title="palma.utils.checker.ProjectPlanChecker._check_arrays"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_check_arrays()</span></code></a>        : see whether X and y attribute are compliant with         sklearn standards.</p></li>
+<li><p><a class="reference internal" href="autoapi/palma/utils/checker/index.html#palma.utils.checker.ProjectPlanChecker._check_project_problem" title="palma.utils.checker.ProjectPlanChecker._check_project_problem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_check_project_problem()</span></code></a>: see if the problem type is correctly         informed by the user.</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">_check_problem_metrics()</span></code>: see if the known metrics are consistent with         the project problem</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#palma.utils.checker.ProjectPlanChecker.run_checks" title="palma.utils.checker.ProjectPlanChecker.run_checks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_checks</span></code></a>(project)</p></td>
+<td><p>Perform some tests on the project plan</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.utils.checker.ProjectPlanChecker.run_checks">
+<span class="sig-name descname"><span class="pre">run_checks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">Project</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.utils.checker.ProjectPlanChecker.run_checks" title="Link to this definition">#</a></dt>
+<dd><p>Perform some tests on the project plan</p>
+<p>Several checks are performed in order to check if the
+project plan is consistent:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>checks the project problem</p></li>
+<li><p>checks the metrics provided by the user</p></li>
+<li><p>checks the data provided by the user (scikit learn wrapper)</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>project</strong><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></span></dt><dd><p>an Project instance</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="module-palma.utils.names">
 <span id="palma-utils-names-module"></span><h2>palma.utils.names module<a class="headerlink" href="#module-palma.utils.names" title="Link to this heading">#</a></h2>
@@ -516,14 +570,14 @@ document.write(`
 <dl class="py function">
 <dt class="sig sig-object py" id="palma.utils.utils.check_started">
 <span class="sig-prename descclassname"><span class="pre">palma.utils.utils.</span></span><span class="sig-name descname"><span class="pre">check_started</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">need_build</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="headerlink" href="#palma.utils.utils.check_started" title="Link to this definition">#</a></dt>
-<dd><p>check_built is a decorator used for methods that must be called on     built or unbuilt <a class="reference internal" href="autoapi/palma/index.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a>.
-If the <a class="reference internal" href="autoapi/palma/index.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> is_built attribute has     not the correct value, an AttributeError is raised with the message passed     as argument.</p>
+<dd><p>check_built is a decorator used for methods that must be called on     built or unbuilt <a class="reference internal" href="palma.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a>.
+If the <a class="reference internal" href="palma.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> is_built attribute has     not the correct value, an AttributeError is raised with the message passed     as argument.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>message: str</strong></dt><dd><p>Error message</p>
 </dd>
-<dt><strong>need_build: bool</strong></dt><dd><p>Expected value for <a class="reference internal" href="autoapi/palma/index.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> is_built         attribute</p>
+<dt><strong>need_build: bool</strong></dt><dd><p>Expected value for <a class="reference internal" href="palma.html#palma.Project" title="palma.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> is_built         attribute</p>
 </dd>
 </dl>
 </dd>
@@ -625,7 +679,13 @@ iteration. Rows represent data points, and columns represent iterations.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#palma-utils-checker-module">palma.utils.checker module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-palma.utils.checker">palma.utils.checker module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.utils.checker.ProjectPlanChecker"><code class="docutils literal notranslate"><span class="pre">ProjectPlanChecker</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.utils.checker.ProjectPlanChecker.run_checks"><code class="docutils literal notranslate"><span class="pre">ProjectPlanChecker.run_checks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-palma.utils.names">palma.utils.names module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.utils.names.get_random_name"><code class="docutils literal notranslate"><span class="pre">get_random_name()</span></code></a></li>
 </ul>

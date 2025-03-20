@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <script defer data-domain="eurobios-mews-labs.github.io/palma" src="https://plausible.io/js/script.js"></script>
-    <jinja2.runtime.BlockReference object at 0x7fedd0686450>
+    <jinja2.runtime.BlockReference object at 0x7fed6c803770>
 
   </head>
   
@@ -360,7 +360,38 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-palma">Module contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelEvaluation"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelEvaluation.add"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.add()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelEvaluation.components"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.components</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelEvaluation.fit"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.fit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelEvaluation.id"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelEvaluation.unfit_estimator"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.unfit_estimator</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelSelector"><code class="docutils literal notranslate"><span class="pre">ModelSelector</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelSelector.run_id"><code class="docutils literal notranslate"><span class="pre">ModelSelector.run_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelSelector.start"><code class="docutils literal notranslate"><span class="pre">ModelSelector.start()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project"><code class="docutils literal notranslate"><span class="pre">Project</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.X"><code class="docutils literal notranslate"><span class="pre">Project.X</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.add"><code class="docutils literal notranslate"><span class="pre">Project.add()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.components"><code class="docutils literal notranslate"><span class="pre">Project.components</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.date"><code class="docutils literal notranslate"><span class="pre">Project.date</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.is_started"><code class="docutils literal notranslate"><span class="pre">Project.is_started</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.problem"><code class="docutils literal notranslate"><span class="pre">Project.problem</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.project_id"><code class="docutils literal notranslate"><span class="pre">Project.project_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.project_name"><code class="docutils literal notranslate"><span class="pre">Project.project_name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.start"><code class="docutils literal notranslate"><span class="pre">Project.start()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.study_name"><code class="docutils literal notranslate"><span class="pre">Project.study_name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.validation_strategy"><code class="docutils literal notranslate"><span class="pre">Project.validation_strategy</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.y"><code class="docutils literal notranslate"><span class="pre">Project.y</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.set_logger"><code class="docutils literal notranslate"><span class="pre">set_logger()</span></code></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -463,7 +494,14 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.base.ProjectComponent"><code class="docutils literal notranslate"><span class="pre">ProjectComponent</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="palma.components.html#palma-components-checker-module">palma.components.checker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="palma.components.html#module-palma.components.checker">palma.components.checker module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.checker.ValidationStrategyChecker"><code class="docutils literal notranslate"><span class="pre">ValidationStrategyChecker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.checker.ValidationStrategyChecker.check_no_leakage_in_test"><code class="docutils literal notranslate"><span class="pre">ValidationStrategyChecker.check_no_leakage_in_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.checker.ValidationStrategyChecker.check_no_leakage_in_validation"><code class="docutils literal notranslate"><span class="pre">ValidationStrategyChecker.check_no_leakage_in_validation()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="palma.components.html#module-palma.components.dashboard">palma.components.dashboard module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.dashboard.ExplainerDashboard"><code class="docutils literal notranslate"><span class="pre">ExplainerDashboard</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.dashboard.ExplainerDashboard.update_config"><code class="docutils literal notranslate"><span class="pre">ExplainerDashboard.update_config()</span></code></a></li>
@@ -471,7 +509,15 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="palma.components.html#palma-components-data-checker-module">palma.components.data_checker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="palma.components.html#module-palma.components.data_checker">palma.components.data_checker module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.data_checker.DeepCheck"><code class="docutils literal notranslate"><span class="pre">DeepCheck</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.data_checker.Leakage"><code class="docutils literal notranslate"><span class="pre">Leakage</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.data_checker.Leakage.cross_validation_leakage"><code class="docutils literal notranslate"><span class="pre">Leakage.cross_validation_leakage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.data_checker.Leakage.metrics"><code class="docutils literal notranslate"><span class="pre">Leakage.metrics</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="palma.components.html#module-palma.components.data_profiler">palma.components.data_profiler module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.data_profiler.ProfilerYData"><code class="docutils literal notranslate"><span class="pre">ProfilerYData</span></code></a></li>
 </ul>
@@ -539,19 +585,105 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="palma.components.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="palma.components.html#module-palma.components">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.Component"><code class="docutils literal notranslate"><span class="pre">Component</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.DeepCheck"><code class="docutils literal notranslate"><span class="pre">DeepCheck</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.ExplainerDashboard"><code class="docutils literal notranslate"><span class="pre">ExplainerDashboard</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.ExplainerDashboard.update_config"><code class="docutils literal notranslate"><span class="pre">ExplainerDashboard.update_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.FileSystemLogger"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.FileSystemLogger.log_artifact"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger.log_artifact()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.FileSystemLogger.log_metrics"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger.log_metrics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.FileSystemLogger.log_params"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger.log_params()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.FileSystemLogger.log_project"><code class="docutils literal notranslate"><span class="pre">FileSystemLogger.log_project()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.Leakage"><code class="docutils literal notranslate"><span class="pre">Leakage</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.Leakage.cross_validation_leakage"><code class="docutils literal notranslate"><span class="pre">Leakage.cross_validation_leakage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.Leakage.metrics"><code class="docutils literal notranslate"><span class="pre">Leakage.metrics</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.MLFlowLogger"><code class="docutils literal notranslate"><span class="pre">MLFlowLogger</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.MLFlowLogger.log_artifact"><code class="docutils literal notranslate"><span class="pre">MLFlowLogger.log_artifact()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.MLFlowLogger.log_metrics"><code class="docutils literal notranslate"><span class="pre">MLFlowLogger.log_metrics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.MLFlowLogger.log_params"><code class="docutils literal notranslate"><span class="pre">MLFlowLogger.log_params()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.MLFlowLogger.log_project"><code class="docutils literal notranslate"><span class="pre">MLFlowLogger.log_project()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.PermutationFeatureImportance"><code class="docutils literal notranslate"><span class="pre">PermutationFeatureImportance</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.PermutationFeatureImportance.plot_permutation_feature_importance"><code class="docutils literal notranslate"><span class="pre">PermutationFeatureImportance.plot_permutation_feature_importance()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.ProfilerYData"><code class="docutils literal notranslate"><span class="pre">ProfilerYData</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.RegressionAnalysis"><code class="docutils literal notranslate"><span class="pre">RegressionAnalysis</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.RegressionAnalysis.compute_predictions_errors"><code class="docutils literal notranslate"><span class="pre">RegressionAnalysis.compute_predictions_errors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.RegressionAnalysis.plot_errors_pairgrid"><code class="docutils literal notranslate"><span class="pre">RegressionAnalysis.plot_errors_pairgrid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.RegressionAnalysis.plot_prediction_versus_real"><code class="docutils literal notranslate"><span class="pre">RegressionAnalysis.plot_prediction_versus_real()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.ScoringAnalysis"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.ScoringAnalysis.compute_threshold"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.compute_threshold()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.ScoringAnalysis.confusion_matrix"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.confusion_matrix()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.ScoringAnalysis.plot_roc_curve"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.plot_roc_curve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.ScoringAnalysis.plot_threshold"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.plot_threshold()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.ScoringAnalysis.threshold"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.threshold</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.ShapAnalysis"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.ShapAnalysis.plot_shap_decision_plot"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_decision_plot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.ShapAnalysis.plot_shap_interaction"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_interaction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.ShapAnalysis.plot_shap_summary_plot"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_summary_plot()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="palma.preprocessing.html">palma.preprocessing package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="palma.preprocessing.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="palma.preprocessing.html#palma-preprocessing-na-encoder-module">palma.preprocessing.na_encoder module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="palma.preprocessing.html#palma-preprocessing-pca-module">palma.preprocessing.pca module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="palma.preprocessing.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="palma.preprocessing.html#module-palma.preprocessing.na_encoder">palma.preprocessing.na_encoder module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.na_encoder.NA_encoder"><code class="docutils literal notranslate"><span class="pre">NA_encoder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.na_encoder.NA_encoder.fit"><code class="docutils literal notranslate"><span class="pre">NA_encoder.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.na_encoder.NA_encoder.fit_transform"><code class="docutils literal notranslate"><span class="pre">NA_encoder.fit_transform()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.na_encoder.NA_encoder.get_params"><code class="docutils literal notranslate"><span class="pre">NA_encoder.get_params()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.na_encoder.NA_encoder.set_params"><code class="docutils literal notranslate"><span class="pre">NA_encoder.set_params()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.na_encoder.NA_encoder.transform"><code class="docutils literal notranslate"><span class="pre">NA_encoder.transform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="palma.preprocessing.html#module-palma.preprocessing.pca">palma.preprocessing.pca module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.pca.PCA"><code class="docutils literal notranslate"><span class="pre">PCA</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.pca.PCA.get_correlation"><code class="docutils literal notranslate"><span class="pre">PCA.get_correlation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.pca.PCA.get_individual_contributions"><code class="docutils literal notranslate"><span class="pre">PCA.get_individual_contributions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.pca.PCA.get_variables_contributions"><code class="docutils literal notranslate"><span class="pre">PCA.get_variables_contributions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.pca.PCA.nb_component"><code class="docutils literal notranslate"><span class="pre">PCA.nb_component</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.pca.PCA.plot_circle_corr"><code class="docutils literal notranslate"><span class="pre">PCA.plot_circle_corr()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.pca.PCA.plot_correlation_matrix"><code class="docutils literal notranslate"><span class="pre">PCA.plot_correlation_matrix()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.pca.PCA.plot_cumulated_variance"><code class="docutils literal notranslate"><span class="pre">PCA.plot_cumulated_variance()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.pca.PCA.plot_eigen_values"><code class="docutils literal notranslate"><span class="pre">PCA.plot_eigen_values()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.pca.PCA.plot_factorial_plan"><code class="docutils literal notranslate"><span class="pre">PCA.plot_factorial_plan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.pca.PCA.plot_var_cp"><code class="docutils literal notranslate"><span class="pre">PCA.plot_var_cp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.pca.PCA.plot_variance_bar"><code class="docutils literal notranslate"><span class="pre">PCA.plot_variance_bar()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.pca.PCA.set_nb_components"><code class="docutils literal notranslate"><span class="pre">PCA.set_nb_components()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.preprocessing.html#palma.preprocessing.pca.PCA.transform"><code class="docutils literal notranslate"><span class="pre">PCA.transform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="palma.preprocessing.html#module-palma.preprocessing">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="palma.utils.html">palma.utils package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="palma.utils.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="palma.utils.html#palma-utils-checker-module">palma.utils.checker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="palma.utils.html#module-palma.utils.checker">palma.utils.checker module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="palma.utils.html#palma.utils.checker.ProjectPlanChecker"><code class="docutils literal notranslate"><span class="pre">ProjectPlanChecker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="palma.utils.html#palma.utils.checker.ProjectPlanChecker.run_checks"><code class="docutils literal notranslate"><span class="pre">ProjectPlanChecker.run_checks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="palma.utils.html#module-palma.utils.names">palma.utils.names module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="palma.utils.html#palma.utils.names.get_random_name"><code class="docutils literal notranslate"><span class="pre">get_random_name()</span></code></a></li>
 </ul>
@@ -585,8 +717,226 @@ document.write(`
 </ul>
 </div>
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<section id="module-palma">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-palma" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="palma.ModelEvaluation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.</span></span><span class="sig-name descname"><span class="pre">ModelEvaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.ModelEvaluation" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>components</strong></dt><dd></dd>
+<dt><strong>id</strong></dt><dd></dd>
+<dt><strong>unfit_estimator</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>add</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>fit</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.ModelEvaluation.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.ModelEvaluation.add" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.ModelEvaluation.components">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">components</span></span><a class="headerlink" href="#palma.ModelEvaluation.components" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.ModelEvaluation.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">Project</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.ModelEvaluation.fit" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.ModelEvaluation.id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#palma.ModelEvaluation.id" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.ModelEvaluation.unfit_estimator">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unfit_estimator</span></span><a class="headerlink" href="#palma.ModelEvaluation.unfit_estimator" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="palma.ModelSelector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.</span></span><span class="sig-name descname"><span class="pre">ModelSelector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="palma.base.html#palma.base.engine.BaseOptimizer" title="palma.base.engine.BaseOptimizer"><span class="pre">BaseOptimizer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.ModelSelector" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Wrapper to optimizers selecting the best model for a Project.</p>
+<p>The optimization can be launched with the <code class="docutils literal notranslate"><span class="pre">start</span></code> method.
+Once the optimization is done, the best model can be accessed as the <code class="docutils literal notranslate"><span class="pre">best_model_</span></code> attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>- engine (str): Currently accepted values are “FlamlOptimizer” or</strong></dt><dd><p>“AutoSklearnOptimizer” (the latter is deprecatted).</p>
+</dd>
+<dt><strong>- engine_parameters (dict): parameters passed to the engine.</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>run_id</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>- start(project: Project): look for best model</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.ModelSelector.run_id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#palma.ModelSelector.run_id" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.ModelSelector.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">Project</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.ModelSelector.start" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="palma.Project">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.</span></span><span class="sig-name descname"><span class="pre">Project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.Project" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents a machine learning project with various components
+and logging capabilities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>project_name (str): The name of the project.</strong></dt><dd></dd>
+<dt><strong>problem (str): The description of the machine learning problem.</strong></dt><dd><p>Accepted values: “classification” or “regression”.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>base_index (List[int]): List of base indices for the project.</strong></dt><dd></dd>
+<dt><strong>components (dict): Dictionary containing project components.</strong></dt><dd></dd>
+<dt><strong>date (datetime): The date and time when the project was created.</strong></dt><dd></dd>
+<dt><strong>project_id (str): Unique identifier for the project.</strong></dt><dd></dd>
+<dt><strong>is_started (bool): Indicates whether the project has been started.</strong></dt><dd></dd>
+<dt><strong>problem (str): Description of the machine learning problem.</strong></dt><dd></dd>
+<dt><strong>validation_strategy (ValidationStrategy): The validation strategy used in the project.</strong></dt><dd></dd>
+<dt><strong>project_name (str): The name of the project.</strong></dt><dd></dd>
+<dt><strong>study_name (str): The randomly generated study name.</strong></dt><dd></dd>
+<dt><strong>X (pd.DataFrame): The feature data for the project.</strong></dt><dd></dd>
+<dt><strong>y (pd.Series): The target variable for the project.</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>add(component: Component) -&gt; None: Adds a component to the project.</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>start(X: pd.DataFrame, y: pd.Series, splitter, X_test=None, y_test=None, groups=None, **kwargs) -&gt; None:</strong></p></td>
+<td><p>Starts the project with the specified data and validation strategy.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.Project.X">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">X</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><a class="headerlink" href="#palma.Project.X" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.Project.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="palma.components.html#palma.components.base.Component" title="palma.components.base.Component"><span class="pre">Component</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.Project.add" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.Project.components">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">components</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#palma.Project.components" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.Project.date">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">date</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime</span></em><a class="headerlink" href="#palma.Project.date" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.Project.is_started">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_started</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#palma.Project.is_started" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.Project.problem">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">problem</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#palma.Project.problem" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.Project.project_id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">project_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#palma.Project.project_id" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.Project.project_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">project_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#palma.Project.project_name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="palma.Project.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splitter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.Project.start" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.Project.study_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">study_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#palma.Project.study_name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.Project.validation_strategy">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validation_strategy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="palma.base.html#palma.base.splitting_strategy.ValidationStrategy" title="palma.base.splitting_strategy.ValidationStrategy"><span class="pre">ValidationStrategy</span></a></em><a class="headerlink" href="#palma.Project.validation_strategy" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="palma.Project.y">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Series</span></em><a class="headerlink" href="#palma.Project.y" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="palma.set_logger">
+<span class="sig-prename descclassname"><span class="pre">palma.</span></span><span class="sig-name descname"><span class="pre">set_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_logger</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#palma.set_logger" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>_logger: Logger</strong></dt><dd><p>Define the logger to use.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">palma</span> <span class="kn">import</span> <span class="n">logger</span><span class="p">,</span> <span class="n">set_logger</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">palma.components</span> <span class="kn">import</span> <span class="n">FileSystemLogger</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">palma.components</span> <span class="kn">import</span> <span class="n">MLFlowLogger</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">set_logger</span><span class="p">(</span><span class="n">MLFlowLogger</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">set_logger</span><span class="p">(</span><span class="n">FileSystemLogger</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 
@@ -618,7 +968,38 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-palma">Module contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelEvaluation"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelEvaluation.add"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.add()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelEvaluation.components"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.components</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelEvaluation.fit"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.fit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelEvaluation.id"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelEvaluation.unfit_estimator"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.unfit_estimator</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelSelector"><code class="docutils literal notranslate"><span class="pre">ModelSelector</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelSelector.run_id"><code class="docutils literal notranslate"><span class="pre">ModelSelector.run_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.ModelSelector.start"><code class="docutils literal notranslate"><span class="pre">ModelSelector.start()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project"><code class="docutils literal notranslate"><span class="pre">Project</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.X"><code class="docutils literal notranslate"><span class="pre">Project.X</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.add"><code class="docutils literal notranslate"><span class="pre">Project.add()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.components"><code class="docutils literal notranslate"><span class="pre">Project.components</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.date"><code class="docutils literal notranslate"><span class="pre">Project.date</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.is_started"><code class="docutils literal notranslate"><span class="pre">Project.is_started</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.problem"><code class="docutils literal notranslate"><span class="pre">Project.problem</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.project_id"><code class="docutils literal notranslate"><span class="pre">Project.project_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.project_name"><code class="docutils literal notranslate"><span class="pre">Project.project_name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.start"><code class="docutils literal notranslate"><span class="pre">Project.start()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.study_name"><code class="docutils literal notranslate"><span class="pre">Project.study_name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.validation_strategy"><code class="docutils literal notranslate"><span class="pre">Project.validation_strategy</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.Project.y"><code class="docutils literal notranslate"><span class="pre">Project.y</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.set_logger"><code class="docutils literal notranslate"><span class="pre">set_logger()</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

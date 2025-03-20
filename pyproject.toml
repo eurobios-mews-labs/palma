@@ -12,7 +12,6 @@ dynamic = ["dependencies", "optional-dependencies"]
 requires-python = '>=3.9'
 
 [tool.setuptools.packages.find]
-where = ["."]
 include = ["palma*"]
 
 [tool.setuptools.dynamic]

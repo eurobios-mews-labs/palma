@@ -13,10 +13,15 @@ import logging
 from typing import List, Union
 
 import pandas as pd
-from deepchecks.core import BaseCheck, BaseSuite
-from deepchecks.tabular import Dataset, Suite
-from deepchecks.tabular.suites.default_suites import (train_test_validation,
-                                                      data_integrity)
+
+try:
+    from deepchecks.core import BaseCheck, BaseSuite
+    from deepchecks.tabular import Dataset, Suite
+    from deepchecks.tabular.suites.default_suites import (train_test_validation,
+                                                          data_integrity)
+except (ImportError, ModuleNotFoundError):
+    pass
+
 
 from palma.base.project import Project
 from palma.components.base import ProjectComponent
@@ -51,12 +56,15 @@ class DeepCheck(ProjectComponent):
             name: str = 'Data Checker',
             dataset_parameters: dict = None,
             dataset_checks: Union[
-                List[BaseCheck], BaseSuite] = data_integrity(),
+                List["BaseCheck"], "BaseSuite"] = None,
             train_test_datasets_checks: Union[
-                List[BaseCheck], BaseSuite] = Suite(
-                'Checks train test', train_test_validation()),
+                List["BaseCheck"], "BaseSuite"] = None,
             raise_on_fail=True
     ) -> None:
+        if dataset_checks is None:
+            dataset_checks = data_integrity()
+        if train_test_datasets_checks is None:
+            train_test_datasets_checks = Suite('Checks train test', train_test_validation())
 
         if dataset_parameters:
             if 'label' in dataset_parameters:
@@ -135,9 +143,9 @@ class DeepCheck(ProjectComponent):
 
     @staticmethod
     def __generate_suite(
-            checks: Union[List[BaseCheck], BaseSuite],
+            checks: Union[List["BaseCheck"], "BaseSuite"],
             name: str
-    ) -> Suite:
+    ) -> "Suite":
         """
         Generate a Suite of checks from a list of checks or a suite of checks
 

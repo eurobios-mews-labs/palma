@@ -1,4 +1,4 @@
-name: Publish to PyPI 📦
+name: Publish on Pypi📦
 
 on:
   push:
@@ -48,5 +48,6 @@ jobs:
       with:
         path: dist/
         name: my-artifact
+        merge-multiple: true
     - name: Publish distribution 📦 to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1

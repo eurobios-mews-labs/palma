@@ -13,7 +13,7 @@ requires-python = '>=3.9'
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["palma"]
+include = ["palma*"]
 
 [tool.setuptools.dynamic]
 dependencies = { file = ["requirements.txt"] }

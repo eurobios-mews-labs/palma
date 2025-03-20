@@ -177,8 +177,6 @@ def test_metric_computation(learning_data_regression):
 
 
 def test_permutation_feature_importance(learning_data):
-
-
     plt.figure()
     res_dir = tempfile.gettempdir() + "/logger"
     set_logger(FileSystemLogger(res_dir))

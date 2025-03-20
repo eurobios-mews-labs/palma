@@ -10,6 +10,7 @@ Submodules
 .. toctree::
    :maxdepth: 1
 
+   /autoapi/palma/automl/index
    /autoapi/palma/base/index
    /autoapi/palma/components/index
    /autoapi/palma/datasets/index
@@ -134,7 +135,7 @@ Package Contents
    .. py:attribute:: __parameters
 
 
-   .. py:method:: start(project: Project)
+   .. py:method:: start(project: palma.base.project.Project)
 
 
    .. py:property:: run_id
@@ -222,6 +223,8 @@ Package Contents
 
 
    .. py:attribute:: __study_name
+      :value: ''
+
 
 
    .. py:attribute:: __problem

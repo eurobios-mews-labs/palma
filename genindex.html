@@ -49,7 +49,7 @@
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
     <script defer data-domain="eurobios-mews-labs.github.io/palma" src="https://plausible.io/js/script.js"></script>
-    <jinja2.runtime.BlockReference object at 0x7fef9fc1f2c0>
+    <jinja2.runtime.BlockReference object at 0x7f7449314260>
 
   </head>
   
@@ -170,6 +170,10 @@
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to palma</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="autoapi/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/palma/index.html">palma</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/palma/automl/index.html">palma.automl</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/palma/automl/automl/index.html">palma.automl.automl</a></li>
+</ul>
+</details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/palma/base/index.html">palma.base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/base/engine/index.html">palma.base.engine</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/base/model/index.html">palma.base.model</a></li>
@@ -186,6 +190,7 @@
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/components/data_profiler/index.html">palma.components.data_profiler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/components/logger/index.html">palma.components.logger</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/components/performance/index.html">palma.components.performance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/palma/components/shap/index.html">palma.components.shap</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3"><a class="reference internal" href="autoapi/palma/datasets/index.html">palma.datasets</a></li>
@@ -331,7 +336,6 @@ document.write(`
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
  | <a href="#V"><strong>V</strong></a>
- | <a href="#W"><strong>W</strong></a>
  | <a href="#X"><strong>X</strong></a>
  | <a href="#Y"><strong>Y</strong></a>
  
@@ -366,11 +370,19 @@ document.write(`
 </li>
         <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.PermutationFeatureImportance.__call__">(palma.components.performance.PermutationFeatureImportance method)</a>
 </li>
-        <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.ShapAnalysis.__call__">(palma.components.performance.ShapAnalysis method)</a>
+        <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.RegressionAnalysis.__call__">(palma.components.performance.RegressionAnalysis method)</a>
+</li>
+        <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.ScoringAnalysis.__call__">(palma.components.performance.ScoringAnalysis method)</a>
 </li>
         <li><a href="autoapi/palma/components/index.html#palma.components.PermutationFeatureImportance.__call__">(palma.components.PermutationFeatureImportance method)</a>
 </li>
         <li><a href="autoapi/palma/components/index.html#palma.components.ProfilerYData.__call__">(palma.components.ProfilerYData method)</a>
+</li>
+        <li><a href="autoapi/palma/components/index.html#palma.components.RegressionAnalysis.__call__">(palma.components.RegressionAnalysis method)</a>
+</li>
+        <li><a href="autoapi/palma/components/index.html#palma.components.ScoringAnalysis.__call__">(palma.components.ScoringAnalysis method)</a>
+</li>
+        <li><a href="autoapi/palma/components/shap/index.html#palma.components.shap.ShapAnalysis.__call__">(palma.components.shap.ShapAnalysis method)</a>
 </li>
         <li><a href="autoapi/palma/components/index.html#palma.components.ShapAnalysis.__call__">(palma.components.ShapAnalysis method)</a>
 </li>
@@ -381,7 +393,7 @@ document.write(`
         <li><a href="autoapi/palma/index.html#palma.Project.__call_components">(palma.Project method)</a>
 </li>
       </ul></li>
-      <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.ShapAnalysis.__change_features_name_to_string">__change_features_name_to_string() (palma.components.performance.ShapAnalysis method)</a>
+      <li><a href="autoapi/palma/components/shap/index.html#palma.components.shap.ShapAnalysis.__change_features_name_to_string">__change_features_name_to_string() (palma.components.shap.ShapAnalysis method)</a>
 
       <ul>
         <li><a href="autoapi/palma/components/index.html#palma.components.ShapAnalysis.__change_features_name_to_string">(palma.components.ShapAnalysis method)</a>
@@ -417,9 +429,11 @@ document.write(`
         <li><a href="autoapi/palma/components/logger/index.html#palma.components.logger.FileSystemLogger.__create_directories">(palma.components.logger.FileSystemLogger method)</a>
 </li>
       </ul></li>
-      <li><a href="autoapi/palma/base/model/index.html#palma.base.model.ModelEvaluation.__date">__date (palma.base.model.ModelEvaluation attribute)</a>
+      <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.BaseOptimizer.__date">__date (palma.base.engine.BaseOptimizer attribute)</a>
 
       <ul>
+        <li><a href="autoapi/palma/base/model/index.html#palma.base.model.ModelEvaluation.__date">(palma.base.model.ModelEvaluation attribute)</a>
+</li>
         <li><a href="autoapi/palma/base/model_selection/index.html#palma.base.model_selection.ModelSelector.__date">(palma.base.model_selection.ModelSelector attribute)</a>
 </li>
         <li><a href="autoapi/palma/base/project/index.html#palma.base.project.Project.__date">(palma.base.project.Project attribute)</a>
@@ -431,6 +445,14 @@ document.write(`
         <li><a href="autoapi/palma/index.html#palma.Project.__date">(palma.Project attribute)</a>
 </li>
       </ul></li>
+      <li><a href="autoapi/palma/automl/automl/index.html#palma.automl.automl.__default_model_component__">__default_model_component__ (in module palma.automl.automl)</a>
+</li>
+      <li><a href="autoapi/palma/automl/automl/index.html#palma.automl.automl.__default_project_component__">__default_project_component__ (in module palma.automl.automl)</a>
+</li>
+      <li><a href="autoapi/palma/automl/automl/index.html#palma.automl.automl.__default_regression_component__">__default_regression_component__ (in module palma.automl.automl)</a>
+</li>
+      <li><a href="autoapi/palma/automl/automl/index.html#palma.automl.automl.__default_scoring_component__">__default_scoring_component__ (in module palma.automl.automl)</a>
+</li>
       <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.BaseOptimizer.__engine_parameters">__engine_parameters (palma.base.engine.BaseOptimizer attribute)</a>
 </li>
       <li><a href="autoapi/palma/base/model/index.html#palma.base.model.ModelEvaluation.__estimator">__estimator (palma.base.model.ModelEvaluation attribute)</a>
@@ -463,14 +485,14 @@ document.write(`
         <li><a href="autoapi/palma/index.html#palma.ModelEvaluation.__get_fit_estimators">(palma.ModelEvaluation method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.Analyser.__get_metrics_helper">__get_metrics_helper() (palma.components.performance.Analyser method)</a>
 </li>
       <li><a href="autoapi/palma/base/splitting_strategy/index.html#palma.base.splitting_strategy.ValidationStrategy.__groups">__groups (palma.base.splitting_strategy.ValidationStrategy attribute)</a>
 </li>
       <li><a href="autoapi/palma/preprocessing/na_encoder/index.html#palma.preprocessing.na_encoder.NA_encoder.__imp">__imp (palma.preprocessing.na_encoder.NA_encoder attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.ScoringAnalysis.__interpolate_roc">__interpolate_roc() (palma.components.performance.ScoringAnalysis method)</a>
 
       <ul>
@@ -521,16 +543,12 @@ document.write(`
         <li><a href="autoapi/palma/index.html#palma.Project.__project_name">(palma.Project attribute)</a>
 </li>
       </ul></li>
-      <li><a href="autoapi/palma/base/model_selection/index.html#palma.base.model_selection.ModelSelector.__run_id">__run_id (palma.base.model_selection.ModelSelector attribute)</a>
+      <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.BaseOptimizer.__run_id">__run_id (palma.base.engine.BaseOptimizer attribute)</a>
 
       <ul>
-        <li><a href="autoapi/palma/index.html#palma.ModelSelector.__run_id">(palma.ModelSelector attribute)</a>
+        <li><a href="autoapi/palma/base/model_selection/index.html#palma.base.model_selection.ModelSelector.__run_id">(palma.base.model_selection.ModelSelector attribute)</a>
 </li>
-      </ul></li>
-      <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.ShapAnalysis.__select_explainer">__select_explainer() (palma.components.performance.ShapAnalysis method)</a>
-
-      <ul>
-        <li><a href="autoapi/palma/components/index.html#palma.components.ShapAnalysis.__select_explainer">(palma.components.ShapAnalysis method)</a>
+        <li><a href="autoapi/palma/index.html#palma.ModelSelector.__run_id">(palma.ModelSelector attribute)</a>
 </li>
       </ul></li>
       <li><a href="autoapi/palma/components/logger/index.html#palma.components.logger._Logger.__set__">__set__() (palma.components.logger._Logger method)</a>
@@ -567,7 +585,7 @@ document.write(`
 </li>
       <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.Analyser._compute_metric">_compute_metric() (palma.components.performance.Analyser method)</a>
 </li>
-      <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.ShapAnalysis._compute_shap_values">_compute_shap_values() (palma.components.performance.ShapAnalysis method)</a>
+      <li><a href="autoapi/palma/components/shap/index.html#palma.components.shap.ShapAnalysis._compute_shap_values">_compute_shap_values() (palma.components.shap.ShapAnalysis method)</a>
 
       <ul>
         <li><a href="autoapi/palma/components/index.html#palma.components.ShapAnalysis._compute_shap_values">(palma.components.ShapAnalysis method)</a>
@@ -603,7 +621,15 @@ document.write(`
         <li><a href="autoapi/palma/components/index.html#palma.components.ExplainerDashboard._prepare_dataset">(palma.components.ExplainerDashboard method)</a>
 </li>
       </ul></li>
+      <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.BaseOptimizer._problem">_problem (palma.base.engine.BaseOptimizer attribute)</a>
+</li>
       <li><a href="autoapi/palma/utils/checker/index.html#palma.utils.checker._REGRESSION_METRICS">_REGRESSION_METRICS (in module palma.utils.checker)</a>
+</li>
+      <li><a href="autoapi/palma/components/shap/index.html#palma.components.shap._select_explainer">_select_explainer() (in module palma.components.shap)</a>
+</li>
+      <li><a href="autoapi/palma/base/splitting_strategy/index.html#palma.base.splitting_strategy.ValidationStrategy._test_index">_test_index (palma.base.splitting_strategy.ValidationStrategy attribute)</a>
+</li>
+      <li><a href="autoapi/palma/base/splitting_strategy/index.html#palma.base.splitting_strategy.ValidationStrategy._train_index">_train_index (palma.base.splitting_strategy.ValidationStrategy attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -621,17 +647,19 @@ document.write(`
         <li><a href="autoapi/palma/index.html#palma.Project.add">(palma.Project method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.BaseOptimizer.allow_splitter">allow_splitter (palma.base.engine.BaseOptimizer property)</a>, <a href="palma.base.html#palma.base.engine.BaseOptimizer.allow_splitter">[1]</a>
 
       <ul>
         <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.FlamlOptimizer.allow_splitter">(palma.base.engine.FlamlOptimizer property)</a>, <a href="palma.base.html#palma.base.engine.FlamlOptimizer.allow_splitter">[1]</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.BaseOptimizer.allowing_splitter">allowing_splitter() (palma.base.engine.BaseOptimizer method)</a>, <a href="palma.base.html#palma.base.engine.BaseOptimizer.allowing_splitter">[1]</a>
 </li>
       <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.Analyser">Analyser (class in palma.components.performance)</a>, <a href="palma.components.html#palma.components.performance.Analyser">[1]</a>
+</li>
+      <li><a href="autoapi/palma/automl/automl/index.html#palma.automl.automl.AutoMl">AutoMl (class in palma.automl.automl)</a>
 </li>
       <li><a href="autoapi/palma/utils/utils/index.html#palma.utils.utils.AverageEstimator">AverageEstimator (class in palma.utils.utils)</a>, <a href="palma.utils.html#palma.utils.utils.AverageEstimator">[1]</a>
 </li>
@@ -643,6 +671,14 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.BaseOptimizer">BaseOptimizer (class in palma.base.engine)</a>, <a href="palma.base.html#palma.base.engine.BaseOptimizer">[1]</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.BaseOptimizer.best_model_">best_model_ (palma.base.engine.BaseOptimizer property)</a>, <a href="palma.base.html#palma.base.engine.BaseOptimizer.best_model_">[1]</a>
+
+      <ul>
+        <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.FlamlOptimizer.best_model_">(palma.base.engine.FlamlOptimizer property)</a>, <a href="palma.base.html#palma.base.engine.FlamlOptimizer.best_model_">[1]</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -685,7 +721,7 @@ document.write(`
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.ShapAnalysis.compute_interaction">compute_interaction (palma.components.performance.ShapAnalysis attribute)</a>
+      <li><a href="autoapi/palma/components/shap/index.html#palma.components.shap.ShapAnalysis.compute_interaction">compute_interaction (palma.components.shap.ShapAnalysis attribute)</a>
 
       <ul>
         <li><a href="autoapi/palma/components/index.html#palma.components.ShapAnalysis.compute_interaction">(palma.components.ShapAnalysis attribute)</a>
@@ -729,6 +765,12 @@ document.write(`
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/palma/components/data_checker/index.html#palma.components.data_checker.DeepCheck.data_integrity_suite">data_integrity_suite (palma.components.data_checker.DeepCheck attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/palma/components/index.html#palma.components.DeepCheck.data_integrity_suite">(palma.components.DeepCheck attribute)</a>
+</li>
+      </ul></li>
       <li><a href="autoapi/palma/preprocessing/pca/index.html#palma.preprocessing.pca.PCA.data_train">data_train (palma.preprocessing.pca.PCA attribute)</a>
 </li>
       <li><a href="autoapi/palma/base/project/index.html#palma.base.project.Project.date">date (palma.base.project.Project property)</a>, <a href="palma.base.html#palma.base.project.Project.date">[1]</a>
@@ -759,22 +801,16 @@ document.write(`
 </li>
       <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.BaseOptimizer.engine_parameters">engine_parameters (palma.base.engine.BaseOptimizer property)</a>, <a href="palma.base.html#palma.base.engine.BaseOptimizer.engine_parameters">[1]</a>
 </li>
-      <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.BaseOptimizer.estimator_">estimator_ (palma.base.engine.BaseOptimizer property)</a>, <a href="palma.base.html#palma.base.engine.BaseOptimizer.estimator_">[1]</a>
-
-      <ul>
-        <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.FlamlOptimizer.estimator_">(palma.base.engine.FlamlOptimizer property)</a>, <a href="palma.base.html#palma.base.engine.FlamlOptimizer.estimator_">[1]</a>
-</li>
-      </ul></li>
       <li><a href="autoapi/palma/utils/utils/index.html#palma.utils.utils.AverageEstimator.estimator_list">estimator_list (palma.utils.utils.AverageEstimator attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/palma/base/model/index.html#palma.base.model.ModelEvaluation.estimator_name">estimator_name (palma.base.model.ModelEvaluation attribute)</a>
 
       <ul>
         <li><a href="autoapi/palma/index.html#palma.ModelEvaluation.estimator_name">(palma.ModelEvaluation attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/palma/preprocessing/pca/index.html#palma.preprocessing.pca.PCA.explained_variance">explained_variance (palma.preprocessing.pca.PCA attribute)</a>
 </li>
       <li><a href="autoapi/palma/components/index.html#palma.components.ExplainerDashboard">ExplainerDashboard (class in palma.components)</a>
@@ -1019,6 +1055,10 @@ document.write(`
       <ul>
         <li><a href="autoapi/palma/index.html#module-palma">palma</a>
 </li>
+        <li><a href="autoapi/palma/automl/index.html#module-palma.automl">palma.automl</a>
+</li>
+        <li><a href="autoapi/palma/automl/automl/index.html#module-palma.automl.automl">palma.automl.automl</a>
+</li>
         <li><a href="autoapi/palma/base/index.html#module-palma.base">palma.base</a>, <a href="palma.base.html#module-palma.base">[1]</a>
 </li>
         <li><a href="autoapi/palma/base/engine/index.html#module-palma.base.engine">palma.base.engine</a>, <a href="palma.base.html#module-palma.base.engine">[1]</a>
@@ -1046,6 +1086,8 @@ document.write(`
         <li><a href="autoapi/palma/components/logger/index.html#module-palma.components.logger">palma.components.logger</a>, <a href="palma.components.html#module-palma.components.logger">[1]</a>
 </li>
         <li><a href="autoapi/palma/components/performance/index.html#module-palma.components.performance">palma.components.performance</a>, <a href="palma.components.html#module-palma.components.performance">[1]</a>
+</li>
+        <li><a href="autoapi/palma/components/shap/index.html#module-palma.components.shap">palma.components.shap</a>
 </li>
         <li><a href="autoapi/palma/datasets/index.html#module-palma.datasets">palma.datasets</a>
 </li>
@@ -1098,7 +1140,7 @@ document.write(`
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.ShapAnalysis.n_shap">n_shap (palma.components.performance.ShapAnalysis attribute)</a>
+      <li><a href="autoapi/palma/components/shap/index.html#palma.components.shap.ShapAnalysis.n_shap">n_shap (palma.components.shap.ShapAnalysis attribute)</a>
 
       <ul>
         <li><a href="autoapi/palma/components/index.html#palma.components.ShapAnalysis.n_shap">(palma.components.ShapAnalysis attribute)</a>
@@ -1129,14 +1171,6 @@ document.write(`
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.BaseOptimizer.optimizer">optimizer (palma.base.engine.BaseOptimizer property)</a>, <a href="palma.base.html#palma.base.engine.BaseOptimizer.optimizer">[1]</a>
-
-      <ul>
-        <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.FlamlOptimizer.optimizer">(palma.base.engine.FlamlOptimizer property)</a>, <a href="palma.base.html#palma.base.engine.FlamlOptimizer.optimizer">[1]</a>
-</li>
-      </ul></li>
-  </ul></td>
 </tr></table>
 
 <h2 id="P">P</h2>
@@ -1149,6 +1183,20 @@ document.write(`
 
       <ul>
         <li><a href="autoapi/palma/index.html#module-palma">module</a>
+</li>
+      </ul></li>
+      <li>
+    palma.automl
+
+      <ul>
+        <li><a href="autoapi/palma/automl/index.html#module-palma.automl">module</a>
+</li>
+      </ul></li>
+      <li>
+    palma.automl.automl
+
+      <ul>
+        <li><a href="autoapi/palma/automl/automl/index.html#module-palma.automl.automl">module</a>
 </li>
       </ul></li>
       <li>
@@ -1250,6 +1298,13 @@ document.write(`
 </li>
       </ul></li>
       <li>
+    palma.components.shap
+
+      <ul>
+        <li><a href="autoapi/palma/components/shap/index.html#module-palma.components.shap">module</a>
+</li>
+      </ul></li>
+      <li>
     palma.datasets
 
       <ul>
@@ -1305,6 +1360,8 @@ document.write(`
         <li><a href="autoapi/palma/utils/plotting/index.html#module-palma.utils.plotting">module</a>, <a href="palma.utils.html#module-palma.utils.plotting">[1]</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     palma.utils.utils
 
@@ -1312,8 +1369,6 @@ document.write(`
         <li><a href="autoapi/palma/utils/utils/index.html#module-palma.utils.utils">module</a>, <a href="palma.utils.html#module-palma.utils.utils">[1]</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/palma/components/index.html#palma.components.FileSystemLogger.path_project">path_project (palma.components.FileSystemLogger attribute)</a>
 
       <ul>
@@ -1372,19 +1427,19 @@ document.write(`
         <li><a href="autoapi/palma/components/index.html#palma.components.ScoringAnalysis.plot_roc_curve">(palma.components.ScoringAnalysis method)</a>
 </li>
       </ul></li>
-      <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.ShapAnalysis.plot_shap_decision_plot">plot_shap_decision_plot() (palma.components.performance.ShapAnalysis method)</a>, <a href="palma.components.html#palma.components.performance.ShapAnalysis.plot_shap_decision_plot">[1]</a>
+      <li><a href="autoapi/palma/components/shap/index.html#palma.components.shap.ShapAnalysis.plot_shap_decision_plot">plot_shap_decision_plot() (palma.components.shap.ShapAnalysis method)</a>
 
       <ul>
         <li><a href="autoapi/palma/components/index.html#palma.components.ShapAnalysis.plot_shap_decision_plot">(palma.components.ShapAnalysis method)</a>
 </li>
       </ul></li>
-      <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.ShapAnalysis.plot_shap_interaction">plot_shap_interaction() (palma.components.performance.ShapAnalysis method)</a>, <a href="palma.components.html#palma.components.performance.ShapAnalysis.plot_shap_interaction">[1]</a>
+      <li><a href="autoapi/palma/components/shap/index.html#palma.components.shap.ShapAnalysis.plot_shap_interaction">plot_shap_interaction() (palma.components.shap.ShapAnalysis method)</a>
 
       <ul>
         <li><a href="autoapi/palma/components/index.html#palma.components.ShapAnalysis.plot_shap_interaction">(palma.components.ShapAnalysis method)</a>
 </li>
       </ul></li>
-      <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.ShapAnalysis.plot_shap_summary_plot">plot_shap_summary_plot() (palma.components.performance.ShapAnalysis method)</a>, <a href="palma.components.html#palma.components.performance.ShapAnalysis.plot_shap_summary_plot">[1]</a>
+      <li><a href="autoapi/palma/components/shap/index.html#palma.components.shap.ShapAnalysis.plot_shap_summary_plot">plot_shap_summary_plot() (palma.components.shap.ShapAnalysis method)</a>
 
       <ul>
         <li><a href="autoapi/palma/components/index.html#palma.components.ShapAnalysis.plot_shap_summary_plot">(palma.components.ShapAnalysis method)</a>
@@ -1412,14 +1467,14 @@ document.write(`
 </li>
       <li><a href="autoapi/palma/utils/utils/index.html#palma.utils.utils.AverageEstimator.predict_proba">predict_proba() (palma.utils.utils.AverageEstimator method)</a>, <a href="palma.utils.html#palma.utils.utils.AverageEstimator.predict_proba">[1]</a>
 </li>
-      <li><a href="autoapi/palma/base/project/index.html#palma.base.project.Project.problem">problem (palma.base.project.Project property)</a>, <a href="palma.base.html#palma.base.project.Project.problem">[1]</a>
+      <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.BaseOptimizer.problem">problem (palma.base.engine.BaseOptimizer property)</a>, <a href="palma.base.html#palma.base.engine.BaseOptimizer.problem">[1]</a>
 
       <ul>
+        <li><a href="autoapi/palma/base/project/index.html#palma.base.project.Project.problem">(palma.base.project.Project property)</a>, <a href="palma.base.html#palma.base.project.Project.problem">[1]</a>
+</li>
         <li><a href="autoapi/palma/index.html#palma.Project.problem">(palma.Project property)</a>
 </li>
       </ul></li>
-      <li><a href="autoapi/palma/components/data_profiler/index.html#palma.components.data_profiler.ProfileReport">ProfileReport (in module palma.components.data_profiler)</a>
-</li>
       <li><a href="autoapi/palma/components/index.html#palma.components.ProfilerYData">ProfilerYData (class in palma.components)</a>
 
       <ul>
@@ -1432,6 +1487,8 @@ document.write(`
         <li><a href="autoapi/palma/base/project/index.html#palma.base.project.Project">(class in palma.base.project)</a>, <a href="palma.base.html#palma.base.project.Project">[1]</a>
 </li>
       </ul></li>
+      <li><a href="autoapi/palma/automl/automl/index.html#palma.automl.automl.AutoMl.project">project (palma.automl.automl.AutoMl attribute)</a>
+</li>
       <li><a href="autoapi/palma/base/project/index.html#palma.base.project.Project.project_id">project_id (palma.base.project.Project property)</a>, <a href="palma.base.html#palma.base.project.Project.project_id">[1]</a>
 
       <ul>
@@ -1472,19 +1529,23 @@ document.write(`
         <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.RegressionAnalysis">(class in palma.components.performance)</a>, <a href="palma.components.html#palma.components.performance.RegressionAnalysis">[1]</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/palma/utils/names/index.html#palma.utils.names.RIGHT_NAMES">RIGHT_NAMES (in module palma.utils.names)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/palma/utils/plotting/index.html#palma.utils.plotting.roc_plot_base">roc_plot_base() (in module palma.utils.plotting)</a>, <a href="palma.utils.html#palma.utils.plotting.roc_plot_base">[1]</a>
 </li>
       <li><a href="autoapi/palma/utils/plotting/index.html#palma.utils.plotting.roc_plot_bundle">roc_plot_bundle() (in module palma.utils.plotting)</a>, <a href="palma.utils.html#palma.utils.plotting.roc_plot_bundle">[1]</a>
 </li>
+      <li><a href="autoapi/palma/automl/automl/index.html#palma.automl.automl.AutoMl.run">run() (palma.automl.automl.AutoMl method)</a>
+</li>
       <li><a href="autoapi/palma/utils/checker/index.html#palma.utils.checker.ProjectPlanChecker.run_checks">run_checks() (palma.utils.checker.ProjectPlanChecker method)</a>
 </li>
-      <li><a href="autoapi/palma/base/model_selection/index.html#palma.base.model_selection.ModelSelector.run_id">run_id (palma.base.model_selection.ModelSelector property)</a>, <a href="palma.base.html#palma.base.model_selection.ModelSelector.run_id">[1]</a>
+      <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.BaseOptimizer.run_id">run_id (palma.base.engine.BaseOptimizer property)</a>, <a href="palma.base.html#palma.base.engine.BaseOptimizer.run_id">[1]</a>
 
       <ul>
+        <li><a href="autoapi/palma/base/model_selection/index.html#palma.base.model_selection.ModelSelector.run_id">(palma.base.model_selection.ModelSelector property)</a>, <a href="palma.base.html#palma.base.model_selection.ModelSelector.run_id">[1]</a>
+</li>
         <li><a href="autoapi/palma/index.html#palma.ModelSelector.run_id">(palma.ModelSelector property)</a>
 </li>
       </ul></li>
@@ -1494,6 +1555,8 @@ document.write(`
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/palma/automl/automl/index.html#palma.automl.automl.AutoMl.save_plt_backend">save_plt_backend (palma.automl.automl.AutoMl attribute)</a>
+</li>
       <li><a href="autoapi/palma/preprocessing/pca/index.html#palma.preprocessing.pca.PCA.sc">sc (palma.preprocessing.pca.PCA attribute)</a>
 </li>
       <li><a href="autoapi/palma/preprocessing/pca/index.html#palma.preprocessing.pca.PCA.scaled_data">scaled_data (palma.preprocessing.pca.PCA attribute)</a>
@@ -1527,14 +1590,16 @@ document.write(`
       <li><a href="autoapi/palma/components/index.html#palma.components.ShapAnalysis">ShapAnalysis (class in palma.components)</a>
 
       <ul>
-        <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.ShapAnalysis">(class in palma.components.performance)</a>, <a href="palma.components.html#palma.components.performance.ShapAnalysis">[1]</a>
+        <li><a href="autoapi/palma/components/shap/index.html#palma.components.shap.ShapAnalysis">(class in palma.components.shap)</a>
 </li>
       </ul></li>
       <li><a href="autoapi/palma/base/splitting_strategy/index.html#palma.base.splitting_strategy.ValidationStrategy.splitter">splitter (palma.base.splitting_strategy.ValidationStrategy property)</a>, <a href="palma.base.html#palma.base.splitting_strategy.ValidationStrategy.splitter">[1]</a>
 </li>
-      <li><a href="autoapi/palma/base/model_selection/index.html#palma.base.model_selection.ModelSelector.start">start() (palma.base.model_selection.ModelSelector method)</a>, <a href="palma.base.html#palma.base.model_selection.ModelSelector.start">[1]</a>
+      <li><a href="autoapi/palma/base/engine/index.html#palma.base.engine.BaseOptimizer.start">start() (palma.base.engine.BaseOptimizer method)</a>, <a href="palma.base.html#palma.base.engine.BaseOptimizer.start">[1]</a>
 
       <ul>
+        <li><a href="autoapi/palma/base/model_selection/index.html#palma.base.model_selection.ModelSelector.start">(palma.base.model_selection.ModelSelector method)</a>, <a href="palma.base.html#palma.base.model_selection.ModelSelector.start">[1]</a>
+</li>
         <li><a href="autoapi/palma/base/project/index.html#palma.base.project.Project.start">(palma.base.project.Project method)</a>, <a href="palma.base.html#palma.base.project.Project.start">[1]</a>
 </li>
         <li><a href="autoapi/palma/index.html#palma.ModelSelector.start">(palma.ModelSelector method)</a>
@@ -1630,18 +1695,6 @@ document.write(`
 </li>
       <li><a href="autoapi/palma/components/performance/index.html#palma.components.performance.Analyser.variable_importance">variable_importance() (palma.components.performance.Analyser method)</a>, <a href="palma.components.html#palma.components.performance.Analyser.variable_importance">[1]</a>
 </li>
-  </ul></td>
-</tr></table>
-
-<h2 id="W">W</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/palma/components/data_checker/index.html#palma.components.data_checker.DeepCheck.whole_dataset_checks_suite">whole_dataset_checks_suite (palma.components.data_checker.DeepCheck attribute)</a>
-
-      <ul>
-        <li><a href="autoapi/palma/components/index.html#palma.components.DeepCheck.whole_dataset_checks_suite">(palma.components.DeepCheck attribute)</a>
-</li>
-      </ul></li>
   </ul></td>
 </tr></table>
 

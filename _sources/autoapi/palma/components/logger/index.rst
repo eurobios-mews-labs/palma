@@ -183,12 +183,12 @@ Module Contents
        !! processed by numpydoc !!
 
    .. py:attribute:: path_project
-      :value: 'Uninferable/unknown_project'
+      :value: 'Uninferable/no_project'
 
 
 
    .. py:attribute:: path_study
-      :value: 'Uninferable/unknown_project/unknown_run'
+      :value: 'Uninferable/no_project/no_run'
 
 
 

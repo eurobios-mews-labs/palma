@@ -17,6 +17,7 @@ Submodules
    /autoapi/palma/components/data_profiler/index
    /autoapi/palma/components/logger/index
    /autoapi/palma/components/performance/index
+   /autoapi/palma/components/shap/index
 
 
 Classes
@@ -31,8 +32,8 @@ Classes
    palma.components.ExplainerDashboard
    palma.components.RegressionAnalysis
    palma.components.ScoringAnalysis
-   palma.components.ShapAnalysis
    palma.components.PermutationFeatureImportance
+   palma.components.ShapAnalysis
    palma.components.DeepCheck
    palma.components.Leakage
 
@@ -100,12 +101,12 @@ Package Contents
        !! processed by numpydoc !!
 
    .. py:attribute:: path_project
-      :value: 'Uninferable/unknown_project'
+      :value: 'Uninferable/no_project'
 
 
 
    .. py:attribute:: path_study
-      :value: 'Uninferable/unknown_project/unknown_run'
+      :value: 'Uninferable/no_project/no_run'
 
 
 
@@ -526,6 +527,9 @@ Package Contents
    ..
        !! processed by numpydoc !!
 
+   .. py:method:: __call__(project: Project, model: ModelEvaluation)
+
+
    .. py:method:: compute_predictions_errors(fun=None)
 
 
@@ -734,67 +738,10 @@ Package Contents
           !! processed by numpydoc !!
 
 
-   .. py:property:: threshold
-
-
-.. py:class:: ShapAnalysis(on, n_shap, compute_interaction=False)
-
-   Bases: :py:obj:`Analyser`
-
-
-   
-   Analyser class for performing analysis on a model.
-
-
-   :Parameters:
-
-       **on** : str
-           The type of analysis to perform. Possible values are
-           "indexes_train_test" or "indexes_val".
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   ..
-       !! processed by numpydoc !!
-
-   .. py:attribute:: n_shap
-
-
-   .. py:attribute:: compute_interaction
-      :value: False
-
-
-
    .. py:method:: __call__(project: Project, model: ModelEvaluation)
 
 
-   .. py:method:: __select_explainer()
-
-
-   .. py:method:: _compute_shap_values(n, is_regression, explainer_method=shap.TreeExplainer, compute_interaction=False)
-
-
-   .. py:method:: __change_features_name_to_string()
-
-
-   .. py:method:: plot_shap_summary_plot()
-
-
-   .. py:method:: plot_shap_decision_plot(**kwargs)
-
-
-   .. py:method:: plot_shap_interaction(feature_x, feature_y)
+   .. py:property:: threshold
 
 
 .. py:class:: PermutationFeatureImportance(n_repeat: int = 5, random_state: int = 42, n_job: int = 2, scoring: str = None, max_samples: Union[int, float] = 0.7, color: str = 'darkblue')
@@ -884,6 +831,63 @@ Package Contents
    .. py:method:: plot_permutation_feature_importance()
 
 
+.. py:class:: ShapAnalysis(on, n_shap, compute_interaction=False)
+
+   Bases: :py:obj:`palma.components.performance.Analyser`
+
+
+   
+   Analyser class for performing analysis on a model.
+
+
+   :Parameters:
+
+       **on** : str
+           The type of analysis to perform. Possible values are
+           "indexes_train_test" or "indexes_val".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+   .. py:attribute:: n_shap
+
+
+   .. py:attribute:: compute_interaction
+      :value: False
+
+
+
+   .. py:method:: __call__(project: Project, model: ModelEvaluation)
+
+
+   .. py:method:: _compute_shap_values(n, is_regression, compute_interaction=False)
+
+
+   .. py:method:: __change_features_name_to_string()
+
+
+   .. py:method:: plot_shap_summary_plot()
+
+
+   .. py:method:: plot_shap_decision_plot(**kwargs)
+
+
+   .. py:method:: plot_shap_interaction(feature_x, feature_y)
+
+
 .. py:class:: DeepCheck(name: str = 'Data Checker', dataset_parameters: dict = None, dataset_checks: Union[List[deepchecks.core.BaseCheck], deepchecks.core.BaseSuite] = data_integrity(), train_test_datasets_checks: Union[List[deepchecks.core.BaseCheck], deepchecks.core.BaseSuite] = Suite('Checks train test', train_test_validation()), raise_on_fail=True)
 
    Bases: :py:obj:`palma.components.base.ProjectComponent`
@@ -935,7 +939,7 @@ Package Contents
 
 
 
-   .. py:attribute:: whole_dataset_checks_suite
+   .. py:attribute:: data_integrity_suite
 
 
    .. py:attribute:: train_test_checks_suite

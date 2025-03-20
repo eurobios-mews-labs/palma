@@ -54,7 +54,7 @@
     <link rel="next" title="palma.components.data_profiler" href="../data_profiler/index.html" />
     <link rel="prev" title="palma.components.dashboard" href="../dashboard/index.html" />
     <script defer data-domain="eurobios-mews-labs.github.io/palma" src="https://plausible.io/js/script.js"></script>
-    <jinja2.runtime.BlockReference object at 0x7fefa09ea690>
+    <jinja2.runtime.BlockReference object at 0x7f744a234b90>
 
   </head>
   
@@ -173,6 +173,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing to palma</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../../index.html">palma</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../automl/index.html">palma.automl</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../automl/automl/index.html">palma.automl.automl</a></li>
+</ul>
+</details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../base/index.html">palma.base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../base/engine/index.html">palma.base.engine</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../base/model/index.html">palma.base.model</a></li>
@@ -189,6 +193,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../data_profiler/index.html">palma.components.data_profiler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../logger/index.html">palma.components.logger</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../performance/index.html">palma.components.performance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../shap/index.html">palma.components.shap</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3"><a class="reference internal" href="../../datasets/index.html">palma.datasets</a></li>
@@ -360,7 +365,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck"><code class="docutils literal notranslate"><span class="pre">DeepCheck</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.name"><code class="docutils literal notranslate"><span class="pre">DeepCheck.name</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.whole_dataset_checks_suite"><code class="docutils literal notranslate"><span class="pre">DeepCheck.whole_dataset_checks_suite</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.data_integrity_suite"><code class="docutils literal notranslate"><span class="pre">DeepCheck.data_integrity_suite</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.train_test_checks_suite"><code class="docutils literal notranslate"><span class="pre">DeepCheck.train_test_checks_suite</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.raise_on_fail"><code class="docutils literal notranslate"><span class="pre">DeepCheck.raise_on_fail</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.__call__"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__call__()</span></code></a></li>
@@ -437,8 +442,8 @@ train_test_leakage</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="palma.components.data_checker.DeepCheck.whole_dataset_checks_suite">
-<span class="sig-name descname"><span class="pre">whole_dataset_checks_suite</span></span><a class="headerlink" href="#palma.components.data_checker.DeepCheck.whole_dataset_checks_suite" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="palma.components.data_checker.DeepCheck.data_integrity_suite">
+<span class="sig-name descname"><span class="pre">data_integrity_suite</span></span><a class="headerlink" href="#palma.components.data_checker.DeepCheck.data_integrity_suite" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -580,7 +585,7 @@ the AUC metric.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck"><code class="docutils literal notranslate"><span class="pre">DeepCheck</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.name"><code class="docutils literal notranslate"><span class="pre">DeepCheck.name</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.whole_dataset_checks_suite"><code class="docutils literal notranslate"><span class="pre">DeepCheck.whole_dataset_checks_suite</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.data_integrity_suite"><code class="docutils literal notranslate"><span class="pre">DeepCheck.data_integrity_suite</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.train_test_checks_suite"><code class="docutils literal notranslate"><span class="pre">DeepCheck.train_test_checks_suite</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.raise_on_fail"><code class="docutils literal notranslate"><span class="pre">DeepCheck.raise_on_fail</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.data_checker.DeepCheck.__call__"><code class="docutils literal notranslate"><span class="pre">DeepCheck.__call__()</span></code></a></li>

@@ -67,7 +67,7 @@ Module Contents
 
 
 
-   .. py:attribute:: whole_dataset_checks_suite
+   .. py:attribute:: data_integrity_suite
 
 
    .. py:attribute:: train_test_checks_suite

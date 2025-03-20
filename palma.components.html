@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <script defer data-domain="eurobios-mews-labs.github.io/palma" src="https://plausible.io/js/script.js"></script>
-    <jinja2.runtime.BlockReference object at 0x7fefa002cc20>
+    <jinja2.runtime.BlockReference object at 0x7f74489f2840>
 
   </head>
   
@@ -171,6 +171,10 @@
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to palma</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="autoapi/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/palma/index.html">palma</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/palma/automl/index.html">palma.automl</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/palma/automl/automl/index.html">palma.automl.automl</a></li>
+</ul>
+</details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/palma/base/index.html">palma.base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/base/engine/index.html">palma.base.engine</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/base/model/index.html">palma.base.model</a></li>
@@ -187,6 +191,7 @@
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/components/data_profiler/index.html">palma.components.data_profiler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/components/logger/index.html">palma.components.logger</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/components/performance/index.html">palma.components.performance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/palma/components/shap/index.html">palma.components.shap</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3"><a class="reference internal" href="autoapi/palma/datasets/index.html">palma.datasets</a></li>
@@ -433,12 +438,6 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.plot_roc_curve"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.plot_roc_curve()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.plot_threshold"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.plot_threshold()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.threshold"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.threshold</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ShapAnalysis"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ShapAnalysis.plot_shap_decision_plot"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_decision_plot()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ShapAnalysis.plot_shap_interaction"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_interaction()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ShapAnalysis.plot_shap_summary_plot"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_summary_plot()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1134,7 +1133,7 @@ a machine learning model.</p>
 <p class="rubric">Methods</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code>(project, model)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="autoapi/palma/components/performance/index.html#palma.components.performance.ScoringAnalysis.__call__" title="palma.components.performance.ScoringAnalysis.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code></a>(project, model)</p></td>
 <td><p>Call self as a function.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_metrics</span></code>(metric)</p></td>
@@ -1279,72 +1278,6 @@ is equal to <cite>value</cite>
 
 </dd></dl>
 
-<dl class="py class">
-<dt class="sig sig-object py" id="palma.components.performance.ShapAnalysis">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">palma.components.performance.</span></span><span class="sig-name descname"><span class="pre">ShapAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_shap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_interaction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.ShapAnalysis" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#palma.components.performance.Analyser" title="palma.components.performance.Analyser"><code class="xref py py-class docutils literal notranslate"><span class="pre">Analyser</span></code></a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Attributes<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>metrics</strong></dt><dd></dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Methods</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="autoapi/palma/components/performance/index.html#palma.components.performance.ShapAnalysis.__call__" title="palma.components.performance.ShapAnalysis.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code></a>(project, model)</p></td>
-<td><p>Call self as a function.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_metrics</span></code>(metric)</p></td>
-<td><p>Compute the specified metrics for each estimator.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_test_metrics</span></code>()</p></td>
-<td><p>Get the computed metrics for the test set.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_train_metrics</span></code>()</p></td>
-<td><p>Get the computed metrics for the training set.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_variable_importance</span></code>([mode, color, cmap])</p></td>
-<td><p>Plot the variable importance.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">variable_importance</span></code>()</p></td>
-<td><p>Compute the feature importance for each estimator.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="pst-scrollable-table-container"><table class="table">
-<tbody>
-<tr class="row-odd"><td><p><strong>plot_shap_decision_plot</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>plot_shap_interaction</strong></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>plot_shap_summary_plot</strong></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<dl class="py method">
-<dt class="sig sig-object py" id="palma.components.performance.ShapAnalysis.plot_shap_decision_plot">
-<span class="sig-name descname"><span class="pre">plot_shap_decision_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.ShapAnalysis.plot_shap_decision_plot" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="palma.components.performance.ShapAnalysis.plot_shap_interaction">
-<span class="sig-name descname"><span class="pre">plot_shap_interaction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.ShapAnalysis.plot_shap_interaction" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="palma.components.performance.ShapAnalysis.plot_shap_summary_plot">
-<span class="sig-name descname"><span class="pre">plot_shap_summary_plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#palma.components.performance.ShapAnalysis.plot_shap_summary_plot" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 </section>
 <section id="module-contents">
 <h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
@@ -1457,12 +1390,6 @@ is equal to <cite>value</cite>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.plot_roc_curve"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.plot_roc_curve()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.plot_threshold"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.plot_threshold()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ScoringAnalysis.threshold"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.threshold</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ShapAnalysis"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ShapAnalysis.plot_shap_decision_plot"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_decision_plot()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ShapAnalysis.plot_shap_interaction"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_interaction()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.components.performance.ShapAnalysis.plot_shap_summary_plot"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_summary_plot()</span></code></a></li>
 </ul>
 </li>
 </ul>

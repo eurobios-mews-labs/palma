@@ -18,7 +18,6 @@ Classes
 .. autoapisummary::
 
    palma.components.performance.Analyser
-   palma.components.performance.ShapAnalysis
    palma.components.performance.ScoringAnalysis
    palma.components.performance.RegressionAnalysis
    palma.components.performance.PermutationFeatureImportance
@@ -258,66 +257,6 @@ Module Contents
    .. py:property:: metrics
 
 
-.. py:class:: ShapAnalysis(on, n_shap, compute_interaction=False)
-
-   Bases: :py:obj:`Analyser`
-
-
-   
-   Analyser class for performing analysis on a model.
-
-
-   :Parameters:
-
-       **on** : str
-           The type of analysis to perform. Possible values are
-           "indexes_train_test" or "indexes_val".
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   ..
-       !! processed by numpydoc !!
-
-   .. py:attribute:: n_shap
-
-
-   .. py:attribute:: compute_interaction
-      :value: False
-
-
-
-   .. py:method:: __call__(project: Project, model: ModelEvaluation)
-
-
-   .. py:method:: __select_explainer()
-
-
-   .. py:method:: _compute_shap_values(n, is_regression, explainer_method=shap.TreeExplainer, compute_interaction=False)
-
-
-   .. py:method:: __change_features_name_to_string()
-
-
-   .. py:method:: plot_shap_summary_plot()
-
-
-   .. py:method:: plot_shap_decision_plot(**kwargs)
-
-
-   .. py:method:: plot_shap_interaction(feature_x, feature_y)
-
-
 .. py:class:: ScoringAnalysis(on)
 
    Bases: :py:obj:`Analyser`
@@ -517,6 +456,9 @@ Module Contents
           !! processed by numpydoc !!
 
 
+   .. py:method:: __call__(project: Project, model: ModelEvaluation)
+
+
    .. py:property:: threshold
 
 
@@ -567,6 +509,9 @@ Module Contents
 
    ..
        !! processed by numpydoc !!
+
+   .. py:method:: __call__(project: Project, model: ModelEvaluation)
+
 
    .. py:method:: compute_predictions_errors(fun=None)
 

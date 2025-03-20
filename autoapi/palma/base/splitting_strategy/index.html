@@ -54,7 +54,7 @@
     <link rel="next" title="palma.components" href="../../components/index.html" />
     <link rel="prev" title="palma.base.project" href="../project/index.html" />
     <script defer data-domain="eurobios-mews-labs.github.io/palma" src="https://plausible.io/js/script.js"></script>
-    <jinja2.runtime.BlockReference object at 0x7fefa0c80770>
+    <jinja2.runtime.BlockReference object at 0x7f744a6a44d0>
 
   </head>
   
@@ -173,6 +173,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing to palma</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../../index.html">palma</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../automl/index.html">palma.automl</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../automl/automl/index.html">palma.automl.automl</a></li>
+</ul>
+</details></li>
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="../index.html">palma.base</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../engine/index.html">palma.base.engine</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../model/index.html">palma.base.model</a></li>
@@ -189,6 +193,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../components/data_profiler/index.html">palma.components.data_profiler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../components/logger/index.html">palma.components.logger</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../components/performance/index.html">palma.components.performance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../components/shap/index.html">palma.components.shap</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3"><a class="reference internal" href="../../datasets/index.html">palma.datasets</a></li>
@@ -364,6 +369,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.splitting_strategy.ValidationStrategy"><code class="docutils literal notranslate"><span class="pre">ValidationStrategy</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.splitting_strategy.ValidationStrategy.__groups"><code class="docutils literal notranslate"><span class="pre">ValidationStrategy.__groups</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.splitting_strategy.ValidationStrategy.__splitter"><code class="docutils literal notranslate"><span class="pre">ValidationStrategy.__splitter</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.splitting_strategy.ValidationStrategy._train_index"><code class="docutils literal notranslate"><span class="pre">ValidationStrategy._train_index</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.splitting_strategy.ValidationStrategy._test_index"><code class="docutils literal notranslate"><span class="pre">ValidationStrategy._test_index</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.splitting_strategy.ValidationStrategy.__call__"><code class="docutils literal notranslate"><span class="pre">ValidationStrategy.__call__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.splitting_strategy.ValidationStrategy.__correct_nested"><code class="docutils literal notranslate"><span class="pre">ValidationStrategy.__correct_nested()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.splitting_strategy.ValidationStrategy.__str__"><code class="docutils literal notranslate"><span class="pre">ValidationStrategy.__str__()</span></code></a></li>
@@ -466,6 +473,16 @@ document.write(`
 <dl class="py attribute">
 <dt class="sig sig-object py" id="palma.base.splitting_strategy.ValidationStrategy.__splitter">
 <span class="sig-name descname"><span class="pre">__splitter</span></span><a class="headerlink" href="#palma.base.splitting_strategy.ValidationStrategy.__splitter" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="palma.base.splitting_strategy.ValidationStrategy._train_index">
+<span class="sig-name descname"><span class="pre">_train_index</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#palma.base.splitting_strategy.ValidationStrategy._train_index" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="palma.base.splitting_strategy.ValidationStrategy._test_index">
+<span class="sig-name descname"><span class="pre">_test_index</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#palma.base.splitting_strategy.ValidationStrategy._test_index" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -577,6 +594,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.splitting_strategy.ValidationStrategy"><code class="docutils literal notranslate"><span class="pre">ValidationStrategy</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.splitting_strategy.ValidationStrategy.__groups"><code class="docutils literal notranslate"><span class="pre">ValidationStrategy.__groups</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.splitting_strategy.ValidationStrategy.__splitter"><code class="docutils literal notranslate"><span class="pre">ValidationStrategy.__splitter</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.splitting_strategy.ValidationStrategy._train_index"><code class="docutils literal notranslate"><span class="pre">ValidationStrategy._train_index</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.splitting_strategy.ValidationStrategy._test_index"><code class="docutils literal notranslate"><span class="pre">ValidationStrategy._test_index</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.splitting_strategy.ValidationStrategy.__call__"><code class="docutils literal notranslate"><span class="pre">ValidationStrategy.__call__()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.splitting_strategy.ValidationStrategy.__correct_nested"><code class="docutils literal notranslate"><span class="pre">ValidationStrategy.__correct_nested()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#palma.base.splitting_strategy.ValidationStrategy.__str__"><code class="docutils literal notranslate"><span class="pre">ValidationStrategy.__str__()</span></code></a></li>

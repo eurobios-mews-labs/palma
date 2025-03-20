@@ -65,7 +65,7 @@ Module Contents
    .. py:attribute:: __parameters
 
 
-   .. py:method:: start(project: Project)
+   .. py:method:: start(project: palma.base.project.Project)
 
 
    .. py:property:: run_id

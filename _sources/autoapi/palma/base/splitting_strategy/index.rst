@@ -89,6 +89,16 @@ Module Contents
    .. py:attribute:: __splitter
 
 
+   .. py:attribute:: _train_index
+      :value: []
+
+
+
+   .. py:attribute:: _test_index
+      :value: []
+
+
+
    .. py:method:: __call__(X: pandas.DataFrame, y: pandas.Series, X_test: pandas.DataFrame = None, y_test: pandas.Series = None, groups=None, **kwargs)
 
       

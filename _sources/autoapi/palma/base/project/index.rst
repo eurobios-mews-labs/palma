@@ -95,6 +95,8 @@ Module Contents
 
 
    .. py:attribute:: __study_name
+      :value: ''
+
 
 
    .. py:attribute:: __problem

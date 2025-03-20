@@ -4,14 +4,6 @@ palma.components.data_profiler
 .. py:module:: palma.components.data_profiler
 
 
-Attributes
-----------
-
-.. autoapisummary::
-
-   palma.components.data_profiler.ProfileReport
-
-
 Classes
 -------
 
@@ -22,10 +14,6 @@ Classes
 
 Module Contents
 ---------------
-
-.. py:data:: ProfileReport
-   :value: None
-
 
 .. py:class:: ProfilerYData(**config)
 

@@ -51,10 +51,10 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'autoapi/palma/index';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="palma.base" href="base/index.html" />
+    <link rel="next" title="palma.automl" href="automl/index.html" />
     <link rel="prev" title="API Reference" href="../index.html" />
     <script defer data-domain="eurobios-mews-labs.github.io/palma" src="https://plausible.io/js/script.js"></script>
-    <jinja2.runtime.BlockReference object at 0x7fefa0cd2510>
+    <jinja2.runtime.BlockReference object at 0x7f7449873b30>
 
   </head>
   
@@ -173,6 +173,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing to palma</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">palma</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="automl/index.html">palma.automl</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="automl/automl/index.html">palma.automl.automl</a></li>
+</ul>
+</details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="base/index.html">palma.base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="base/engine/index.html">palma.base.engine</a></li>
 <li class="toctree-l4"><a class="reference internal" href="base/model/index.html">palma.base.model</a></li>
@@ -189,6 +193,7 @@
 <li class="toctree-l4"><a class="reference internal" href="components/data_profiler/index.html">palma.components.data_profiler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="components/logger/index.html">palma.components.logger</a></li>
 <li class="toctree-l4"><a class="reference internal" href="components/performance/index.html">palma.components.performance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="components/shap/index.html">palma.components.shap</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3"><a class="reference internal" href="datasets/index.html">palma.datasets</a></li>
@@ -428,6 +433,7 @@ document.write(`
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="automl/index.html">palma.automl</a></li>
 <li class="toctree-l1"><a class="reference internal" href="base/index.html">palma.base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="components/index.html">palma.components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datasets/index.html">palma.datasets</a></li>
@@ -580,7 +586,7 @@ Once the optimization is done, the best model can be accessed as the <code class
 
 <dl class="py method">
 <dt class="sig sig-object py" id="palma.ModelSelector.start">
-<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#palma.Project" title="palma.Project"><span class="pre">Project</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.ModelSelector.start" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../palma.base.html#palma.base.project.Project" title="palma.base.project.Project"><span class="pre">palma.base.project.Project</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palma.ModelSelector.start" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
@@ -643,7 +649,7 @@ and logging capabilities.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="palma.Project.__study_name">
-<span class="sig-name descname"><span class="pre">__study_name</span></span><a class="headerlink" href="#palma.Project.__study_name" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">__study_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#palma.Project.__study_name" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -767,11 +773,11 @@ and logging capabilities.</p>
       </div>
     </a>
     <a class="right-next"
-       href="base/index.html"
+       href="automl/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">palma.base</p>
+        <p class="prev-next-title">palma.automl</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

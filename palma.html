@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <script defer data-domain="eurobios-mews-labs.github.io/palma" src="https://plausible.io/js/script.js"></script>
-    <jinja2.runtime.BlockReference object at 0x7fefa035b140>
+    <jinja2.runtime.BlockReference object at 0x7f7448969160>
 
   </head>
   
@@ -171,6 +171,10 @@
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to palma</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="autoapi/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/palma/index.html">palma</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/palma/automl/index.html">palma.automl</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/palma/automl/automl/index.html">palma.automl.automl</a></li>
+</ul>
+</details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/palma/base/index.html">palma.base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/base/engine/index.html">palma.base.engine</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/base/model/index.html">palma.base.model</a></li>
@@ -187,6 +191,7 @@
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/components/data_profiler/index.html">palma.components.data_profiler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/components/logger/index.html">palma.components.logger</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/palma/components/performance/index.html">palma.components.performance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/palma/components/shap/index.html">palma.components.shap</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3"><a class="reference internal" href="autoapi/palma/datasets/index.html">palma.datasets</a></li>
@@ -379,18 +384,19 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="palma.base.html#palma.base.engine.BaseOptimizer"><code class="docutils literal notranslate"><span class="pre">BaseOptimizer</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="palma.base.html#palma.base.engine.BaseOptimizer.allow_splitter"><code class="docutils literal notranslate"><span class="pre">BaseOptimizer.allow_splitter</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="palma.base.html#palma.base.engine.BaseOptimizer.allowing_splitter"><code class="docutils literal notranslate"><span class="pre">BaseOptimizer.allowing_splitter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.base.html#palma.base.engine.BaseOptimizer.best_model_"><code class="docutils literal notranslate"><span class="pre">BaseOptimizer.best_model_</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="palma.base.html#palma.base.engine.BaseOptimizer.engine_parameters"><code class="docutils literal notranslate"><span class="pre">BaseOptimizer.engine_parameters</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="palma.base.html#palma.base.engine.BaseOptimizer.estimator_"><code class="docutils literal notranslate"><span class="pre">BaseOptimizer.estimator_</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="palma.base.html#palma.base.engine.BaseOptimizer.optimize"><code class="docutils literal notranslate"><span class="pre">BaseOptimizer.optimize()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="palma.base.html#palma.base.engine.BaseOptimizer.optimizer"><code class="docutils literal notranslate"><span class="pre">BaseOptimizer.optimizer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.base.html#palma.base.engine.BaseOptimizer.problem"><code class="docutils literal notranslate"><span class="pre">BaseOptimizer.problem</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.base.html#palma.base.engine.BaseOptimizer.run_id"><code class="docutils literal notranslate"><span class="pre">BaseOptimizer.run_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.base.html#palma.base.engine.BaseOptimizer.start"><code class="docutils literal notranslate"><span class="pre">BaseOptimizer.start()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="palma.base.html#palma.base.engine.BaseOptimizer.transformer_"><code class="docutils literal notranslate"><span class="pre">BaseOptimizer.transformer_</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="palma.base.html#palma.base.engine.FlamlOptimizer"><code class="docutils literal notranslate"><span class="pre">FlamlOptimizer</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="palma.base.html#palma.base.engine.FlamlOptimizer.allow_splitter"><code class="docutils literal notranslate"><span class="pre">FlamlOptimizer.allow_splitter</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="palma.base.html#palma.base.engine.FlamlOptimizer.estimator_"><code class="docutils literal notranslate"><span class="pre">FlamlOptimizer.estimator_</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="palma.base.html#palma.base.engine.FlamlOptimizer.best_model_"><code class="docutils literal notranslate"><span class="pre">FlamlOptimizer.best_model_</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="palma.base.html#palma.base.engine.FlamlOptimizer.optimize"><code class="docutils literal notranslate"><span class="pre">FlamlOptimizer.optimize()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="palma.base.html#palma.base.engine.FlamlOptimizer.optimizer"><code class="docutils literal notranslate"><span class="pre">FlamlOptimizer.optimizer</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="palma.base.html#palma.base.engine.FlamlOptimizer.transformer_"><code class="docutils literal notranslate"><span class="pre">FlamlOptimizer.transformer_</span></code></a></li>
 </ul>
 </li>
@@ -529,12 +535,6 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.performance.ScoringAnalysis.plot_roc_curve"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.plot_roc_curve()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.performance.ScoringAnalysis.plot_threshold"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.plot_threshold()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.performance.ScoringAnalysis.threshold"><code class="docutils literal notranslate"><span class="pre">ScoringAnalysis.threshold</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="palma.components.html#palma.components.performance.ShapAnalysis"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.performance.ShapAnalysis.plot_shap_decision_plot"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_decision_plot()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.performance.ShapAnalysis.plot_shap_interaction"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_interaction()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="palma.components.html#palma.components.performance.ShapAnalysis.plot_shap_summary_plot"><code class="docutils literal notranslate"><span class="pre">ShapAnalysis.plot_shap_summary_plot()</span></code></a></li>
 </ul>
 </li>
 </ul>

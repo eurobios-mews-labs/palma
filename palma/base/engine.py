@@ -27,6 +27,7 @@ class BaseOptimizer(metaclass=ABCMeta):
         self.__engine_parameters = engine_parameters
         self.__date = datetime.now()
         self.__run_id = get_hash(date=self.__date)
+        self._problem = "unknown"
 
     @abstractmethod
     def optimize(self, X: pd.DataFrame, y: pd.Series,
@@ -58,14 +59,12 @@ class BaseOptimizer(metaclass=ABCMeta):
 
     def start(self, project: "Project"):
         from palma import logger
-        self.__problem = project.__problem
-        logging.disable()
-        self.__optimize(
+        self._problem = project.problem
+        self.optimize(
             project.X.iloc[project.validation_strategy.train_index],
             project.y.iloc[project.validation_strategy.train_index],
             splitter=project.validation_strategy,
         )
-        logging.basicConfig(level=logging.DEBUG)
 
         logger.logger.log_artifact(
             self.best_model_,
@@ -81,6 +80,11 @@ class BaseOptimizer(metaclass=ABCMeta):
     def run_id(self) -> str:
         return self.__run_id
 
+    @property
+    def problem(self):
+        return self._problem
+
+
 
 class FlamlOptimizer(BaseOptimizer):
     def __init__(self, engine_parameters: dict) -> None:
@@ -92,7 +96,9 @@ class FlamlOptimizer(BaseOptimizer):
         split_type = None if splitter is None else splitter.splitter
         groups = None if splitter is None else splitter.groups
         groups = groups if groups is None else groups[splitter.train_index]
-        self.engine_parameters["task"] = self.__problem
+
+        logging.disable()
+        self.engine_parameters["task"] = self.problem
         self.allowing_splitter(splitter)
         self.__optimizer = AutoML()
         self.__optimizer.fit(
@@ -102,6 +108,7 @@ class FlamlOptimizer(BaseOptimizer):
             mlflow_logging=False,
             **self.engine_parameters
         )
+        logging.basicConfig(level=logging.DEBUG)
 
     @property
     def best_model_(self) -> base.BaseEstimator:

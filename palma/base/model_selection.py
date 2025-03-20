@@ -48,14 +48,14 @@ class ModelSelector:
         self.__run_id = get_hash(date=self.__date)
         self.__parameters = engine_parameters
 
-        if engine == "FlamlOptimizer":
-            self.engine = eng.FlamlOptimizer
+        if hasattr(eng, engine):
+            self.engine: eng.BaseOptimizer = getattr(eng, engine)(engine_parameters)
         else:
             raise ValueError(f"Optimizer {engine} not implemented")
 
     def start(self, project: "Project"):
-
         self.engine.start(project)
+        self.best_model_ = self.engine.best_model_
 
     @property
     def run_id(self) -> str:

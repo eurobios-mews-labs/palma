@@ -22,7 +22,7 @@ from sklearn.ensemble import RandomForestClassifier
 from palma import ModelEvaluation, Project
 from palma import set_logger
 from palma.components import performance, FileSystemLogger
-
+import matplotlib.pyplot as plt
 matplotlib.use("agg")
 
 
@@ -149,8 +149,8 @@ def test_compute_metrics(get_regression_analyser):
         assert v in get_regression_analyser.metrics.keys()
 
 
-
 def test_metric_computation(learning_data_regression):
+    plt.figure()
     project, model, X, y = learning_data_regression
     perf = performance.RegressionAnalysis(
         on="indexes_train_test")
@@ -175,7 +175,11 @@ def test_metric_computation(learning_data_regression):
     assert abs(perf.metrics["r2_score"][0]["test"] - ret2) < 1e-8
     assert all(y_pred == model.predictions_[0]["test"])
 
+
 def test_permutation_feature_importance(learning_data):
+
+
+    plt.figure()
     res_dir = tempfile.gettempdir() + "/logger"
     set_logger(FileSystemLogger(res_dir))
     project, model, X, y = learning_data

@@ -46,6 +46,7 @@ jobs:
         coverage json
 
     - name: Coverage Badge
+      continue-on-error: true
       uses: tj-actions/coverage-badge-py@v1.8
       with:
         output: .static/coverage.svg

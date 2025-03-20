@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 import pytest
 from sklearn.datasets import make_classification
-from sklearn.model_selection import ShuffleSplit, GroupKFold, StratifiedGroupKFold
+from sklearn.model_selection import ShuffleSplit, GroupKFold, StratifiedShuffleSplit, StratifiedGroupKFold
 
 from palma import Project
 from palma.base.splitting_strategy import ValidationStrategy
@@ -129,6 +129,21 @@ def test_group_splitting_strategy(classification_data):
     assert len(project.validation_strategy.indexes_val) == n_splits, \
         "wrong number of split"
 
+
+def test_stratified_splitting_strategy(classification_data):
+    project = Project(project_name="test", problem="classification")
+    X, y = classification_data
+    X = pd.DataFrame(X)
+    y = pd.Series(np.ravel(y))
+    n_splits = 5
+
+    project.start(
+        X,
+        y,
+        splitter=StratifiedShuffleSplit(n_splits=n_splits),
+    )
+    assert len(project.validation_strategy.indexes_val) == n_splits, \
+        "wrong number of split"
 
 def test_splitting_strategy(classification_data):
     project = Project(project_name="test", problem="classification")

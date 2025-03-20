@@ -18,25 +18,14 @@ from palma.base.engine import BaseOptimizer, \
 def get_engine_flaml_regression(regression_data):
     X, y = regression_data
     engine = FlamlOptimizer(
-        problem="regression",
         engine_parameters=dict(
             time_budget=5,
             estimator_list=["xgboost"],
         )
     )
+    engine._problem = "regression"
     engine.optimize(X, y)
     return engine
-
-
-def test_engine_flaml_set_problem():
-    engine = FlamlOptimizer(
-        problem="regression",
-        engine_parameters=dict(
-            time_budget=5,
-            estimator_list=["xgboost"],
-            task="unknown"))
-    assert engine.engine_parameters["task"] == "regression", \
-        "Problem was not correctly set"
 
 
 @pytest.fixture()
@@ -57,11 +46,6 @@ def test_dummy_engine_optimize(get_dummy_engine, learning_data_regression):
         y) is None, "method of abstract engine should return None"
 
 
-def test_dummy_engine_optimizer(get_dummy_engine):
-    assert get_dummy_engine.optimizer is None, \
-        "method of abstract engine should return None"
-
-
 def test_dummy_engine_parameters(get_dummy_engine):
     assert get_dummy_engine.engine_parameters == dict(), \
         "method of abstract engine should return None"
@@ -72,16 +56,11 @@ def test_engine_regression_optimize_flaml(get_engine_flaml_regression):
         "Optimizer instance should have a optimize attribute"
 
 
-def test_engine_regression_optimizer_flaml(get_engine_flaml_regression):
-    assert hasattr(get_engine_flaml_regression, 'optimizer'), \
-        "Optimizer instance should have a optimize attribute"
-
-
 def test_engine_regression_transformer_flaml(get_engine_flaml_regression):
     assert hasattr(get_engine_flaml_regression, 'transformer_'), \
         "Optimizer instance should have a transformer_ attribute"
 
 
 def test_engine_regression_estimator_flaml(get_engine_flaml_regression):
-    assert hasattr(get_engine_flaml_regression, 'estimator_'), \
+    assert hasattr(get_engine_flaml_regression, 'best_model_'), \
         "Optimizer instance should have a optimize attribute"

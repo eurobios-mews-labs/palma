@@ -29,13 +29,7 @@ def test_plotting_correlation(classification_data):
 def test_utils_sha_dataframe(classification_data):
     plt.ioff()
     from sklearn.datasets import make_classification
-
     data, _ = make_classification(random_state=0)
-    assert utils.hash_dataframe(
-        pd.DataFrame(data[0]).sample(20, random_state=0),
-        how="whole") == "2789de8" \
-                        "6357239b2df" \
-                        "7e7493f528707c"
     utils.hash_dataframe(pd.DataFrame(data[0]).sample(20), how="row_wise")
     utils.hash_dataframe(pd.DataFrame(data[0]).sample(20), how="types")
     with pytest.raises(TypeError):

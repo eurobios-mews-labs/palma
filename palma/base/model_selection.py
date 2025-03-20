@@ -14,6 +14,7 @@ from typing import Union, Dict
 
 from palma.base import engine as eng
 from palma.utils.utils import get_hash
+from palma.base.project import Project
 import logging
 
 
@@ -46,39 +47,15 @@ class ModelSelector:
         self.__date = datetime.now()
         self.__run_id = get_hash(date=self.__date)
         self.__parameters = engine_parameters
-        if engine == "AutoSklearnOptimizer":
-            self.engine = eng.AutoSklearnOptimizer
-        elif engine == "FlamlOptimizer":
-            self.engine = eng.FlamlOptimizer
+
+        if hasattr(eng, engine):
+            self.engine: eng.BaseOptimizer = getattr(eng, engine)(engine_parameters)
         else:
             raise ValueError(f"Optimizer {engine} not implemented")
 
     def start(self, project: "Project"):
-        from palma import logger
-        self.engine_ = self.engine(
-            project.problem,
-            engine_parameters=self.__parameters,
-
-        )
-
-        logging.disable()
-        self.engine_.optimize(
-            project.X.iloc[project.validation_strategy.train_index],
-            project.y.iloc[project.validation_strategy.train_index],
-            splitter=project.validation_strategy,
-        )
-        self.best_model_ = self.engine_.estimator_
-        logging.basicConfig(level=logging.DEBUG)
-
-        logger.logger.log_artifact(
-            self.engine_.estimator_,
-            self.__run_id)
-        try:
-            logger.logger.log_metrics(
-                {"best_estimator": str(self.best_model_)}, 'model_selection'
-            )
-        except:
-            pass
+        self.engine.start(project)
+        self.best_model_ = self.engine.best_model_
 
     @property
     def run_id(self) -> str:

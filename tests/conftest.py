@@ -24,6 +24,7 @@ from sklearn.preprocessing import StandardScaler
 
 from palma import ModelEvaluation
 from palma import Project
+from palma import components
 from palma.components import FileSystemLogger
 from palma.components import dashboard
 from palma.components import performance
@@ -73,6 +74,19 @@ def learning_data(classification_project, classification_data):
 
 
 @pytest.fixture(scope='module')
+def get_scoring_analyser(learning_data):
+    project, model, X, y = learning_data
+    perf = performance.ScoringAnalysis(on="indexes_train_test")
+    perf._add(project, model)
+
+    perf.compute_metrics(metric={
+        metrics.roc_auc_score.__name__: metrics.roc_auc_score,
+        metrics.roc_curve.__name__: metrics.roc_curve
+    })
+    return perf
+
+
+@pytest.fixture(scope='module')
 def learning_data_regression(regression_data):
     from palma import set_logger
     set_logger(FileSystemLogger(tempfile.gettempdir()))
@@ -102,7 +116,6 @@ def get_regression_analyser(learning_data_regression):
     perf.compute_metrics(metric={
         metrics.r2_score.__name__: metrics.r2_score,
     })
-
     return perf
 
 

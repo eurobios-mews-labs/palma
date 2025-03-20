@@ -16,8 +16,8 @@ from palma.components.data_profiler import ProfilerYData
 from palma.components.dashboard import ExplainerDashboard
 from palma.components.performance import RegressionAnalysis
 from palma.components.performance import ScoringAnalysis
-from palma.components.performance import ShapAnalysis
 from palma.components.performance import PermutationFeatureImportance
+from palma.components.shap import ShapAnalysis
 from palma.components.data_checker import DeepCheck, Leakage
 
 __all__ = [

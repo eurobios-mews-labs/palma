@@ -10,25 +10,24 @@
 
 import logging
 from abc import ABCMeta, abstractmethod
-from typing import Dict, Union
+from datetime import datetime
+from typing import Dict
 
 import pandas as pd
 from flaml import AutoML
 from sklearn import base
 
 from palma.base.splitting_strategy import ValidationStrategy
-
-try:
-    from autosklearn.classification import AutoSklearnClassifier
-    from autosklearn.regression import AutoSklearnRegressor
-except ImportError:
-    pass
+from palma.utils.utils import get_hash
 
 
 class BaseOptimizer(metaclass=ABCMeta):
 
     def __init__(self, engine_parameters: dict) -> None:
         self.__engine_parameters = engine_parameters
+        self.__date = datetime.now()
+        self.__run_id = get_hash(date=self.__date)
+        self._problem = "unknown"
 
     @abstractmethod
     def optimize(self, X: pd.DataFrame, y: pd.Series,
@@ -38,12 +37,7 @@ class BaseOptimizer(metaclass=ABCMeta):
 
     @property
     @abstractmethod
-    def optimizer(self) -> None:
-        ...
-
-    @property
-    @abstractmethod
-    def estimator_(self) -> None:
+    def best_model_(self) -> None:
         ...
 
     @property
@@ -63,16 +57,38 @@ class BaseOptimizer(metaclass=ABCMeta):
         if not self.allow_splitter and splitter is not None:
             logging.warning(f"Optimizer does not support splitter {splitter}")
 
+    def start(self, project: "Project"):
+        from palma import logger
+        self._problem = project.problem
+        self.optimize(
+            project.X.iloc[project.validation_strategy.train_index],
+            project.y.iloc[project.validation_strategy.train_index],
+            splitter=project.validation_strategy,
+        )
+
+        logger.logger.log_artifact(
+            self.best_model_,
+            self.__run_id)
+        try:
+            logger.logger.log_metrics(
+                {"best_estimator": str(self.best_model_)}, 'optimizer'
+            )
+        except:
+            pass
+
+    @property
+    def run_id(self) -> str:
+        return self.__run_id
+
+    @property
+    def problem(self):
+        return self._problem
+
+
 
 class FlamlOptimizer(BaseOptimizer):
-    def __init__(self, problem: str, engine_parameters: dict) -> None:
+    def __init__(self, engine_parameters: dict) -> None:
         super().__init__(engine_parameters)
-
-        if "task" in engine_parameters.keys():
-            logging.info(
-                f"The problem is already provided through project object ({problem})"
-            )
-        engine_parameters["task"] = problem
 
     def optimize(self, X: pd.DataFrame, y: pd.DataFrame,
                  splitter: ValidationStrategy = None
@@ -81,6 +97,8 @@ class FlamlOptimizer(BaseOptimizer):
         groups = None if splitter is None else splitter.groups
         groups = groups if groups is None else groups[splitter.train_index]
 
+        logging.disable()
+        self.engine_parameters["task"] = self.problem
         self.allowing_splitter(splitter)
         self.__optimizer = AutoML()
         self.__optimizer.fit(
@@ -90,17 +108,14 @@ class FlamlOptimizer(BaseOptimizer):
             mlflow_logging=False,
             **self.engine_parameters
         )
+        logging.basicConfig(level=logging.DEBUG)
 
     @property
-    def optimizer(self) -> AutoML:
-        return self.__optimizer
-
-    @property
-    def estimator_(self) -> 'base.BaseEstimator':
+    def best_model_(self) -> base.BaseEstimator:
         return self.__optimizer.model.model
 
     @property
-    def transformer_(self) -> 'flaml.data.DataTransformer':
+    def transformer_(self):
         return self.__optimizer._transformer
 
     @property

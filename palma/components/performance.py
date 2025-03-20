@@ -189,112 +189,12 @@ class Analyser(ModelComponent, metaclass=ABCMeta):
             self.variable_importance(), mode=mode, color=color, cmap=cmap,
             **kwargs
         )
-        logger.logger.log_artifact(plot.gcf(), "variable_importance")
+        logger.logger.log_artifact(plot.gcf(), "performance_variable_importance")
 
     @property
     def metrics(self):
         return self.__metrics
 
-
-class ShapAnalysis(Analyser):
-
-    def __init__(self, on, n_shap, compute_interaction=False):
-        super().__init__(on)
-        self.n_shap = n_shap
-        self.compute_interaction = compute_interaction
-
-    def __call__(self, project: "Project", model: "ModelEvaluation"):
-        self._add(project, model)
-        self._compute_shap_values(n=self.n_shap,
-                                  is_regression=self._is_regression,
-                                  compute_interaction=self.compute_interaction)
-        return self
-
-    def __select_explainer(self):
-        from sklearn import ensemble, linear_model
-        from palma.base.model import get_estimator_name
-        name = get_estimator_name(self.estimators[0])
-        if name in [*ensemble.__dict__["__all__"],
-                    "XGBClassifier", "XGBRegressor"]:
-            explainer_method = shap.TreeExplainer
-        elif name in linear_model.__dict__["__all__"]:
-            explainer_method = shap.LinearExplainer
-        else:
-            explainer_method = shap.TreeExplainer
-        return explainer_method
-
-    def _compute_shap_values(
-            self, n, is_regression,
-            explainer_method=shap.TreeExplainer,
-            compute_interaction=False
-    ):
-        if explainer_method == "auto":
-            explainer_method = self.__select_explainer()
-        i_loc: list = []  # list of all index
-        self.shap_values = np.array([])
-        self.shap_X = pd.DataFrame()
-        self.shap_interaction = np.array([])
-        self.shap_expected_value = 0
-        sizes = np.diff(np.linspace(0, n, num=len(self.indexes) + 1, dtype=int))
-        for i, (train, test) in enumerate(self.indexes):
-
-            i_loc_ = np.random.choice(test, size=sizes[i])
-            if self.preproc_estimators:
-                x_processed = pd.DataFrame(
-                    self.preproc_estimators[i].transform(self.X.iloc[i_loc_]),
-                    index=self.X.iloc[i_loc_].index, columns=self.X.columns)
-            else:
-                x_processed = self.X.iloc[i_loc_]
-            explainer = explainer_method(self.only_estimators[i],
-                                         masker=x_processed)
-            shap_values = explainer.shap_values(x_processed)
-            shap_e_value = explainer.expected_value
-            if compute_interaction:
-                shap_interaction = explainer.shap_interaction_values(
-                    x_processed)
-                if compute_interaction:
-                    shap_interaction = shap_interaction[1]
-                    if self.shap_values.__len__() == 0:
-                        self.shap_interaction = shap_interaction
-                    else:
-                        self.shap_interaction = np.concatenate(
-                            (self.shap_interaction, shap_interaction))
-
-            if not is_regression and 'XGB' not in str(self.estimators[0]):
-                shap_values = shap_values[1]
-                shap_e_value = shap_e_value[1]
-
-            if self.shap_values.__len__() == 0:
-                self.shap_values = shap_values
-                self.shap_expected_value = shap_e_value
-            else:
-                self.shap_values = np.concatenate(
-                    (self.shap_values, shap_values))
-                self.shap_expected_value += shap_e_value
-            i_loc += list(i_loc_)
-            self.shap_expected_value /= len(self.indexes)
-            self.shap_X = pd.concat((self.shap_X, x_processed))
-        self.__change_features_name_to_string()
-
-    def __change_features_name_to_string(self):
-        self.shap_X.columns = [str(c) for c in self.shap_X.columns]
-
-    def plot_shap_summary_plot(self):
-        import shap
-        shap.summary_plot(self.shap_values, self.shap_X)
-
-    def plot_shap_decision_plot(self, **kwargs):
-        shap.decision_plot(self.shap_expected_value, self.shap_values,
-                           self.shap_X, **kwargs)
-
-    def plot_shap_interaction(self, feature_x, feature_y):
-        shap.dependence_plot(
-            (feature_x, feature_y),
-            self.shap_interaction, self.shap_X,
-            display_features=self.shap_X
-        )
-        logger.logger.log_artifact(plot.gcf(), f"shap_interaction_"
-                                               f"{feature_x}_{feature_y}")
 
 
 class ScoringAnalysis(Analyser):
@@ -411,7 +311,7 @@ class ScoringAnalysis(Analyser):
         if plot_base:
             plotting.roc_plot_base()
 
-        logger.logger.log_artifact(plot.gcf(), "roc_curve")
+        logger.logger.log_artifact(plot.gcf(), "performance_roc_curve")
         return plot
 
     def compute_threshold(
@@ -500,7 +400,16 @@ class ScoringAnalysis(Analyser):
             fpr.append(roc[0][idx])
             tpr.append(roc[1][idx])
         plot.scatter(fpr, tpr, **plot_kwargs)
-        logger.logger.log_artifact(plot.gcf(), "roc_threshold")
+        logger.logger.log_artifact(plot.gcf(), "performance_roc_threshold")
+
+    def __call__(self,  project: "Project", model: "ModelEvaluation"):
+        self._add(project, model)
+        plot.figure(figsize=(6, 6), dpi=300)
+        self.plot_roc_curve(plot_method="mean", plot_base=True)
+
+        plot.figure()
+        self.plot_variable_importance()
+        return self
 
     @property
     def threshold(self):
@@ -548,6 +457,12 @@ class RegressionAnalysis(Analyser):
     def __init__(self, on):
         super().__init__(on)
 
+    def __call__(self,  project: "Project", model: "ModelEvaluation"):
+        self._add(project, model)
+        self.plot_prediction_versus_real()
+        self.plot_variable_importance()
+        return self
+
     def compute_predictions_errors(self, fun=None):
         self.errors = {}
         if fun is None:
@@ -576,7 +491,7 @@ class RegressionAnalysis(Analyser):
         ax.grid()
         ax.set_ylabel("Predicted values")
         ax.set_xlabel("Real values")
-        logger.logger.log_artifact(plot.gcf(), "true_vs_predicted")
+        logger.logger.log_artifact(plot.gcf(), "performance_true_vs_predicted")
 
     def plot_errors_pairgrid(self, fun=None, number_percentiles=4,
                              palette="rocket_r", features=None):
@@ -600,7 +515,7 @@ class RegressionAnalysis(Analyser):
         g.map_diag(sns.histplot, multiple="stack")
         g.map_offdiag(sns.scatterplot, size=df_plot["error"])
         g.add_legend(title="", adjust_subtitles=True)
-        logger.logger.log_artifact(plot.gcf(), "pair_grid")
+        logger.logger.log_artifact(plot.gcf(), "performance_pair_grid")
 
 
 class PermutationFeatureImportance(ModelComponent):
